@@ -2,6 +2,8 @@
 
 Welcome to the SIO Python for Earth Science Workshop repository!
 
+[![View Documentation](https://img.shields.io/badge/docs-live-blue.svg)](https://eldavenport.github.io/SIO-PythonEarthScience)
+
 This repository contains the source files for building and hosting documentation for a workshop that was run from August 19-21, 2025.
 
 ## 📚 Contents
