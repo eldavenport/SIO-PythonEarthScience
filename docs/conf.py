@@ -9,7 +9,8 @@ release = '1.0'
 html_title = "SIO Python for Earth Science"
 
 extensions = [
-    'myst_parser',
+    'nbsphinx',
+    'myst_parser',  # optional if using .md instead of .ipynb
 ]
 
 templates_path = ['_templates']
