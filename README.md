@@ -1,8 +1,8 @@
 # Software Workshop
 
-Welcome to the Software Workshop documentation repository!
+Welcome to the SIO Python for Earth Science Workshop repository!
 
-This repository contains the source files for building and hosting documentation for a hands-on software skills workshop.
+This repository contains the source files for building and hosting documentation for a workshop that was run from August 19-21, 2025.
 
 ## 📚 Contents
 
@@ -20,21 +20,6 @@ Materials used **during** the live sessions, including:
 ### 🔹 Additional Resources
 Further learning and references for **after** the workshop.
 
-## 🛠️ Building the Docs Locally
-
-To build the documentation locally:
-
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Build the HTML docs
-make html
-
-# Open in browser
-open docs/_build/html/index.html
-```
-
 ## 🚀 Deployment
 
 This project is set up to automatically build and deploy the documentation to GitHub Pages using a GitHub Actions workflow. The output is published to the `gh-pages` branch.
@@ -51,8 +36,8 @@ docs/
 
 ## 🧪 Notebooks
 
-Example Jupyter notebooks are included under `docs/in_workshop/` for each topic area. These can be run locally or integrated into interactive environments like Binder.
+This project includes Jupyter Notebooks used during the workshop.
 
 ---
 
-Maintained by the Workshop Organizing Team.
+Maintained by Ellen Davenport.
