@@ -6,6 +6,8 @@ project = 'SIO Python for Earth Science Workshop'
 author = 'Ellen Davenport'
 release = '1.0'
 
+html_title = "SIO Python for Earth Science"
+
 extensions = [
     'myst_parser',
 ]
