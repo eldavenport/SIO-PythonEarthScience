@@ -9,5 +9,6 @@ This site contains resources for workshop participants during and after the work
    :maxdepth: 2
    :caption: Contents:
 
+   installation/index
    in_workshop/index
    additional_resources/index
