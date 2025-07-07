@@ -1,7 +1,7 @@
-In-Workshop Resources
+Software Installation
 =====================
 
-Resources to use **during** the workshop sessions.
+Resources to use **before** the workshop sessions.
 
 .. toctree::
    :maxdepth: 1
