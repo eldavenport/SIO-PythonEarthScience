@@ -12,9 +12,11 @@ extensions = [
     'nbsphinx',
     'myst_parser',  # optional if using .md instead of .ipynb
 ]
+nbsphinx_execute = 'never'
 
 templates_path = ['_templates']
 exclude_patterns = []
 
 html_theme = 'furo'
 html_static_path = ['_static']
+
