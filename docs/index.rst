@@ -1,6 +1,6 @@
 .. Software Workshop documentation master file
 
-Welcome to the Software Workshop!
+Welcome to the SIO Python for Earth Science Software Workshop!
 ==================================
 
 This site contains resources for workshop participants during and after the workshop.
