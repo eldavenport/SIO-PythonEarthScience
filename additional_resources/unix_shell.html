@@ -275,7 +275,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p>cd <folderName></p></td>
+<tr class="row-even"><td class="text-left"><p>cd &lt;folderName&gt;</p></td>
 <td class="text-right"><p>Enter directory</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>cd ..</p></td>
@@ -287,7 +287,7 @@
 <tr class="row-odd"><td class="text-left"><p>ls</p></td>
 <td class="text-right"><p>List files within current directory</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>ls <path to folder></p></td>
+<tr class="row-even"><td class="text-left"><p>ls &lt;path to folder&gt;</p></td>
 <td class="text-right"><p>List files within another directory</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>pwd</p></td>
@@ -296,43 +296,43 @@
 <tr class="row-even"><td class="text-left"><p>clear</p></td>
 <td class="text-right"><p>Clear terminal</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>mkdir <foldername></p></td>
+<tr class="row-odd"><td class="text-left"><p>mkdir &lt;foldername&gt;</p></td>
 <td class="text-right"><p>Create new folder</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>mv <path to file> <new filename></p></td>
+<tr class="row-even"><td class="text-left"><p>mv &lt;path to file&gt; &lt;new filename&gt;</p></td>
 <td class="text-right"><p>Rename file</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>mv <path to file> &lt;path to new (existing) location&gt;</p></td>
+<tr class="row-odd"><td class="text-left"><p>mv &lt;path to file&gt; &lt;path to new (existing) location&gt;</p></td>
 <td class="text-right"><p>Move file to new location</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>mv -r <path to folder> <new foldername></p></td>
+<tr class="row-even"><td class="text-left"><p>mv -r &lt;path to folder&gt; &lt;new foldername&gt;</p></td>
 <td class="text-right"><p>Rename folder</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>mv -r <path to folder> &lt;path to new (existing) location&gt;</p></td>
+<tr class="row-odd"><td class="text-left"><p>mv -r &lt;path to folder&gt; &lt;path to new (existing) location&gt;</p></td>
 <td class="text-right"><p>Move folder and contents to new location</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>cp <path to file> &lt;path to new (existing) location&gt;</p></td>
+<tr class="row-even"><td class="text-left"><p>cp &lt;path to file&gt; &lt;path to new (existing) location&gt;</p></td>
 <td class="text-right"><p>Copy file to new location</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>cp -r <path to folder> &lt;path to new (existing) location&gt;</p></td>
+<tr class="row-odd"><td class="text-left"><p>cp -r &lt;path to folder&gt; &lt;path to new (existing) location&gt;</p></td>
 <td class="text-right"><p>Copy folder and contents to new location</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>rm <filename></p></td>
+<tr class="row-even"><td class="text-left"><p>rm &lt;filename&gt;</p></td>
 <td class="text-right"><p>Remove file</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>rm -r <foldername></p></td>
+<tr class="row-odd"><td class="text-left"><p>rm -r &lt;foldername&gt;</p></td>
 <td class="text-right"><p>Remove entire folder</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>cat <filename></p></td>
+<tr class="row-even"><td class="text-left"><p>cat &lt;filename&gt;</p></td>
 <td class="text-right"><p>Print contents of file to terminal</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>head <filename></p></td>
+<tr class="row-odd"><td class="text-left"><p>head &lt;filename&gt;</p></td>
 <td class="text-right"><p>Print first 10 lines of file</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>echo “Text”</p></td>
 <td class="text-right"><p>Print text</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>grep “<PATTERN>” <location></p></td>
+<tr class="row-odd"><td class="text-left"><p>grep “&lt;PATTERN&gt;” &lt;location&gt;</p></td>
 <td class="text-right"><p>Find lines matching PATTERN in location</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>help</p></td>
@@ -355,16 +355,16 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p>scp <username>&#64;<server address>:<file to copy> <location to copy to></p></td>
+<tr class="row-even"><td class="text-left"><p>scp &lt;username&gt;&#64;&lt;server address&gt;:&lt;file to copy&gt; &lt;location to copy to&gt;</p></td>
 <td class="text-right"><p>Copy file from remote to local computer</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>scp <file to copy> <username>&#64;<server address>:<location to copy to></p></td>
+<tr class="row-odd"><td class="text-left"><p>scp &lt;file to copy&gt; &lt;username&gt;&#64;&lt;server address&gt;:&lt;location to copy to&gt;</p></td>
 <td class="text-right"><p>Copy file to remote from local computer</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>scp -r <file to copy> <username>&#64;<server address>:<location to copy to></p></td>
+<tr class="row-even"><td class="text-left"><p>scp -r &lt;file to copy&gt; &lt;username&gt;&#64;&lt;server address&gt;:&lt;location to copy to&gt;</p></td>
 <td class="text-right"><p>Do the above for a folder and its contents</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>chmod +x <filename></p></td>
+<tr class="row-odd"><td class="text-left"><p>chmod +x &lt;filename&gt;</p></td>
 <td class="text-right"><p>Add execute permissions</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>bash &lt;script.sh&gt;</p></td>
@@ -387,7 +387,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p>vim <filename></p></td>
+<tr class="row-even"><td class="text-left"><p>vim &lt;filename&gt;</p></td>
 <td class="text-right"><p>create or open a file</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>:w</p></td>
@@ -402,7 +402,7 @@
 <tr class="row-even"><td class="text-left"><p>:h</p></td>
 <td class="text-right"><p>Help</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>:split <path to file></p></td>
+<tr class="row-odd"><td class="text-left"><p>:split &lt;path to file&gt;</p></td>
 <td class="text-right"><p>Open a second file in split screen</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>i</p></td>
