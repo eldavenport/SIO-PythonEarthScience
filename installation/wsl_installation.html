@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -259,7 +259,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -269,6 +269,74 @@
 <h1>Windows Instructions for Unix Shell<a class="headerlink" href="#Windows-Instructions-for-Unix-Shell" title="Link to this heading">¶</a></h1>
 <p>These instructions will walk you through the installation of Windows Subsystem for Linux (WSL). WSL allows you to run Linux on your Windows computer. This will allow you to create files, run software, and navigate your filesystem as if you were on a Linux computer. Your work will still be available to you through the Windows interface as well. Most modern software tools are designed to be used on Unix systems like Linux or MacOS.</p>
 <p>If you cannot install WSL because your Windows version is too old, then you should use Git Bash (instructions included).</p>
+<section id="Windows-Subsystem-for-Linux-(WSL)">
+<h2><strong>Windows Subsystem for Linux (WSL)</strong><a class="headerlink" href="#Windows-Subsystem-for-Linux-(WSL)" title="Link to this heading">¶</a></h2>
+<p>Linux is the industry standard operating system for most servers including super computers. This will allow you to use the same workflow interchangeably between your laptop and any remote servers. Installing Git is trivial once you have WSL.</p>
+<ol class="arabic simple">
+<li><p>Open the windows start menu and search “store” to open the Microsoft Store.</p></li>
+<li><p>In the store search “wsl ubuntu”. (Ubuntu is the version of Linux you are installing)</p></li>
+<li><p>Select ‘Ubuntu 24.04.01-LTS’ if it is available. If not select ‘Ubuntu 22.04.1-LTS’</p></li>
+<li><p>If a terminal window pops up asking to continue, press space to continue.</p></li>
+<li><p>If a new pop-up window appears asking to make changes to your device, say “yes”.</p></li>
+<li><p>Once installation is complete, restart your computer.</p></li>
+<li><p>Once restarted go to the windows start menu and type “Ubuntu” to run the installed Linux operating system.</p>
+<ol class="loweralpha simple">
+<li><p>This will open a unix-shell with bash and you will do this any time you want to use WSL.</p></li>
+</ol>
+</li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code> and Enter</p>
+<ol class="loweralpha simple">
+<li><p>apt is a command that will manage updating/installing things in Linux. Any time you use sudo you will need to enter your password.</p></li>
+</ol>
+</li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">autotools</span> <span class="pre">python3</span></code> and Enter</p></li>
+</ol>
+</section>
+<section id="To-access-Windows-system-files-from-Linux">
+<h2>To access Windows system files from Linux<a class="headerlink" href="#To-access-Windows-system-files-from-Linux" title="Link to this heading">¶</a></h2>
+<p>Navigate to <code class="docutils literal notranslate"><span class="pre">/mnt/c</span></code> in the WSL terminal by typing <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/mnt/c</span></code>. Now when you type <code class="docutils literal notranslate"><span class="pre">ls</span></code> and Enter, you should see all of the files and folders that already exist on your Windows computer.</p>
+</section>
+<section id="To-access-Linux-subsystem-files-from-Windows">
+<h2>To access Linux subsystem files from Windows<a class="headerlink" href="#To-access-Linux-subsystem-files-from-Windows" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>in Powershell, navigate to <code class="docutils literal notranslate"><span class="pre">\\wsl.localhost\</span></code></p></li>
+<li><p>in File Explorer, click the Linux Icon (it’s a penguin) in the File Explorer bar</p></li>
+</ol>
+</section>
+<section id="Git-Bash-from-Git-For-Windows">
+<h2><strong>Git Bash from Git For Windows</strong><a class="headerlink" href="#Git-Bash-from-Git-For-Windows" title="Link to this heading">¶</a></h2>
+<p>Download Git for Windows <a class="reference external" href="https://gitforwindows.org/">here</a>.</p>
+<p>This will come with an application called Git Bash that allows you to use Git commands in a terminal-like environment. The issue is that this does not support other Unix-shell commands so you will be limited compared to using WSL. Detailed instructions for installation are below to get both bash and Git to work properly. If you go this route, then you do not need a separate installation of Git (you can skip the Git installation instructions.)</p>
+<p>Run the installer and follow the steps below:</p>
+<ol class="arabic simple">
+<li><p>Click on “Next” four times (two times if you’ve previously installed Git). You don’t need to change anything in the Information, location, components, and start menu screens.</p></li>
+<li><p>From the dropdown menu, “Choosing the default editor used by Git”, select “Use the Nano editor by default” (NOTE: you will need to scroll up to find it) and click on “Next”.</p></li>
+<li><p>On the page that says “Adjusting the name of the initial branch in new repositories”, ensure that “Let Git decide” is selected.</p></li>
+<li><p>Ensure that “Git from the command line and also from 3rd-party software” is selected and click on “Next”.</p>
+<ol class="loweralpha simple">
+<li><p>If you don’t do this Git Bash will not work properly, requiring you to remove the Git Bash installation, re-run the installer and to select the “Git from the command line and also from 3rd-party software” option.</p></li>
+</ol>
+</li>
+<li><p>Select “Use bundled OpenSSH”.</p></li>
+<li><p>Ensure that “Use the native Windows Secure Channel Library” is selected and click on “Next”.</p></li>
+<li><p>Ensure that “Checkout Windows-style, commit Unix-style line endings” is selected and click on “Next”.</p></li>
+<li><p>Ensure that “Use Windows’ default console window” is selected and click on “Next”.</p></li>
+<li><p>Ensure that “Default (fast-forward or merge) is selected and click “Next”</p></li>
+<li><p>Ensure that “Git Credential Manager” is selected and click on “Next”.</p></li>
+<li><p>Ensure that “Enable file system caching” is selected and click on “Next”.</p></li>
+<li><p>Click on “Install”.</p></li>
+<li><p>Click on “Finish” or “Next”.</p></li>
+<li><p>If your “HOME” environment variable is not set (or you don’t know what this is):</p>
+<ol class="loweralpha simple">
+<li><p>Open command prompt (Open Start Menu then type <code class="docutils literal notranslate"><span class="pre">cmd</span></code> and press Enter)</p></li>
+<li><p>Type the following line into the command prompt window exactly as shown: <code class="docutils literal notranslate"><span class="pre">setx</span> <span class="pre">HOME</span> <span class="pre">&quot;%USERPROFILE%&quot;</span></code></p></li>
+<li><p>Press Enter, you should see SUCCESS: Specified value was saved.</p></li>
+<li><p>Quit command prompt by typing exit then pressing Enter</p></li>
+</ol>
+</li>
+</ol>
+<p>Git Bash installation instructions are from the <a class="reference external" href="https://carpentries.github.io/workshop-template/install_instructions/#shell">Software Carpentries Website</a>.</p>
+</section>
 </section>
 
         </article>
@@ -314,8 +382,30 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Windows Instructions for Unix Shell</a><ul>
+<li><a class="reference internal" href="#Windows-Subsystem-for-Linux-(WSL)"><strong>Windows Subsystem for Linux (WSL)</strong></a></li>
+<li><a class="reference internal" href="#To-access-Windows-system-files-from-Linux">To access Windows system files from Linux</a></li>
+<li><a class="reference internal" href="#To-access-Linux-subsystem-files-from-Windows">To access Linux subsystem files from Windows</a></li>
+<li><a class="reference internal" href="#Git-Bash-from-Git-For-Windows"><strong>Git Bash from Git For Windows</strong></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
