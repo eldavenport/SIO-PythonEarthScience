@@ -10,3 +10,4 @@ Resources to use **before** the workshop sessions.
    wsl_installation
    bash_git_install
    python_install
+   vscode_install
