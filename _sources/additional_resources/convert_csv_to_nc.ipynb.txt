@@ -1,0 +1,53 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Convert a set of CSV's to a NETcdf file"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import xarray as xr\n",
+    "import glob\n",
+    "\n",
+    "# 1. Get all CSV files\n",
+    "csv_files = sorted(glob.glob(\"data_*.csv\"))\n",
+    "\n",
+    "# 2. Read and concatenate all CSVs\n",
+    "df_list = [pd.read_csv(f) for f in csv_files]\n",
+    "df_all = pd.concat(df_list, ignore_index=True)\n",
+    "\n",
+    "# 3. Convert to xarray Dataset\n",
+    "# Assumes columns representing coordinates are: time, lat, lon\n",
+    "# Anything that should be considered a variable (like 'temperature', 'salinit', etc) should not be included here\n",
+    "ds = df_all.set_index(['time', 'lat', 'lon']).to_xarray()\n",
+    "\n",
+    "# 4. Convert time to datetime if needed (you can skip this step or convert to/from whatever datetime formats you want)\n",
+    "ds['time'] = pd.to_datetime(ds['time'])\n",
+    "\n",
+    "# 5. Write to NetCDF\n",
+    "ds.to_netcdf(\"combined_data.nc\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "scicompute",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.12.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
