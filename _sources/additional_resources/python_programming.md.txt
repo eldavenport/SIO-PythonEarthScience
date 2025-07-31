@@ -1,4 +1,4 @@
-# Python Programming Resources
+# Python Programming
 
 [Learning Data Science](https://learningds.org/intro.html)
 [Numerical Methods in Python](https://pythonnumericalmethods.studentorg.berkeley.edu/notebooks/Index.html)  
