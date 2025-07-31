@@ -4,10 +4,10 @@ It seems like a lot, but the following tools are absolutely necessary for collab
 
 **If you are starting from scratch, please install in the following order:**
 
-1) unix-shell/bash (Only Windows users will need to install unix-shell/bash. Mac and Linux users begin with Git installation.)
-2) Git 
-3) Python/Conda 
-4) VSCode
+    1) unix-shell/bash (Only Windows users will need to install unix-shell/bash. Mac and Linux users begin with Git installation.)
+    2) Git 
+    3) Python/Conda 
+    4) VSCode
 
 If you already have some of the elements installed, just follow the overall order for whatever you need. 
 

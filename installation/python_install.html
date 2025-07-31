@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -259,7 +259,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -267,6 +267,72 @@
         <article role="main" id="furo-main-content">
           <section id="python-installation-with-conda">
 <h1>Python Installation with Conda<a class="headerlink" href="#python-installation-with-conda" title="Link to this heading">¶</a></h1>
+<p>Conda is a tool that manages Python packages. You may want to install packages to help you do many different things (plotting, math, interacting with the cloud). Conda will make sure that those packages are compatible with each other and will allow you to set up multiple Python environments that contain the packages you need for each of your projects.</p>
+<p>Download the appropriate version of Miniforge (the conda installer) from <a class="reference external" href="https://conda-forge.org/download/">this website</a>.</p>
+<section id="macos">
+<h2>MacOS<a class="headerlink" href="#macos" title="Link to this heading">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1) Download the miniforge version for Apple (either Apple Silicon or Intel depending on which kind of Mac you have)
+
+2) Open your unix-shell, type `cd ~/Downloads`, and Enter
+
+3) Type `bash Miniforge3-`, hit Tab (this will autocomplete the name of the downloaded file), and Enter
+
+    a) For example, my downloaded filename is: Miniforge3-MacOSX-arm64.sh
+
+4) Follow the text prompts in the terminal:
+    
+    a) Press space to move/scroll through the text
+    
+    b) Type `yes` and Enter to approve the license
+    
+    c) Hit Enter to approve the default location for installation 
+
+    d) Type `yes` and Enter to add Miniforge to your `PATH`
+</pre></div>
+</div>
+</section>
+<section id="wsl-and-linux">
+<h2>WSL and Linux<a class="headerlink" href="#wsl-and-linux" title="Link to this heading">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1) Download the miniforge version for Linux (x86_64)
+
+2) Open your unix shell
+
+    a) for WSL users: type `cd /mnt/c/Users/&lt;username&gt;/Downloads` (replace username with your username), and Enter
+
+    b) for Linux users: type `cd ~/Downloads` and Enter
+
+3) Type `bash Miniforge3-`, hit Tab (this will autocomplete the name of the downloaded file), and Enter
+
+    a) For example, your downloaded filename might be: Miniforge3-Linux-x86_64.sh
+
+4) Follow the text prompts in the terminal:
+    
+    a) Press space to move/scroll through the text
+    
+    b) Type `yes` and Enter to approve the license
+    
+    c) Hit Enter to approve the default location for installation 
+
+    d) Type `yes` and Enter to add Miniforge to your `PATH`
+</pre></div>
+</div>
+</section>
+<section id="all-users">
+<h2><strong>All Users</strong><a class="headerlink" href="#all-users" title="Link to this heading">¶</a></h2>
+<p>Close and reopen your unix shell. If conda was installed correctly, you should now see <code class="docutils literal notranslate"><span class="pre">(base)</span></code> before your username, indicating that you are in your base conda environment.</p>
+</section>
+<section id="if-you-are-not-using-wsl-i-e-windows-users-who-can-t-use-wsl">
+<h2>If you are not Using WSL (i.e. Windows users who can’t use WSL)<a class="headerlink" href="#if-you-are-not-using-wsl-i-e-windows-users-who-can-t-use-wsl" title="Link to this heading">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1) Download the windows installer from the Miniforge website and run the installer
+
+2) Follow all of the default options in the installer _except_ you _DO_ need to select “add Miniforge3 to my PATH environment variable”
+
+3) Open your start menu
+
+4) Search for and run Miniforge Prompt to open a miniforge window where you can use Conda. This is where you will interact with Conda in the future.
+</pre></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -312,8 +378,30 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Python Installation with Conda</a><ul>
+<li><a class="reference internal" href="#macos">MacOS</a></li>
+<li><a class="reference internal" href="#wsl-and-linux">WSL and Linux</a></li>
+<li><a class="reference internal" href="#all-users"><strong>All Users</strong></a></li>
+<li><a class="reference internal" href="#if-you-are-not-using-wsl-i-e-windows-users-who-can-t-use-wsl">If you are not Using WSL (i.e. Windows users who can’t use WSL)</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
