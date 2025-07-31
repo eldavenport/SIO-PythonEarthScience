@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -259,7 +259,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -267,6 +267,30 @@
         <article role="main" id="furo-main-content">
           <section id="installing-git-in-a-unix-shell">
 <h1>Installing Git in a Unix Shell<a class="headerlink" href="#installing-git-in-a-unix-shell" title="Link to this heading">¶</a></h1>
+<p>You will need a free <a class="reference internal" href="#"><span class="xref myst">GitHub</span></a> account to use Git. Create one there first before continuing the install.</p>
+<section id="windows-and-linux">
+<h2>Windows and Linux<a class="headerlink" href="#windows-and-linux" title="Link to this heading">¶</a></h2>
+<p>Open your Unix shell:
+1) WSL on Windows</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2) Terminal on Linux
+</pre></div>
+</div>
+<p>Type <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">git</span></code> and Enter.</p>
+<p>If you followed the instructions for Git Bash on Windows, then you already have Git installed.</p>
+</section>
+<section id="macos">
+<h2>MacOS<a class="headerlink" href="#macos" title="Link to this heading">¶</a></h2>
+<p>Open the terminal, type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code> and Enter. If you get a version string, then you already have Git installed. Otherwise you should see instructions for installation with XCode. You can either exit those instructions and use homebrew (a MacOS terminal tool for installing things), or you can continue with XCode.</p>
+<ol class="arabic">
+<li><p>XCode</p>
+<p>a) After you enter <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code> you should see instructions for installation with XCode.</p>
+<p>b) Follow the installation instructions for the <strong>command line developer tools only</strong>. You do <em>not</em> need to click get XCode.</p>
+</li>
+<li><p>Homebrew</p>
+<p>a) Open the terminal, type <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">git</span></code> and hit enter.</p>
+</li>
+</ol>
+</section>
 </section>
 
         </article>
@@ -312,8 +336,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Installing Git in a Unix Shell</a><ul>
+<li><a class="reference internal" href="#windows-and-linux">Windows and Linux</a></li>
+<li><a class="reference internal" href="#macos">MacOS</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
