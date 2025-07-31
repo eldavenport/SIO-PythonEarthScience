@@ -1,4 +1,4 @@
-# Python for Earth Science Resources
+# Python for Earth Science
 
 [Project Pythia](https://projectpythia.org/)  
 [Project Pythia Cookbooks](https://cookbooks.projectpythia.org/)  
