@@ -40,7 +40,8 @@
         "# IF YOU ALREADY HAVE A FILE CALLED id_rsa, you should specify a different name\n",
         "ssh-keygen \n",
         "\n",
-        "# follow the prompts. pressing eneter will accept the defaults. you will have the option to give your new key a new name. do not set a passphrase."
+        "# follow the prompts. pressing eneter will accept the defaults. \n",
+        "# you will have the option to give your new key a new name. do not set a passphrase."
       ]
     },
     {
@@ -537,7 +538,8 @@
       "outputs": [],
       "source": [
         "# Tell Git where we will send the code when we push it to the cloud (i.e., GitHub).\n",
-        "# This creates a repository on our GitHub that is backed up. Our local version of the repo will be synced to the GitHub repo.\n",
+        "# This creates a repository on our GitHub that is backed up. \n",
+        "# Our local version of the repo will be synced to the GitHub repo.\n",
         "git remote add origin git@github.com:<git-username>/<reponame>.git\n",
         "\n",
         "# For me this will be git@github.com:eldavenport/new-repo.git"
