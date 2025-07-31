@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Python for Earth Science" href="earth_science.html" /><link rel="prev" title="The Unix Shell" href="unix_shell.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
-        <title>Git Version Control - SIO Python for Earth Science</title>
+        <title>Version Control With Git - SIO Python for Earth Science</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
@@ -179,7 +179,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -209,7 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_programming.html">Programming with Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_plotting.html">Python Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unix_shell.html">The Unix Shell</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Git Version Control</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Version Control With Git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="earth_science.html">Python for Earth Science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="workflows.html">Workflows for Earth Science</a></li>
 </ul>
@@ -257,23 +257,395 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="Git-Version-Control">
-<h1>Git Version Control<a class="headerlink" href="#Git-Version-Control" title="Link to this heading">¶</a></h1>
-<p>Example content.</p>
+          <section id="Version-Control-With-Git">
+<h1>Version Control With Git<a class="headerlink" href="#Version-Control-With-Git" title="Link to this heading">¶</a></h1>
+<section id="Brief-Reminder-about-SSH-Keys">
+<h2><strong>Brief Reminder about SSH Keys</strong><a class="headerlink" href="#Brief-Reminder-about-SSH-Keys" title="Link to this heading">¶</a></h2>
+</section>
+<section id="Verify-your-Git-Installation">
+<h2><strong>Verify your Git Installation</strong><a class="headerlink" href="#Verify-your-Git-Installation" title="Link to this heading">¶</a></h2>
+<p>Everyone should already be able to run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code> in their terminal, in order to identify that you have git installed (it will tell you which version).</p>
+<p><strong>TIP</strong> adding <code class="docutils literal notranslate"><span class="pre">!</span></code> in front of a command in a Jupyter cell will execute the command like you are in a terminal (bash) shell. If you are doing this in the terminal, you should not type <code class="docutils literal notranslate"><span class="pre">!</span></code> at the beginning of the line.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>--version
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+git version 2.50.1
+</pre></div></div>
+</div>
+<p>Git commands always have the same structure:</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">&lt;command&gt;</span> <span class="pre">&lt;options&gt;</span></code></p>
+</section>
+<section id="Configuring-your-Git-Username-and-Email">
+<h2><strong>Configuring your Git Username and Email</strong><a class="headerlink" href="#Configuring-your-Git-Username-and-Email" title="Link to this heading">¶</a></h2>
+<p>The first thing we will do is configure our installation of Git to know who we are. This identifies you (and your GitHub account) as the person who made the file changes. The email you use should be the email associated with your GitHub account.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;eldavenport&quot;</span>
+<span class="o">!</span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;ellendavenport7@gmail.com&quot;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Setting-up-a-Repository">
+<h2><strong>Setting up a Repository</strong><a class="headerlink" href="#Setting-up-a-Repository" title="Link to this heading">¶</a></h2>
+<p><em>The rest of this code should be run from the terminal</em>, we will include it in the notebook for the sake of documentation, but it is likely that your paths will not be correct if you do this all from a Jupyter notebook. We have removed the <code class="docutils literal notranslate"><span class="pre">!</span></code> so that the code can be directly copied and pasted into a bash shell.</p>
+<p>Next we need to choose a folder that we want to track. Use <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> to create a new folder that will serve as our version controlled project.</p>
+<p><strong>TIP</strong> There is no single way to name a repository, but if you want to follow the most popular convention, it is called kebab-case. kebab-case separates lower case words with hyphens. This can help to distinguish code from regular directories on your computer.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the new folder, called new-repo</span>
+<span class="n">mkdir</span> <span class="n">new</span><span class="o">-</span><span class="n">repo</span>
+
+<span class="c1"># enter the new project</span>
+<span class="n">cd</span> <span class="n">new</span><span class="o">-</span><span class="n">repo</span>
+
+<span class="c1">#check that we are in the right place</span>
+<span class="n">pwd</span>
+<br/></pre></div>
+</div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello from the notebook!&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize this folder as a git repository</span>
+<span class="n">git</span> <span class="n">init</span>
 </pre></div>
 </div>
 </div>
+<p>You should see output like the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hint: Using &#39;master&#39; as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch &lt;name&gt;
+hint:
+hint: Names commonly chosen instead of &#39;master&#39; are &#39;main&#39;, &#39;trunk&#39; and
+hint: &#39;development&#39;. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m &lt;name&gt;
+hint:
+hint: Disable this message with &quot;git config set advice.defaultBranchName false&quot;
+Initialized empty Git repository in &lt;path-to-your-repo&gt;/new-repo/.git/
+</pre></div>
+</div>
+<p><strong>TIP</strong> Git output <strong>always</strong> tells you how to do the next thing. Always read the output of your git commands to know how to proceed. For example, we are going to do what was suggested in the hints and rename our default branch from <code class="docutils literal notranslate"><span class="pre">master</span></code> to <code class="docutils literal notranslate"><span class="pre">main</span></code> using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-m</span> <span class="pre">&lt;name&gt;</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the default branch name to main, if this succeeds there will be no output.</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">m</span> <span class="n">main</span>
+
+<span class="c1"># check that we are on main</span>
+<span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+</div>
+<p>You should see the following (note that, again, git told us what to do next!):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<p>Every Git repository should have a README.md (markdown file). At the least this file just says the name of the repository. Over time it can include details such as links to supporting references, DOIs, links to papers or zenodo, installation instructions.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a README markdown file that says the repository name using echo and &gt;&gt;</span>
+<span class="n">echo</span> <span class="s2">&quot;# new-repo&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+</div>
+<p>Now that we have added a file called README.md we should see something new when we run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+</div>
+<p>Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+
+No commits yet
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+    README.md
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<p>Git can see that we have a new file that didn’t exist before and that it is not tracked (indicated by the red color). Git also tells us that we have not staged anything to commit. Better yet, the output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> tells us what we need to do to track this new file.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add the README file to the staging area</span>
+<span class="n">git</span> <span class="n">add</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+</div>
+<p>Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+    new file:   README.md
+</pre></div>
+</div>
+<p>Git sees that we have staged the README.md file (indicated by green color) and indicates that it will be committed (when we use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>). It also indicates the type of file (new file). In other cases this might indicated a changed file, deleted file, or moved file.</p>
+<p><strong>TIP</strong> always, always, always use commit messages. You can technically commit without any message, but adding a commit message with the <code class="docutils literal notranslate"><span class="pre">-m</span></code> option will add a short descriptor to the commit. This will be critical for collaborating with others and looking at the history of your changes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># commit our changes with a message indicating this is the first commit to the repo</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;initial commit&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[main (root-commit) 3aa75e5] initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+</div>
+<p>Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+nothing to commit, working tree clean
+</pre></div>
+</div>
+<p>Now we can also look at our history to see what has happened so far in this repository.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check the history of commits in this repo</span>
+<span class="n">git</span> <span class="n">log</span>
+</pre></div>
+</div>
+</div>
+<p>Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>commit 3aa75e5bcd3810a17511db947d50d7d75a728818 (HEAD -&gt; main)
+Author: eldavenport &lt;ellendavenport7@gmail.com&gt;
+Date:   Thu Jul 31 11:23:35 2025 -0700
+
+    initial commit
+</pre></div>
+</div>
+<p>We can see the date and time of the commit, who authored the commit, and the commit message. We can also see a unique identifier for the commit called the commit <em>hash</em>. In this case the hash starts with 3aa75. Commit hashes will be useful in more advanced git actions.</p>
+</section>
+<section id="Pushing-our-changes-up-to-GitHub">
+<h2><strong>Pushing our changes up to GitHub</strong><a class="headerlink" href="#Pushing-our-changes-up-to-GitHub" title="Link to this heading">¶</a></h2>
+<p>Let’s summarize where we are…</p>
+<ol class="arabic simple">
+<li><p>we have a repository named new-repo</p></li>
+<li><p>we created a README.md for new-repo and we committed it</p></li>
+</ol>
+<p>This means that our current version of README.md is saved, and we can always return to this state even if we upate README.md and commit the changes. Our git log will always allow us to return to this exact version of the README.md if we want.</p>
+<p>But … there’s one issue. Our work is only on our local computer. We need to finish the initialization by pushing the work up to GitHub. Then our work is backed up <em>and</em> our changes are tracked.</p>
+<section id="Create-a-new-repository-on-GitHub">
+<h3><strong>Create a new repository on GitHub</strong><a class="headerlink" href="#Create-a-new-repository-on-GitHub" title="Link to this heading">¶</a></h3>
+<p>Use your web browser to navigate to your GitHub profile.</p>
+</section>
+<section id="Link-our-Local-Repo-to-the-GitHub-one">
+<h3><strong>Link our Local Repo to the GitHub one</strong><a class="headerlink" href="#Link-our-Local-Repo-to-the-GitHub-one" title="Link to this heading">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tell Git where we will send the code when we push it to the cloud (i.e., GitHub).</span>
+<span class="c1"># This creates a repository on our GitHub that is backed up. Our local version of the repo will be synced to the GitHub repo.</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="o">&lt;</span><span class="n">git</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">reponame</span><span class="o">&gt;.</span><span class="n">git</span>
+
+<span class="c1"># For me this will be git@github.com:eldavenport/new-repo.git</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Let's-push-our-repo-to-the-cloud!">
+<h3><strong>Let’s push our repo to the cloud!</strong><a class="headerlink" href="#Let's-push-our-repo-to-the-cloud!" title="Link to this heading">¶</a></h3>
+<p><strong>TIP</strong> The <em>first</em> time your create a new repository, you have to tell Git which remote (i.e., in the cloud) repository the changes should be linked to. This is done with the command <code class="docutils literal notranslate"><span class="pre">-u</span></code>. The <code class="docutils literal notranslate"><span class="pre">-u</span></code> stands for <code class="docutils literal notranslate"><span class="pre">upstream</span></code>, which is the repository on GitHub. In most cases the upstream and the local copy of your repo (i.e., the folder your work is in) will be named this same thing. After you have done this once, you no longer need to use <code class="docutils literal notranslate"><span class="pre">-u</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Push our changes (right now just a markdown file) to the cloud</span>
+<span class="c1"># origin indicates we are pushing to the remote (origin, which we added above)</span>
+<span class="c1"># main indicates we are pushing to the main branch (we are on main locally and pushing to main remotely)</span>
+
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+</div>
+<p>Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 223 bytes | 223.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:eldavenport/new-repo.git
+ * [new branch]      main -&gt; main
+branch &#39;main&#39; set up to track &#39;origin/main&#39;.
+</pre></div>
+</div>
+<p>This tells us that we pushed our local branch main to the remote branch main (<code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">-&gt;</span> <span class="pre">main</span></code>). It also notifies us that this is a new branch (<code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">[new</span> <span class="pre">branch]</span></code>) and that our local branch <code class="docutils literal notranslate"><span class="pre">main</span></code> is tracking the remote branch <code class="docutils literal notranslate"><span class="pre">origin/main</span></code>. <code class="docutils literal notranslate"><span class="pre">origin/</span></code> will always indicate a location on the remote.</p>
+</section>
+<section id="Refresh-your-GitHub-page-and-you-should-see-the-new-repo!">
+<h3><strong>Refresh your GitHub page and you should see the new repo!</strong><a class="headerlink" href="#Refresh-your-GitHub-page-and-you-should-see-the-new-repo!" title="Link to this heading">¶</a></h3>
+</section>
+<section id="Adding-a-.gitignore">
+<h3><strong>Adding a .gitignore</strong><a class="headerlink" href="#Adding-a-.gitignore" title="Link to this heading">¶</a></h3>
+<p>You do not want to use git as a data storage location. Text files are very small. Data files can be very large. GitHub has a limit to the amount of stuff that can go in a single repo. It is a few GB which would be TONS of code…but not that much data. Pushing/pulling and checking the status of your files will get very slow if Git has to scan big data files every time. Data should be stored in an actual storage location (on a server, drive, or cloud location). You can also have a copy of data
+locally and you can tell Git to ignore it. We do this by creating a .gitignore file.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create and open a file called .gitignore (in the top level of the repo, i.e., in new-repo/)</span>
+<span class="n">vim</span> <span class="o">.</span><span class="n">gitignore</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># insert the following line to ignore .csv files in the top level</span>
+<span class="o">*.</span><span class="n">csv</span>
+
+<span class="c1"># insert the following line to ignore .csv files in all subfolders</span>
+<span class="o">**.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</div>
+<p>If I want to ignore all mat, csv, and netcdf files in my project (i.e., not add them to be tracked by my repository). My file new-repo/.gitignore will contain the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**.csv
+**.nc
+**.cdf
+**.mat
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+</div>
+<p>Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+Your branch is up to date with &#39;origin/main&#39;.
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+    .gitignore
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span><span class="n">gitignore</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;adding gitignore file&quot;</span>
+<span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+</div>
+<p>At this point you can move data files into your repo and git will not try to track them.</p>
+</section>
+</section>
+<section id="Exercises">
+<h2><strong>Exercises</strong><a class="headerlink" href="#Exercises" title="Link to this heading">¶</a></h2>
+<section id="1">
+<h3>1<a class="headerlink" href="#1" title="Link to this heading">¶</a></h3>
+<p>A trust building experiment …</p>
+<ol class="arabic simple">
+<li><p>delete the repo on your computer</p></li>
+<li><p>make sure it is gone! (<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span></code> that thing!)</p></li>
+<li><p>… reassure yourself that it is still on GitHub! nothing has changed…</p></li>
+<li><p>go to a new location in your computer</p></li>
+<li><p>clone your new repostiory to this new location</p></li>
+<li><p>cd into the repo to see that your README.md file is there!</p></li>
+</ol>
+</section>
+<section id="2">
+<h3>2<a class="headerlink" href="#2" title="Link to this heading">¶</a></h3>
+<p>Add your own work to GitHub! Please! Take this time to add a project of your own to GitHub. We would love to see people do this now, so that you can explore or share your code online throughout the rest of our tutorials. <strong>Make sure to add a .gitignore to ignore any large data files before you push the new repo to GitHub!</strong></p>
+</section>
+<section id="3">
+<h3>3<a class="headerlink" href="#3" title="Link to this heading">¶</a></h3>
+<p>Make a test repo and have your neighbor clone it to their computer!</p>
+</section>
+<section id="4">
+<h3>4<a class="headerlink" href="#4" title="Link to this heading">¶</a></h3>
+<p>Add a python script to your repo (create one or copy an existing one here). Add and commit the script and push it to GitHub.</p>
+</section>
+</section>
+<section id="Advanced-Topics">
+<h2><strong>Advanced Topics</strong><a class="headerlink" href="#Advanced-Topics" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>git checkout</p>
+<ol class="loweralpha simple">
+<li><p>checking out specific commits</p></li>
+<li><p>checkout out other branches</p></li>
+</ol>
+</li>
+<li><p>creating GitHub issues</p>
+<ol class="loweralpha simple">
+<li><p>how to open an issue</p></li>
+<li><p>what should I put in my issue?</p></li>
+</ol>
+</li>
+<li><p>best practices</p></li>
+</ol>
+</section>
 </section>
 
         </article>
@@ -319,8 +691,46 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Version Control With Git</a><ul>
+<li><a class="reference internal" href="#Brief-Reminder-about-SSH-Keys"><strong>Brief Reminder about SSH Keys</strong></a></li>
+<li><a class="reference internal" href="#Verify-your-Git-Installation"><strong>Verify your Git Installation</strong></a></li>
+<li><a class="reference internal" href="#Configuring-your-Git-Username-and-Email"><strong>Configuring your Git Username and Email</strong></a></li>
+<li><a class="reference internal" href="#Setting-up-a-Repository"><strong>Setting up a Repository</strong></a></li>
+<li><a class="reference internal" href="#Pushing-our-changes-up-to-GitHub"><strong>Pushing our changes up to GitHub</strong></a><ul>
+<li><a class="reference internal" href="#Create-a-new-repository-on-GitHub"><strong>Create a new repository on GitHub</strong></a></li>
+<li><a class="reference internal" href="#Link-our-Local-Repo-to-the-GitHub-one"><strong>Link our Local Repo to the GitHub one</strong></a></li>
+<li><a class="reference internal" href="#Let's-push-our-repo-to-the-cloud!"><strong>Let’s push our repo to the cloud!</strong></a></li>
+<li><a class="reference internal" href="#Refresh-your-GitHub-page-and-you-should-see-the-new-repo!"><strong>Refresh your GitHub page and you should see the new repo!</strong></a></li>
+<li><a class="reference internal" href="#Adding-a-.gitignore"><strong>Adding a .gitignore</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Exercises"><strong>Exercises</strong></a><ul>
+<li><a class="reference internal" href="#1">1</a></li>
+<li><a class="reference internal" href="#2">2</a></li>
+<li><a class="reference internal" href="#3">3</a></li>
+<li><a class="reference internal" href="#4">4</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Advanced-Topics"><strong>Advanced Topics</strong></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
