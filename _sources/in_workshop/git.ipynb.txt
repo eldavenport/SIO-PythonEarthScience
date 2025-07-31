@@ -18,6 +18,42 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
+        "SSH keys identify your computer, and allow for the secure exchange of files between your computer and Git. You will only be able to push code to GitHub if your computer has an SSH key that is registered to your GitHub account. The following code should be run in the terminal.\n",
+        "\n",
+        "**NOTE** generating a set of SSH keys generates a private key (for you) and a public key (to be used on GitHub or on a server). _Do not EVER_ share a private SSH key with someone. Only ever put the .pub key online."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "# go to your home directory\n",
+        "cd ~/\n",
+        "# generate a new SSH key pair\n",
+        "# By default this will create a key pair in ~/.ssh/id_rsa (id_rsa and id_rsa.pub)\n",
+        "# IF YOU ALREADY HAVE A FILE CALLED id_rsa, you should specify a different name\n",
+        "ssh-keygen \n",
+        "\n",
+        "# follow the prompts. pressing eneter will accept the defaults. you will have the option to give your new key a new name. do not set a passphrase."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Go to your GitHub settings. Settings -> SSH and GPG Keys -> New SSH Key. Give it a name you will recognize (ellen's-laptop). Copy the contents of .ssh/id_rsa.pub (or your specified filename) into the new key info on GitHub. Click 'Add SSH Key'."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
         "## **Verify your Git Installation**"
       ]
     },
@@ -26,14 +62,6 @@
       "metadata": {},
       "source": [
         "Everyone should already be able to run ```git --version``` in their terminal, in order to identify that you have git installed (it will tell you which version)."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "**TIP** \n",
-        "adding ```!``` in front of a command in a Jupyter cell will execute the command like you are in a terminal (bash) shell. If you are doing this in the terminal, you should not type ```!``` at the beginning of the line."
       ]
     },
     {
@@ -54,7 +82,7 @@
         }
       ],
       "source": [
-        "!git --version"
+        "git --version"
       ]
     },
     {
@@ -90,8 +118,8 @@
       },
       "outputs": [],
       "source": [
-        "!git config --global user.name \"eldavenport\"\n",
-        "!git config --global user.email \"ellendavenport7@gmail.com\""
+        "git config --global user.name \"eldavenport\"\n",
+        "git config --global user.email \"ellendavenport7@gmail.com\""
       ]
     },
     {
@@ -109,7 +137,7 @@
         }
       },
       "source": [
-        "_The rest of this code should be run from the terminal_, we will include it in the notebook for the sake of documentation, but it is likely that your paths will not be correct if you do this all from a Jupyter notebook. We have removed the ```!``` so that the code can be directly copied and pasted into a bash shell."
+        "_All of this code should be run from the terminal_"
       ]
     },
     {

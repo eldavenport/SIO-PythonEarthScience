@@ -221,7 +221,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../additional_resources/git.html">Git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../additional_resources/earth_science.html">Python for Earth Science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../additional_resources/workflows.html">Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../additional_resources/convert_csv_to_nc.html">Convert a set of CSV’s to a NETcdf file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../additional_resources/convert_csv_to_nc.html">Convert a set of CSV’s to a NetCDF file</a></li>
 </ul>
 </li>
 </ul>
@@ -268,16 +268,33 @@
 <h1>Version Control With Git<a class="headerlink" href="#Version-Control-With-Git" title="Link to this heading">¶</a></h1>
 <section id="Brief-Reminder-about-SSH-Keys">
 <h2><strong>Brief Reminder about SSH Keys</strong><a class="headerlink" href="#Brief-Reminder-about-SSH-Keys" title="Link to this heading">¶</a></h2>
+<p>SSH keys identify your computer, and allow for the secure exchange of files between your computer and Git. You will only be able to push code to GitHub if your computer has an SSH key that is registered to your GitHub account. The following code should be run in the terminal.</p>
+<p><strong>NOTE</strong> generating a set of SSH keys generates a private key (for you) and a public key (to be used on GitHub or on a server). <em>Do not EVER</em> share a private SSH key with someone. Only ever put the .pub key online.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># go to your home directory</span>
+<span class="n">cd</span> <span class="o">~/</span>
+<span class="c1"># generate a new SSH key pair</span>
+<span class="c1"># By default this will create a key pair in ~/.ssh/id_rsa (id_rsa and id_rsa.pub)</span>
+<span class="c1"># IF YOU ALREADY HAVE A FILE CALLED id_rsa, you should specify a different name</span>
+<span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span>
+
+<span class="c1"># follow the prompts. pressing eneter will accept the defaults. you will have the option to give your new key a new name. do not set a passphrase.</span>
+</pre></div>
+</div>
+</div>
+<p>Go to your GitHub settings. Settings -&gt; SSH and GPG Keys -&gt; New SSH Key. Give it a name you will recognize (ellen’s-laptop). Copy the contents of .ssh/id_rsa.pub (or your specified filename) into the new key info on GitHub. Click ‘Add SSH Key’.</p>
 </section>
 <section id="Verify-your-Git-Installation">
 <h2><strong>Verify your Git Installation</strong><a class="headerlink" href="#Verify-your-Git-Installation" title="Link to this heading">¶</a></h2>
 <p>Everyone should already be able to run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code> in their terminal, in order to identify that you have git installed (it will tell you which version).</p>
-<p><strong>TIP</strong> adding <code class="docutils literal notranslate"><span class="pre">!</span></code> in front of a command in a Jupyter cell will execute the command like you are in a terminal (bash) shell. If you are doing this in the terminal, you should not type <code class="docutils literal notranslate"><span class="pre">!</span></code> at the beginning of the line.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>--version
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
 </div>
@@ -299,15 +316,15 @@ git version 2.50.1
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;eldavenport&quot;</span>
-<span class="o">!</span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;ellendavenport7@gmail.com&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;eldavenport&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="s2">&quot;ellendavenport7@gmail.com&quot;</span>
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Setting-up-a-Repository">
 <h2><strong>Setting up a Repository</strong><a class="headerlink" href="#Setting-up-a-Repository" title="Link to this heading">¶</a></h2>
-<p><em>The rest of this code should be run from the terminal</em>, we will include it in the notebook for the sake of documentation, but it is likely that your paths will not be correct if you do this all from a Jupyter notebook. We have removed the <code class="docutils literal notranslate"><span class="pre">!</span></code> so that the code can be directly copied and pasted into a bash shell.</p>
+<p><em>All of this code should be run from the terminal</em></p>
 <p>Next we need to choose a folder that we want to track. Use <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> to create a new folder that will serve as our version controlled project.</p>
 <p><strong>TIP</strong> There is no single way to name a repository, but if you want to follow the most popular convention, it is called kebab-case. kebab-case separates lower case words with hyphens. This can help to distinguish code from regular directories on your computer.</p>
 <div class="nbinput nblast docutils container">

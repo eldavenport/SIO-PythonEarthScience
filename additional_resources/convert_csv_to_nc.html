@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Workflows" href="workflows.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
-        <title>Convert a set of CSV’s to a NETcdf file - SIO Python for Earth Science</title>
+        <title>Convert a set of CSV’s to a NetCDF file - SIO Python for Earth Science</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
@@ -221,7 +221,7 @@
 <li class="toctree-l2"><a class="reference internal" href="git.html">Git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="earth_science.html">Python for Earth Science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="workflows.html">Workflows</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Convert a set of CSV’s to a NETcdf file</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Convert a set of CSV’s to a NetCDF file</a></li>
 </ul>
 </li>
 </ul>
@@ -264,8 +264,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="Convert-a-set-of-CSV's-to-a-NETcdf-file">
-<h1>Convert a set of CSV’s to a NETcdf file<a class="headerlink" href="#Convert-a-set-of-CSV's-to-a-NETcdf-file" title="Link to this heading">¶</a></h1>
+          <section id="Convert-a-set-of-CSV's-to-a-NetCDF-file">
+<h1>Convert a set of CSV’s to a NetCDF file<a class="headerlink" href="#Convert-a-set-of-CSV's-to-a-NetCDF-file" title="Link to this heading">¶</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -274,7 +274,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
-<span class="c1"># 1. Get all CSV files</span>
+<span class="c1"># 1. Get a list of all CSV files in your folder, assuming they all start with &#39;data_&#39;</span>
 <span class="n">csv_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;data_*.csv&quot;</span><span class="p">))</span>
 
 <span class="c1"># 2. Read and concatenate all CSVs</span>
