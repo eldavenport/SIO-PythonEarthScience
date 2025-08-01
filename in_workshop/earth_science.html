@@ -179,7 +179,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -215,6 +215,7 @@
 <li class="toctree-l2"><a class="reference internal" href="command_line_git.html">Version Control With Git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="online_with_github.html">Navigating GitHub</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Python for Earth Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#The-Xarray-and-Dask-Framework">The Xarray and Dask Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="workflows.html">Workflows for Earth Science</a></li>
 </ul>
 </li>
@@ -262,7 +263,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -270,15 +271,72 @@
         <article role="main" id="furo-main-content">
           <section id="Python-for-Earth-Science">
 <h1>Python for Earth Science<a class="headerlink" href="#Python-for-Earth-Science" title="Link to this heading">¶</a></h1>
-<p>Example content.</p>
+<section id="Additional-Popular-Scientific-Python-Library-and-their-Use-Cases">
+<h2>Additional Popular Scientific Python Library and their Use Cases<a class="headerlink" href="#Additional-Popular-Scientific-Python-Library-and-their-Use-Cases" title="Link to this heading">¶</a></h2>
+<p>Summary of what we have learned so far:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> supplies many common statistics and math functions for operating on arrays.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">netCDF4</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> allow you to read in multidimensional and labeled data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> generates many standard plot types (line plots, scatter, images, contours, histograms)</p></li>
+</ol>
+<p>What about more complex operations such as filtering? How do people generate such <em>fancy</em> statistics plots?</p>
+<section id="SciPy">
+<h3><strong>SciPy</strong><a class="headerlink" href="#SciPy" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://scipy.org/">SciPy</a> is an all-purpose scientific Python library that operates on NumPy arrays where you will find the following (and much more!):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1) [scipy.signal](https://docs.scipy.org/doc/scipy/reference/signal.html): convolution, filtering, peak finding, spectral analysis
+
+2) [scipy.fft](https://docs.scipy.org/doc/scipy/reference/fft.html):
+
+3) [scipy.optimize](https://docs.scipy.org/doc/scipy/reference/optimize.html):
+
+4) [scipy.linalg](https://docs.scipy.org/doc/scipy/reference/linalg.html):
+
+5) [scipy.interpolate](https://docs.scipy.org/doc/scipy/reference/interpolate.html):
+
+6) [scipy.integrate](https://docs.scipy.org/doc/scipy/reference/integrate.html):
+
+7) [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html):
+</pre></div>
+</div>
+<p>You can consider SciPy tools to be roughly equivalent to tools you would find in Matlab or R. SciPy has very thorough documentation, including references to the implementations for each algorithm. SciPy is also heavily tested, has millions of users, and regular maintainers.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello from the notebook!&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">signal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span>
+
+<span class="c1"># scipy examples</span>
 </pre></div>
 </div>
 </div>
+</section>
+<section id="Seaborn">
+<h3><strong>Seaborn</strong><a class="headerlink" href="#Seaborn" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> is a statistics data visualization library that works directly with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. You can see it as an extension to what we have learned about <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> that will provide concise methods for generating highly informative plots. Seaborn can be especially useful when generating plots for publication.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># seaborn example</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="The-Xarray-and-Dask-Framework">
+<h1>The Xarray and Dask Framework<a class="headerlink" href="#The-Xarray-and-Dask-Framework" title="Link to this heading">¶</a></h1>
+<section id="Dask">
+<h2>Dask<a class="headerlink" href="#Dask" title="Link to this heading">¶</a></h2>
+</section>
+<section id="Xarray">
+<h2>Xarray<a class="headerlink" href="#Xarray" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a> is a phenomenally powerful tool for exploring multi-dimensional (esp. geospatial) data in a way that is efficient and robust to making coding mistakes.</p>
+</section>
 </section>
 
         </article>
@@ -324,8 +382,36 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Python for Earth Science</a><ul>
+<li><a class="reference internal" href="#Additional-Popular-Scientific-Python-Library-and-their-Use-Cases">Additional Popular Scientific Python Library and their Use Cases</a><ul>
+<li><a class="reference internal" href="#SciPy"><strong>SciPy</strong></a></li>
+<li><a class="reference internal" href="#Seaborn"><strong>Seaborn</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#The-Xarray-and-Dask-Framework">The Xarray and Dask Framework</a><ul>
+<li><a class="reference internal" href="#Dask">Dask</a></li>
+<li><a class="reference internal" href="#Xarray">Xarray</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
