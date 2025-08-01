@@ -268,9 +268,27 @@
         <article role="main" id="furo-main-content">
           <section id="Python-Plotting">
 <h1>Python Plotting<a class="headerlink" href="#Python-Plotting" title="Link to this heading">¶</a></h1>
-<p>Example content.</p>
-<section id="Visualizing-Data:-Plotting">
-<h2><strong>Visualizing Data: Plotting</strong><a class="headerlink" href="#Visualizing-Data:-Plotting" title="Link to this heading">¶</a></h2>
+<p>Choose to start with pandas or netcdf and read in a particular data set that seems fun. (take a look at what software carpentries does). This plotting tutorial will be about matplotlib (i.e., assume they are not using cartopy, geopandas, or xarray. That content is for Thursday).</p>
+<section id="Set-Up">
+<h2>Set Up<a class="headerlink" href="#Set-Up" title="Link to this heading">¶</a></h2>
+<section id="Load-the-packages-we-will-need">
+<h3>Load the packages we will need<a class="headerlink" href="#Load-the-packages-we-will-need" title="Link to this heading">¶</a></h3>
+</section>
+<section id="Load-in-the-Dataset">
+<h3>Load in the Dataset<a class="headerlink" href="#Load-in-the-Dataset" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="Visualizing-Data-with-Matplotlib">
+<h2>Visualizing Data with Matplotlib<a class="headerlink" href="#Visualizing-Data-with-Matplotlib" title="Link to this heading">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">`insert link to matplotlib documentation website &lt;&gt;`__</span></a></p>
+<p>Go over the following basic examples, if you need to you can split this into a set of examples with one dataset, and then a set of examples with a second dataset. Certain data might provide better examples for scatter or pcolormesh.</p>
+<p>After introducing the most common examples, I would like to have some exercises people can pursue, such as adding contours on top of an imshow() or pcolormesh() plot. Use adding std deviation shading for one of the basic examples since that is particularly useful. Then you could make an exercise to add error bars to the std dev shading, something like that.</p>
+<p>There are two formats for plotting, one is to always use subfigure() which I think we should teach. This will make all plots (even single figure plots) the same format. So the plot would start with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(figsize=(),nrows=,ncols=)
+</pre></div>
+</div>
+<p>If it’s a single figure (nrows=1,ncols=1) then ax is size 1. if there are subfigures then ax is a vector/matrix size nrows x ncols. This means you will use <code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code> and <code class="docutils literal notranslate"><span class="pre">ax.set_xlim()</span></code> style, instead of plt. I still think we should start with single figure and move to multiple subfigures. but the style should remain the same.</p>
+<p>I would give one example (like plot() or imshow()) and then spend some time on adding axis labels, setting axis limits, turning on legends, changing legend formatting. Then move on to more example functions like contour, etc. That way you don’t have to show how to add labels and things for every example, people can do that on their own.</p>
 <p><strong>Basic types of plotting functions in matplotlib.pyplot library</strong>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1) plt.plot() : line plots
 
@@ -278,17 +296,24 @@
 
 3) plt.contourf() : contour filled plots (a discrete pcolor plot with countours)
 
-4) plt.pcolor() : colormap with continous or discrete colorbars
+4) plt.pcolor() or pcolormesh() : colormap with continous or discrete colorbars
 
 5) plt.scatter() : scatter plot
 
 6) plt.imshow() : image plot
 
-7) plt.fill_between() : line plots with shadded regions
+7) plt.fill_between() and error() : line plots with shadded regions and error bars
 </pre></div>
 </div>
 <p><strong>Single Figure Plotting</strong>:</p>
 <p><strong>Plotting Subplots</strong>:</p>
+<section id="Formatting-Figures">
+<h3>Formatting Figures<a class="headerlink" href="#Formatting-Figures" title="Link to this heading">¶</a></h3>
+<p>Teach things like <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> and adding a text bubble to your figures (not a legend). I can give an example if you need.</p>
+</section>
+<section id="Saving-Figures">
+<h3>Saving Figures<a class="headerlink" href="#Saving-Figures" title="Link to this heading">¶</a></h3>
+</section>
 </section>
 </section>
 
@@ -348,7 +373,16 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Python Plotting</a><ul>
-<li><a class="reference internal" href="#Visualizing-Data:-Plotting"><strong>Visualizing Data: Plotting</strong></a></li>
+<li><a class="reference internal" href="#Set-Up">Set Up</a><ul>
+<li><a class="reference internal" href="#Load-the-packages-we-will-need">Load the packages we will need</a></li>
+<li><a class="reference internal" href="#Load-in-the-Dataset">Load in the Dataset</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Visualizing-Data-with-Matplotlib">Visualizing Data with Matplotlib</a><ul>
+<li><a class="reference internal" href="#Formatting-Figures">Formatting Figures</a></li>
+<li><a class="reference internal" href="#Saving-Figures">Saving Figures</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
