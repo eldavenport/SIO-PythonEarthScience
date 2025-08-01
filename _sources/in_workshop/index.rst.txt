@@ -9,6 +9,7 @@ Resources to use **during** the workshop sessions.
    python_programming
    python_plotting
    unix_shell
-   git
+   command_line_git
+   online_with_github
    earth_science
    workflows

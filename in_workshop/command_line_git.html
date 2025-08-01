@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Python for Earth Science" href="earth_science.html" /><link rel="prev" title="The Unix Shell" href="unix_shell.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Navigating GitHub" href="online_with_github.html" /><link rel="prev" title="The Unix Shell" href="unix_shell.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
         <title>Version Control With Git - SIO Python for Earth Science</title>
@@ -213,6 +213,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_plotting.html">Python Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unix_shell.html">The Unix Shell</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Version Control With Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="online_with_github.html">Navigating GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="earth_science.html">Python for Earth Science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="workflows.html">Workflows for Earth Science</a></li>
 </ul>
@@ -247,7 +248,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../_sources/in_workshop/git.ipynb.txt" title="View this page">
+  <a class="muted-link" href="../_sources/in_workshop/command_line_git.ipynb.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -512,14 +513,7 @@ Date:   Thu Jul 31 11:23:35 2025 -0700
 <p>But … there’s one issue. Our work is only on our local computer. We need to finish the initialization by pushing the work up to GitHub. Then our work is backed up <em>and</em> our changes are tracked.</p>
 <section id="Create-a-new-repository-on-GitHub">
 <h3><strong>Create a new repository on GitHub</strong><a class="headerlink" href="#Create-a-new-repository-on-GitHub" title="Link to this heading">¶</a></h3>
-<p>Use your web browser to navigate to your GitHub profile and go to your repositories.</p>
-<img alt="go_to_repos" src="in_workshop/_static/Go_to_repos.png" />
-<p>Create a new repository.</p>
-<img alt="new_repo_button" src="in_workshop/_static/new_repo_button.png" />
-<p>Give the repo a name (typically you would use the same name as your local repo). Decide if you want the repo to be public or private. Do not add any default files since you have already given it a README.md.</p>
-<img alt="new_repo_details" src="in_workshop/_static/new_repo_details.png" />
-<p>The empty repo gives you instructions on how to push existing files.</p>
-<img alt="new_repo_push_instructions" src="in_workshop/_static/new_repo_push_instructions.png" />
+<p>See our tutorial on ‘Navigating GitHub’ and then return here to continue.</p>
 </section>
 <section id="Link-our-Local-Repo-to-the-GitHub-one">
 <h3><strong>Link our Local Repo to the GitHub one</strong><a class="headerlink" href="#Link-our-Local-Repo-to-the-GitHub-one" title="Link to this heading">¶</a></h3>
@@ -566,7 +560,6 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.
 </section>
 <section id="Refresh-your-GitHub-page-and-you-should-see-the-new-repo!">
 <h3><strong>Refresh your GitHub page and you should see the new repo!</strong><a class="headerlink" href="#Refresh-your-GitHub-page-and-you-should-see-the-new-repo!" title="Link to this heading">¶</a></h3>
-<img alt="new_repo_on_github" src="in_workshop/_static/new_repo_on_github.png" />
 <p>Note how the online interface contains tons of info, including: Who authored the last changes, when were the last changes made, what files do we have, what is our change history, is the repo public, etc.</p>
 </section>
 <section id="Adding-a-.gitignore">
@@ -660,6 +653,16 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <p>Add a python script to your repo (create one or copy an existing one here). Add and commit the script and push it to GitHub.</p>
 </section>
 </section>
+<section id="Best-Practices-For-Personal-Repos">
+<h2><strong>Best Practices For Personal Repos</strong><a class="headerlink" href="#Best-Practices-For-Personal-Repos" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Adding README.md</p></li>
+<li><p>Licensing</p></li>
+<li><p>Add a note about how to reference</p></li>
+<li><p>Security (push/pull protections)</p></li>
+<li><p>Do not store large files, <a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage">Git Large File Storage</a></p></li>
+</ul>
+</section>
 <section id="Advanced-Topics">
 <h2><strong>Advanced Topics</strong><a class="headerlink" href="#Advanced-Topics" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
@@ -667,6 +670,7 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <ol class="loweralpha simple">
 <li><p>checking out specific commits</p></li>
 <li><p>checkout out other branches</p></li>
+<li><p>creating and checking out tags</p></li>
 </ol>
 </li>
 <li><p>creating GitHub issues</p>
@@ -675,7 +679,6 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <li><p>what should I put in my issue?</p></li>
 </ol>
 </li>
-<li><p>best practices</p></li>
 </ol>
 </section>
 </section>
@@ -685,12 +688,12 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="earth_science.html">
+          <a class="next-page" href="online_with_github.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Python for Earth Science</div>
+                <div class="title">Navigating GitHub</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -755,6 +758,7 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <li><a class="reference internal" href="#4">4</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#Best-Practices-For-Personal-Repos"><strong>Best Practices For Personal Repos</strong></a></li>
 <li><a class="reference internal" href="#Advanced-Topics"><strong>Advanced Topics</strong></a></li>
 </ul>
 </li>
