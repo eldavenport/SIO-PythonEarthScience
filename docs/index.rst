@@ -3,7 +3,7 @@
 Welcome to the SIO Python for Earth Science Software Workshop!
 ==================================
 
-This site contains resources for workshop participants during and after the workshop.
+This site contains resources for before, during, and after the workshop.
 
 .. toctree::
    :maxdepth: 2
