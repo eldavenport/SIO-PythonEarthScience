@@ -1,0 +1,1000 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+        <title>Cartopy Tutorial - SIO Python for Earth Science</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">SIO Python for Earth Science</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">SIO Python for Earth Science</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../installation/index.html">Software Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Software Installation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/installation_overview.html">SIO Software Workshop Installation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/wsl_installation.html">Windows Instructions for Unix Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/bash_git_install.html">Installing Git in a Unix Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/python_install.html">Python Installation with Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/vscode_install.html">VSCode Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../in_workshop/index.html">In-Workshop Resources</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of In-Workshop Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/python_programming.html">Programming with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/python_plotting.html">Python Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/unix_shell.html">The Unix Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/git.html">Version Control With Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/earth_science.html">Python for Earth Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/workflows.html">Workflows for Earth Science</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Additional Resources</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Additional Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_programming.html">Python Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_plotting.html">Python Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unix_shell.html">Unix Shell Cheat Sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth_science.html">Python for Earth Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convert_csv_to_nc.html">Convert a set of CSV’s to a NetCDF file</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/additional_resources/luke_cartopy_tutorial.ipynb.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="Cartopy-Tutorial">
+<h1>Cartopy Tutorial<a class="headerlink" href="#Cartopy-Tutorial" title="Link to this heading">¶</a></h1>
+<section id="Luke-Colosi-|-lcolosi&#64;ucsd.edu-|-June-29th,-2020">
+<h2>Luke Colosi | <a class="reference external" href="mailto:lcolosi&#37;&#52;&#48;ucsd&#46;edu">lcolosi<span>&#64;</span>ucsd<span>&#46;</span>edu</a> | June 29th, 2020<a class="headerlink" href="#Luke-Colosi-|-lcolosi@ucsd.edu-|-June-29th,-2020" title="Link to this heading">¶</a></h2>
+<p>In this tutorial, I focus on:</p>
+<ol class="arabic simple">
+<li><p>Establishing functions for:</p>
+<ul class="simple">
+<li><p>Creating subplots with Cartopy projection</p></li>
+<li><p>Setting latitude and longitude grid and labels</p></li>
+<li><p>Creating colorbars</p></li>
+<li><p>Creating subplot labels and axes labels</p></li>
+</ul>
+</li>
+<li><p>Exploring the projections and features that come with the Cartopy library.</p></li>
+<li><p>Examples</p></li>
+</ol>
+<p>Plot figure within jupyter notebook</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<p>Import libraries</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mticker</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cmocean.cm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cmo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span> <span class="c1">#cartopy coordinate reference system</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartopy.mpl.gridliner</span><span class="w"> </span><span class="kn">import</span> <span class="n">LONGITUDE_FORMATTER</span><span class="p">,</span> <span class="n">LATITUDE_FORMATTER</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+</pre></div>
+</div>
+</div>
+<p>Define functions for graphing</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_subplots</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">lon_min</span><span class="p">,</span> <span class="n">lon_max</span><span class="p">,</span> <span class="n">lat_min</span><span class="p">,</span> <span class="n">lat_max</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    set_subplots(ax, projection, resolution, lon_min, lon_max, lat_min, lat_max)</span>
+
+<span class="sd">        Function for setting longitude and latitude extent of map, mapping coastlines, and</span>
+<span class="sd">        continents. Many other features can be found at https://scitools.org.uk/cartopy/docs/</span>
+<span class="sd">        v0.14/matplotlib/feature_interface.html#cartopy.feature.Feature and</span>
+<span class="sd">        https://www.naturalearthdata.com/features/</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ax : Geospatial axes for the subplot (cartopy object)</span>
+<span class="sd">             ex: fig, axes = plt.subplots(3, 2, figsize=(16,12),</span>
+<span class="sd">                                          subplot_kw={&#39;projection&#39;: projection})</span>
+<span class="sd">                 ax1, ax2, ax3, ax4, ax5, ax6 = axes.flatten()</span>
+<span class="sd">                 ax = ax1 or ax2 or ...</span>
+<span class="sd">        projection : Projection map</span>
+<span class="sd">            ex : projection = ccrs.PlateCarree(central_longitude=0.0)</span>
+<span class="sd">        resolution : The resolution of the features in the map. Option for this argument</span>
+<span class="sd">                     include: resolution = &#39;110m&#39;, &#39;50m&#39;, &#39;10m&#39;. The available resolutions for</span>
+<span class="sd">                     each feature vary. Look at natural earth website (url above) for details.</span>
+<span class="sd">        lon_min, lon_max : minimum and maximum extent for longitude on the scale from</span>
+<span class="sd">                           -180 to 179</span>
+<span class="sd">             ex: lon_min = -180, lon_max = 179</span>
+<span class="sd">        lat_min, lat_max : minimum and maximum extent for latitude on the scale from -90 to 89</span>
+<span class="sd">            ex: lat_min = -66, lat_max = 66</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        plots with subplot labels on the left and top corner (or any disired location)</span>
+
+<span class="sd">        Libraries necessary to run function</span>
+<span class="sd">        -----------------------------------</span>
+<span class="sd">        import cartopy.crs as ccrs</span>
+<span class="sd">        import cartopy.feature as cfeature</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">lon_min</span><span class="p">,</span> <span class="n">lon_max</span><span class="p">,</span> <span class="n">lat_min</span><span class="p">,</span> <span class="n">lat_max</span><span class="p">],</span> <span class="n">projection</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="n">resolution</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span><span class="s1">&#39;physical&#39;</span><span class="p">,</span> <span class="s1">&#39;land&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span>
+                                                <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;Gray&#39;</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAKES</span><span class="p">)</span>
+
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_grid_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">xticks</span><span class="p">,</span><span class="n">yticks</span><span class="p">,</span> <span class="n">xgrid</span><span class="p">,</span> <span class="n">ygrid</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    set_grid_labels(ax, projection, xticks,yticks, xgrid, ygrid, fontsize, color)</span>
+
+<span class="sd">        Function for placing x and y axes tick marks for longitude and latitude respectively</span>
+<span class="sd">        with the following features:</span>
+<span class="sd">            1. linewidth = 2</span>
+<span class="sd">            2. linestyle = &#39;--&#39;</span>
+<span class="sd">            3. alpha = 0.3 (transparency of lines)</span>
+<span class="sd">            4. Longitude only on the bottom axis and latitude only on the left-side axis.</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ax : Geospatial axes for the subplot (cartopy object)</span>
+<span class="sd">            ex: fig, axes = plt.subplots(3, 2, figsize=(16,12),</span>
+<span class="sd">                        subplot_kw={&#39;projection&#39;: projection})</span>
+<span class="sd">                ax1, ax2, ax3, ax4, ax5, ax6 = axes.flatten()</span>
+<span class="sd">                ax = ax1 or ax2 or ...</span>
+<span class="sd">        projection : Projection map. For the gridlines, avoid adding arguments to the project.</span>
+<span class="sd">            ex : projection = ccrs.PlateCarree()</span>
+<span class="sd">        xticks : List of longitudinal tick marks</span>
+<span class="sd">            ex: xticks = [0, 60, 120, 180, -120, -60]</span>
+<span class="sd">        yticks : List of latitudinal tick marks</span>
+<span class="sd">            ex: yticks = [-60, -30, 0, 30, 60]</span>
+<span class="sd">        xgrid : Specifies whether to display latitude gridlines. True means latitude lines</span>
+<span class="sd">                are present.</span>
+<span class="sd">            ex: xgrid = True or xgrid = False</span>
+<span class="sd">        ygrid : Specifies whether to display longitude gridlines. True means longitude lines</span>
+<span class="sd">                are present.</span>
+<span class="sd">            ex: ygrid = True or ygrid = False</span>
+<span class="sd">        fontsize : Specifies the fontsize of the x and y tickmarks</span>
+<span class="sd">        color : Specifies color of tickmarks and gridlines</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Plots with gridline and tick marks on the left and bottom axes</span>
+
+<span class="sd">        Libraries necessary to run function</span>
+<span class="sd">        -----------------------------------</span>
+<span class="sd">        import cartopy.crs as ccrs</span>
+<span class="sd">        from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER</span>
+<span class="sd">        import matplotlib.pyplot as plt</span>
+<span class="sd">        import matplotlib.ticker as mticker</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#import libraries</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">cartopy.mpl.gridliner</span><span class="w"> </span><span class="kn">import</span> <span class="n">LONGITUDE_FORMATTER</span><span class="p">,</span> <span class="n">LATITUDE_FORMATTER</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mticker</span>
+
+    <span class="c1">#Set gridlines</span>
+    <span class="n">grd</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">projection</span><span class="p">,</span> <span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                       <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="c1">#Disable labels on the top and right axes</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">xlabels_top</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">ylabels_right</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1">#Specify if you want labels on the bottom and left axes</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">xlines</span> <span class="o">=</span> <span class="n">xgrid</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">ylines</span> <span class="o">=</span> <span class="n">ygrid</span>
+    <span class="c1">#Convert tickmarks to latitude and longitude</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">xlocator</span> <span class="o">=</span> <span class="n">mticker</span><span class="o">.</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">xticks</span><span class="p">)</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">ylocator</span> <span class="o">=</span> <span class="n">mticker</span><span class="o">.</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">yticks</span><span class="p">)</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">xformatter</span> <span class="o">=</span> <span class="n">LONGITUDE_FORMATTER</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">yformatter</span> <span class="o">=</span> <span class="n">LATITUDE_FORMATTER</span>
+    <span class="c1">#Specify fontsize and color of x and y tick marks</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">xlabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fontsize</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">color</span><span class="p">}</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">ylabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fontsize</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">color</span><span class="p">}</span>
+
+    <span class="c1">#additional attributes to the grd object:</span>
+    <span class="c1">#gl.xpadding = -10 #vertical offset of the x axis tick marks</span>
+    <span class="c1">#gl.ypadding = -25 #horizontal offset of the y axis tick marks</span>
+    <span class="c1">#gl.xlocator = mticker.MaxNLocator(nbins=5,min_n_ticks=3,steps=None) #Specifies the number of x-tick marks</span>
+    <span class="c1">#gl.ylocator = mticker.MaxNLocator(nbins=5,min_n_ticks=3,steps=None) #Specifies the number of y-tick marks</span>
+
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_cbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">extend</span><span class="p">,</span> <span class="n">cbar_label</span><span class="p">,</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">,</span> <span class="n">cbar_ticks</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    set_cbar(cs, cax, fig, orientation, extend, cbar_label, nbins, fontsize, cbar_ticks, task)</span>
+
+<span class="sd">        Function for placing a color bar on a plot. Two types of colorbar labels:</span>
+<span class="sd">            1. Default color bar tick marks.</span>
+<span class="sd">            2. Customized color bar tick marks.</span>
+<span class="sd">        Many other color bar keyword arguments can be found at:</span>
+<span class="sd">        https://matplotlib.org/3.2.1/tutorials/colors/colorbar_only.html</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cs : Map of data on subplot axis using cartopy projection.</span>
+<span class="sd">            ex: cs = ax.pcolor(lon, lat, swh_phase, vmin=-np.pi, vmax=np.pi,</span>
+<span class="sd">                               cmap=cmo.phase, transform=projection)</span>
+<span class="sd">        cax : Color bar axis with positioning vector of the colorbar with the folowing</span>
+<span class="sd">              parameters: cax = plt.axes([left, bottom, width, height]).</span>
+<span class="sd">            ex: cax = plt.axes([.47, .17, 0.01, 0.16])</span>
+<span class="sd">        fig : Figure object which the colorbar will attached to.</span>
+<span class="sd">            ex: fig, axes = plt.subplots(3, 2, figsize=(16,12),</span>
+<span class="sd">                                         subplot_kw={&#39;projection&#39;: projection})</span>
+<span class="sd">        orientation : Specifies if the color bar is vertical or horizontal. Options for</span>
+<span class="sd">                      keyword argument includes: orientation = &#39;horizontal&#39; or</span>
+<span class="sd">                      orientation = &#39;vertical&#39;.</span>
+<span class="sd">        extend : Specifies whether the colorbar will have extension towards high or low</span>
+<span class="sd">                 values. Options include: extend = &#39;neither&#39;, &#39;both&#39;, &#39;min&#39;, or &#39;max&#39;.</span>
+<span class="sd">        cbar_label : Color bar label.</span>
+<span class="sd">            ex: cbar_label = &#39;$m$&#39;</span>
+<span class="sd">        fontsize : Fontsize of color bar label and tickmarks.</span>
+<span class="sd">            ex: fontsize = 20</span>
+<span class="sd">        nbins : Number of tick marks on colorbar axis</span>
+<span class="sd">            ex: nbins = 5</span>
+<span class="sd">        cbar_ticks : A list of tick marks that will be placed on colorbar (note that the</span>
+<span class="sd">                     number of tick mark labels must be equal to the number of bins on color</span>
+<span class="sd">                     bar)</span>
+<span class="sd">            ex: cbar_ticks = [np.arange(-np.pi, np.pi+0.5, (np.pi + np.pi)/6).tolist(),[Jun,</span>
+<span class="sd">                             Aug, October, Dec, Feb, Apr, June]]</span>
+<span class="sd">        task : Specifies whether the colorbar will need to be modified with custom tick</span>
+<span class="sd">               marks. Options include: task = &#39;custom ticks&#39; or task = &#39;regular&#39;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Plots with colorbars in desired location and orientation.</span>
+
+<span class="sd">        Libraries necessary to run function</span>
+<span class="sd">        -----------------------------------</span>
+<span class="sd">        import cartopy.crs as ccrs</span>
+<span class="sd">        import matplotlib.pyplot as plt</span>
+<span class="sd">        from matplotlib import ticker</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#import libraries</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticker</span>
+
+    <span class="c1">#create colorbar for plot</span>
+    <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="s1">&#39;regular&#39;</span><span class="p">:</span>
+        <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">)</span>
+
+        <span class="c1">#set number of tick marks:</span>
+        <span class="n">tick_locator</span> <span class="o">=</span> <span class="n">ticker</span><span class="o">.</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">nbins</span><span class="o">=</span><span class="n">nbins</span><span class="p">)</span>
+        <span class="n">cbar</span><span class="o">.</span><span class="n">locator</span> <span class="o">=</span> <span class="n">tick_locator</span>
+        <span class="n">cbar</span><span class="o">.</span><span class="n">update_ticks</span><span class="p">()</span>
+        <span class="n">cbar</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">cbar</span><span class="o">.</span><span class="n">locator</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="s1">&#39;custom ticks&#39;</span><span class="p">:</span>
+        <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">cbar_ticks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                            <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">)</span>
+
+    <span class="c1">#case 1: vertical colorbar</span>
+    <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;vertical&#39;</span><span class="p">:</span>
+        <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">cbar_label</span>, fontsize=fontsize)
+        <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="s1">&#39;custom ticks&#39;</span><span class="p">:</span>
+            <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">cbar_ticks</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1">#case 2: horizontal colorbar</span>
+    <span class="k">elif</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+        <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">cbar_label</span>, fontsize=fontsize)
+        <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="s1">&#39;custom ticks&#39;</span><span class="p">:</span>
+            <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">cbar_ticks</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1">#set the fontsize of colorbar tickmarks</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_axes_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xdist_lat</span><span class="p">,</span> <span class="n">ydist_lat</span><span class="p">,</span> <span class="n">xdist_lon</span><span class="p">,</span> <span class="n">ydist_lon</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    set_axes_label(ax, xdist_lat, ydist_lat, xdist_lon, ydist_lon, fontsize)</span>
+
+<span class="sd">        Function for placing x and y axis labels for longitude and latitude respectively</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ax : Geospatial axes for the subplot (cartopy object)</span>
+<span class="sd">            ex: fig, axes = plt.subplots(3, 2, figsize=(16,12),</span>
+<span class="sd">                                         subplot_kw={&#39;projection&#39;: projection})</span>
+<span class="sd">                ax1, ax2, ax3, ax4, ax5, ax6 = axes.flatten()</span>
+<span class="sd">                ax = ax1 or ax2 or ...</span>
+<span class="sd">        xdist_lat : Horizontal distance for latitude label referenced from right side of</span>
+<span class="sd">                    figure</span>
+<span class="sd">             ex: xdist_lat = -0.1</span>
+<span class="sd">        ydist_lat : Vertical distance for latitude label referenced from bottom of figure</span>
+<span class="sd">            ex: yticks = 0.50</span>
+<span class="sd">        xdist_lon : Horizontal distance for longitude label referenced from right side of</span>
+<span class="sd">                    figure</span>
+<span class="sd">            ex: xdist_lon = 0.5</span>
+<span class="sd">        ydist_lon : Vertical distance for longitude label referenced from bottom of figure</span>
+<span class="sd">            ex: ydist_lon = -0.25</span>
+<span class="sd">        fontsize : Fontsize of label</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Plots with axis labels on the left and bottom</span>
+
+<span class="sd">        Libraries necessary to run function</span>
+<span class="sd">        -----------------------------------</span>
+<span class="sd">        import cartopy.crs as ccrs</span>
+<span class="sd">        import matplotlib.pyplot as plt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xdist_lat</span><span class="p">,</span> <span class="n">ydist_lat</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+        <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">&#39;anchor&#39;</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xdist_lon</span><span class="p">,</span> <span class="n">ydist_lon</span><span class="p">,</span> <span class="s1">&#39;Longitude&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+        <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">&#39;anchor&#39;</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">subplot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xdist_label</span><span class="p">,</span> <span class="n">ydist_label</span><span class="p">,</span> <span class="n">subplot_label</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">fs_shade</span><span class="p">,</span> <span class="n">fs_main</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    subplot_label(ax, xdist_label, ydist_label, subplot_label, form, fs_shade, fs_main, color)</span>
+
+<span class="sd">        Function for placing subplot labels for figures that will be used in research papers.</span>
+<span class="sd">        Two types of labeling:</span>
+<span class="sd">            1. Shading behind letter or number.</span>
+<span class="sd">            2. Box behind letter or number.</span>
+<span class="sd">        Features of the labeling:</span>
+<span class="sd">            1. Black label with gray shading.</span>
+<span class="sd">            2. Square box with 0.8 transparency and 1 linewidth.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ax : Geospatial axes for the subplot (cartopy object)</span>
+<span class="sd">             ex: fig, axes = plt.subplots(3, 2, figsize=(16,12),</span>
+<span class="sd">                                          subplot_kw={&#39;projection&#39;: projection})</span>
+<span class="sd">                 ax1, ax2, ax3, ax4, ax5, ax6 = axes.flatten()</span>
+<span class="sd">                 ax = ax1 or ax2 or ...</span>
+<span class="sd">        xdist_label : Horizontal distance for subplot label referenced from right side of</span>
+<span class="sd">                      figure</span>
+<span class="sd">            ex: xdist_label = 0.2</span>
+<span class="sd">        ydist_label : Vertical distance for subplot label referenced from bottom of figure</span>
+<span class="sd">             ex: ydist_label = 0.8</span>
+<span class="sd">        subplot_label : String of words for label</span>
+<span class="sd">            ex: subplot_label = &#39;A&#39;</span>
+<span class="sd">        form : Specifies the format of the subplot label. Options for keyword argument:</span>
+<span class="sd">               form = &#39;box&#39; or &#39;shading&#39;.</span>
+<span class="sd">        fs_shade : Fontsize of shading label</span>
+<span class="sd">            ex: fs_shade = 28</span>
+<span class="sd">        fs_main : Fontsize of main label</span>
+<span class="sd">            ex: fs_main = 18</span>
+<span class="sd">        color : Specifies color of shading.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Plots with subplot labels in specified location</span>
+
+<span class="sd">        Libraries necessary to run function</span>
+<span class="sd">        -----------------------------------</span>
+<span class="sd">        import cartopy.crs as ccrs</span>
+<span class="sd">        import matplotlib.pyplot as plt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;shading&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xdist_label</span><span class="p">,</span> <span class="n">ydist_label</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">subplot_label</span>, va=&#39;center&#39;, ha=&#39;center&#39;,
+                <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs_shade</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xdist_label</span><span class="p">,</span> <span class="n">ydist_label</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">subplot_label</span>, va=&#39;center&#39;, ha=&#39;center&#39;,
+                <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs_main</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">form</span> <span class="o">==</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xdist_label</span><span class="p">,</span> <span class="n">ydist_label</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">subplot_label</span>, va=&#39;center&#39;, ha=&#39;center&#39;,
+                <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs_main</span><span class="p">,</span>
+                <span class="n">bbox</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;square,pad=0.3&quot;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.8</span><span class="p">),</span>
+                <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<p>Example of PlateCarree projection in Cartopy with features. List of projections can be found <span class="math notranslate nohighlight">\(\href{https://scitools.org.uk/cartopy/docs/latest/crs/projections.html#cartopy-projections}{\textrm{here}}\)</span>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">resolution</span> <span class="o">=</span> <span class="s1">&#39;10m&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">projection</span><span class="p">})</span>
+
+<span class="c1">######## Subplot 1 ########</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+
+<span class="c1">#Set extent of map</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="n">projection</span><span class="p">)</span>
+
+<span class="c1">#Set features</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span><span class="s1">&#39;physical&#39;</span><span class="p">,</span> <span class="s1">&#39;land&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span>
+                                              <span class="n">facecolor</span> <span class="o">=</span> <span class="n">cfeature</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">&#39;land&#39;</span><span class="p">]))</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span><span class="s1">&#39;physical&#39;</span><span class="p">,</span> <span class="s1">&#39;minor_islands&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="p">))</span>
+<span class="c1">#axes.add_feature(cfeature.NaturalEarthFeature(&#39;physical&#39;, &#39;antarctic_ice_shelves&#39;, resolution))</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">OCEAN</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">RIVERS</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAKES</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span> <span class="o">=</span> <span class="n">projection</span><span class="p">,</span> <span class="n">draw_labels</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span>
+               <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;cartopy.mpl.gridliner.Gridliner at 0x7f085126dd68&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/additional_resources_luke_cartopy_tutorial_12_1.png" src="../_images/additional_resources_luke_cartopy_tutorial_12_1.png" />
+</div>
+</div>
+<p>Examples of other projections.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">projections</span> <span class="o">=</span> <span class="p">[</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+               <span class="n">ccrs</span><span class="o">.</span><span class="n">Robinson</span><span class="p">(),</span>
+               <span class="n">ccrs</span><span class="o">.</span><span class="n">Mercator</span><span class="p">(),</span>
+               <span class="n">ccrs</span><span class="o">.</span><span class="n">Orthographic</span><span class="p">(),</span>
+               <span class="n">ccrs</span><span class="o">.</span><span class="n">InterruptedGoodeHomolosine</span><span class="p">(),</span>
+               <span class="n">ccrs</span><span class="o">.</span><span class="n">EckertIV</span><span class="p">()]</span>
+
+
+<span class="k">for</span> <span class="n">proj</span> <span class="ow">in</span> <span class="n">projections</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">proj</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">stock_img</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/additional_resources_luke_cartopy_tutorial_14_0.png" src="../_images/additional_resources_luke_cartopy_tutorial_14_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/additional_resources_luke_cartopy_tutorial_14_1.png" src="../_images/additional_resources_luke_cartopy_tutorial_14_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/additional_resources_luke_cartopy_tutorial_14_2.png" src="../_images/additional_resources_luke_cartopy_tutorial_14_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/additional_resources_luke_cartopy_tutorial_14_3.png" src="../_images/additional_resources_luke_cartopy_tutorial_14_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/additional_resources_luke_cartopy_tutorial_14_4.png" src="../_images/additional_resources_luke_cartopy_tutorial_14_4.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/additional_resources_luke_cartopy_tutorial_14_5.png" src="../_images/additional_resources_luke_cartopy_tutorial_14_5.png" />
+</div>
+</div>
+<p>Using the Natural Earth resource the following features are available:</p>
+<ol class="arabic simple">
+<li><p><strong>Physical features</strong>: Land, ocean, coastlines, minor islands, Reefs, Lakes, Glaciated areas, Antarctic ice shelves, and Bathymetry</p></li>
+<li><p><strong>Cultural features</strong>: Country boundaries, populated places (capitals, cities, etc.)</p></li>
+<li><p><strong>Raster</strong>: Land cover, shaded relief, ocean water, and drainages with lakes.</p></li>
+</ol>
+<p>However, Http errors arise when trying to add some physical and cultural features such as minor islands, antarctic_ice_shelves, or others from the Nature earth. When the Natural earth data tries to download on your computer, the url used is incorrect and the data cannot be located. To bypass this problem, you can download these feature yourself from the Natural features <span class="math notranslate nohighlight">\(\href{https://www.naturalearthdata.com/features/}{\textrm{website}}\)</span>. To navigate this manual downloading process,
+follow this github <span class="math notranslate nohighlight">\(\href{https://github.com/SciTools/cartopy/issues/734}{\textrm{page}}\)</span>. Otherwise, I would just use the features:</p>
+<ul class="simple">
+<li><p>axes.add_feature(cfeature.BOARDERS)</p></li>
+<li><p>axes.add_feature(cfeature.COASTLINES)</p></li>
+<li><p>axes.add_feature(cfeature.OCEAN)</p></li>
+<li><p>axes.add_feature(cfeature.LAKES)</p></li>
+<li><p>axes.add_feature(cfeature.LAND)</p></li>
+<li><p>axes.add_feature(cfeature.RIVERS)</p></li>
+</ul>
+<p>Regional maps can be created by changing the arguments for the set_extent function. Note that for each projection, the arguments change which is documented <span class="math notranslate nohighlight">\(\href{https://scitools.org.uk/cartopy/docs/latest/crs/projections.html#cartopy-projections}{\textrm{here}}\)</span>.</p>
+<p>Now, here is an example of plotting multiple subplots global maps with coastline and lakes using the functions defined above.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate random data</span>
+<span class="n">lon</span><span class="p">,</span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">360</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">66</span><span class="p">,</span><span class="mi">66</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="c1">#set projection and resolution</span>
+<span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mf">180.0</span><span class="p">)</span>
+<span class="n">resolution</span> <span class="o">=</span> <span class="s1">&#39;50m&#39;</span>
+
+<span class="c1">#create figure and axes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span>
+                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">projection</span><span class="p">})</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">ax4</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="c1">############## Subplot 1  #################</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Subplot 1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">set_subplots</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">lon_min</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">lon_max</span><span class="o">=</span><span class="mi">179</span><span class="p">,</span> <span class="n">lat_min</span><span class="o">=-</span><span class="mi">66</span><span class="p">,</span> <span class="n">lat_max</span><span class="o">=</span><span class="mi">66</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">cs1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmo</span><span class="o">.</span><span class="n">thermal</span><span class="p">,</span>
+                  <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+<span class="n">set_grid_labels</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">xticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">xgrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">ygrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">cax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">.45</span><span class="p">,</span> <span class="mf">.585</span><span class="p">,</span> <span class="mf">0.012</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">])</span>
+<span class="n">set_cbar</span><span class="p">(</span><span class="n">cs1</span><span class="p">,</span> <span class="n">cax1</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">extend</span> <span class="o">=</span> <span class="s1">&#39;neither&#39;</span><span class="p">,</span> <span class="n">cbar_label</span> <span class="o">=</span><span class="s1">&#39;$units$&#39;</span><span class="p">,</span> <span class="n">nbins</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+         <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">cbar_ticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">task</span><span class="o">=</span><span class="s1">&#39;regular&#39;</span><span class="p">)</span>
+<span class="n">set_axes_label</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">xdist_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">ydist_lat</span> <span class="o">=</span> <span class="mf">0.50</span><span class="p">,</span> <span class="n">xdist_lon</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ydist_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.28</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">subplot_label</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">xdist_label</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">ydist_label</span> <span class="o">=</span> <span class="mf">0.87</span><span class="p">,</span> <span class="n">subplot_label</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;box&#39;</span><span class="p">,</span> <span class="n">fs_shade</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">fs_main</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="c1">############## Subplot 2  #################</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Subplot 2&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">set_subplots</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">lon_min</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">lon_max</span><span class="o">=</span><span class="mi">179</span><span class="p">,</span> <span class="n">lat_min</span><span class="o">=-</span><span class="mi">66</span><span class="p">,</span> <span class="n">lat_max</span><span class="o">=</span><span class="mi">66</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">cs2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmo</span><span class="o">.</span><span class="n">thermal</span><span class="p">,</span>
+                  <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+<span class="n">set_grid_labels</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">xticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">xgrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">ygrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">cax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">.9025</span><span class="p">,</span> <span class="mf">.585</span><span class="p">,</span> <span class="mf">0.012</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">])</span>
+<span class="n">set_cbar</span><span class="p">(</span><span class="n">cs2</span><span class="p">,</span> <span class="n">cax2</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">extend</span> <span class="o">=</span> <span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">cbar_label</span> <span class="o">=</span><span class="s1">&#39;$units$&#39;</span><span class="p">,</span> <span class="n">nbins</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+         <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">cbar_ticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">task</span><span class="o">=</span><span class="s1">&#39;regular&#39;</span><span class="p">)</span>
+<span class="n">set_axes_label</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">xdist_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">ydist_lat</span> <span class="o">=</span> <span class="mf">0.50</span><span class="p">,</span> <span class="n">xdist_lon</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ydist_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.28</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">subplot_label</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">xdist_label</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">ydist_label</span> <span class="o">=</span> <span class="mf">0.87</span><span class="p">,</span> <span class="n">subplot_label</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;box&#39;</span><span class="p">,</span> <span class="n">fs_shade</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">fs_main</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="c1">############## Subplot 3  #################</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Subplot 3&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">set_subplots</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">lon_min</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">lon_max</span><span class="o">=</span><span class="mi">179</span><span class="p">,</span> <span class="n">lat_min</span><span class="o">=-</span><span class="mi">66</span><span class="p">,</span> <span class="n">lat_max</span><span class="o">=</span><span class="mi">66</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">cs3</span> <span class="o">=</span> <span class="n">ax3</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmo</span><span class="o">.</span><span class="n">thermal</span><span class="p">,</span>
+                  <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+<span class="n">set_grid_labels</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">xticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">xgrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">ygrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">cax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">.45</span><span class="p">,</span> <span class="mf">.13</span><span class="p">,</span> <span class="mf">0.012</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">])</span>
+<span class="n">set_cbar</span><span class="p">(</span><span class="n">cs3</span><span class="p">,</span> <span class="n">cax3</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">extend</span> <span class="o">=</span> <span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">cbar_label</span> <span class="o">=</span><span class="s1">&#39;$units$&#39;</span><span class="p">,</span> <span class="n">nbins</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+         <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">cbar_ticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">task</span><span class="o">=</span><span class="s1">&#39;regular&#39;</span><span class="p">)</span>
+<span class="n">set_axes_label</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">xdist_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">ydist_lat</span> <span class="o">=</span> <span class="mf">0.50</span><span class="p">,</span> <span class="n">xdist_lon</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ydist_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.28</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">subplot_label</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">xdist_label</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">ydist_label</span> <span class="o">=</span> <span class="mf">0.87</span><span class="p">,</span> <span class="n">subplot_label</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;shading&#39;</span><span class="p">,</span> <span class="n">fs_shade</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">fs_main</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="c1">############## Subplot 4  #################</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Subplot 5&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">set_subplots</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">lon_min</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">lon_max</span><span class="o">=</span><span class="mi">179</span><span class="p">,</span> <span class="n">lat_min</span><span class="o">=-</span><span class="mi">66</span><span class="p">,</span> <span class="n">lat_max</span><span class="o">=</span><span class="mi">66</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">cs4</span> <span class="o">=</span> <span class="n">ax4</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmo</span><span class="o">.</span><span class="n">thermal</span><span class="p">,</span>
+                  <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+<span class="n">set_grid_labels</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">xticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">xgrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">ygrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">cax4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">.9025</span><span class="p">,</span> <span class="mf">.13</span><span class="p">,</span> <span class="mf">0.012</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">])</span>
+<span class="n">set_cbar</span><span class="p">(</span><span class="n">cs4</span><span class="p">,</span> <span class="n">cax4</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">extend</span> <span class="o">=</span> <span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">cbar_label</span> <span class="o">=</span><span class="s1">&#39;$units$&#39;</span><span class="p">,</span> <span class="n">nbins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+         <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">cbar_ticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">task</span><span class="o">=</span><span class="s1">&#39;regular&#39;</span><span class="p">)</span>
+<span class="n">set_axes_label</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">xdist_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">ydist_lat</span> <span class="o">=</span> <span class="mf">0.50</span><span class="p">,</span> <span class="n">xdist_lon</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ydist_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.28</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">subplot_label</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">xdist_label</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">ydist_label</span> <span class="o">=</span> <span class="mf">0.87</span><span class="p">,</span> <span class="n">subplot_label</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;shading&#39;</span><span class="p">,</span> <span class="n">fs_shade</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">fs_main</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="c1">#adjust spacing for the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span> <span class="o">=</span> <span class="mf">0.41</span><span class="p">,</span> <span class="n">hspace</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1">#save figure</span>
+<span class="c1">#plt.savefig(fname = &#39;~/example_cartopy_fig&#39;, bbox_inches = &#39;tight&#39;, dpi=300)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/additional_resources_luke_cartopy_tutorial_16_0.png" src="../_images/additional_resources_luke_cartopy_tutorial_16_0.png" />
+</div>
+</div>
+<p>Note, for the color bar to not extend (i.e. not have the triangle at the top of the colorbar), the extend argument in the contourf function and the set_cbar function should both be set to ‘neither’.</p>
+<p>Example of plotting a specific region with a custom colorbar:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span>
+                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">projection</span><span class="p">})</span>
+
+<span class="n">set_subplots</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="s1">&#39;50m&#39;</span><span class="p">,</span> <span class="n">lon_min</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">lon_max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lat_min</span><span class="o">=-</span><span class="mi">25</span><span class="p">,</span> <span class="n">lat_max</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">cs1</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmo</span><span class="o">.</span><span class="n">thermal</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+<span class="n">set_grid_labels</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">xticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">160</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">160</span><span class="p">,</span> <span class="o">-</span><span class="mi">140</span><span class="p">],</span> <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">xgrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">ygrid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">cax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">.92</span><span class="p">,</span> <span class="mf">.29</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.43</span><span class="p">])</span>
+<span class="n">set_cbar</span><span class="p">(</span><span class="n">cs1</span><span class="p">,</span> <span class="n">cax1</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">extend</span> <span class="o">=</span> <span class="s1">&#39;neither&#39;</span><span class="p">,</span> <span class="n">cbar_label</span> <span class="o">=</span><span class="s1">&#39;$months$&#39;</span><span class="p">,</span> <span class="n">nbins</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+         <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">cbar_ticks</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),[</span><span class="s1">&#39;Jun&#39;</span><span class="p">,</span> <span class="s1">&#39;Aug&#39;</span><span class="p">,</span> <span class="s1">&#39;Oct&#39;</span><span class="p">,</span> <span class="s1">&#39;Dec&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Apr&#39;</span><span class="p">,</span> <span class="s1">&#39;Jun&#39;</span><span class="p">]],</span> <span class="n">task</span><span class="o">=</span><span class="s1">&#39;custom ticks&#39;</span><span class="p">)</span>
+<span class="n">set_axes_label</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">xdist_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.07</span><span class="p">,</span> <span class="n">ydist_lat</span> <span class="o">=</span> <span class="mf">0.50</span><span class="p">,</span> <span class="n">xdist_lon</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ydist_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">subplot_label</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">xdist_label</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">ydist_label</span> <span class="o">=</span> <span class="mf">0.90</span><span class="p">,</span> <span class="n">subplot_label</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;box&#39;</span><span class="p">,</span> <span class="n">fs_shade</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span> <span class="n">fs_main</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="c1">#Additional text box:</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span>
+    <span class="sa">r</span><span class="s1">&#39;$\mathrm{Mean\;(m)}=</span><span class="si">%.2f</span><span class="s1">$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">),</span>
+    <span class="sa">r</span><span class="s1">&#39;$\mathrm{Standard\;Deviation \;(m)}=</span><span class="si">%.2f</span><span class="s1">$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="p">)))</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.86</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">axes</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+         <span class="n">bbox</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round,pad=0.3&quot;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.8</span><span class="p">),</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">);</span>
+
+<span class="c1">#save figure</span>
+<span class="c1">#plt.savefig(fname = &#39;~/example_cartopy_fig&#39;, bbox_inches = &#39;tight&#39;, dpi=300)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/additional_resources_luke_cartopy_tutorial_19_0.png" src="../_images/additional_resources_luke_cartopy_tutorial_19_0.png" />
+</div>
+</div>
+<p>There are a few naunces to the figure above:</p>
+<ol class="arabic simple">
+<li><p>When you put on the gridlines to the figure above, there is a gap between <span class="math notranslate nohighlight">\(180^\circ\)</span> E and <span class="math notranslate nohighlight">\(160^\circ\)</span> W. This is because, the xticks specified are [160, 180, -160, -140]. To fix this you can do two things: xticks = [160, 180, -180, -160, -140] or xticks = [150, 170, -170, -150]. The first option causes <span class="math notranslate nohighlight">\(180^\circ\)</span> E and <span class="math notranslate nohighlight">\(180^\circ\)</span> W tick marks to overlap each other. So it is better to avoid this with the second option.</p></li>
+<li><p>Make sure the projection keyword argument in the set_grid_labels function must be the ccrs.projection_name with no specified arguments. For example, ccrs.PlateCarree(). If a central_longitude argument is specified, then the longitude tick marks will not show up on the x axis.</p></li>
+</ol>
+</section>
+<section id="Helpful-references-for-Cartopy-documentation-and-resources:">
+<h2>Helpful references for Cartopy documentation and resources:<a class="headerlink" href="#Helpful-references-for-Cartopy-documentation-and-resources:" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\href{https://scitools.org.uk/cartopy/docs/v0.14/matplotlib/feature_interface.html#cartopy.feature.Feature}{\textrm{Cartopy feature interface}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\href{https://scitools.org.uk/cartopy/docs/v0.14/matplotlib/geoaxes.html#cartopy.mpl.geoaxes.GeoAxes.add_feature}{\textrm{Cartopy matplotlib integration reference document}}\)</span></p></li>
+<li><p>Features in cfeature.NaturalEarthFeature found <span class="math notranslate nohighlight">\(\href{https://www.naturalearthdata.com/features/}{\textrm{here}}\)</span>.</p></li>
+<li><p>Additional tutorial found <span class="math notranslate nohighlight">\(\href{https://rabernat.github.io/research_computing_2018/maps-with-cartopy.html}{\textrm{here}}\)</span>. This is very comprehensive and goes into more detail the things covered here.</p></li>
+<li><p>More Cartopy example code for plotting maps <span class="math notranslate nohighlight">\(\href{https://www.programcreek.com/python/example/95998/cartopy.crs.PlateCarree}{\textrm{here}}\)</span>.</p></li>
+</ol>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Cartopy Tutorial</a><ul>
+<li><a class="reference internal" href="#Luke-Colosi-|-lcolosi&#64;ucsd.edu-|-June-29th,-2020">Luke Colosi | lcolosi&#64;ucsd.edu | June 29th, 2020</a></li>
+<li><a class="reference internal" href="#Helpful-references-for-Cartopy-documentation-and-resources:">Helpful references for Cartopy documentation and resources:</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>
