@@ -8,7 +8,7 @@ Common commands we will use throughout the workshop (and are generally good for 
 | :------ | ----------: | 
 | cd \<folderName\> | Enter directory |
 | cd .. | Go back one directory |
-| cd ∼ |Go to home directory |
+| cd ∼ | Go to home directory |
 | ls | List files within current directory |
 | ls \<path to folder\> | List files within another directory |
 | pwd | Get directory path |
