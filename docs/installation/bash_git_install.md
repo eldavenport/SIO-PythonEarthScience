@@ -22,7 +22,7 @@ Open the terminal, type `git --version` and Enter. If you get a version string, 
         
         a) After you enter `git --version` you should see instructions for installation with XCode. 
         
-        b) Follow the installation instructions for the **command line developer tools only**. You do _not_ need to click get XCode. 
+        b) Follow the installation instructions for the command line developer tools ONLY. You do not need to click get XCode. 
 
     2) Homebrew
 
