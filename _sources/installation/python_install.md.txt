@@ -10,7 +10,7 @@ Download the appropriate version of Miniforge (the conda installer) from [this w
 
     2) Open your unix-shell, type `cd ~/Downloads`, and Enter
 
-    3) Type `bash Miniforge3-`, hit Tab (this will autocomplete the name of the downloaded file), and Enter
+    3) Type `./Miniforge3-`, hit Tab (this will autocomplete the name of the downloaded file), and Enter
 
         a) For example, my downloaded filename is: Miniforge3-MacOSX-arm64.sh
 
@@ -34,7 +34,7 @@ Download the appropriate version of Miniforge (the conda installer) from [this w
 
         b) for Linux users: type `cd ~/Downloads` and Enter
 
-    3) Type `bash Miniforge3-`, hit Tab (this will autocomplete the name of the downloaded file), and Enter
+    3) Type `./Miniforge3-`, hit Tab (this will autocomplete the name of the downloaded file), and Enter
 
         a) For example, your downloaded filename might be: Miniforge3-Linux-x86_64.sh
 
