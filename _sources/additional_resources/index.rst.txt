@@ -8,7 +8,8 @@ Resources for **continued learning** after the workshop.
 
    python_programming
    python_plotting
-   unix_shell
+   unix_cheat_sheet
+   git_cheat_sheet
    git
    earth_science
    workflows

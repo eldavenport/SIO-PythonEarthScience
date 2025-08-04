@@ -3,13 +3,12 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Workflows for Earth Science" href="workflows.html" /><link rel="prev" title="Navigating GitHub" href="online_with_github.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Git" href="git.html" /><link rel="prev" title="Unix Shell Cheat Sheet" href="unix_cheat_sheet.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
-        <title>Python for Earth Science - SIO Python for Earth Science</title>
+        <title>Git Cheat Sheet - SIO Python for Earth Science</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
-    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
@@ -179,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -208,26 +207,26 @@
 <li class="toctree-l2"><a class="reference internal" href="../installation/vscode_install.html">VSCode Installation</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">In-Workshop Resources</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of In-Workshop Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="python_programming.html">Programming with Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_plotting.html">Python Plotting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unix_shell.html">The Unix Shell</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command_line_git.html">Version Control With Git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="online_with_github.html">Navigating GitHub</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Python for Earth Science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#The-Xarray-and-Dask-Framework">The Xarray and Dask Framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="workflows.html">Workflows for Earth Science</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../in_workshop/index.html">In-Workshop Resources</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of In-Workshop Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/python_programming.html">Programming with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/python_plotting.html">Python Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/unix_shell.html">The Unix Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/command_line_git.html">Version Control With Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/online_with_github.html">Navigating GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/earth_science.html">Python for Earth Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/earth_science.html#The-Xarray-and-Dask-Framework">The Xarray and Dask Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../in_workshop/workflows.html">Workflows for Earth Science</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../additional_resources/index.html">Additional Resources</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Additional Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../additional_resources/python_programming.html">Python Programming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../additional_resources/python_plotting.html">Python Plotting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../additional_resources/unix_cheat_sheet.html">Unix Shell Cheat Sheet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../additional_resources/git_cheat_sheet.html">Git Cheat Sheet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../additional_resources/git.html">Git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../additional_resources/earth_science.html">Python for Earth and Natural Sciences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../additional_resources/workflows.html">Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../additional_resources/convert_csv_to_nc.html">Convert a set of CSV’s to a NetCDF file</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Additional Resources</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Additional Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_programming.html">Python Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_plotting.html">Python Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unix_cheat_sheet.html">Unix Shell Cheat Sheet</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Git Cheat Sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth_science.html">Python for Earth and Natural Sciences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convert_csv_to_nc.html">Convert a set of CSV’s to a NetCDF file</a></li>
 </ul>
 </li>
 </ul>
@@ -250,7 +249,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../_sources/in_workshop/earth_science.ipynb.txt" title="View this page">
+  <a class="muted-link" href="../_sources/additional_resources/git_cheat_sheet.md.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -264,74 +263,89 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="Python-for-Earth-Science">
-<h1>Python for Earth Science<a class="headerlink" href="#Python-for-Earth-Science" title="Link to this heading">¶</a></h1>
-<section id="Additional-Popular-Scientific-Python-Library-and-their-Use-Cases">
-<h2>Additional Popular Scientific Python Library and their Use Cases<a class="headerlink" href="#Additional-Popular-Scientific-Python-Library-and-their-Use-Cases" title="Link to this heading">¶</a></h2>
-<p>Summary of what we have learned so far:</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> supplies many common statistics and math functions for operating on arrays.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">netCDF4</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> allow you to read in multidimensional and labeled data.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> generates many standard plot types (line plots, scatter, images, contours, histograms)</p></li>
-</ol>
-<p>What about more complex operations such as filtering? How do people generate such <em>fancy</em> statistics plots?</p>
-<section id="SciPy">
-<h3><strong>SciPy</strong><a class="headerlink" href="#SciPy" title="Link to this heading">¶</a></h3>
-<p><a class="reference external" href="https://scipy.org/">SciPy</a> is an all-purpose scientific Python library that operates on NumPy arrays where you will find the following (and much more!):</p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.html">scipy.signal</a>: convolution, filtering, peak finding, spectral analysis</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/fft.html">scipy.fft</a>:</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html">scipy.optimize</a>:</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/linalg.html">scipy.linalg</a>:</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/interpolate.html">scipy.interpolate</a>:</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/integrate.html">scipy.integrate</a>:</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.html">scipy.stats</a>:</p></li>
-</ol>
-<p>You can consider SciPy tools to be roughly equivalent to tools you would find in Matlab or R. SciPy has very thorough documentation, including references to the implementations for each algorithm. SciPy is also heavily tested, has millions of users, and regular maintainers.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
+          <section id="git-cheat-sheet">
+<h1>Git Cheat Sheet<a class="headerlink" href="#git-cheat-sheet" title="Link to this heading">¶</a></h1>
+<p>Common git commands.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Command</p></th>
+<th class="head text-right"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>git config –global user.name</p></td>
+<td class="text-right"><p>Set Git username for all directories</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git config –global user.name</p></td>
+<td class="text-right"><p>Set Git user email for all directories</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git init</p></td>
+<td class="text-right"><p>Initialize a directory as a repository</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git add <filename></p></td>
+<td class="text-right"><p>Add a file to the staging area to be committed</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git add <folder></p></td>
+<td class="text-right"><p>Add all files in a folder to the staging area</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git commit -m “<message>”</p></td>
+<td class="text-right"><p>Commit staged files with a commit message</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git log</p></td>
+<td class="text-right"><p>See Git history (commit log)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git push</p></td>
+<td class="text-right"><p>Push any new commits to GitHub</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git fetch</p></td>
+<td class="text-right"><p>Fetch information about the remote, without pulling new code down</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git pull</p></td>
+<td class="text-right"><p>Pull any new commits from GitHub</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git merge <from branch> <into branch></p></td>
+<td class="text-right"><p>Merge code from one branch into another branch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git branch</p></td>
+<td class="text-right"><p>See list of branches and which you are on</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git checkout <branch name></p></td>
+<td class="text-right"><p>Checkout an existing branch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git checkout -b <new branch name></p></td>
+<td class="text-right"><p>Checkout a new branch</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git checkout <commit hash></p></td>
+<td class="text-right"><p>Checkout a particular committed vesrion of the code</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git checkout <filename></p></td>
+<td class="text-right"><p>Restore file to latest committed version on current branch</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git checkout <commit hash> – <path to file></p></td>
+<td class="text-right"><p>Checkout a particular committed version of a single file</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git show <commit hash>:<path to file></p></td>
+<td class="text-right"><p>See a particular committed version of a single file, without changing the file</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git –set-upstream origin <branch name></p></td>
+<td class="text-right"><p>Set a new branch to track itself at origin (first push on new branch)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>git revert <commit hash></p></td>
+<td class="text-right"><p>Undo a particular commit</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>git cherry-pick <commit hash></p></td>
+<td class="text-right"><p>Add a single commit</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">signal</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span>
-
-<span class="c1"># scipy examples</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Seaborn">
-<h3><strong>Seaborn</strong><a class="headerlink" href="#Seaborn" title="Link to this heading">¶</a></h3>
-<p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> is a statistics data visualization library that works directly with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. You can see it as an extension to what we have learned about <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> that will provide concise methods for generating highly informative plots. Seaborn can be especially useful when generating plots for publication.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-
-<span class="c1"># seaborn example</span>
-</pre></div>
-</div>
-</div>
-</section>
-</section>
-</section>
-<section id="The-Xarray-and-Dask-Framework">
-<h1>The Xarray and Dask Framework<a class="headerlink" href="#The-Xarray-and-Dask-Framework" title="Link to this heading">¶</a></h1>
-<section id="Dask">
-<h2>Dask<a class="headerlink" href="#Dask" title="Link to this heading">¶</a></h2>
-</section>
-<section id="Xarray">
-<h2>Xarray<a class="headerlink" href="#Xarray" title="Link to this heading">¶</a></h2>
-<p><a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a> is a phenomenally powerful tool for exploring multi-dimensional (esp. geospatial) data in a way that is efficient and robust to making coding mistakes.</p>
-</section>
 </section>
 
         </article>
@@ -339,23 +353,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="workflows.html">
+          <a class="next-page" href="git.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Workflows for Earth Science</div>
+                <div class="title">Git</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="online_with_github.html">
+          <a class="prev-page" href="unix_cheat_sheet.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Navigating GitHub</div>
+                <div class="title">Unix Shell Cheat Sheet</div>
                 
               </div>
             </a>
@@ -377,36 +391,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Python for Earth Science</a><ul>
-<li><a class="reference internal" href="#Additional-Popular-Scientific-Python-Library-and-their-Use-Cases">Additional Popular Scientific Python Library and their Use Cases</a><ul>
-<li><a class="reference internal" href="#SciPy"><strong>SciPy</strong></a></li>
-<li><a class="reference internal" href="#Seaborn"><strong>Seaborn</strong></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#The-Xarray-and-Dask-Framework">The Xarray and Dask Framework</a><ul>
-<li><a class="reference internal" href="#Dask">Dask</a></li>
-<li><a class="reference internal" href="#Xarray">Xarray</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
@@ -416,7 +402,5 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>
