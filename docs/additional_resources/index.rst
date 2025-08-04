@@ -13,4 +13,5 @@ Resources for **continued learning** after the workshop.
    git
    earth_science
    workflows
+   ncview
    convert_csv_to_nc
