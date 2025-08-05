@@ -211,6 +211,7 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">In-Workshop Resources</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of In-Workshop Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="preliminary_agenda.html">Preliminary Workshop Agenda</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Programming with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Errors-and-Exceptions-(Lets-change-this-to-be-tips-and-tricks-for-how-to-read-errors,-but-not-necessarily-worry-about-listing-types-of-errors)">Errors and Exceptions (Lets change this to be tips and tricks for how to read errors, but not necessarily worry about listing types of errors)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_plotting.html">Python Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unix_shell.html">The Unix Shell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line_git.html">Version Control With Git</a></li>
@@ -271,229 +272,1176 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="Programming-with-Python">
+          <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+</pre></div>
+</div>
+</div>
+<section id="Programming-with-Python">
 <h1>Programming with Python<a class="headerlink" href="#Programming-with-Python" title="Link to this heading">¶</a></h1>
 <section id="Session-Overview">
 <h2>Session Overview<a class="headerlink" href="#Session-Overview" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Getting started with Python</p>
-<ol class="loweralpha simple">
-<li><p>Reviewing our conda installation and making our first conda environment</p></li>
-</ol>
-</li>
-<li><p>Introduction to Jupyter Notebooks</p>
-<ol class="loweralpha simple">
-<li><p>Using your conda environment as a Jupyter Notebook kernel</p></li>
-</ol>
-</li>
-<li><p>Importing packages</p></li>
-<li><p>Variable types</p></li>
-<li><p>For loops, while loops, if statements, and logicals</p></li>
-<li><p>Creating Functions</p></li>
+<li><p>What is programming with Python?</p></li>
 <li><p>Basic Python Math</p></li>
+<li><p>Variable types</p></li>
+<li><p>Importing packages</p></li>
 <li><p>Numpy</p></li>
-<li><p>Analyzing Data</p>
-<ol class="loweralpha simple">
-<li><p>Slicing arrays</p></li>
-<li><p>Statistical operations on arrays</p></li>
-<li><p>Working with lists</p></li>
-<li><p>Calling data in .nc, .csv, and .bin formats</p></li>
+<li><p>Reading in a NetCDF file</p></li>
+<li><p>For loops, if statements, and logicals</p></li>
+<li><p>Creating Functions</p></li>
+<li><p>Best Practices / Reading Errors / Debugging</p></li>
 </ol>
+</section>
+<section id="What-is-programming-with-Python?">
+<h2>What is programming with Python?<a class="headerlink" href="#What-is-programming-with-Python?" title="Link to this heading">¶</a></h2>
+<section id="Jupyter-Notebooks-📓">
+<h3>Jupyter Notebooks 📓<a class="headerlink" href="#Jupyter-Notebooks-📓" title="Link to this heading">¶</a></h3>
+<p>Often, code is written in a text editor and then run in a command-line interface</p>
+<p>Jupyter Notebooks allow us to write and run code within a single documents. They also allow us to embed text and code.</p>
+<img alt="Alt text" src="../_images/fig1.png" />
+<p>Visual Studio Code (VSCode) is an easy to use development environment that has extensions for every major programming language. We will be using VSCode for this workshop</p>
+</section>
+</section>
+<section id="Basic-Mathematical-Operations">
+<h2>Basic Mathematical Operations<a class="headerlink" href="#Basic-Mathematical-Operations" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Operator</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Addition</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Subtraction</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Multiplication</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">6</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Division</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7</span> <span class="pre">/</span> <span class="pre">3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2.66667</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Remainder</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7</span> <span class="pre">%</span> <span class="pre">3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Exponentiation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">**</span> <span class="pre">0.5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.41421</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>An <strong>expresion</strong> is a combination of values, operators and functions that evaluates to some <strong>value</strong></p></li>
+<li><p>We will enter our expressions in <strong>code cells</strong></p>
+<ul>
+<li><p>Hit <strong>shift + enter (or shift + return) on your keyboard</strong> or,</p></li>
+<li><p>Press the “Run” button in the toolbar</p></li>
+</ul>
 </li>
-<li><p>Errors and Exceptions</p></li>
-<li><p>Debugging</p></li>
-<li><p>Best Practices</p></li>
-</ol>
-</section>
-<section id="Getting-started-with-Python---Installation-and-Development-Environment">
-<h2>Getting started with Python - Installation and Development Environment<a class="headerlink" href="#Getting-started-with-Python---Installation-and-Development-Environment" title="Link to this heading">¶</a></h2>
-<p>Here we describe the necessary tools to get up and running with Python. The listed tools should be installed prior to the workshop:</p>
-<p><strong>1) Miniforge/Miniconda</strong>: The installation instructions provided for this workshop detail how to get conda through Miniforge. Conda will be our Python package manager. We will install all necessary Python packages through conda, and we will always activate a conda environment to run our Python scripts.</p>
-<p><strong>2) Jupyter Notebooks</strong>: The easiest way to develop in Python is with Jupyter Notebooks, which allow you to run a few lines of code at a time instead of running entire Python scripts. This feature, along with the option for inline figures, makes Jupyter Notebooks ideal for data analysis and collaborative science. We will use our conda environments as kernels for our Jupyter Notebooks.</p>
-<p><strong>3) VSCode</strong>: Visual Studio Code (VSCode) is a easy-to-use development environment that has extensions for every major programming language. It seamlessly integrates Conda, Jupyter Notebooks, Python and Remote - SSH. We will use VSCode as the example for this workshop. The same code can be run in Jupyter Lab, so VSCode is not strictly required.</p>
-<p><strong>4) IPython</strong>: IPython is a command-line tool that allows you to run lines of python code directly in the terminal. IPython should be automatically installed with Miniforge and Jupyterlab. To use it, type <code class="docutils literal notranslate"><span class="pre">ipython</span></code> into the terminal. We will not use IPython directly in this workshop, but it can occasionally be useful to run a few commands in the terminal.</p>
-</section>
-<section id="Jupyter-Notebook-Intro-and-Shortcuts-(Let's-move-the-shortcuts-to-another-page-potentially)">
-<h2>Jupyter Notebook Intro and Shortcuts (Let’s move the shortcuts to another page potentially)<a class="headerlink" href="#Jupyter-Notebook-Intro-and-Shortcuts-(Let's-move-the-shortcuts-to-another-page-potentially)" title="Link to this heading">¶</a></h2>
-<p>They only really need a quick intro to creating new cells, using markdown in between code cells, running cells (shift + enter), restarting the kernel, and clearing outputs. The short cuts can be moved to a resources page just like the unix cheat sheet will be.</p>
-<ol class="arabic simple">
-<li><p>esc + m = convert a code cell to a markdown cell</p></li>
-<li><p>esc + y = convert a markdown cell to a code cell</p></li>
-<li><p>shift + enter = run current cell</p></li>
-<li><p>esc + a = Insert a cell above the current cell</p></li>
-<li><p>esc + b = Insert a cell below the current cell</p></li>
-<li><p>esc + x = Cut the current cell</p></li>
-</ol>
-</section>
-<section id="Importing-Packages">
-<h2>Importing Packages<a class="headerlink" href="#Importing-Packages" title="Link to this heading">¶</a></h2>
-</section>
-<section id="Variable-Types">
-<h2>Variable Types<a class="headerlink" href="#Variable-Types" title="Link to this heading">¶</a></h2>
-<p>Include an example of each in the list below instead of just a description. Try to break up the text so there isn’t so much of it at once.</p>
-<p><strong>1) Integers, floats, and complex</strong>: integers are integers, floats are numbers with decimals, complex are complex valued floats. All types have a default precision (32 bits) that can be increased (64 bits) or decreased (16 bits)</p>
-<p><strong>2) Strings</strong>: a collection of letters. strings are denoted with quotation marks “” or ‘’.</p>
-<p><strong>3) Boolean</strong>: True or False</p>
-<p><strong>4) Lists</strong>: a sequence of any type of object including strings, floats, integers, and booleans. All things in the list do not have to be the same type.</p>
-<p><code class="docutils literal notranslate"><span class="pre">my_list</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">&quot;hello&quot;,</span> <span class="pre">3.14,</span> <span class="pre">True,</span> <span class="pre">[1,</span> <span class="pre">2],</span> <span class="pre">{&quot;a&quot;:</span> <span class="pre">1}]</span></code></p>
-<p><strong>5) Arrays</strong>: a mutable sequence</p>
-<p><strong>6) Dictionaries</strong>: an unordered collection of data values, used to store data values. Unlike other Data Types that hold only single value as an element, Dictionary holds key:value pair.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>monthly_data = {}
-monthly_data = {&#39;time&#39;: [], &#39;mean&#39;: [], &#39;median&#39;: [],&#39;std&#39;: [],&#39;N&#39;: [] }
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<p><strong>7) Tuples</strong>: A collection of things: (float, float, list) or (dictionary, float, string). denoted by () and separated by commas. Useful for returning multiple things from a function.</p>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">23</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+23
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">15</span> <span class="o">+</span> <span class="mf">2.718</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-12.282
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">**</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+64
+</pre></div></div>
+</div>
+<section id="Python-uses-typical-order-of-operations---PEMDAS">
+<h3>Python uses typical order of operations - PEMDAS<a class="headerlink" href="#Python-uses-typical-order-of-operations---PEMDAS" title="Link to this heading">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.0
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1000
+</pre></div></div>
+</div>
+<section id="Activity">
+<h4>Activity<a class="headerlink" href="#Activity" title="Link to this heading">¶</a></h4>
+<p>In the cell below, write an expression that’s equivalent to</p>
+<p><span class="math notranslate nohighlight">\((19 + 6 \cdot 3) - 15 \cdot \left( \sqrt{100} \cdot \frac{1}{30} \right) \cdot \frac{3}{5} + 4^2 + \left(6 - \frac{2}{3} \right) \cdot 12\)</span></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># activity cell</span>
+<span class="p">(</span><span class="mi">19</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mi">15</span> <span class="o">*</span> <span class="p">(</span><span class="mi">100</span> <span class="o">**</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">30</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">4</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">6</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">*</span> <span class="mi">12</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+114.0
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="Variables">
+<h2>Variables<a class="headerlink" href="#Variables" title="Link to this heading">¶</a></h2>
+<ul>
+<li><div class="line-block">
+<div class="line">A <strong>variable</strong> is a place to store a value so that in can be referred to later in our code. To define a variable, we use an <strong>assignment statement</strong></div>
+<div class="line"><img alt="Alt text" src="../_images/fig2.png" /></div>
+</div>
+</li>
+<li><p>An assignment statement changes the meaning of the <strong>name</strong> to the left of the = sign</p></li>
+<li><p>In the example above, zebra is bound to 9 (the value) not 23-14 (expression)</p></li>
+</ul>
+<section id="Example">
+<h3>Example<a class="headerlink" href="#Example" title="Link to this heading">¶</a></h3>
+<p>Before we use a name in an assignment statement, it has no meaning. After the assignment statement, it refers to the value assigned to it.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_in_f</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+41.0
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_in_c</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">temp_in_f</span> <span class="o">=</span> <span class="n">temp_in_c</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">32</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_in_f</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+41.0
+</pre></div></div>
+</div>
+<p>Any time we use <code class="docutils literal notranslate"><span class="pre">temp_in_f</span></code> in an expression, <code class="docutils literal notranslate"><span class="pre">41.0</span></code> is substituted for it.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_in_f</span> <span class="o">*</span> <span class="o">-</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-164.0
+</pre></div></div>
+</div>
+<p>Note that the above expression <strong>does not change</strong> the value of <code class="docutils literal notranslate"><span class="pre">temp_in_f</span></code>, because we did not reassign <code class="docutils literal notranslate"><span class="pre">temp_in_f</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_in_f</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+41.0
+</pre></div></div>
+</div>
+<section id="Naming-variables">
+<h4>Naming variables<a class="headerlink" href="#Naming-variables" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Give your variables helpful names so that you/your collaborators know what they refer to</p></li>
+<li><p>variables can contain uppercase, lowercase, numbers, and underscores</p>
+<ul>
+<li><p>they <strong>cannot</strong> start with a number</p></li>
+<li><p>they are case sensitive!</p></li>
+<li><p>no character limit!</p></li>
+</ul>
+</li>
+</ul>
+<p>Examples of <strong>valid</strong> but <strong>poor</strong> variable names:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">six</span> <span class="o">=</span> <span class="mi">15</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i_love_waves_999</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span>
+</pre></div>
+</div>
+</div>
+<p>Examples of assignment statements that are <strong>valid</strong> and use <strong>good</strong> variable names:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Include some code that shows how to investigate attributes of variables (size, shape, type, attrs)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seconds_per_hour</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">hours_per_year</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span>
+<span class="n">seconds_per_year</span> <span class="o">=</span> <span class="n">seconds_per_hour</span> <span class="o">*</span> <span class="n">hours_per_year</span>
 </pre></div>
 </div>
+</div>
+</section>
+<section id="Variable-Types">
+<h4>Variable Types<a class="headerlink" href="#Variable-Types" title="Link to this heading">¶</a></h4>
+<p>What’s the difference?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2.0
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">-</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+</pre></div></div>
+</div>
+<p>To us, <code class="docutils literal notranslate"><span class="pre">2.0</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code> are the same number. But to Python, these appear to be different</p>
+</section>
+<section id="Two-numeric-variable-types:-int-and-float">
+<h4>Two numeric variable types: <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code><a class="headerlink" href="#Two-numeric-variable-types:-int-and-float" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code>: an integer of any size</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code>: a number with a decimal point</p></li>
+</ul>
+<section id="For-int:">
+<h5>For <code class="docutils literal notranslate"><span class="pre">int</span></code>:<a class="headerlink" href="#For-int:" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>if you add, subtract, multiply or exponentiate <code class="docutils literal notranslate"><span class="pre">int</span></code>, result is another <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> has arbitrary precision in Python, meaning that calculations will always be exact</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">-</span> <span class="mi">15</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">**</span> <span class="mi">300</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2037035976334486086268445688409378161051468393665936250636140449354381299763336706183397376
+</pre></div></div>
+</div>
+<ul class="simple">
+<li><p>Use type() to check the kind of data type</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+int
+</pre></div></div>
+</div>
+</section>
+<section id="For-float:">
+<h5>For <code class="docutils literal notranslate"><span class="pre">float</span></code>:<a class="headerlink" href="#For-float:" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">float</span></code> is specified using a <strong>decimal</strong> point</p></li>
+<li><p>Might be printed using scientific notation</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">3.2</span> <span class="o">+</span> <span class="mf">2.5</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">3.2</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The result is in scientific notation: e+90 means &quot;times 90&quot;</span>
+<span class="mf">2.0</span> <span class="o">**</span> <span class="mi">300</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2.037035976334486e+90
+</pre></div></div>
+</div>
+</section>
+<section id="Strings-🧶">
+<h5>Strings 🧶<a class="headerlink" href="#Strings-🧶" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>a string is a snippet of text, it can be any length</p></li>
+<li><p>Enclosed by either single quotes (’) or doulble quotes (“)</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;woof&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;woof&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+str
+</pre></div></div>
+</div>
+</section>
+<section id="String-arithmetic">
+<h5>String arithmetic<a class="headerlink" href="#String-arithmetic" title="Link to this heading">¶</a></h5>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">+</span></code> symbol between strings, the operation is called <strong>concatenation</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="s1">&#39;send&#39;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s1">&#39;swell 🌊&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;sendswell 🌊&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;send swell 🌊&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;sendsendsend&#39;
+</pre></div></div>
+</div>
+</section>
+<section id="String-methods">
+<h5>String methods<a class="headerlink" href="#String-methods" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>String methods are special functions for strings</p></li>
+<li><p>string methods are accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after the string</p></li>
+<li><p>Examples: <code class="docutils literal notranslate"><span class="pre">upper</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code>, <code class="docutils literal notranslate"><span class="pre">replacee</span></code>, but there are <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#string-methods">many more</a></p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blue_crush_string</span> <span class="o">=</span> <span class="s1">&#39;7 days until pipe masters&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blue_crush_string</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;7 Days Until Pipe Masters&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blue_crush_string</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;7 DAYS UNTIL PIPE MASTERS&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blue_crush_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;6 days until pipe masters&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># len is not a method since it doesn&#39;t use dot notation</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">blue_crush_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+25
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Converting-between-data-types">
+<h4>Converting between data types<a class="headerlink" href="#Converting-between-data-types" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>if you mix <code class="docutils literal notranslate"><span class="pre">int</span></code>s and <code class="docutils literal notranslate"><span class="pre">float</span></code>s in an expression, the result will be a <strong>``float``</strong></p></li>
+<li><p>a value can be converted using the <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> functions</p></li>
+<li><p>any value can be converted to a string using <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p>some strings can be converted to <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+5
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;3&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.0
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;silly string&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[56], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span style="color: rgb(0,135,0)">int</span>(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">silly string</span><span style="color: rgb(175,0,0)">&#39;</span>)
+
+<span class="ansi-red-fg">ValueError</span>: invalid literal for int() with base 10: &#39;silly string&#39;
+</pre></div></div>
+</div>
+</section>
+<section id="A-note-on-Python-Functions">
+<h4>A note on Python Functions<a class="headerlink" href="#A-note-on-Python-Functions" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Functions in Python work the same way math functions fo</p></li>
+<li><p>inputs to functions are called arguments</p></li>
+<li><p>Python comes with a number of built-in functions such as <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, and <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Calling</strong> a function, or using a function, means asking the function to “run its recipe” on the given input</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">?</span></code> after a function’s name to see its documentation, or use the <code class="docutils literal notranslate"><span class="pre">help</span></code> function</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>str<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">Init signature:</span> str<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">/</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>
+str(object=&#39;&#39;) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to &#39;strict&#39;.
+<span class="ansi-red-fg">Type:</span>           type
+<span class="ansi-red-fg">Subclasses:</span>     StrEnum, DeferredConfigString, FoldedCase, _rstr, _ScriptTarget, _ModuleTarget, LSString, include, Keys, InputMode, ...
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Help on class float in module builtins:
+
+class float(object)
+ |  float(x=0, /)
+ |
+ |  Convert a string or number to a floating-point number, if possible.
+ |
+ |  Methods defined here:
+ |
+ |  __abs__(self, /)
+ |      abs(self)
+ |
+ |  __add__(self, value, /)
+ |      Return self+value.
+ |
+ |  __bool__(self, /)
+ |      True if self else False
+ |
+ |  __ceil__(self, /)
+ |      Return the ceiling as an Integral.
+ |
+ |  __divmod__(self, value, /)
+ |      Return divmod(self, value).
+ |
+ |  __eq__(self, value, /)
+ |      Return self==value.
+ |
+ |  __float__(self, /)
+ |      float(self)
+ |
+ |  __floor__(self, /)
+ |      Return the floor as an Integral.
+ |
+ |  __floordiv__(self, value, /)
+ |      Return self//value.
+ |
+ |  __format__(self, format_spec, /)
+ |      Formats the float according to format_spec.
+ |
+ |  __ge__(self, value, /)
+ |      Return self&gt;=value.
+ |
+ |  __getnewargs__(self, /)
+ |
+ |  __gt__(self, value, /)
+ |      Return self&gt;value.
+ |
+ |  __hash__(self, /)
+ |      Return hash(self).
+ |
+ |  __int__(self, /)
+ |      int(self)
+ |
+ |  __le__(self, value, /)
+ |      Return self&lt;=value.
+ |
+ |  __lt__(self, value, /)
+ |      Return self&lt;value.
+ |
+ |  __mod__(self, value, /)
+ |      Return self%value.
+ |
+ |  __mul__(self, value, /)
+ |      Return self*value.
+ |
+ |  __ne__(self, value, /)
+ |      Return self!=value.
+ |
+ |  __neg__(self, /)
+ |      -self
+ |
+ |  __pos__(self, /)
+ |      +self
+ |
+ |  __pow__(self, value, mod=None, /)
+ |      Return pow(self, value, mod).
+ |
+ |  __radd__(self, value, /)
+ |      Return value+self.
+ |
+ |  __rdivmod__(self, value, /)
+ |      Return divmod(value, self).
+ |
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |
+ |  __rfloordiv__(self, value, /)
+ |      Return value//self.
+ |
+ |  __rmod__(self, value, /)
+ |      Return value%self.
+ |
+ |  __rmul__(self, value, /)
+ |      Return value*self.
+ |
+ |  __round__(self, ndigits=None, /)
+ |      Return the Integral closest to x, rounding half toward even.
+ |
+ |      When an argument is passed, work like built-in round(x, ndigits).
+ |
+ |  __rpow__(self, value, mod=None, /)
+ |      Return pow(value, self, mod).
+ |
+ |  __rsub__(self, value, /)
+ |      Return value-self.
+ |
+ |  __rtruediv__(self, value, /)
+ |      Return value/self.
+ |
+ |  __sub__(self, value, /)
+ |      Return self-value.
+ |
+ |  __truediv__(self, value, /)
+ |      Return self/value.
+ |
+ |  __trunc__(self, /)
+ |      Return the Integral closest to x between 0 and x.
+ |
+ |  as_integer_ratio(self, /)
+ |      Return a pair of integers, whose ratio is exactly equal to the original float.
+ |
+ |      The ratio is in lowest terms and has a positive denominator.  Raise
+ |      OverflowError on infinities and a ValueError on NaNs.
+ |
+ |      &gt;&gt;&gt; (10.0).as_integer_ratio()
+ |      (10, 1)
+ |      &gt;&gt;&gt; (0.0).as_integer_ratio()
+ |      (0, 1)
+ |      &gt;&gt;&gt; (-.25).as_integer_ratio()
+ |      (-1, 4)
+ |
+ |  conjugate(self, /)
+ |      Return self, the complex conjugate of any float.
+ |
+ |  hex(self, /)
+ |      Return a hexadecimal representation of a floating-point number.
+ |
+ |      &gt;&gt;&gt; (-0.1).hex()
+ |      &#39;-0x1.999999999999ap-4&#39;
+ |      &gt;&gt;&gt; 3.14159.hex()
+ |      &#39;0x1.921f9f01b866ep+1&#39;
+ |
+ |  is_integer(self, /)
+ |      Return True if the float is an integer.
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |
+ |  __getformat__(typestr, /)
+ |      You probably don&#39;t want to use this function.
+ |
+ |        typestr
+ |          Must be &#39;double&#39; or &#39;float&#39;.
+ |
+ |      It exists mainly to be used in Python&#39;s test suite.
+ |
+ |      This function returns whichever of &#39;unknown&#39;, &#39;IEEE, big-endian&#39; or &#39;IEEE,
+ |      little-endian&#39; best describes the format of floating-point numbers used by the
+ |      C type named by typestr.
+ |
+ |  fromhex(string, /)
+ |      Create a floating-point number from a hexadecimal string.
+ |
+ |      &gt;&gt;&gt; float.fromhex(&#39;0x1.ffffp10&#39;)
+ |      2047.984375
+ |      &gt;&gt;&gt; float.fromhex(&#39;-0x1p-1074&#39;)
+ |      -5e-324
+ |
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |
+ |  __new__(*args, **kwargs)
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |
+ |  imag
+ |      the imaginary part of a complex number
+ |
+ |  real
+ |      the real part of a complex number
+
+</pre></div></div>
+</div>
+</section>
+<section id="Lists">
+<h4>Lists<a class="headerlink" href="#Lists" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>In Python, a list is used to store multiple values within a signle value. To create a new list, use <code class="docutils literal notranslate"><span class="pre">[square</span> <span class="pre">brackets]</span></code></p></li>
+<li><p>Lists are a sequence of any type of object</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">68</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">74</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Note that the <strong>elements</strong> in a list don’t need to be unique</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">temp_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+list
+</pre></div></div>
+</div>
+<p>To find the average temperature, we can divide the <strong>sum of the temperatures</strong> by the <strong>number of temperatures recorded</strong>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">temp_list</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+72.57142857142857
+</pre></div></div>
+</div>
+<p>Within a list, you can store elements of different types</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mixed_temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">68</span><span class="p">,</span> <span class="s1">&#39;sixty&#39;</span><span class="p">,</span> <span class="mf">68.9</span><span class="p">,</span> <span class="mi">62</span><span class="p">]</span>
+<span class="n">mixed_temp</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[68, &#39;sixty&#39;, 68.9, 62]
+</pre></div></div>
+</div>
+<section id="HOWEVER...">
+<h5><strong>HOWEVER…</strong><a class="headerlink" href="#HOWEVER..." title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>Lists are <strong>slow 🐌</strong>.</p></li>
+<li><p>This causes a problem when working with large datasets</p></li>
+<li><p>To gain additional functionality, we need to import a library</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="Importing-Packages">
+<h2>Importing Packages<a class="headerlink" href="#Importing-Packages" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Python doesn’t have everything we need built in</p></li>
+<li><p>we import <strong>packages (AKA libraries)</strong> through <strong>import statements</strong></p></li>
+<li><p>Packages are collections of Python functions and values</p></li>
+<li><p>Syntax for calling functions: <code class="docutils literal notranslate"><span class="pre">package.function()</span></code></p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> <span class="c1"># numpy is usually imported as np (but doesn&#39;t have to be)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">As seen above –&gt; instead of importing a complete library, we can just import the functions we need by using:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">function</span></code></div>
+</div>
+<p>Useful Packages:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>numpy</p></td>
+<td><p>Numerical operations</p></td>
+</tr>
+<tr class="row-odd"><td><p>matplotlib</p></td>
+<td><p>Plotting and visualization</p></td>
+</tr>
+<tr class="row-even"><td><p>netCDF4</p></td>
+<td><p>Using netCDF files</p></td>
+</tr>
+<tr class="row-odd"><td><p>pandas</p></td>
+<td><p>Data analysis and manipulation</p></td>
+</tr>
+<tr class="row-even"><td><p>xarray</p></td>
+<td><p>Labeled multi-dimensional arrays</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Packages have their own associated <strong>documentation</strong> which shows what functions are associated.</p>
+<ul class="simple">
+<li><p>NumPy provides support for arrays and operations on them and is heavily used in the field</p></li>
+<li><p>To use NumPy, we need to import it. It’s usually imported as np (but doesn’t have to be)</p></li>
+</ul>
+<p><img alt="Alt text" class="no-scaled-link" src="../_images/fig3.png" style="width: 300px;" /></p>
+<ul class="simple">
+<li><p>Think of NumPy arrays as faster lists</p></li>
+<li><p>To create an array, we pass a list as input to the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[86]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp_list</span><span class="p">)</span>
+<span class="n">temp_array</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[86]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([68, 73, 70, 74, 76, 73, 74])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s1">&#39;python_programming/scripps_pier-2023.nc&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">SST</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">])</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">SST</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+numpy.ndarray
+</pre></div></div>
 </div>
 </section>
 <section id="For-Loops,-While-Loops,-If-Statements,-and-Logicals">
 <h2>For Loops, While Loops, If Statements, and Logicals<a class="headerlink" href="#For-Loops,-While-Loops,-If-Statements,-and-Logicals" title="Link to this heading">¶</a></h2>
-<p><strong>Conditional Statements</strong>:</p>
-<p><strong>Syntax</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">swh</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">condition</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">wsp</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">swh</span><span class="p">,</span> <span class="n">wsp</span><span class="p">)</span>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<p><strong>Logicals</strong></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code> : Test for equivalence</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">b</span></code> : Test for inequivalence</p></li>
-<li><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">and</span> <span class="pre">b</span></code></div>
-<div class="line">Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>both</strong> operands are true.</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.0</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
 </div>
-</li>
-<li><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">or</span> <span class="pre">b</span></code></div>
-<div class="line">Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>either</strong> operand is true.</div>
 </div>
-</li>
-<li><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">a</span></code></div>
-<div class="line">Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if operand is <strong>False</strong>.</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
 </div>
-</li>
-</ul>
-<blockquote>
-<div><div class="line-block">
-<div class="line"><strong>Note:</strong> Logical operators can only be used to compare two boolean expressions.</div>
-<div class="line">They should <strong>not</strong> be used in long series of conditions.</div>
-<div class="line">Instead, break complex logic into multiple conditional statements and store boolean results in variables for later use.</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+5.0
+</pre></div></div>
 </div>
-</div></blockquote>
-<p><strong>Other Operators</strong></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> Greater than or equal to, less than or equal to</p></li>
-<li><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">+=</span></code>, <code class="docutils literal notranslate"><span class="pre">-=</span></code>, <code class="docutils literal notranslate"><span class="pre">*=</span></code>, <code class="docutils literal notranslate"><span class="pre">/=</span></code></div>
-<div class="line">Shortcut assignment operators for addition, subtraction, multiplication, and division, respectively.</div>
-<div class="line">These update the variable in-place without needing to redefine it.</div>
-</div>
-</li>
-</ul>
-<p><strong>What will evaluate to True (False)?</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>, empty strings <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>, and empty lists <code class="docutils literal notranslate"><span class="pre">[]</span></code> are considered <strong>False</strong></p></li>
-<li><p>All other numbers, strings, and lists are considered <strong>True</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> are special boolean values representing truth</p></li>
-</ul>
 </section>
 <section id="Creating-Functions">
 <h2>Creating Functions<a class="headerlink" href="#Creating-Functions" title="Link to this heading">¶</a></h2>
-<p><strong>Syntax</strong>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function_name</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Documentation</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="c1">#Code for function</span>
-
-    <span class="k">return</span> <span class="n">variable_1</span><span class="p">,</span> <span class="n">variable_2</span> <span class="c1">#Output variables from function</span>
-</pre></div>
-</div>
-<p><strong>Basics</strong>:</p>
-<ol class="arabic simple">
-<li><p>Variables defined within a function can only be seen and used within the body of the function.</p></li>
-<li><p>Specify default values for parameters when defining a function using name=value in the parameter list</p></li>
-<li><p>Parameters can be passed by matching based on name, by position, or by omitting them (in which case the default value is used)</p></li>
-</ol>
-<p><strong>Purpose</strong> of Functions are to automize and streamline your code in order to your code more efficient, easier to debug, and easier to write. Functions can be expanded upon to compelete a wide variety of tasks by adding conditional statements.</p>
-<p><strong>Importing functions</strong> from .py files with the following code:</p>
-<p>import sys # import sys library sys.path.append(‘/zdata/home/lcolosi/python_functions/’) #using sys, give the notebook that path inorder to find the functions .py file</p>
-<p>#import functions from unweighted_least_square_fit import least_square_fit from char_LSF_curve import character_LSF from monthly_mean import monthly_average</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">wind_stress_mag</span><span class="p">(</span><span class="n">C_d</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">U_10</span><span class="p">):</span>
-
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Documentation Section:</span>
-
-<span class="sd">    wind_stress_mag(C_d, rho, U_10)</span>
-
-<span class="sd">        Function for computing scalar wind stress magnitude</span>
-
-<span class="sd">        Parameter</span>
-<span class="sd">        ---------</span>
-<span class="sd">        C_d : wind drag coefficient</span>
-<span class="sd">        rho : air density (kg/m^3)</span>
-<span class="sd">        U_10 : wind speed 10 meters above the suface of the water (m/s)</span>
-
-<span class="sd">        Libraries necessary</span>
-<span class="sd">        -------------------</span>
-<span class="sd">        import numpy as np</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="c1">#import libraries</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-    <span class="c1">#compute wind stress magnitude</span>
-    <span class="n">wsm</span> <span class="o">=</span> <span class="n">C_d</span><span class="o">*</span><span class="n">rho</span><span class="o">*</span><span class="n">U_10</span><span class="o">**</span><span class="mi">2</span>
-
-    <span class="k">return</span> <span class="n">wsm</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wsm</span> <span class="o">=</span> <span class="n">wind_stress_mag</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wsm</span><span class="p">)</span>
-
-<span class="c1">#Obtain documentation on function:</span>
-wind_stress_mag<span class="o">?</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Basic-Mathematical-Operations">
-<h2>Basic Mathematical Operations<a class="headerlink" href="#Basic-Mathematical-Operations" title="Link to this heading">¶</a></h2>
-<p>Let’s turn as much as possible of this into demonstration (code cells) as opposed to just text, start with regular operations that don’t include numpy. then do numpy examples</p>
-<section id="Python-Math">
-<h3><strong>Python Math</strong><a class="headerlink" href="#Python-Math" title="Link to this heading">¶</a></h3>
-<ol class="arabic simple">
-<li><p>a + b= elementwise addition</p></li>
-<li><p>a - b= elementwise subtraction</p></li>
-<li><p>a * b = elementwise multiplication</p></li>
-<li><p>a &#64; b or np.dot(a,b) = matrix multiplication</p></li>
-<li><p>a/b = elementwise division</p></li>
-<li><p>a//b = floor division</p></li>
-<li><p>a**b = elementwise exponentiation</p></li>
-<li><p>a.T = transpose of a</p></li>
-<li><p>a.conj().T = conjugate transpose of a</p></li>
-</ol>
-</section>
 </section>
 <section id="Numpy">
 <h2>Numpy<a class="headerlink" href="#Numpy" title="Link to this heading">¶</a></h2>
@@ -533,71 +1481,6 @@ wind_stress_mag<span class="o">?</span>
 <section id="Analyzing-Data">
 <h2>Analyzing Data<a class="headerlink" href="#Analyzing-Data" title="Link to this heading">¶</a></h2>
 <p>Show examples of using pandas and netcdf libraries</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> <span class="c1">#library for working with arrays</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> <span class="c1">#library for plotting</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">num2date</span> <span class="c1">#library commands used for reading in netCDF files</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span> <span class="c1"># use to create a list of filenames</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># separate these into a few code cells with the appropriate descriptions from above, so that the description is immediately followed by the code example</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="mi">8</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<section id="Statistical-operations-on-arrays-(move-the-statistics-functions-to-the-numpy-section---can-reiterate-it-here-with-some-real-data-as-an-example)">
-<h3><strong>Statistical operations on arrays</strong> (move the statistics functions to the numpy section - can reiterate it here with some real data as an example)<a class="headerlink" href="#Statistical-operations-on-arrays-(move-the-statistics-functions-to-the-numpy-section---can-reiterate-it-here-with-some-real-data-as-an-example)" title="Link to this heading">¶</a></h3>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#operation on the entire array</span>
-<span class="n">swh_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">swh</span><span class="p">)</span>
-<span class="n">swh_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">swh</span><span class="p">)</span>
-<span class="n">swh_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">swh</span><span class="p">)</span>
-<span class="n">swh_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">swh</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh_mean</span><span class="p">,</span> <span class="n">swh_std</span><span class="p">,</span> <span class="n">swh_max</span><span class="p">,</span> <span class="n">swh_min</span><span class="p">)</span>
-<span class="c1">#operations along an axis</span>
-<span class="n">swh_mean_column</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">swh</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#calculate mean across row axis (down each column)</span>
-<span class="n">swh_mean_row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">swh</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#calculate mean across column axis (across each row)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh_mean_row</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh_mean_column</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#initalize list</span>
-<span class="n">swh_list</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">ilen</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">swh_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ilen</span><span class="p">)</span>
-
-<span class="c1">#look what swh_list looks like</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">swh_list</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">swh_list</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">swh_list</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
 <p><strong>Working with lists</strong></p>
 <p>Basics:</p>
 <ol class="arabic simple">
@@ -627,25 +1510,6 @@ wind_stress_mag<span class="o">?</span>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Example of list comprehension</span>
 <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Logical operator example</span>
-<span class="c1">#Initialize variables</span>
-<span class="n">swh_norcal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">swh_socal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-
-<span class="c1">#Set conditional statement</span>
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">swh_norcal</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">swh_socal</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">swh_norcal</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">swh_socal</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Northern California has a larger spread of values than southern California&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">swh_norcal</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">swh_socal</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">swh_socal</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">swh_norcal</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Northern California maybe has the same spread of values as southern California&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Southern California has a larger spread of values than Northern California&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -686,13 +1550,12 @@ wind_stress_mag<span class="o">?</span>
 </section>
 </section>
 <section id="Errors-and-Exceptions-(Lets-change-this-to-be-tips-and-tricks-for-how-to-read-errors,-but-not-necessarily-worry-about-listing-types-of-errors)">
-<h2>Errors and Exceptions (Lets change this to be tips and tricks for how to read errors, but not necessarily worry about listing types of errors)<a class="headerlink" href="#Errors-and-Exceptions-(Lets-change-this-to-be-tips-and-tricks-for-how-to-read-errors,-but-not-necessarily-worry-about-listing-types-of-errors)" title="Link to this heading">¶</a></h2>
+<h1>Errors and Exceptions (Lets change this to be tips and tricks for how to read errors, but not necessarily worry about listing types of errors)<a class="headerlink" href="#Errors-and-Exceptions-(Lets-change-this-to-be-tips-and-tricks-for-how-to-read-errors,-but-not-necessarily-worry-about-listing-types-of-errors)" title="Link to this heading">¶</a></h1>
 <p>Tracebacks (error output) can look intimidating, but they give us a lot of useful information about what went wrong in our program, including where the error occurred and what type of error it was.</p>
 <p>An error having to do with the ‘grammar’ or syntax of the program is called a SyntaxError. If the issue has to do with how the code is indented, then it will be called an IndentationError.</p>
 <p>A NameError will occur if you use a variable that has not been defined, either because you meant to use quotes around a string, you forgot to define the variable, or you just made a typo.</p>
 <p>Containers like lists and strings will generate errors if you try to access items in them that do not exist. This type of error is called an IndexError.</p>
 <p>Trying to read a file that does not exist will give you an FileNotFoundError. Trying to read a file that is open for writing, or writing to a file that is open for reading, will give you an IOError.</p>
-</section>
 <section id="Best-Practices">
 <h2>Best Practices<a class="headerlink" href="#Best-Practices" title="Link to this heading">¶</a></h2>
 <p>Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.</p>
@@ -774,27 +1637,52 @@ wind_stress_mag<span class="o">?</span>
             <ul>
 <li><a class="reference internal" href="#">Programming with Python</a><ul>
 <li><a class="reference internal" href="#Session-Overview">Session Overview</a></li>
-<li><a class="reference internal" href="#Getting-started-with-Python---Installation-and-Development-Environment">Getting started with Python - Installation and Development Environment</a></li>
-<li><a class="reference internal" href="#Jupyter-Notebook-Intro-and-Shortcuts-(Let's-move-the-shortcuts-to-another-page-potentially)">Jupyter Notebook Intro and Shortcuts (Let’s move the shortcuts to another page potentially)</a></li>
-<li><a class="reference internal" href="#Importing-Packages">Importing Packages</a></li>
-<li><a class="reference internal" href="#Variable-Types">Variable Types</a></li>
-<li><a class="reference internal" href="#For-Loops,-While-Loops,-If-Statements,-and-Logicals">For Loops, While Loops, If Statements, and Logicals</a></li>
-<li><a class="reference internal" href="#Creating-Functions">Creating Functions</a></li>
-<li><a class="reference internal" href="#Basic-Mathematical-Operations">Basic Mathematical Operations</a><ul>
-<li><a class="reference internal" href="#Python-Math"><strong>Python Math</strong></a></li>
+<li><a class="reference internal" href="#What-is-programming-with-Python?">What is programming with Python?</a><ul>
+<li><a class="reference internal" href="#Jupyter-Notebooks-📓">Jupyter Notebooks 📓</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#Basic-Mathematical-Operations">Basic Mathematical Operations</a><ul>
+<li><a class="reference internal" href="#Python-uses-typical-order-of-operations---PEMDAS">Python uses typical order of operations - PEMDAS</a><ul>
+<li><a class="reference internal" href="#Activity">Activity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Variables">Variables</a><ul>
+<li><a class="reference internal" href="#Example">Example</a><ul>
+<li><a class="reference internal" href="#Naming-variables">Naming variables</a></li>
+<li><a class="reference internal" href="#Variable-Types">Variable Types</a></li>
+<li><a class="reference internal" href="#Two-numeric-variable-types:-int-and-float">Two numeric variable types: <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code></a><ul>
+<li><a class="reference internal" href="#For-int:">For <code class="docutils literal notranslate"><span class="pre">int</span></code>:</a></li>
+<li><a class="reference internal" href="#For-float:">For <code class="docutils literal notranslate"><span class="pre">float</span></code>:</a></li>
+<li><a class="reference internal" href="#Strings-🧶">Strings 🧶</a></li>
+<li><a class="reference internal" href="#String-arithmetic">String arithmetic</a></li>
+<li><a class="reference internal" href="#String-methods">String methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Converting-between-data-types">Converting between data types</a></li>
+<li><a class="reference internal" href="#A-note-on-Python-Functions">A note on Python Functions</a></li>
+<li><a class="reference internal" href="#Lists">Lists</a><ul>
+<li><a class="reference internal" href="#HOWEVER..."><strong>HOWEVER…</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Importing-Packages">Importing Packages</a></li>
+<li><a class="reference internal" href="#For-Loops,-While-Loops,-If-Statements,-and-Logicals">For Loops, While Loops, If Statements, and Logicals</a></li>
+<li><a class="reference internal" href="#Creating-Functions">Creating Functions</a></li>
 <li><a class="reference internal" href="#Numpy">Numpy</a><ul>
 <li><a class="reference internal" href="#Numpy-Arrays"><strong>Numpy Arrays</strong></a></li>
 <li><a class="reference internal" href="#Slicing-arrays"><strong>Slicing arrays</strong></a></li>
 <li><a class="reference internal" href="#Numpy-Math"><strong>Numpy Math</strong></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#Analyzing-Data">Analyzing Data</a><ul>
-<li><a class="reference internal" href="#Statistical-operations-on-arrays-(move-the-statistics-functions-to-the-numpy-section---can-reiterate-it-here-with-some-real-data-as-an-example)"><strong>Statistical operations on arrays</strong> (move the statistics functions to the numpy section - can reiterate it here with some real data as an example)</a></li>
+<li><a class="reference internal" href="#Analyzing-Data">Analyzing Data</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#Errors-and-Exceptions-(Lets-change-this-to-be-tips-and-tricks-for-how-to-read-errors,-but-not-necessarily-worry-about-listing-types-of-errors)">Errors and Exceptions (Lets change this to be tips and tricks for how to read errors, but not necessarily worry about listing types of errors)</a></li>
+<li><a class="reference internal" href="#Errors-and-Exceptions-(Lets-change-this-to-be-tips-and-tricks-for-how-to-read-errors,-but-not-necessarily-worry-about-listing-types-of-errors)">Errors and Exceptions (Lets change this to be tips and tricks for how to read errors, but not necessarily worry about listing types of errors)</a><ul>
 <li><a class="reference internal" href="#Best-Practices">Best Practices</a></li>
 <li><a class="reference internal" href="#Debugging">Debugging</a><ul>
 <li><a class="reference internal" href="#Acknowledgements">Acknowledgements</a></li>
