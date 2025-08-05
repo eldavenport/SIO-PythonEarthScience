@@ -2,3 +2,6 @@ __pycache__/
 .env
 **.ipynb_checkpoints
 **.DS_Store
+**.nc
+**.csv
+**.mat
