@@ -4,14 +4,12 @@ In-Workshop Resources
 Resources to use **during** the workshop sessions.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    preliminary_agenda
    creating_conda_env
    python_programming
    python_plotting
-   unix_shell
-   command_line_git
-   online_with_github
+   version_control_git/index
    earth_science
    workflows

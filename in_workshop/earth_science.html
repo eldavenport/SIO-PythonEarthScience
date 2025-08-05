@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Workflows for Earth Science" href="workflows.html" /><link rel="prev" title="Navigating GitHub" href="online_with_github.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Workflows for Earth Science" href="workflows.html" /><link rel="prev" title="Navigating GitHub" href="version_control_git/online_with_github.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
         <title>Python for Earth Science - SIO Python for Earth Science</title>
@@ -214,14 +214,17 @@
 <li class="toctree-l2"><a class="reference internal" href="python_programming.html">Programming with Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_programming.html#Errors-and-Exceptions-(Lets-change-this-to-be-tips-and-tricks-for-how-to-read-errors,-but-not-necessarily-worry-about-listing-types-of-errors)">Errors and Exceptions (Lets change this to be tips and tricks for how to read errors, but not necessarily worry about listing types of errors)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_plotting.html">Python Plotting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unix_shell.html">The Unix Shell</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command_line_git.html">Version Control With Git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="online_with_github.html">Navigating GitHub</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="version_control_git/index.html">Version Control with Git</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Version Control with Git</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="version_control_git/unix_shell.html">The Unix Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version_control_git/command_line_git.html">Version Control With Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version_control_git/online_with_github.html">Navigating GitHub</a></li>
+</ul>
+</li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Python for Earth Science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="workflows.html">Workflows for Earth Science</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../additional_resources/index.html">Additional Resources</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Additional Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../additional_resources/index.html">Additional Resources</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Additional Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../additional_resources/python_programming.html">Python Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../additional_resources/python_plotting.html">Python Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../additional_resources/unix_cheat_sheet.html">Unix Shell Cheat Sheet</a></li>
@@ -314,7 +317,7 @@
 <section id="Parallelization-with-Dask">
 <h2>Parallelization with Dask<a class="headerlink" href="#Parallelization-with-Dask" title="Link to this heading">¶</a></h2>
 <p><a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask</a></p>
-<p><img alt="33f44fae8810444186cf85d8be8142a1" class="no-scaled-link" src="../_images/dask.png" style="width: 500px;" /></p>
+<p><img alt="d734200936664bf0b7affaaf25614de8" class="no-scaled-link" src="../_images/dask.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -346,7 +349,7 @@ analysis!</p>
 </ol>
 <p>In the graphic below, you can see that <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">precipitation</span></code> are both variables with coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. In this simple example temperature and precip each have 3 dimensions. Not only does the DataSet store all of this information, it also relates these two variables to each other by understanding that they share coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. We will use some test data to inspect this further. Any NetCDF can be read into an Xarray dataset. Many popular models
 facilitate reading raw output directly into Xarray.</p>
-<p><img alt="ab681a2310024b2a86d23ab113765064" class="no-scaled-link" src="../_images/xarray.png" style="width: 500px;" /></p>
+<p><img alt="fe3e06132a5841199d81de28a34a3b8f" class="no-scaled-link" src="../_images/xarray.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -6053,7 +6056,7 @@ Attributes:
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="online_with_github.html">
+          <a class="prev-page" href="version_control_git/online_with_github.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
