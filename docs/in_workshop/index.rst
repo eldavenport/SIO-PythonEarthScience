@@ -11,5 +11,5 @@ Resources to use **during** the workshop sessions.
    python_programming
    python_plotting
    version_control_git/index
-   earth_science
+   python_earth_science/index
    workflows
