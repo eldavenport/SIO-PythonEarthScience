@@ -33,7 +33,7 @@ To leave your sio_software environment enter:
 
 `conda deactivate`
 
-You may only ever need one conda environment, but you may find over time that you don't want to have every possible package installed in the same place. Perhaps you have some research that needs packages A, B, and C and another project that requires packages X, Y, and Z. In that case you could have to environments, which you can activate for the appropriate use cases. When you make a research or software project public, it is common to release an environment.yml file the can be used to set up a conda environment with the necessary packages.
+You may only ever need one conda environment, but you may find over time that you don't want to have every possible package installed in the same place. Perhaps you have some research that needs packages A, B, and C and another project that requires packages X, Y, and Z. In that case you could have two environments, which you can activate for the appropriate use cases. When you make a research or software project public, it is common to release an environment.yml file the can be used to set up a conda environment with the necessary packages.
 
 ### Creating a new environment from an environment.yml file
 
