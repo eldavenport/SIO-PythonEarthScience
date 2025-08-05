@@ -312,7 +312,7 @@
 <section id="Parallelization-with-Dask">
 <h2>Parallelization with Dask<a class="headerlink" href="#Parallelization-with-Dask" title="Link to this heading">¶</a></h2>
 <p><a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask</a></p>
-<p><img alt="2b44ccf190424a1ab7f2c84256accde7" class="no-scaled-link" src="../_images/dask.png" style="width: 500px;" /></p>
+<p><img alt="8bec3eb7c86c4ce7a3042c101e063182" class="no-scaled-link" src="../_images/dask.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -344,7 +344,7 @@ analysis!</p>
 </ol>
 <p>In the graphic below, you can see that <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">precipitation</span></code> are both variables with coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. In this simple example temperature and precip each have 3 dimensions. Not only does the DataSet store all of this information, it also relates these two variables to each other by understanding that they share coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. We will use some test data to inspect this further. Any NetCDF can be read into an Xarray dataset. Many popular models
 facilitate reading raw output directly into Xarray.</p>
-<p><img alt="4637f26f5cd946b195b3fe9b88f25053" class="no-scaled-link" src="../_images/xarray.png" style="width: 500px;" /></p>
+<p><img alt="dc947ae2f58a448baba21e967b527461" class="no-scaled-link" src="../_images/xarray.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -6030,6 +6030,7 @@ Attributes:
 </pre></div>
 </div>
 </div>
+<p>See <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html#best-practices">this page</a> for a more detailed discussion of best practices with Xarray and Dask.</p>
 <p><strong>NOTE</strong> Take a look at all of the cool <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/ecosystem.html">Xarray related projects</a>! Most of them are for geoscience applications. There is also an extensive set of <a class="reference external" href="https://tutorial.xarray.dev/overview/get-started.html">Xarray tutorials</a>.</p>
 </section>
 </section>
