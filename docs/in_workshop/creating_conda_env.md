@@ -1,6 +1,6 @@
 # Creating a Conda Environment
 
-We will use the conda package manager to manage our Python installation. Conda is great for reproducible science, because it allows you to export your environment configuration in a text file. Another user can then use that text file to create you exact conda environment and run your code.
+We will use the [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment) package manager to manage our Python installation. Conda is great for reproducible science, because it allows you to export your environment configuration in a text file. Another user can then use that text file to create you exact conda environment and run your code.
 
 ### Conda commands
 
