@@ -7,6 +7,7 @@ Resources to use **during** the workshop sessions.
    :maxdepth: 1
 
    preliminary_agenda
+   creating_conda_env
    python_programming
    python_plotting
    unix_shell
