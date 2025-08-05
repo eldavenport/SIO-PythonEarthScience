@@ -4,34 +4,34 @@ We will use the [conda](https://docs.conda.io/projects/conda/en/latest/user-guid
 
 ### Conda commands
 
-1) `conda create --name env_name  # create a new conda environment named env_name`  
-2) `conda create --name env_name python=3.12 # create a new conda environment named env_name with a specific Python version`  
-3) `conda activate env_name  # activate env_name`  
-4) `conda install package_name  # install a package from your default channel, if you installed with miniforge this is the conda-forge channel`  
-5) `conda install -c conda-forge package_name  # install a package from the conda-forge channel`  
-6) `conda deactivate  # deactivate the current environment`  
+1) ```conda create --name env_name  # create a new conda environment named env_name```   
+2) ```conda create --name env_name python=3.12 # create a new conda environment named env_name with a specific Python version``` 
+3) ```conda activate env_name  # activate env_name``` 
+4) ```conda install package_name  # install a package from your default channel, if you installed with miniforge this is the conda-forge channel```  
+5) ```conda install -c conda-forge package_name  # install a package from the conda-forge channel```  
+6) ```conda deactivate  # deactivate the current environment```  
 
 ### Creating a new environment from scratch
 
 We will create an environment for use in the Workshop.
 
-`conda create --name sio_software`
+```conda create --name sio_software``` 
 
 Once this is complete, we will activate our environment so that we can install some necessary packages. We will not need to install Python, that is automatically done in the creation of the environment.
 
-`conda activate sio_software`
+```conda activate sio_software``` 
 
 Now we can install a list of packages for use in the Intro to Python Programming and Plotting session. If you installed conda with miniforge, then you do not need to include `-c conda-forge`.
 
-`conda install -c conda-forge numpy matplotlib jupyterlab netcdf4 pandas`
+```conda install -c conda-forge numpy matplotlib jupyterlab netcdf4 pandas``` 
 
 This command will search for the requested packages and their compatible versions, it will then ask you if you want to proceed with the installation. Continue by entering `y`. After installation we can see the installed packages with:
 
-`conda list` 
+```conda list```  
 
 To leave your sio_software environment enter:
 
-`conda deactivate`
+```conda deactivate```
 
 You may only ever need one conda environment, but you may find over time that you don't want to have every possible package installed in the same place. Perhaps you have some research that needs packages A, B, and C and another project that requires packages X, Y, and Z. In that case you could have two environments, which you can activate for the appropriate use cases. When you make a research or software project public, it is common to release an environment.yml file the can be used to set up a conda environment with the necessary packages.
 
@@ -39,7 +39,7 @@ You may only ever need one conda environment, but you may find over time that yo
 
 If you have an environment.yml file, you can use it to create a conda environment with the following command:
 
-`conda env create -f environment.yml`
+```conda env create -f environment.yml``` 
 
 The first line of the .yml file defines the name of the environment. 
 
@@ -47,14 +47,14 @@ The first line of the .yml file defines the name of the environment.
 
 To export your currently active environment to a yaml file, use the following command:
 
-`conda export > environment.yaml`
+```conda export > environment.yaml``` 
 
 To export a specific (not necessarily active) environment to a yaml file, use:
 
-`conda export --name <env_name> --file=environment.yaml`
+```conda export --name <env_name> --file=environment.yaml``` 
 
 If we wanted to share our sio_software environment we would use:
 
-`conda export --name sio_software --file=environment.yaml`
+```conda export --name sio_software --file=environment.yaml``` 
 
 There are other formats for sharing, not just YAML. That being said, YAML is cross-platform and is almost always preferred.
