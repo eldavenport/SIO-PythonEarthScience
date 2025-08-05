@@ -1594,25 +1594,22 @@ dict_keys([&#39;time&#39;, &#39;temperature&#39;, &#39;conductivity&#39;, &#39;p
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#call data</span>
 <span class="n">temp_nc</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">][:]</span>
-<span class="n">time_nc</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][:]</span>
 </pre></div>
 </div>
 </div>
-<p><strong>should we talk about masked arrays or just have class put it into arrays?</strong></p>
 <ul class="simple">
-<li><p>Create arrays for temperature and time</p></li>
+<li><p>Create array for temperature and time</p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp_nc</span><span class="p">)</span>
-<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">time_nc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1707,15 +1704,204 @@ array([7.55525, 7.5542 , 7.54845, ..., 8.30995, 8.3076 , 8.30875],
 <ul class="simple">
 <li><p>Is <code class="docutils literal notranslate"><span class="pre">temp</span></code> changed?</p></li>
 </ul>
-<ul class="simple">
-<li><p>convert all temperatures to Farenheit</p></li>
-<li><p>Hint: $ ^:nbsphinx-math:<cite>circ `F = (:nbsphinx-math:</cite>frac{9}{5}` * ^:nbsphinx-math:<a href="#id1"><span class="problematic" id="id2">`</span></a>circ <a href="#id3"><span class="problematic" id="id4">`</span></a>C) + 32$</p></li>
-</ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="c1"># no!</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([15.1105, 15.1084, 15.0969, ..., 16.6199, 16.6152, 16.6175],
+      dtype=float32)
+</pre></div></div>
+</div>
+<ul class="simple">
+<li><p>convert all temperatures to Farenheit and assign it to a new variable <code class="docutils literal notranslate"><span class="pre">temp_farenheit</span></code></p></li>
+<li><p>Hint: $ ^:nbsphinx-math:<cite>circ `F = (:nbsphinx-math:</cite>frac{9}{5}` * ^:nbsphinx-math:<a href="#id1"><span class="problematic" id="id2">`</span></a>circ <a href="#id3"><span class="problematic" id="id4">`</span></a>C) + 32$</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert all temperature to Farenheit</span>
+<span class="n">temp_far</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">temp</span> <span class="o">+</span> <span class="mi">32</span>
+<span class="n">temp_far</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([59.1989  , 59.19512 , 59.17442 , ..., 61.915817, 61.90736 ,
+       61.9115  ], dtype=float32)
+</pre></div></div>
+</div>
+<ul class="simple">
+<li><p>arrays work with a variety of methods, which are functions designed to operate specifically on arrays.</p></li>
+<li><p>Call these methods using dot notation, `array_name.method()</p></li>
+<li><p>A full list of methods can be found in the NumPy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html">documentation</a></p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_far</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+74.81857
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_far</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+62.441406
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[82]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_far</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[82]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+51.54008
+</pre></div></div>
+</div>
+<ul class="simple">
+<li><p>a <strong>range</strong> is an array of evenly spaced numbers. These are created using <code class="docutils literal notranslate"><span class="pre">np.arange</span></code></p></li>
+<li><p>The most general way to create a range is np.arange(start, end, step). where:</p>
+<ul>
+<li><p>the first number is <code class="docutils literal notranslate"><span class="pre">start</span></code>. <strong>By default, ``start`` is 0</strong></p></li>
+<li><p>All subsequenct numbers are spaced out by <code class="docutils literal notranslate"><span class="pre">step</span></code>, until(but excluding) `end. <strong>By default, step is 1</strong></p></li>
+</ul>
+</li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start at 0, end before 11, step by 1.</span>
+<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start at 1, end before 19, step by 1</span>
+<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
+       18])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start at 5, end before 50, step by 3</span>
+<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 5,  8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47])
+</pre></div></div>
+</div>
+<p>Suppose a coastal town is experiencing increaing rainfall due to a slow-moving low pressure system. On Day 1, it rain <strong>1mm</strong>. Each day after that, rainfall increases by 1mm more than the previous day (so Day 2 get 2mm, Day 3 gets 3mm etc.)</p>
+<p>If this continues for 30 days, how much total rain falls in that month in <strong>centimeters</strong>? Save this value as <code class="docutils literal notranslate"><span class="pre">rain_total</span></code>.</p>
+<p>Hint: Use <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> and <code class="docutils literal notranslate"><span class="pre">.sum()</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rain_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">10</span> <span class="c1"># in cm</span>
+<span class="n">rain_total</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+46.5
+</pre></div></div>
+</div>
+<ul class="simple">
+<li><p>When working with NumPy arrays, slicing allows us to extract a portion of the data using:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array[start:stop]</span></code> -&gt; starts at <code class="docutils literal notranslate"><span class="pre">start</span></code> index <strong>up to but not including</strong> the <code class="docutils literal notranslate"><span class="pre">stop</span></code> index</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array[:stop]</span></code> -&gt; starts at the beginning (index 0) and goes up to <code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">-1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array[start:]</span></code> -&gt; starts at <code class="docutils literal notranslate"><span class="pre">start</span></code> and goes <strong>all the way to the end</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array[:]</span></code> -&gt; gives you the <strong>entire array</strong></p></li>
+</ul>
+<ul class="simple">
+<li><p>let’s inspect our time data</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[91]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1724,18 +1910,100 @@ array([7.55525, 7.5542 , 7.54845, ..., 8.30995, 8.3076 , 8.30875],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+dict_keys([&#39;time&#39;, &#39;temperature&#39;, &#39;conductivity&#39;, &#39;pressure&#39;, &#39;salinity&#39;, &#39;chlorophyll_raw&#39;, &#39;chlorophyll&#39;, &#39;temperature_flagPrimary&#39;, &#39;temperature_flagSecondary&#39;, &#39;conductivity_flagPrimary&#39;, &#39;conductivity_flagSecondary&#39;, &#39;pressure_flagPrimary&#39;, &#39;pressure_flagSecondary&#39;, &#39;salinity_flagPrimary&#39;, &#39;salinity_flagSecondary&#39;, &#39;chlorophyll_flagPrimary&#39;, &#39;chlorophyll_flagSecondary&#39;, &#39;sigmat&#39;, &#39;diagnosticVoltage&#39;, &#39;currentDraw&#39;, &#39;aux1&#39;, &#39;aux3&#39;, &#39;aux4&#39;, &#39;instrument1&#39;, &#39;instrument2&#39;, &#39;platform1&#39;, &#39;station&#39;, &#39;lat&#39;, &#39;lon&#39;, &#39;depth&#39;, &#39;crs&#39;])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;netCDF4._netCDF4.Variable&#39;&gt;
+int64 time(time)
+    units: minutes since 2023-01-01 00:01:00
+    calendar: proleptic_gregorian
+unlimited dimensions: time
+current shape = (125305,)
+filling on, default _FillValue of -9223372036854775806 used
+</pre></div></div>
+</div>
+<ul class="simple">
+<li><p>Above we can see that the units of time are minutes since 2023-01-01 00:01:00</p></li>
+<li><p>let’s inspect how many minutes between each data point</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[105]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an array</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][:]</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dt</span> <span class="p">,</span><span class="s2">&quot;minutes between data points&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4 minutes between data points
+</pre></div></div>
+</div>
+<p><strong>How many data points are there per day?</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[106]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_per_hr</span> <span class="o">=</span> <span class="mi">60</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">data_per_day</span> <span class="o">=</span> <span class="n">data_per_hr</span> <span class="o">*</span> <span class="mi">24</span>
+<span class="n">data_per_day</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[106]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+360.0
+</pre></div></div>
+</div>
+<p><strong>Print the first day’s worth of data</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[110]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span><span class="p">[:</span><span class="mi">360</span><span class="p">]</span>
+<span class="n">temp</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[110]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 array([15.1105, 15.1084, 15.0969, ..., 16.6199, 16.6152, 16.6175],
       dtype=float32)
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert all temperature to Farenheit</span>
-<br/></pre></div>
-</div>
-</div>
+</section>
+<section id="For-Loops,-While-Loops,-If-Statements,-and-Logicals">
+<h2>For Loops, While Loops, If Statements, and Logicals<a class="headerlink" href="#For-Loops,-While-Loops,-If-Statements,-and-Logicals" title="Link to this heading">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1744,9 +2012,6 @@ array([15.1105, 15.1084, 15.0969, ..., 16.6199, 16.6152, 16.6175],
 </pre></div>
 </div>
 </div>
-</section>
-<section id="For-Loops,-While-Loops,-If-Statements,-and-Logicals">
-<h2>For Loops, While Loops, If Statements, and Logicals<a class="headerlink" href="#For-Loops,-While-Loops,-If-Statements,-and-Logicals" title="Link to this heading">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1766,111 +2031,6 @@ array([15.1105, 15.1084, 15.0969, ..., 16.6199, 16.6152, 16.6175],
 </section>
 <section id="Creating-Functions">
 <h2>Creating Functions<a class="headerlink" href="#Creating-Functions" title="Link to this heading">¶</a></h2>
-</section>
-<section id="Numpy">
-<h2>Numpy<a class="headerlink" href="#Numpy" title="Link to this heading">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Numpy arrays (declaring them: np.array(), np.linspace, range())</p></li>
-<li><p>Slicing arrays</p></li>
-<li><p>Common mathemtical operations with numpy</p></li>
-</ol>
-<section id="Numpy-Arrays">
-<h3><strong>Numpy Arrays</strong><a class="headerlink" href="#Numpy-Arrays" title="Link to this heading">¶</a></h3>
-</section>
-<section id="Slicing-arrays">
-<h3><strong>Slicing arrays</strong><a class="headerlink" href="#Slicing-arrays" title="Link to this heading">¶</a></h3>
-<p>Basics:</p>
-<ol class="arabic simple">
-<li><p>Array indices start at 0</p></li>
-<li><p><em>Array[x,y]</em> selects a single element from the 2D array where x = row and y = column</p></li>
-<li><p>General syntax for an array: <em>array[start:stop:step]</em></p></li>
-<li><p>Use <em>low:high</em> to specify a slice of the array along a dimension of the array including indices from <em>low</em> to <em>high-1</em></p></li>
-<li><p>All indexing and slicing that works on arrays also works on strings</p></li>
-</ol>
-</section>
-<section id="Numpy-Math">
-<h3><strong>Numpy Math</strong><a class="headerlink" href="#Numpy-Math" title="Link to this heading">¶</a></h3>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> <span class="c1">#library for working with arrays</span>
-
-<span class="c1"># Example numpy operations</span>
-</pre></div>
-</div>
-</div>
-</section>
-</section>
-<section id="Analyzing-Data">
-<h2>Analyzing Data<a class="headerlink" href="#Analyzing-Data" title="Link to this heading">¶</a></h2>
-<p>Show examples of using pandas and netcdf libraries</p>
-<p><strong>Working with lists</strong></p>
-<p>Basics:</p>
-<ol class="arabic simple">
-<li><p>Lists are mutable (can be manipulated such that elements can be swapped, deleted, etc.)</p></li>
-<li><p>Lists can contain multple types of variables</p></li>
-<li><p>Lists are indexed and sliced with square brackets (e.g., list[0] and list[2:9]), in the same way as strings and arrays.</p></li>
-</ol>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create an empty list</span>
-<span class="n">wsp</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1">#Create a populated list</span>
-<span class="n">wsp</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s1">&#39;air&#39;</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="p">[</span><span class="mf">6.9</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">4.9</span><span class="p">]]</span>
-<span class="c1">#Slicing List</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wsp</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wsp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<p><strong>List Comprehension</strong>: a powerful way of manipulating lists</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Example of list comprehension</span>
-<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p><strong>Calling data in .nc and .txt formats</strong></p>
-<p><strong>Basic steps for importing data into Jupyter notebooks</strong>:</p>
-<ol class="arabic">
-<li><p>Import libraries for calling netCDF or text files</p>
-<ol class="loweralpha simple">
-<li><p>netCDF files: from netCDF4 import Dataset, num2date</p></li>
-<li><p>Text files: import numpy as np</p></li>
-</ol>
-</li>
-<li><p>Set the path to the data located locally on your computer. There are ways to obtain data located remotely, however that is not covered here. Paths are usually strings.</p>
-<p>ex: filenames = ‘/zdata/downloads/colosi_data_bk/binned_data/ifremer_p1_daily_data/my_daily_binned_ifremer_data/ifremer_swh_daily_binned_data_93_16_bia.nc’</p>
-<p>If you need to import several files, use the glob library to compile a list of filenames that have a common filename structure or patter. Use wildcards (* or ?) in order to grab multiple files with the same beginning or endings. Use * in a pattern to match zero or more characters, and ? to match any single character.</p>
-<p>ex: filenames = sorted(glob.glob(‘/zdata/downloads/colosi_data_bk/binned_data/ccmpv2_wind_data/daily_binned_ccmp_v2_data/ccmp_v2_wsp_daily_binned_data_*_high_res.nc’))</p>
-<p>where the sorted function (built in function to python) returns a new list containing all items from the iterable in ascending order</p>
-</li>
-<li><p>From here, we take two separate paths for netCDF and text files</p>
-<ol class="loweralpha simple">
-<li><p>netCDF files:</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#set nc variable in order to read attributes and obtained data:</span>
-<span class="n">nc</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-
-<span class="c1">#print key variables:</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
-<span class="c1">#call data</span>
-<span class="n">swh</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;swh&#39;</span><span class="p">][:]</span>
-</pre></div>
-</div>
-<ol class="loweralpha simple" start="2">
-<li><p>Text files: <code class="docutils literal notranslate"><span class="pre">python</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">#Call</span> <span class="pre">data</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">chlorophyll</span> <span class="pre">=</span> <span class="pre">np.loadtxt(fname='/Users/lukecolosi/Downloads/chlorophyll-01.csv',</span> <span class="pre">delimiter=',')</span></code> For netCDF files and text files, both will leave you with variables linked to data arrays</p></li>
-</ol>
-</li>
-</ol>
 </section>
 </section>
 <section id="Errors-and-Exceptions-(Lets-change-this-to-be-tips-and-tricks-for-how-to-read-errors,-but-not-necessarily-worry-about-listing-types-of-errors)">
@@ -1899,7 +2059,7 @@ array([15.1105, 15.1084, 15.0969, ..., 16.6199, 16.6152, 16.6175],
 </ul>
 <section id="Acknowledgements">
 <h3>Acknowledgements<a class="headerlink" href="#Acknowledgements" title="Link to this heading">¶</a></h3>
-<p>Some of the material in this lesson is derived from the Software Carpentry Lessons for Python Programming and Plotting <a class="reference external" href="https://swcarpentry.github.io/python-novice-inflammation/reference/">https://swcarpentry.github.io/python-novice-inflammation/reference/</a></p>
+<p>Some of the material in this lesson is derived from the Software Carpentry Lessons for Python Programming and Plotting <a class="reference external" href="https://swcarpentry.github.io/python-novice-inflammation/reference/">https://swcarpentry.github.io/python-novice-inflammation/reference/</a> and HDSI at UC San Diego <a class="reference external" href="https://datascience.ucsd.edu/">https://datascience.ucsd.edu/</a></p>
 </section>
 </section>
 </section>
@@ -1998,13 +2158,6 @@ array([15.1105, 15.1084, 15.0969, ..., 16.6199, 16.6152, 16.6175],
 <li><a class="reference internal" href="#Importing-Packages">Importing Packages</a></li>
 <li><a class="reference internal" href="#For-Loops,-While-Loops,-If-Statements,-and-Logicals">For Loops, While Loops, If Statements, and Logicals</a></li>
 <li><a class="reference internal" href="#Creating-Functions">Creating Functions</a></li>
-<li><a class="reference internal" href="#Numpy">Numpy</a><ul>
-<li><a class="reference internal" href="#Numpy-Arrays"><strong>Numpy Arrays</strong></a></li>
-<li><a class="reference internal" href="#Slicing-arrays"><strong>Slicing arrays</strong></a></li>
-<li><a class="reference internal" href="#Numpy-Math"><strong>Numpy Math</strong></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#Analyzing-Data">Analyzing Data</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#Errors-and-Exceptions-(Lets-change-this-to-be-tips-and-tricks-for-how-to-read-errors,-but-not-necessarily-worry-about-listing-types-of-errors)">Errors and Exceptions (Lets change this to be tips and tricks for how to read errors, but not necessarily worry about listing types of errors)</a><ul>
