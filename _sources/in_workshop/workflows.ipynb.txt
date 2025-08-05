@@ -4,18 +4,83 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "# Workflows for Earth Science\n",
-        "\n",
-        "Example content."
+        "# Workflows for Earth Science"
       ]
     },
     {
-      "cell_type": "code",
-      "execution_count": null,
+      "cell_type": "markdown",
       "metadata": {},
-      "outputs": [],
       "source": [
-        "print('Hello from the notebook!')"
+        "**Workflows for Earth and Natural sciences**\n",
+        "- Collaborating with Git/GitHub (workflows and best practices)\n",
+        "- Open Source Software best practices\n",
+        "- Using your Python workflow on a remote server\n",
+        "- Popular AI Agents for software and their use cases "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Collaborating with Git"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Open Source Software Best Practices"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Thinking About Data Storage for Open Science"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "vscode": {
+          "languageId": "plaintext"
+        }
+      },
+      "source": [
+        "Cloud-optimized formats for Geospatial data include: Cloud-Optimized GeoTIFF (COG), GeoParquet, Zarr, FlatGeobuf, Cloud-Optimized Point Clouds (COPC), and more\n",
+        "\n",
+        "There are many possible ways to do data storage. If you are able to store your data so that data acquisition integrates with tools like Xarray and Dask, then\n",
+        "your platform will be all the more powerful and accessible. There is no one way to do this, and it is important to consider where your users will be doing their analysis, \n",
+        "how much data they will need at a time, and how they will query the main database to find what they want. \n",
+        "\n",
+        "If possible, using a cloud-optimized format is ideal. It will make access to and use of the data more efficient, in some cases by orders of magnitude."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "[Zarr](https://zarr.dev/) \n",
+        "\n",
+        "[What is Zarr?](https://earthmover.io/blog/what-is-zarr)\n",
+        "\n",
+        "[Zarr and Xarray](https://tutorial.xarray.dev/intermediate/intro-to-zarr.html) \n",
+        "\n",
+        "[Example project: CryoCloud](https://book.cryointhecloud.com/) "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Migrating Your Workflow to a Remote Server"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## AI Agents for Coding"
       ]
     }
   ],
