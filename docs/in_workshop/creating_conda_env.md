@@ -43,7 +43,7 @@ If you have an environment.yml file, you can use it to create a conda environmen
 
 The first line of the .yml file defines the name of the environment. 
 
-### Exporing your environment to a yml file
+### Exporting your environment to a yml file
 
 To export your currently active environment to a yaml file, use the following command:
 
