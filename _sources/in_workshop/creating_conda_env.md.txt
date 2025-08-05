@@ -4,12 +4,12 @@ We will use the [conda](https://docs.conda.io/projects/conda/en/latest/user-guid
 
 ### Conda commands
 
-`conda create --name <env_name>  # create a new conda environment named env_name`  
-`conda create --name <env_name> python=3.12 # create a new conda environment named env_name with a specific Python version`  
-`conda activate <env_name>  # activate env_name`  
-`conda install <package_name>  # install a package from your default channel, if you installed with miniforge this is the conda-forge channel`  
-`conda install -c conda-forge <package_name>  # install a package from the conda-forge channel`  
-`conda deactivate  # deactivate the current environment`  
+1) `conda create --name <env_name>  # create a new conda environment named env_name`  
+2) `conda create --name <env_name> python=3.12 # create a new conda environment named env_name with a specific Python version`  
+3) `conda activate <env_name>  # activate env_name`  
+4) `conda install <package_name>  # install a package from your default channel, if you installed with miniforge this is the conda-forge channel`  
+5) `conda install -c conda-forge <package_name>  # install a package from the conda-forge channel`  
+6) `conda deactivate  # deactivate the current environment`  
 
 ### Creating a new environment from scratch
 
