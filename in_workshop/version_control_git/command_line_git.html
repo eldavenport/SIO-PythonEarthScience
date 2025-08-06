@@ -641,8 +641,8 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <p>At this point you can move data files into your repo and git will not try to track them.</p>
 </section>
 </section>
-<section id="Exercises">
-<h2><strong>Exercises</strong><a class="headerlink" href="#Exercises" title="Link to this heading">¶</a></h2>
+<section id="Exercises-(20-min)">
+<h2><strong>Exercises</strong> (20 min)<a class="headerlink" href="#Exercises-(20-min)" title="Link to this heading">¶</a></h2>
 <section id="1">
 <h3>1<a class="headerlink" href="#1" title="Link to this heading">¶</a></h3>
 <p>A trust building experiment …</p>
@@ -668,33 +668,154 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <p>Add a python script to your repo (create one or copy an existing one here). Add and commit the script and push it to GitHub.</p>
 </section>
 </section>
-<section id="Best-Practices-For-Personal-Repos">
-<h2><strong>Best Practices For Personal Repos</strong><a class="headerlink" href="#Best-Practices-For-Personal-Repos" title="Link to this heading">¶</a></h2>
+<section id="Best-Practices-For-Git-Repos">
+<h2><strong>Best Practices For Git Repos</strong><a class="headerlink" href="#Best-Practices-For-Git-Repos" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Adding README.md</p></li>
-<li><p>commit messages, how to structure your work</p></li>
-<li><p>Licensing</p></li>
-<li><p>Add a note about how to reference</p></li>
-<li><p>Security (push/pull protections)</p></li>
-<li><p>Do not store large files, <a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage">Git Large File Storage</a></p></li>
+<li><p>Documentation: Every repo should have a README.md.</p></li>
+<li><p>Committing: Commit often, once for each new task you accomplish. If a single commit includes tons of changes, then you will struggle to understand them or undo them.</p></li>
+<li><p>Pushing: Push whenver you get the chance. Any code that isn’t pushed can still be lost.</p></li>
+<li><p>Licensing: When you are making code that you think other people might use, consider adding a license (GitHub has licenses you can choose from).</p></li>
+<li><p>References: In addition to licensing, code that supports research can have related DOI or Zenodo links</p></li>
+<li><p>Security: Use SSH whenever you can (not https), because it is a more secure protocol.</p></li>
+<li><p>Large Files: Do not store large files on git, always have a .gitignore. If you need to manage large files look here: <a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage">Git Large File Storage</a></p></li>
 </ul>
 </section>
-<section id="Advanced-Topics">
-<h2><strong>Advanced Topics</strong><a class="headerlink" href="#Advanced-Topics" title="Link to this heading">¶</a></h2>
-<ol class="arabic simple">
-<li><p>git checkout</p>
-<ol class="loweralpha simple">
-<li><p>checking out specific commits</p></li>
-<li><p>checkout out other branches</p></li>
-<li><p>creating and checking out tags</p></li>
-</ol>
-</li>
-<li><p>creating GitHub issues</p>
+<section id="``Checkout``-Different-Versions-of-Your-Code">
+<h2><strong>``Checkout`` Different Versions of Your Code</strong><a class="headerlink" href="#``Checkout``-Different-Versions-of-Your-Code" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> command allows you to load a different copy or version of your code (like at the library!). This could be an old commit, another branch, or a different version of a single file.</p>
+<p>As we noted earlier, every commit has a unique hash associated with them. If you would like to look at an older version of your code, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit-hash&gt;</span></code>. The commit hash can be obtained from <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>. This is why descriptive commit messages are important!</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">&lt;</span><span class="n">commit</span><span class="o">-</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Creating-a-New-Branch">
+<h2><strong>Creating a New Branch</strong><a class="headerlink" href="#Creating-a-New-Branch" title="Link to this heading">¶</a></h2>
+<p>A new branch can be created by adding the <code class="docutils literal notranslate"><span class="pre">-b</span></code> flat to the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> command and providing a branch name:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">new_feature_branch</span>
+</pre></div>
+</div>
+</div>
+<p>The above command will create <code class="docutils literal notranslate"><span class="pre">new_feature_branch</span></code> and move us onto that branch. To return to our main branch we can type:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+</pre></div>
+</div>
+</div>
+<p>We can view the list of branches and which one we are on with:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s checkout the new_feature_branch and add a file:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">new_feature_branch</span>
+<span class="n">touch</span> <span class="n">empty_file</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+</div>
+<p>We can see that we are on the new branch and that there is a new file. We can add and commit our file to save our changes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">empty_file</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;adding an empty file to our feature branch&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>If we use <code class="docutils literal notranslate"><span class="pre">ls</span></code> we can see that the file is in our folder. If we checkout the main branch, we will see the file disappear!</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+</div>
+<p>Switching back to the feature branch, the file reappears.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">new_feature_branch</span>
+</pre></div>
+</div>
+</div>
+<p>Now we want to push our changes to GitHub, so that our work on this branch is backed up. This branch only exists our our local computer, and not on GitHub, so we will need to tell GitHub where to link it. The standard is to tell GitHub to create a branch of the same name on the remote and to link it to the local copy. You will recognize this command from our first push on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. You will only have to do this once, afterward you will be able to simply enter <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">new_feature_branch</span>
+</pre></div>
+</div>
+</div>
+<section id="Branching-Exercise-(10-min)">
+<h3>Branching Exercise (10 min)<a class="headerlink" href="#Branching-Exercise-(10-min)" title="Link to this heading">¶</a></h3>
+<p>Go to your GitHub profile and then to your repository. Explore the available branches. Can you find a way to see the difference between the main branch and the new branch?</p>
+</section>
+</section>
+<section id="Merging-a-Branch-Back-into-Main">
+<h2><strong>Merging a Branch Back into Main</strong><a class="headerlink" href="#Merging-a-Branch-Back-into-Main" title="Link to this heading">¶</a></h2>
+<p>When we are done with the feature on our new branch, we will want to merge the code into <code class="docutils literal notranslate"><span class="pre">main</span></code> so that it becomes a part of our project long term and we no longer need to checkout the feature branch. We will do this with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checkout the branch you want to merge into</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge new_feature_branch into the current branch (main)</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">new_feature_branch</span>
+</pre></div>
+</div>
+</div>
+<p>If we inspect our folder with <code class="docutils literal notranslate"><span class="pre">ls</span></code> we will see our empty_file.txt is on the main branch!</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># push the updated main branch to the remote repository</span>
+<span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Creating-and-Checking-Out-Tags">
+<h2><strong>Creating and Checking Out Tags</strong><a class="headerlink" href="#Creating-and-Checking-Out-Tags" title="Link to this heading">¶</a></h2>
+</section>
+<section id="GitHub-Issues">
+<h2><strong>GitHub Issues</strong><a class="headerlink" href="#GitHub-Issues" title="Link to this heading">¶</a></h2>
 <ol class="loweralpha simple">
 <li><p>how to open an issue</p></li>
-<li><p>what should I put in my issue?</p></li>
-</ol>
-</li>
+<li><p>what should I put in my issue? (best practices)</p></li>
 </ol>
 </section>
 </section>
@@ -767,15 +888,22 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <li><a class="reference internal" href="#Adding-a-.gitignore"><strong>Adding a .gitignore</strong></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#Exercises"><strong>Exercises</strong></a><ul>
+<li><a class="reference internal" href="#Exercises-(20-min)"><strong>Exercises</strong> (20 min)</a><ul>
 <li><a class="reference internal" href="#1">1</a></li>
 <li><a class="reference internal" href="#2">2</a></li>
 <li><a class="reference internal" href="#3">3</a></li>
 <li><a class="reference internal" href="#4">4</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#Best-Practices-For-Personal-Repos"><strong>Best Practices For Personal Repos</strong></a></li>
-<li><a class="reference internal" href="#Advanced-Topics"><strong>Advanced Topics</strong></a></li>
+<li><a class="reference internal" href="#Best-Practices-For-Git-Repos"><strong>Best Practices For Git Repos</strong></a></li>
+<li><a class="reference internal" href="#``Checkout``-Different-Versions-of-Your-Code"><strong>``Checkout`` Different Versions of Your Code</strong></a></li>
+<li><a class="reference internal" href="#Creating-a-New-Branch"><strong>Creating a New Branch</strong></a><ul>
+<li><a class="reference internal" href="#Branching-Exercise-(10-min)">Branching Exercise (10 min)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Merging-a-Branch-Back-into-Main"><strong>Merging a Branch Back into Main</strong></a></li>
+<li><a class="reference internal" href="#Creating-and-Checking-Out-Tags"><strong>Creating and Checking Out Tags</strong></a></li>
+<li><a class="reference internal" href="#GitHub-Issues"><strong>GitHub Issues</strong></a></li>
 </ul>
 </li>
 </ul>
