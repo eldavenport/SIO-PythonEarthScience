@@ -471,7 +471,7 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <h4><strong>Forking a Repo</strong><a class="headerlink" href="#Forking-a-Repo" title="Link to this heading">¶</a></h4>
 <p>Forks are most useful when you want to adapt an existing project that you are not a part of for your own use.</p>
 <p>Example use case: You study Equatorial dynamics, and there is a software project on GitHub where some scientists have already implemented the Matsuno Shallow Water equations in Python. The problem is their assumed domain is too small for your research question. Instead of rewriting the model from scratch (waste of time) or downloading their code and then uploading it as your own new repo (plagiarism), you can create a fork!</p>
-<p>Forks allow you to make a new respository based on an existing one. The forked version is still linked to the original, meaning you can pull updates from the original at a later date (handy!). This gives credit to the original authors, allows you to benefit from updated code, and prevents you from reinventing the wheel.</p>
+<p>Forks allow you to make a new respository based on an existing one. The forked version is still linked to the original, meaning you can pull updates from the original at a later date (handy!). This gives credit to the original authors, allows you to benefit from updated code, and prevents you from reinventing the wheel. It also allows you to save and push your changes to GitHub without disturbing the original repo (phew!).</p>
 <p>It is also possible to push new code in a forked repository up to the original repo, although we won’t cover that here. This might be desired if you made changes that the original owners want to incorporate into the primary version of the project. In general, branching is preferred over forking for git collaboration.</p>
 <p>The easiest way to fork a repository is through GitHub.</p>
 </section>
@@ -494,7 +494,8 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <li><p>Agree upon style and formatting specifications</p></li>
 <li><p>Use tags to denote stable points between major feature developments</p></li>
 <li><p>Add Git Rules to your repo to enforce the desired workflow (e.g., protect branches, always squash)</p></li>
-<li><p>Favor branching over forking</p></li>
+<li><p>Favor branching over forking for development.</p></li>
+<li><p>If you want to make changes to a repository on which you aren’t a collaborator, fork it first so that you can save your changes.</p></li>
 </ul>
 </section>
 <section id="Open-Source-Software-Best-Practices">
@@ -608,7 +609,7 @@ new code that you may interact with, and how they can also waste your time or le
 <p><a class="reference external" href="https://doctorow.medium.com/https-pluralistic-net-2025-08-04-bad-vibe-coding-maximally-codelike-bugs-8372979b3933">Are AI bugs worse than normal bugs?</a></p>
 <p>These models are just statistical tools. They cannot genuinely reason, and they hallucinate all of the time (i.e., they generate false information without indicating that their response is not reliable). In some cases the tool will even double down on its hallucination unless prompted in the right way.</p>
 <p>For example, a few weeks ago I asked ChatGPT to generate an Apple Keynote file for me, not thinking about the fact that Keynote is a proprietary format (therefore it cannot do this). It generated several garbage files before I asked whether it was actually capable of completing the task. It responded by telling me that it definitely could and would do it by “handling it outside of ChatGPT”. The rest of our conversation is below:</p>
-<p><img alt="cf6484c3af044e85bcf3b68aa174ba4f" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
+<p><img alt="990d42272a1546ec9e10d697a4da91d0" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
 </section>
 </section>
 
