@@ -9,6 +9,7 @@
         <title>Workflows for Earth Science - SIO Python for Earth Science</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
@@ -291,6 +292,196 @@
 </ul>
 <section id="Collaborating-with-Git">
 <h2>Collaborating with Git<a class="headerlink" href="#Collaborating-with-Git" title="Link to this heading">¶</a></h2>
+<p>First we will talk about the <em>technical</em> aspects of collaboration with Git including common workflows, updating your branch when the main branch has changed, resolving conflicts and making pull requests. Then we will move to more <em>conceptual</em> aspects of collaboration with Git such as managing your work in ways that facilitate fewer conflicts, opening issues, and reviewing other people’s code. These tools and workflows would apply equally to private or public repos. Finally we will move on to a
+more general section about Open Source Software.</p>
+<section id="Team-Workflows">
+<h3><strong>Team Workflows</strong><a class="headerlink" href="#Team-Workflows" title="Link to this heading">¶</a></h3>
+<p>The most important thing about team workflows is to have one! All collaborators should be aware of the expected workflow. You can even use <code class="docutils literal notranslate"><span class="pre">Rules</span></code> in your repositories to enforce the desired workflow (discussed below).</p>
+<p>The most common and straightforward team flow is the <strong>Centralized Workflow</strong> (also referred to as the <em>Trunk-Based</em> workflow):</p>
+<ol class="arabic simple">
+<li><p>Everyone works in one repository. This repository can be owned by a teammember or by an organization.</p></li>
+<li><p>There will be one primary, stable version of the code that exists on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch (the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch is sometimes called the <em>trunk</em>).</p></li>
+<li><p>In order to make changes to the code, collaborators will:</p>
+<ul class="simple">
+<li><p>Create a new branch off of <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
+<li><p>Develop and test their changes on the branch</p></li>
+<li><p>Open a Pull Request to merge their changes into <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
+</ul>
+</li>
+<li><p>Feature branches exist for the time it takes to complete the task, and eventually are merged back into <code class="docutils literal notranslate"><span class="pre">main</span></code>. This is in contrast to other (less popular) workflows where multiple primary branches exist and features that are not in <code class="docutils literal notranslate"><span class="pre">main</span></code> may be maintained indefinitely.</p></li>
+<li><p>In this workflow you do not develop directly to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. This keeps the primary branch stable and usable even while new code is under development and testing. It is often possible to merge your feature branch directly into main, without a Pull Request, but this is generally frowned upon in a collaborative setting.</p></li>
+</ol>
+</section>
+<section id="Merging-Updates-into-Your-Branch">
+<h3><strong>Merging Updates into Your Branch</strong><a class="headerlink" href="#Merging-Updates-into-Your-Branch" title="Link to this heading">¶</a></h3>
+<p>Reminder of how to create a new branch off of main:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>  <span class="c1"># checkout the main branch</span>
+<span class="n">git</span> <span class="n">pull</span>  <span class="c1"># make sure you are up to date with the latest</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">feature</span><span class="o">-</span><span class="n">branch</span><span class="o">-</span><span class="mi">1</span> <span class="c1"># create a new branch for your feature, use a descriptive name</span>
+</pre></div>
+</div>
+</div>
+<p>After you add some code, you will want to commit it and push your new branch to the remote:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">&lt;</span><span class="n">relevant</span><span class="o">-</span><span class="n">changes</span><span class="o">&gt;</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;&lt;commit-message&gt;&quot;</span>
+
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">feature</span><span class="o">-</span><span class="n">branch</span><span class="o">-</span><span class="mi">1</span>  <span class="c1"># push the new branch and the changes to the remote repository</span>
+</pre></div>
+</div>
+</div>
+<p>You keep working on your branch, let’s say for a week or so, and in the meantime one of your collaborators completes their work and merges it into main. How can you check if there are updates to <code class="docutils literal notranslate"><span class="pre">main</span></code>?</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span>  <span class="c1"># this will download information about the remote branches, without downloading the new code</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>  <span class="c1"># switch back to the main branch</span>
+<span class="n">git</span> <span class="n">status</span> <span class="c1"># check the status of your local repository, this will tell you if you are behind the remote (i.e., if you need to do a git pull)</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s say there are new updates on the main branch. How can you update your feature branch so that your work is applied to the latest version of the main branch? The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> command will pull changes from another branch into your yours.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span> <span class="c1"># if you aren&#39;t on main, you should go there</span>
+<span class="n">git</span> <span class="n">pull</span>  <span class="c1"># download the latest updates</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">feature</span><span class="o">-</span><span class="n">branch</span><span class="o">-</span><span class="mi">1</span>  <span class="c1"># switch back to your feature branch</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">main</span>  <span class="c1"># merge the latest changes from main into your feature branch</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Resolving-Conflicts">
+<h3><strong>Resolving Conflicts</strong><a class="headerlink" href="#Resolving-Conflicts" title="Link to this heading">¶</a></h3>
+<p>Merging can create <em>conflicts</em> when the same line of code has been changed on two different branches. The output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> will notify you of the conflict (and the file it is in) and will not complete the merge until you reconcile the issue. You have 3 options:</p>
+<ol class="arabic simple">
+<li><p>Accept the <em>incoming</em> changes (in the example above this would be to take the code from the main branch)</p></li>
+<li><p>Accept the <em>local</em> or <em>current</em> changes (in the example above this would be to take the code from the feature branch)</p></li>
+<li><p>Accept a combination of both (in this case you will edit the file directly to tell Git what the reconciled version should look like)</p></li>
+</ol>
+<p>Let’s say we want to overwrite whatever came in on main with our feature branch code. One way to do this is to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">--</span><span class="n">ours</span> <span class="o">&lt;</span><span class="n">file</span> <span class="n">name</span><span class="o">&gt;</span>  <span class="c1"># resolve conflicts by keeping your version of the file</span>
+</pre></div>
+</div>
+</div>
+<p>Or maybe we didn’t mean to touch that file, and we want to accept whatever is on the main branch:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">--</span><span class="n">theirs</span> <span class="o">&lt;</span><span class="n">file</span> <span class="n">name</span><span class="o">&gt;</span>  <span class="c1"># resolve conflicts by keeping the version from the main branch</span>
+</pre></div>
+</div>
+</div>
+<p>If you aren’t sure and need to inspect the code, you can do so in any text editor. VSCode has a conflict resolution tool that comes with the Git extension, this will allow you to see the two versions of the file side-by-side and make your decision. If you simply open the file, you will see the conflicting lines of code denoted by &gt;&gt;&gt;&gt;. For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+fig, ax = plt.subplots(figsize=(10,5))
+=======
+fig, axes = plt.subplots(figsize(15, 8), nrows=2)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main
+</pre></div>
+</div>
+<p>HEAD always refers to the code you have checked out on your local computer. So in this case the incoming change is from main and the current change is from HEAD (our feature branch). You will add/delete whatever lines you would like in order to reconcile the differences in the code. Then you will save the file.</p>
+<p>When the conflict resolution is complete you will commit the changes. If you are in the middle of a merge, then you do not need to type -m to add another message. The auto-generated commit message will already say that you are merging main into feature_branch_1:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="c1"># finish the merge by committing the changes.</span>
+<span class="n">git</span> <span class="n">push</span> <span class="c1"># push the resolved changes to the remote repository</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="Git-Exercise-1:-Adding-collaborators-to-a-repository-and-creating-feature-branches">
+<h2>Git Exercise 1: Adding collaborators to a repository and creating feature branches<a class="headerlink" href="#Git-Exercise-1:-Adding-collaborators-to-a-repository-and-creating-feature-branches" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Get into groups of 3 or 4</p></li>
+<li><p><em>One</em> person should make a new repository, change the default branch name to main, and add a README (we did this on Wednesday).</p></li>
+<li><p>Add collaborators (only the owner needs to do this, but all group members can figure this out together)</p>
+<ul class="simple">
+<li><p>Go into the repository settings and then to the Collaborators tab.</p></li>
+<li><p>Add the other members of your group to the repository using their GitHub user name.</p></li>
+</ul>
+</li>
+<li><p>Collaborators should receive invites to join the repo (you will get an email, but you can also see them from your GitHub account).</p></li>
+<li><p>Each collaborator should clone the repo, make their own feature branch.</p></li>
+<li><p>Add something to your feature branch (maybe a code file or a new text file). The new file shouldn’t be empty.</p></li>
+<li><p>Push your feature branch to the remote (follow the steps above).</p></li>
+</ol>
+<section id="Opening-Pull-Requests">
+<h3><strong>Opening Pull Requests</strong><a class="headerlink" href="#Opening-Pull-Requests" title="Link to this heading">¶</a></h3>
+<p>The appropriate way to get code from your feature branch into main is through a Pull Request. This gives a clear visualization of the changes and provides an opportunity for someone else on the team to give feedback. The easiest way to open a Pull Request is on GitHub.</p>
+<p>Insert steps to open PR here</p>
+</section>
+</section>
+<section id="Git-Exercise-2:-Opening-Pull-Requests-and-Assigning-Reviewers">
+<h2>Git Exercise 2: Opening Pull Requests and Assigning Reviewers<a class="headerlink" href="#Git-Exercise-2:-Opening-Pull-Requests-and-Assigning-Reviewers" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Each collaborator should open a Pull Request for their feature branch</p></li>
+<li><p>Explore the PR’s! What kind of information do they show?</p></li>
+<li><p>Let’s look at the PR that is listed first. Whoever opened this PR should add a reviewer (on the right). Pick anyone on your team.</p></li>
+</ol>
+<section id="Reviewing-Code">
+<h3><strong>Reviewing Code</strong><a class="headerlink" href="#Reviewing-Code" title="Link to this heading">¶</a></h3>
+<p>In general, any code that goes into main should be reviewed by at least one person. Every team should decide how many reviewers a PR needs. Typically, the more complex the changes, the more reviewers you should have. You can assign reviewers to the PR and they will get notified of the request.</p>
+<p>Reviewers should look at the changed files. As you scroll through you have the option to add comments. When you add a comment you can either select ‘xxx’ or ‘start a review’. The difference is whether you want to make a single comment or if you would like to collect you comments along with an overall summary in a Review. If you have more than one thing to say, the second option is preferred.</p>
+<p>Insert some steps to review code here</p>
+<p><strong>NOTE</strong> Squashing is almost always the preferred way to merge into main. This keeps the history of the main branch clean and easy to read. Feature branches may end up with hundreds of commits.</p>
+<p><strong>NOTE</strong> Unless you plan to come continue development on the feature that is being merged into main, you should delete the branch after the PR is closed.</p>
+</section>
+</section>
+<section id="Git-Exercise-3:-Reviewing-Code,-Merging-into-Main,-Updating-Feature-Branches,-Resolving-Conflicts">
+<h2>Git Exercise 3: Reviewing Code, Merging into Main, Updating Feature Branches, Resolving Conflicts<a class="headerlink" href="#Git-Exercise-3:-Reviewing-Code,-Merging-into-Main,-Updating-Feature-Branches,-Resolving-Conflicts" title="Link to this heading">¶</a></h2>
+<p>Let’s go through the whole process. With your team:</p>
+<ol class="arabic simple">
+<li><p>The assigned reviewer should review and merge the first PR</p></li>
+<li><p>Look at one of the other PRs… can it be merged?</p></li>
+<li><p>Update your feature branches and repeat the PR -&gt; merge process until all PR’s are closed</p></li>
+<li><p>At least two people should open new feature branches … and this time they should make changes to the same file!</p></li>
+<li><p>Merge someones branch into main, try to update the other branch, work to resolve the conflicts.</p>
+<ul class="simple">
+<li><p>We suggest looking at both the raw text file (see the way git denotes the conflicting lines) and trying to use the VSCode conflict resolution tool</p></li>
+<li><p>If you have the Git extension installed and open the conflicting file in VSCode, it will automatically suggest the conflict resolution tool.</p></li>
+</ul>
+</li>
+</ol>
+<section id="Facilitating-Easier-Merges-(Fewer-Conflicts)">
+<h3><strong>Facilitating Easier Merges (Fewer Conflicts)</strong><a class="headerlink" href="#Facilitating-Easier-Merges-(Fewer-Conflicts)" title="Link to this heading">¶</a></h3>
+<p>Lots of small commits, using an agreed upon format specification (or a linter), think about the feature development list and prioritize</p>
+</section>
+<section id="Opening-Issues">
+<h3><strong>Opening Issues</strong><a class="headerlink" href="#Opening-Issues" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="Collaborative-Git-Best-Practices">
+<h2>Collaborative Git Best Practices<a class="headerlink" href="#Collaborative-Git-Best-Practices" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Commit often with descriptive commit messages (don’t say things like “bugfix”, “changes”, “commit”)</p></li>
+<li><p>Update your branch on main often</p></li>
+<li><p>Use branches to complete new features</p></li>
+<li><p>Use Pull Requests to merge features into main</p></li>
+<li><p>Squash merges are always preferred</p></li>
+<li><p>Use Git issues to track your work (past, current, and future)</p></li>
+<li><p>Add tests where possible to verify the status of your main branch</p></li>
+<li><p>Agree upon style and formatting specifications</p></li>
+<li><p>Use tags to denote stable points between major feature developments</p></li>
+</ul>
 </section>
 <section id="Open-Source-Software-Best-Practices">
 <h2>Open Source Software Best Practices<a class="headerlink" href="#Open-Source-Software-Best-Practices" title="Link to this heading">¶</a></h2>
@@ -314,8 +505,6 @@
 <li><p>Jupyter Notebooks with SSH Tunneling</p></li>
 <li><p>Python scripts run in a detached terminal with <code class="docutils literal notranslate"><span class="pre">screen</span></code> or <code class="docutils literal notranslate"><span class="pre">tmux</span></code></p></li>
 </ol>
-<section id="VSCode-and-Remote-SSH">
-<h3>VSCode and Remote-SSH<a class="headerlink" href="#VSCode-and-Remote-SSH" title="Link to this heading">¶</a></h3>
 <p>The VSCode Extension <strong>Remote-SSH</strong> allows you to SSH into a server through the code-editor. You will then be able to navigate your files on the server, load conda environments, and save files with the exact same interface you use on your laptop.</p>
 <ol class="arabic simple">
 <li><p>Install the Remote-SSH extension in VSCode</p></li>
@@ -326,9 +515,6 @@
 <li><p>Enter your password</p></li>
 </ol>
 <p>This will log you into your server and will open a new VSCode window (which will be in the filesystem on the server). The first time you do this, you may have to wait a few minutes after logging in while VSCode installs the necessary tools on the server side. After you have done this the first time, you will be able to select the host name from the list of known hosts (instead of adding a new one) and input your password. You will no longer need to type out ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;ip_address">username<span>&#64;</span>ip_address</a>.</p>
-</section>
-<section id="Jupyter-Notebooks-with-SSH-Tunneling">
-<h3>Jupyter Notebooks with SSH Tunneling<a class="headerlink" href="#Jupyter-Notebooks-with-SSH-Tunneling" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Log into your server (ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;your-server-address">username<span>&#64;</span>your-server-address</a>)</p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span> <span class="pre">--no-browser</span></code> in the folder you want to work from</p></li>
@@ -347,9 +533,6 @@
 </li>
 <li><p>Copy and paste the URL from the jupyter lab output into your web browser (<code class="docutils literal notranslate"><span class="pre">http://localhost:8888/lab?token=some-long-token</span></code>)</p></li>
 </ol>
-</section>
-<section id="Running-Python-Scripts-in-a-Detached-Terminal">
-<h3>Running Python Scripts in a Detached Terminal<a class="headerlink" href="#Running-Python-Scripts-in-a-Detached-Terminal" title="Link to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">tmux</span></code> command allows you to open terminals in which you can start a program that won’t die even when the terminal is closed. This is useful for running on a server because a normal terminal will kill whatever process is running if you close the window, close your computer, or lose your internet connection. That is not a practical way to work if we need to run programs that take a long time.</p>
 <p><code class="docutils literal notranslate"><span class="pre">screen</span></code> is an alternative to <code class="docutils literal notranslate"><span class="pre">tmux</span></code>, although it is somewhat outdated.</p>
 <p>This workflow would look something like:</p>
@@ -361,9 +544,6 @@
 <li><p>Run your Python program. Alternatively you could have a bash script that runs a whole list of Python programs.</p></li>
 </ol>
 <p>At this point you can close the terminal and your programs will continue to run on the server.</p>
-</section>
-<section id="Using-Git-to-Move-and-Track-your-Work">
-<h3>Using Git to Move and Track your Work<a class="headerlink" href="#Using-Git-to-Move-and-Track-your-Work" title="Link to this heading">¶</a></h3>
 <p>Git repositories provide an easy way to move work between locations (and to make sure you don’t lose anything because you are switching between platforms). To use Git on a server:</p>
 <ol class="arabic simple">
 <li><p>Log into the server</p></li>
@@ -377,7 +557,6 @@
 computer. This negates the need to use <code class="docutils literal notranslate"><span class="pre">scp</span></code> or <code class="docutils literal notranslate"><span class="pre">rsync</span></code> to continually move around copies of your figures and prevents confusion about which code generated which version of the figures.</p></li>
 <li><p>Tracking an existing project: Log onto your server. Navigate into a directory where you have code for your project. Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> to make the project into a repository (make sure to have a .gitignore file!). Push the repo to your GitHub. Proceed with your work on the server. Add and commit (and push) any changes before you log out. Return to your local computer, use the link on GitHub to clone your repository. Now you can see the work you were doing on the server!</p></li>
 </ol>
-</section>
 </section>
 <section id="Bash-Scripting">
 <h2>Bash Scripting<a class="headerlink" href="#Bash-Scripting" title="Link to this heading">¶</a></h2>
@@ -401,11 +580,6 @@ new code that you may interact with, and how they can also waste your time or le
 <li><p>OpenAI’s GPT models (GPT-3.5, GPT-4, GPT4-Turbo)</p></li>
 </ul>
 <p>All of these tools also have tiered access with subscription plans, and in general their usage is capped, even for subscribers.</p>
-<section id="What-is-the-context-window?">
-<h3>What is the context window?<a class="headerlink" href="#What-is-the-context-window?" title="Link to this heading">¶</a></h3>
-</section>
-<section id="What-are-these-models-trained-on?">
-<h3>What are these models trained on?<a class="headerlink" href="#What-are-these-models-trained-on?" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>GitHub public repositories</p></li>
 <li><p>Stack Overflow</p></li>
@@ -414,17 +588,13 @@ new code that you may interact with, and how they can also waste your time or le
 <li><p>Natural language + code mix (e.g., docstrings, commit messages)</p></li>
 <li><p>Some (like Claude and GPT-4) are multi-modal and can reason about code in text, files, and diagrams.</p></li>
 </ul>
-</section>
-<section id="What-are-the-implications-of-AI-in-software?-Are-these-tools-making-our-research-better?">
-<h3>What are the implications of AI in software? Are these tools making our research better?<a class="headerlink" href="#What-are-the-implications-of-AI-in-software?-Are-these-tools-making-our-research-better?" title="Link to this heading">¶</a></h3>
 <p>The links below are intended to provoke discussion, and provide a bit of caution. They do not reflect the opinions of anyone in the software workshop. It is worth thinking about when and where to use AI in your workflow, such that you make your work better not worse.</p>
 <p><a class="reference external" href="https://venturebeat.com/ai/ai-can-fix-bugs-but-cant-find-them-openais-study-highlights-limits-of-llms-in-software-engineering/">Does AI Understand Bugs?</a></p>
 <p><a class="reference external" href="https://arxiv.org/abs/2507.09089">Are developers getting less efficient?</a></p>
 <p><a class="reference external" href="https://doctorow.medium.com/https-pluralistic-net-2025-08-04-bad-vibe-coding-maximally-codelike-bugs-8372979b3933">Are AI bugs worse than normal bugs?</a></p>
 <p>These models are just statistical tools. They cannot genuinely reason, and they hallucinate all of the time (i.e., they generate false information without indicating that their response is not reliable). In some cases the tool will even double down on its hallucination unless prompted in the right way.</p>
 <p>For example, a few weeks ago I asked ChatGPT to generate an Apple Keynote file for me, not thinking about the fact that Keynote is a proprietary format (therefore it cannot do this). It generated several garbage files before I asked whether it was actually capable of completing the task. It responded by telling me that it definitely could and would do it by “handling it outside of ChatGPT”. The rest of our conversation is below:</p>
-<p><img alt="cb4e09fecea448c29977fc5bbbc21861" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
-</section>
+<p><img alt="32dc9275f6614fd4a38ec40a9094d074" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
 </section>
 </section>
 
@@ -484,23 +654,31 @@ new code that you may interact with, and how they can also waste your time or le
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Workflows for Earth Science</a><ul>
-<li><a class="reference internal" href="#Collaborating-with-Git">Collaborating with Git</a></li>
+<li><a class="reference internal" href="#Collaborating-with-Git">Collaborating with Git</a><ul>
+<li><a class="reference internal" href="#Team-Workflows"><strong>Team Workflows</strong></a></li>
+<li><a class="reference internal" href="#Merging-Updates-into-Your-Branch"><strong>Merging Updates into Your Branch</strong></a></li>
+<li><a class="reference internal" href="#Resolving-Conflicts"><strong>Resolving Conflicts</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Git-Exercise-1:-Adding-collaborators-to-a-repository-and-creating-feature-branches">Git Exercise 1: Adding collaborators to a repository and creating feature branches</a><ul>
+<li><a class="reference internal" href="#Opening-Pull-Requests"><strong>Opening Pull Requests</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Git-Exercise-2:-Opening-Pull-Requests-and-Assigning-Reviewers">Git Exercise 2: Opening Pull Requests and Assigning Reviewers</a><ul>
+<li><a class="reference internal" href="#Reviewing-Code"><strong>Reviewing Code</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Git-Exercise-3:-Reviewing-Code,-Merging-into-Main,-Updating-Feature-Branches,-Resolving-Conflicts">Git Exercise 3: Reviewing Code, Merging into Main, Updating Feature Branches, Resolving Conflicts</a><ul>
+<li><a class="reference internal" href="#Facilitating-Easier-Merges-(Fewer-Conflicts)"><strong>Facilitating Easier Merges (Fewer Conflicts)</strong></a></li>
+<li><a class="reference internal" href="#Opening-Issues"><strong>Opening Issues</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Collaborative-Git-Best-Practices">Collaborative Git Best Practices</a></li>
 <li><a class="reference internal" href="#Open-Source-Software-Best-Practices">Open Source Software Best Practices</a></li>
 <li><a class="reference internal" href="#Thinking-About-Data-Storage-for-Open-Science">Thinking About Data Storage for Open Science</a></li>
-<li><a class="reference internal" href="#Migrating-Your-Workflow-to-a-Remote-Server">Migrating Your Workflow to a Remote Server</a><ul>
-<li><a class="reference internal" href="#VSCode-and-Remote-SSH">VSCode and Remote-SSH</a></li>
-<li><a class="reference internal" href="#Jupyter-Notebooks-with-SSH-Tunneling">Jupyter Notebooks with SSH Tunneling</a></li>
-<li><a class="reference internal" href="#Running-Python-Scripts-in-a-Detached-Terminal">Running Python Scripts in a Detached Terminal</a></li>
-<li><a class="reference internal" href="#Using-Git-to-Move-and-Track-your-Work">Using Git to Move and Track your Work</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#Migrating-Your-Workflow-to-a-Remote-Server">Migrating Your Workflow to a Remote Server</a></li>
 <li><a class="reference internal" href="#Bash-Scripting">Bash Scripting</a></li>
-<li><a class="reference internal" href="#AI-Agents-and-Tools-for-Coding">AI Agents and Tools for Coding</a><ul>
-<li><a class="reference internal" href="#What-is-the-context-window?">What is the context window?</a></li>
-<li><a class="reference internal" href="#What-are-these-models-trained-on?">What are these models trained on?</a></li>
-<li><a class="reference internal" href="#What-are-the-implications-of-AI-in-software?-Are-these-tools-making-our-research-better?">What are the implications of AI in software? Are these tools making our research better?</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#AI-Agents-and-Tools-for-Coding">AI Agents and Tools for Coding</a></li>
 </ul>
 </li>
 </ul>
