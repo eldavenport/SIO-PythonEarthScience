@@ -170,8 +170,78 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "## AI Agents for Coding"
+        "## AI Agents and Tools for Coding"
       ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The world of AI tools for coding is evolving rapidly... and everything we talk about in this lesson will likely be out of date soon. This discussion is intended to provide a bit of guidance that will likely remain relevant, even as the agents themselves evolve. We will not discuss an exhaustive list of agents, and instead we will touch on a few that are popular right now (August 2025). Our goal is to shed a bit of light on how AI could augment your workflow, how they are being used to generate new code that you may interact with, and how they can also waste your time or lead you down rabbit holes.\n",
+        "\n",
+        "The AI tools we will discuss today are:\n",
+        "- ChatGPT (AI chat bot)\n",
+        "- GitHub Co-Pilot (AI assistant in your IDE)\n",
+        "- Cursor (AI-native IDE)\n",
+        "- Claude Code (AI command line tool)\n",
+        "\n",
+        "The differences between these tools include the size and scope of their _context_ window in addition to their level of autonomy, interactivity, and control. The more *agentic* a tool is, the more it is able to reason, debug, execute code, and generate new content on its own.\n",
+        "\n",
+        "The above tools are primariliy based on these Large-language models (LLMs), all of which are proprietary:\n",
+        "- Anthropic's Claude models (Claude Opus, Claude Sonnet, and Claude Haiku)\n",
+        "- OpenAI's GPT models (GPT-3.5, GPT-4, GPT4-Turbo)\n",
+        "\n",
+        "All of these tools also have tiered access with subscription plans, and in general their usage is capped, even for subscribers."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### What is the context window?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### What are these models trained on?\n",
+        "\n",
+        "- GitHub public repositories\n",
+        "- Stack Overflow\n",
+        "- Technical documentation\n",
+        "- Programming textbooks and tutorials\n",
+        "- Natural language + code mix (e.g., docstrings, commit messages)\n",
+        "- Some (like Claude and GPT-4) are multi-modal and can reason about code in text, files, and diagrams."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### What about the implications of AI in software?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "plaintext"
+        }
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": []
     }
   ],
   "metadata": {
