@@ -11,6 +11,5 @@ Resources for **continued learning** after the workshop.
    unix_cheat_sheet
    git_cheat_sheet
    git
-   workflows
    ncview
    convert_csv_to_nc
