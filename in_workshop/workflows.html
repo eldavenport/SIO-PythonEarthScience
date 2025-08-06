@@ -364,6 +364,26 @@
 </ol>
 <p>At this point you can close the terminal and your programs will continue to run on the server.</p>
 </section>
+<section id="Using-Git-to-Move-and-Track-your-Work">
+<h3>Using Git to Move and Track your Work<a class="headerlink" href="#Using-Git-to-Move-and-Track-your-Work" title="Link to this heading">¶</a></h3>
+<p>Git repositories provide an easy way to move work between locations (and to make sure you don’t lose anything because you are switching between platforms). To use Git on a server:</p>
+<ol class="arabic simple">
+<li><p>Log into the server</p></li>
+<li><p>Generate a new SSH key pair (the key pair should end up in your home directory on the server at ~/.ssh/)</p></li>
+<li><p>Add the <em>public</em> key to your GitHub profile through Settings -&gt; SSH and GPG Keys -&gt; Add SSH key</p></li>
+</ol>
+<p>Once you have done the above, you can use your Git account to track the work you do on the server. Your research project repo can be downloaded on both the server and on your local computer. When you make changes in one place, you can add, commit, and push them. When you return to the other location you can do a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> to see the updated work.</p>
+<p>An example workflow:</p>
+<ol class="arabic simple">
+<li><p>Starting a project from scratch: Create a repo on your local computer or in your GitHub account. Clone that repo to the server. Do your work in the repo. Before you log out, add and commit the changes. Return to your local computer and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> to see the updated project without being logged into the computer. This is a great way to keep figures up to date. You will generate new figures, commit and push both the figures and the code that generated them, and then pull them to your local
+computer. This negates the need to use <code class="docutils literal notranslate"><span class="pre">scp</span></code> or <code class="docutils literal notranslate"><span class="pre">rsync</span></code> to continually move around copies of your figures and prevents confusion about which code generated which version of the figures.</p></li>
+<li><p>Tracking an existing project: Log onto your server. Navigate into a directory where you have code for your project. Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> to make the project into a repository (make sure to have a .gitignore file!). Push the repo to your GitHub. Proceed with your work on the server. Add and commit (and push) any changes before you log out. Return to your local computer, use the link on GitHub to clone your repository. Now you can see the work you were doing on the server!</p></li>
+</ol>
+</section>
+</section>
+<section id="Bash-Scripting">
+<h2>Bash Scripting<a class="headerlink" href="#Bash-Scripting" title="Link to this heading">¶</a></h2>
+<p>We should insert a couple quick examples (what to put in a bash script). But we don’t need to get fancy. How to execuate any one specific task is a good ChatGPT question.</p>
 </section>
 <section id="AI-Agents-and-Tools-for-Coding">
 <h2>AI Agents and Tools for Coding<a class="headerlink" href="#AI-Agents-and-Tools-for-Coding" title="Link to this heading">¶</a></h2>
@@ -403,9 +423,9 @@ new code that you may interact with, and how they can also waste your time or le
 <p><a class="reference external" href="https://venturebeat.com/ai/ai-can-fix-bugs-but-cant-find-them-openais-study-highlights-limits-of-llms-in-software-engineering/">Does AI Understand Bugs?</a></p>
 <p><a class="reference external" href="https://arxiv.org/abs/2507.09089">Are developers getting less efficient?</a></p>
 <p><a class="reference external" href="https://doctorow.medium.com/https-pluralistic-net-2025-08-04-bad-vibe-coding-maximally-codelike-bugs-8372979b3933">Are AI bugs worse than normal bugs?</a></p>
-<p>These models are just statistical tools. They cannot genuinely reason, and they hallucinate all of the time (i.e., they generate false information without indicating that their response is not real). In some cases the tools will even double down on their hallucinations, unless they are prompted in the right way.</p>
+<p>These models are just statistical tools. They cannot genuinely reason, and they hallucinate all of the time (i.e., they generate false information without indicating that their response is not reliable). In some cases the tool will even double down on its hallucination unless prompted in the right way.</p>
 <p>For example, a few weeks ago I asked ChatGPT to generate an Apple Keynote file for me, not thinking about the fact that Keynote is a proprietary format (therefore it cannot do this). It generated several garbage files before I asked whether it was actually capable of completing the task. It responded by telling me that it definitely could and would do it by “handling it outside of ChatGPT”. The rest of our conversation is below:</p>
-<p><img alt="048eb698ecc34c18b8ede0ff9e42cbf1" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
+<p><img alt="40565d78b1aa48f58f29b50a76109530" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
 </section>
 </section>
 </section>
@@ -473,8 +493,10 @@ new code that you may interact with, and how they can also waste your time or le
 <li><a class="reference internal" href="#VSCode-and-Remote-SSH">VSCode and Remote-SSH</a></li>
 <li><a class="reference internal" href="#Jupyter-Notebooks-with-SSH-Tunneling">Jupyter Notebooks with SSH Tunneling</a></li>
 <li><a class="reference internal" href="#Running-Python-Scripts-in-a-Detached-Terminal">Running Python Scripts in a Detached Terminal</a></li>
+<li><a class="reference internal" href="#Using-Git-to-Move-and-Track-your-Work">Using Git to Move and Track your Work</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#Bash-Scripting">Bash Scripting</a></li>
 <li><a class="reference internal" href="#AI-Agents-and-Tools-for-Coding">AI Agents and Tools for Coding</a><ul>
 <li><a class="reference internal" href="#What-is-the-context-window?">What is the context window?</a></li>
 <li><a class="reference internal" href="#What-are-these-models-trained-on?">What are these models trained on?</a></li>
