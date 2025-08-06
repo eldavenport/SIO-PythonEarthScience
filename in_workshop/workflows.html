@@ -311,6 +311,60 @@
 </section>
 <section id="Migrating-Your-Workflow-to-a-Remote-Server">
 <h2>Migrating Your Workflow to a Remote Server<a class="headerlink" href="#Migrating-Your-Workflow-to-a-Remote-Server" title="Link to this heading">¶</a></h2>
+<p>We will discuss to popular ways to use Python and Conda on a server:</p>
+<ol class="arabic simple">
+<li><p>VSCode Remote-SSH</p></li>
+<li><p>Jupyter Notebooks with SSH Tunneling</p></li>
+<li><p>Python scripts run in a detached terminal with <code class="docutils literal notranslate"><span class="pre">screen</span></code> or <code class="docutils literal notranslate"><span class="pre">tmux</span></code></p></li>
+</ol>
+<section id="VSCode-and-Remote-SSH">
+<h3>VSCode and Remote-SSH<a class="headerlink" href="#VSCode-and-Remote-SSH" title="Link to this heading">¶</a></h3>
+<p>The VSCode Extension <strong>Remote-SSH</strong> allows you to SSH into a server through the code-editor. You will then be able to navigate your files on the server, load conda environments, and save files with the exact same interface you use on your laptop.</p>
+<ol class="arabic simple">
+<li><p>Install the Remote-SSH extension in VSCode</p></li>
+<li><p>Open the control panel (cmd + shift + p)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">Remote-SSH</span></code> and select <code class="docutils literal notranslate"><span class="pre">Remote-SSH:</span> <span class="pre">Connect</span> <span class="pre">to</span> <span class="pre">Host...</span></code></p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">New</span> <span class="pre">SSH</span> <span class="pre">Host</span></code></p></li>
+<li><p>Enter the credentials for your server</p></li>
+<li><p>Enter your password</p></li>
+</ol>
+<p>This will log you into your server and will open a new VSCode window (which will be in the filesystem on the server). The first time you do this, you may have to wait a few minutes after logging in while VSCode installs the necessary tools on the server side. After you have done this the first time, you will be able to select the host name from the list of known hosts (instead of adding a new one) and input your password. You will no longer need to type out ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;ip_address">username<span>&#64;</span>ip_address</a>.</p>
+</section>
+<section id="Jupyter-Notebooks-with-SSH-Tunneling">
+<h3>Jupyter Notebooks with SSH Tunneling<a class="headerlink" href="#Jupyter-Notebooks-with-SSH-Tunneling" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Log into your server (ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;your-server-address">username<span>&#64;</span>your-server-address</a>)</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span> <span class="pre">--no-browser</span></code> in the folder you want to work from</p></li>
+<li><p>jupyter lab will start, and the output in the terminal will include a line that looks like <code class="docutils literal notranslate"><span class="pre">Or</span> <span class="pre">copy</span> <span class="pre">and</span> <span class="pre">paste</span> <span class="pre">one</span> <span class="pre">of</span> <span class="pre">these</span> <span class="pre">URLs:</span> <span class="pre">http://localhost:8888/lab?token=some-long-token</span></code></p>
+<ol class="loweralpha simple">
+<li><p>The port number (in this case 8888) is the port on the server that the jupyter lab information is piped to</p></li>
+<li><p>We need to link a port on the laptop to the port on the server and then we can open the webpage like we are used to</p></li>
+</ol>
+</li>
+<li><p>open a new terminal and run <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">8888:localhost:8888</span> <span class="pre">username&#64;your-server-address</span></code></p>
+<ol class="loweralpha simple">
+<li><p>This links port localhost port 8888 on our laptop to localhost port 8888 on the server. These numbers don’t have to be the same.</p></li>
+<li><p>If port 8888 on our laptop is taken, we can try another number. <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">8890:localhost:8888</span> <span class="pre">username&#64;your-server-address</span></code>. The server port needs to match the number in the jupyter lab output.</p></li>
+<li><p>Enter your password</p></li>
+</ol>
+</li>
+<li><p>Copy and paste the URL from the jupyter lab output into your web browser (<code class="docutils literal notranslate"><span class="pre">http://localhost:8888/lab?token=some-long-token</span></code>)</p></li>
+</ol>
+</section>
+<section id="Running-Python-Scripts-in-a-Detached-Terminal">
+<h3>Running Python Scripts in a Detached Terminal<a class="headerlink" href="#Running-Python-Scripts-in-a-Detached-Terminal" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">tmux</span></code> command allows you to open terminals in which you can start a program that won’t die even when the terminal is closed. This is useful for running on a server because a normal terminal will kill whatever process is running if you close the window, close your computer, or lose your internet connection. That is not a practical way to work if we need to run programs that take a long time.</p>
+<p><code class="docutils literal notranslate"><span class="pre">screen</span></code> is an alternative to <code class="docutils literal notranslate"><span class="pre">tmux</span></code>, although it is somewhat outdated.</p>
+<p>This workflow would look something like:</p>
+<ol class="arabic simple">
+<li><p>Develop your Python script on a small set of data. This could be done in a Jupyter notebook or python script on the server or on your laptop.</p></li>
+<li><p>Organize the analysis you need to do into a script or set of scripts.</p></li>
+<li><p>Open a terminal with the appropriate <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code> command (see instructions below).</p></li>
+<li><p>Activate your conda environment.</p></li>
+<li><p>Run your Python program. Alternatively you could have a bash script that runs a whole list of Python programs.</p></li>
+</ol>
+<p>At this point you can close the terminal and your programs will continue to run on the server.</p>
+</section>
 </section>
 <section id="AI-Agents-for-Coding">
 <h2>AI Agents for Coding<a class="headerlink" href="#AI-Agents-for-Coding" title="Link to this heading">¶</a></h2>
@@ -376,7 +430,12 @@
 <li><a class="reference internal" href="#Collaborating-with-Git">Collaborating with Git</a></li>
 <li><a class="reference internal" href="#Open-Source-Software-Best-Practices">Open Source Software Best Practices</a></li>
 <li><a class="reference internal" href="#Thinking-About-Data-Storage-for-Open-Science">Thinking About Data Storage for Open Science</a></li>
-<li><a class="reference internal" href="#Migrating-Your-Workflow-to-a-Remote-Server">Migrating Your Workflow to a Remote Server</a></li>
+<li><a class="reference internal" href="#Migrating-Your-Workflow-to-a-Remote-Server">Migrating Your Workflow to a Remote Server</a><ul>
+<li><a class="reference internal" href="#VSCode-and-Remote-SSH">VSCode and Remote-SSH</a></li>
+<li><a class="reference internal" href="#Jupyter-Notebooks-with-SSH-Tunneling">Jupyter Notebooks with SSH Tunneling</a></li>
+<li><a class="reference internal" href="#Running-Python-Scripts-in-a-Detached-Terminal">Running Python Scripts in a Detached Terminal</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#AI-Agents-for-Coding">AI Agents for Coding</a></li>
 </ul>
 </li>
