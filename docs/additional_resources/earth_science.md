@@ -1,11 +1,9 @@
 # Python Resources for Earth and Natural Sciences
 
 ### Python Programming
-
 [Learning Data Science](https://learningds.org/intro.html) 
 [Numerical Methods in Python](https://pythonnumericalmethods.studentorg.berkeley.edu/notebooks/Index.html)   
 [Numerical Methods and Analysis in Python](https://lemesurierb.people.charleston.edu/introduction-to-numerical-methods-and-analysis-python/introduction.html)    
-
 
 ### Notebooks/Cookbook Examples for Models and Observations
 [Pangeo.io](https://pangeo.io/)  
@@ -22,3 +20,4 @@
 [Earth and Environmental Science Jupyter Book](https://earth-env-data-science.github.io/intro.html)   
 [Computational Tools in Climate Science](https://comptools.climatematch.io/tutorials/intro.html)   
 [Geospatial Temporal Data Analysis](https://dsu.pages.geomar.de/training/geo-spatio-temporal-data-analysis/)  
+[Python Climate Visuals](https://xiaoganghe.github.io/python-climate-visuals/intro.html)  
