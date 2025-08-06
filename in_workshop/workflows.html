@@ -467,6 +467,9 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 </section>
 <section id="Opening-Issues">
 <h3><strong>Opening Issues</strong><a class="headerlink" href="#Opening-Issues" title="Link to this heading">¶</a></h3>
+<section id="Forking-a-Repo">
+<h4><strong>Forking a Repo</strong><a class="headerlink" href="#Forking-a-Repo" title="Link to this heading">¶</a></h4>
+</section>
 </section>
 </section>
 <section id="Collaborative-Git-Best-Practices">
@@ -481,6 +484,8 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <li><p>Add tests where possible to verify the status of your main branch</p></li>
 <li><p>Agree upon style and formatting specifications</p></li>
 <li><p>Use tags to denote stable points between major feature developments</p></li>
+<li><p>Add Git Rules to your repo to enforce the desired workflow (e.g., protect branches, always squash)</p></li>
+<li><p>Favor branching over forking</p></li>
 </ul>
 </section>
 <section id="Open-Source-Software-Best-Practices">
@@ -594,7 +599,7 @@ new code that you may interact with, and how they can also waste your time or le
 <p><a class="reference external" href="https://doctorow.medium.com/https-pluralistic-net-2025-08-04-bad-vibe-coding-maximally-codelike-bugs-8372979b3933">Are AI bugs worse than normal bugs?</a></p>
 <p>These models are just statistical tools. They cannot genuinely reason, and they hallucinate all of the time (i.e., they generate false information without indicating that their response is not reliable). In some cases the tool will even double down on its hallucination unless prompted in the right way.</p>
 <p>For example, a few weeks ago I asked ChatGPT to generate an Apple Keynote file for me, not thinking about the fact that Keynote is a proprietary format (therefore it cannot do this). It generated several garbage files before I asked whether it was actually capable of completing the task. It responded by telling me that it definitely could and would do it by “handling it outside of ChatGPT”. The rest of our conversation is below:</p>
-<p><img alt="32dc9275f6614fd4a38ec40a9094d074" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
+<p><img alt="38123a60e8f54a9ca9cb81685a47fdde" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
 </section>
 </section>
 
@@ -670,7 +675,10 @@ new code that you may interact with, and how they can also waste your time or le
 </li>
 <li><a class="reference internal" href="#Git-Exercise-3:-Reviewing-Code,-Merging-into-Main,-Updating-Feature-Branches,-Resolving-Conflicts">Git Exercise 3: Reviewing Code, Merging into Main, Updating Feature Branches, Resolving Conflicts</a><ul>
 <li><a class="reference internal" href="#Facilitating-Easier-Merges-(Fewer-Conflicts)"><strong>Facilitating Easier Merges (Fewer Conflicts)</strong></a></li>
-<li><a class="reference internal" href="#Opening-Issues"><strong>Opening Issues</strong></a></li>
+<li><a class="reference internal" href="#Opening-Issues"><strong>Opening Issues</strong></a><ul>
+<li><a class="reference internal" href="#Forking-a-Repo"><strong>Forking a Repo</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#Collaborative-Git-Best-Practices">Collaborative Git Best Practices</a></li>
