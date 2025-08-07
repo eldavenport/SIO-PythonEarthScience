@@ -63,6 +63,6 @@ There are other formats for sharing, not just YAML. That being said, YAML is cro
 
 We will add the following packages to those installed above:
 
-```scipy xarray xgcm xeofs geopandas cartopy cmocean```
+```scipy xarray pooch xgcm xeofs geopandas cartopy cmocean```
 
 You can do this manually with `conda install` or you can use the environment.yml file distributed at the workshop.
