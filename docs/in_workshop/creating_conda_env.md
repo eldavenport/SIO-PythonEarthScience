@@ -58,3 +58,11 @@ If we wanted to share our sio_software environment we would use:
 ```conda export --name sio_software --file=environment.yaml``` 
 
 There are other formats for sharing, not just YAML. That being said, YAML is cross-platform and is almost always preferred.
+
+### For the Python for Earth Sciences Class 
+
+We will add the following packages to those installed above:
+
+```scipy xarray xgcm xeofs geopandas cartopy cmocean```
+
+You can do this manually with `conda install` or you can use the environment.yml file distributed at the workshop.
