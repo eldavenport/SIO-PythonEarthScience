@@ -522,6 +522,8 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <li><p>Jupyter Notebooks with SSH Tunneling</p></li>
 <li><p>Python scripts run in a detached terminal with <code class="docutils literal notranslate"><span class="pre">screen</span></code> or <code class="docutils literal notranslate"><span class="pre">tmux</span></code></p></li>
 </ol>
+<section id="VSCode-and-Remote-SSH">
+<h3><strong>VSCode and Remote-SSH</strong><a class="headerlink" href="#VSCode-and-Remote-SSH" title="Link to this heading">¶</a></h3>
 <p>The VSCode Extension <strong>Remote-SSH</strong> allows you to SSH into a server through the code-editor. You will then be able to navigate your files on the server, load conda environments, and save files with the exact same interface you use on your laptop.</p>
 <ol class="arabic simple">
 <li><p>Install the Remote-SSH extension in VSCode</p></li>
@@ -532,6 +534,9 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <li><p>Enter your password</p></li>
 </ol>
 <p>This will log you into your server and will open a new VSCode window (which will be in the filesystem on the server). The first time you do this, you may have to wait a few minutes after logging in while VSCode installs the necessary tools on the server side. After you have done this the first time, you will be able to select the host name from the list of known hosts (instead of adding a new one) and input your password. You will no longer need to type out ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;ip_address">username<span>&#64;</span>ip_address</a>.</p>
+</section>
+<section id="Jupyter-Notebooks-with-SSH-Tunneling">
+<h3><strong>Jupyter Notebooks with SSH Tunneling</strong><a class="headerlink" href="#Jupyter-Notebooks-with-SSH-Tunneling" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Log into your server (ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;your-server-address">username<span>&#64;</span>your-server-address</a>)</p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span> <span class="pre">--no-browser</span></code> in the folder you want to work from</p></li>
@@ -550,6 +555,9 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 </li>
 <li><p>Copy and paste the URL from the jupyter lab output into your web browser (<code class="docutils literal notranslate"><span class="pre">http://localhost:8888/lab?token=some-long-token</span></code>)</p></li>
 </ol>
+</section>
+<section id="Running-Python-Scripts-in-a-Detached-Terminal">
+<h3><strong>Running Python Scripts in a Detached Terminal</strong><a class="headerlink" href="#Running-Python-Scripts-in-a-Detached-Terminal" title="Link to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">tmux</span></code> command allows you to open terminals in which you can start a program that won’t die even when the terminal is closed. This is useful for running on a server because a normal terminal will kill whatever process is running if you close the window, close your computer, or lose your internet connection. That is not a practical way to work if we need to run programs that take a long time.</p>
 <p><code class="docutils literal notranslate"><span class="pre">screen</span></code> is an alternative to <code class="docutils literal notranslate"><span class="pre">tmux</span></code>, although it is somewhat outdated.</p>
 <p>This workflow would look something like:</p>
@@ -561,6 +569,9 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <li><p>Run your Python program. Alternatively you could have a bash script that runs a whole list of Python programs.</p></li>
 </ol>
 <p>At this point you can close the terminal and your programs will continue to run on the server.</p>
+</section>
+<section id="Using-Git-to-Move-and-Track-your-Work">
+<h3><strong>Using Git to Move and Track your Work</strong><a class="headerlink" href="#Using-Git-to-Move-and-Track-your-Work" title="Link to this heading">¶</a></h3>
 <p>Git repositories provide an easy way to move work between locations (and to make sure you don’t lose anything because you are switching between platforms). To use Git on a server:</p>
 <ol class="arabic simple">
 <li><p>Log into the server</p></li>
@@ -574,6 +585,7 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 computer. This negates the need to use <code class="docutils literal notranslate"><span class="pre">scp</span></code> or <code class="docutils literal notranslate"><span class="pre">rsync</span></code> to continually move around copies of your figures and prevents confusion about which code generated which version of the figures.</p></li>
 <li><p>Tracking an existing project: Log onto your server. Navigate into a directory where you have code for your project. Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> to make the project into a repository (make sure to have a .gitignore file!). Push the repo to your GitHub. Proceed with your work on the server. Add and commit (and push) any changes before you log out. Return to your local computer, use the link on GitHub to clone your repository. Now you can see the work you were doing on the server!</p></li>
 </ol>
+</section>
 </section>
 <section id="Bash-Scripting">
 <h2>Bash Scripting<a class="headerlink" href="#Bash-Scripting" title="Link to this heading">¶</a></h2>
@@ -597,6 +609,11 @@ new code that you may interact with, and how they can also waste your time or le
 <li><p>OpenAI’s GPT models (GPT-3.5, GPT-4, GPT4-Turbo)</p></li>
 </ul>
 <p>All of these tools also have tiered access with subscription plans, and in general their usage is capped, even for subscribers.</p>
+<section id="What-is-the-context-window?">
+<h3><strong>What is the context window?</strong><a class="headerlink" href="#What-is-the-context-window?" title="Link to this heading">¶</a></h3>
+</section>
+<section id="What-are-these-models-trained-on?">
+<h3><strong>What are these models trained on?</strong><a class="headerlink" href="#What-are-these-models-trained-on?" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>GitHub public repositories</p></li>
 <li><p>Stack Overflow</p></li>
@@ -605,6 +622,9 @@ new code that you may interact with, and how they can also waste your time or le
 <li><p>Natural language + code mix (e.g., docstrings, commit messages)</p></li>
 <li><p>Some (like Claude and GPT-4) are multi-modal and can reason about code in text, files, and diagrams.</p></li>
 </ul>
+</section>
+<section id="Tips">
+<h3><strong>Tips</strong><a class="headerlink" href="#Tips" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Ask specific questions or for specific tasks (these tools can put 2 and 2 together, but they may not do it the way you want them to.)</p></li>
 <li><p>Provide plenty of context. The rule of thumb is to describe your situation first, as if you were talking to a coworker. Follow this up with the problem/question that you have.</p></li>
@@ -619,14 +639,18 @@ new code that you may interact with, and how they can also waste your time or le
 <li><p>The best tasks for AI are the ones where you know what needs to be done <em>and you know how to check for correctness</em> but you haven’t had the time to figure out the exact implementation. At the point where the tool is deciding what is <em>correct</em> and what is <em>done</em> you will end up with some useless code on your hands.</p></li>
 </ul>
 <p>If you are too vague with your questions or ask these tools to do too much at once, they will go off in some pretty wild/unproductive directions. You may end up spending more time double checking what it did than you would have if you had done the work yourself.</p>
+</section>
+<section id="Are-these-tools-making-our-research-better?">
+<h3><strong>Are these tools making our research better?</strong><a class="headerlink" href="#Are-these-tools-making-our-research-better?" title="Link to this heading">¶</a></h3>
 <p>The links below are intended to provoke discussion, and provide a bit of caution. They do not reflect the opinions of anyone in the software workshop. It is worth thinking about when and where to use AI in your workflow, such that you make your work better not worse.</p>
 <p><a class="reference external" href="https://venturebeat.com/ai/ai-can-fix-bugs-but-cant-find-them-openais-study-highlights-limits-of-llms-in-software-engineering/">Does AI Understand Bugs?</a></p>
 <p><a class="reference external" href="https://arxiv.org/abs/2507.09089">Are developers getting less efficient?</a></p>
 <p><a class="reference external" href="https://doctorow.medium.com/https-pluralistic-net-2025-08-04-bad-vibe-coding-maximally-codelike-bugs-8372979b3933">Are AI bugs worse than normal bugs?</a></p>
 <p>These models are just statistical tools. They cannot genuinely reason, and they hallucinate all of the time (i.e., they generate false information without indicating that their response is not reliable). In some cases the tool will even double down on its hallucination unless prompted in the right way.</p>
 <p>For example, a few weeks ago I asked ChatGPT to generate an Apple Keynote file for me, not thinking about the fact that Keynote is a proprietary format (therefore it cannot do this). It generated several garbage files before I asked whether it was actually capable of completing the task. It responded by telling me that it definitely could and would do it by “handling it outside of ChatGPT”. The rest of our conversation is below:</p>
-<p><img alt="aeac7982281647a484eda204d315367a" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
+<p><img alt="23939661a1b847f3995f5725c3d85c84" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
 <p>In this case ChatGPT admitted after trying several times, that it actually cannot make a Keynote file. Wouldn’t it make more sense to tell me this in the first place? No, I am just prompting a statistical model. It doesn’t think about what ‘makes sense’. When I asked for clarification, the tool did put together that it cannot make a Keynote file. However, it then proceeded to tell me that it is a real human…</p>
+</section>
 </section>
 </section>
 
@@ -710,9 +734,21 @@ new code that you may interact with, and how they can also waste your time or le
 <li><a class="reference internal" href="#Collaborative-Git-Best-Practices">Collaborative Git Best Practices</a></li>
 <li><a class="reference internal" href="#Open-Source-Software-Best-Practices">Open Source Software Best Practices</a></li>
 <li><a class="reference internal" href="#Thinking-About-Data-Storage-for-Open-Science">Thinking About Data Storage for Open Science</a></li>
-<li><a class="reference internal" href="#Migrating-Your-Workflow-to-a-Remote-Server">Migrating Your Workflow to a Remote Server</a></li>
+<li><a class="reference internal" href="#Migrating-Your-Workflow-to-a-Remote-Server">Migrating Your Workflow to a Remote Server</a><ul>
+<li><a class="reference internal" href="#VSCode-and-Remote-SSH"><strong>VSCode and Remote-SSH</strong></a></li>
+<li><a class="reference internal" href="#Jupyter-Notebooks-with-SSH-Tunneling"><strong>Jupyter Notebooks with SSH Tunneling</strong></a></li>
+<li><a class="reference internal" href="#Running-Python-Scripts-in-a-Detached-Terminal"><strong>Running Python Scripts in a Detached Terminal</strong></a></li>
+<li><a class="reference internal" href="#Using-Git-to-Move-and-Track-your-Work"><strong>Using Git to Move and Track your Work</strong></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#Bash-Scripting">Bash Scripting</a></li>
-<li><a class="reference internal" href="#AI-Agents-and-Tools-for-Coding">AI Agents and Tools for Coding</a></li>
+<li><a class="reference internal" href="#AI-Agents-and-Tools-for-Coding">AI Agents and Tools for Coding</a><ul>
+<li><a class="reference internal" href="#What-is-the-context-window?"><strong>What is the context window?</strong></a></li>
+<li><a class="reference internal" href="#What-are-these-models-trained-on?"><strong>What are these models trained on?</strong></a></li>
+<li><a class="reference internal" href="#Tips"><strong>Tips</strong></a></li>
+<li><a class="reference internal" href="#Are-these-tools-making-our-research-better?"><strong>Are these tools making our research better?</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
