@@ -443,7 +443,7 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <p>Reviewers should look at the changed files. As you scroll through you have the option to add comments. When you add a comment you can either select ‘Add single comment’ or ‘Start a review’. The difference is whether you want to make a single note or if you would like to collect your comments along with an overall summary in a Review. If you have more than one thing to say, the second option is preferred.</p>
 <p>Reviews are a way to have a dialog about the changes to the code, prior to merging them into main. Once the comments are all resolved or addressed, the PR can be merged. Convention says that the person who reviewed the code pushes the merge button (i.e. you don’t merge your own code).</p>
 <p><strong>NOTE</strong> Squashing is almost always the preferred way to merge into main. This keeps the history of the main branch clean and easy to read. Feature branches may end up with hundreds of commits.</p>
-<p><strong>NOTE</strong> Unless you plan to come continue development on the feature that is being merged into main, you should delete the branch after the PR is closed.</p>
+<p><strong>NOTE</strong> Unless you plan to continue development on the feature that is being merged into main, you should delete the branch after the PR is closed.</p>
 </section>
 </section>
 <section id="Git-Exercise-3:-Reviewing-Code,-Merging-into-Main,-Updating-Feature-Branches,-Resolving-Conflicts">
@@ -467,18 +467,20 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 </section>
 <section id="Opening-Issues">
 <h3><strong>Opening Issues</strong><a class="headerlink" href="#Opening-Issues" title="Link to this heading">¶</a></h3>
+<p>The most obvious use for Git issues is to report a bug. This could be on your own project for a code base that you use (like xgcm). A bug report should contain:</p>
+<p>Along with filing bug reports, you should use Git issues to track your work. This is the best place to consolidate information about why, how, and what you are working on. There are tons of nice GitHub features that can be used to write informative issues.</p>
+</section>
 <section id="Forking-a-Repo">
-<h4><strong>Forking a Repo</strong><a class="headerlink" href="#Forking-a-Repo" title="Link to this heading">¶</a></h4>
-<p>Forks are most useful when you want to adapt an existing project that you are not a part of for your own use.</p>
+<h3><strong>Forking a Repo</strong><a class="headerlink" href="#Forking-a-Repo" title="Link to this heading">¶</a></h3>
+<p>Forks are most useful when you want to adapt an existing project that you are not a collaborator on for your own use.</p>
 <p>Example use case: You study Equatorial dynamics, and there is a software project on GitHub where some scientists have already implemented the Matsuno Shallow Water equations in Python. The problem is their assumed domain is too small for your research question. Instead of rewriting the model from scratch (waste of time) or downloading their code and then uploading it as your own new repo (plagiarism), you can create a fork!</p>
 <p>Forks allow you to make a new respository based on an existing one. The forked version is still linked to the original, meaning you can pull updates from the original at a later date (handy!). This gives credit to the original authors, allows you to benefit from updated code, and prevents you from reinventing the wheel. It also allows you to save and push your changes to GitHub without disturbing the original repo (phew!).</p>
 <p>It is also possible to push new code in a forked repository up to the original repo, although we won’t cover that here. This might be desired if you made changes that the original owners want to incorporate into the primary version of the project. In general, branching is preferred over forking for git collaboration.</p>
 <p>The easiest way to fork a repository is through GitHub.</p>
 </section>
-</section>
-<section id="Mini-exercise">
-<h3><em>Mini exercise</em><a class="headerlink" href="#Mini-exercise" title="Link to this heading">¶</a></h3>
-<p>Start by navigating to a repo that you like! Pick anything. It could be a Python package that you use or a project that your friend has started.</p>
+<section id="Optional-Mini-Exercise:-Git-Fork">
+<h3><em>Optional Mini Exercise: Git Fork</em><a class="headerlink" href="#Optional-Mini-Exercise:-Git-Fork" title="Link to this heading">¶</a></h3>
+<p>Start by navigating to a repo that you like! Pick anything. It could be a Python package that you use or a project that your friend has started. Use the GitHub interface to create a fork of this repo. After following the prompts (you typically will want to fork the main branch of the original repo), you should see a copy of the repository show up on you GitHub profile. You will see a link that indicates where the repo was forked from.</p>
 </section>
 </section>
 <section id="Collaborative-Git-Best-Practices">
@@ -603,13 +605,27 @@ new code that you may interact with, and how they can also waste your time or le
 <li><p>Natural language + code mix (e.g., docstrings, commit messages)</p></li>
 <li><p>Some (like Claude and GPT-4) are multi-modal and can reason about code in text, files, and diagrams.</p></li>
 </ul>
+<ul class="simple">
+<li><p>Ask specific questions or for specific tasks (these tools can put 2 and 2 together, but they may not do it the way you want them to.)</p></li>
+<li><p>Provide plenty of context. The rule of thumb is to describe your situation first, as if you were talking to a coworker. Follow this up with the problem/question that you have.</p></li>
+<li><p>Ask for references or clarification! Point out if something doesn’t seem right, you can force the tool to check/regenerate it’s answer with more attention to detail.</p></li>
+<li><p>When using an AI tool to generate code, provide clear tasks and ask for it to check in with you along the way.</p></li>
+<li><p>AI is really good at gathering information from all corners of the internet. Use it to learn about topics you are unfamiliar with. Do not use it to answer questions for which you would want to know exact assumptions that have been made or if you care about the details being correct.</p>
+<ul>
+<li><p>Example: ChatGPT is good at generating outlines. It is not (currently) good at actually providing technical writing that is correct.</p></li>
+</ul>
+</li>
+<li><p>Identify tasks for which AI will actually be better than you. Do not ask it to do something that is niche, that you already know how to do. It will make mistakes and bad assumptions.</p></li>
+<li><p>The best tasks for AI are the ones where you know what needs to be done <em>and you know how to check for correctness</em> but you haven’t had the time to figure out the exact implementation. At the point where the tool is deciding what is <em>correct</em> and what is <em>done</em> you will end up with some useless code on your hands.</p></li>
+</ul>
+<p>If you are too vague with your questions or ask these tools to do too much at once, they will go off in some pretty wild/unproductive directions. You may end up spending more time double checking what it did than you would have if you had done the work yourself.</p>
 <p>The links below are intended to provoke discussion, and provide a bit of caution. They do not reflect the opinions of anyone in the software workshop. It is worth thinking about when and where to use AI in your workflow, such that you make your work better not worse.</p>
 <p><a class="reference external" href="https://venturebeat.com/ai/ai-can-fix-bugs-but-cant-find-them-openais-study-highlights-limits-of-llms-in-software-engineering/">Does AI Understand Bugs?</a></p>
 <p><a class="reference external" href="https://arxiv.org/abs/2507.09089">Are developers getting less efficient?</a></p>
 <p><a class="reference external" href="https://doctorow.medium.com/https-pluralistic-net-2025-08-04-bad-vibe-coding-maximally-codelike-bugs-8372979b3933">Are AI bugs worse than normal bugs?</a></p>
 <p>These models are just statistical tools. They cannot genuinely reason, and they hallucinate all of the time (i.e., they generate false information without indicating that their response is not reliable). In some cases the tool will even double down on its hallucination unless prompted in the right way.</p>
 <p>For example, a few weeks ago I asked ChatGPT to generate an Apple Keynote file for me, not thinking about the fact that Keynote is a proprietary format (therefore it cannot do this). It generated several garbage files before I asked whether it was actually capable of completing the task. It responded by telling me that it definitely could and would do it by “handling it outside of ChatGPT”. The rest of our conversation is below:</p>
-<p><img alt="6f0b9c55b529418f8ca6aedae0bc8622" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
+<p><img alt="1f5aed7f739c48e6a93807c417f6fc46" class="no-scaled-link" src="../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
 </section>
 </section>
 
@@ -685,11 +701,9 @@ new code that you may interact with, and how they can also waste your time or le
 </li>
 <li><a class="reference internal" href="#Git-Exercise-3:-Reviewing-Code,-Merging-into-Main,-Updating-Feature-Branches,-Resolving-Conflicts">Git Exercise 3: Reviewing Code, Merging into Main, Updating Feature Branches, Resolving Conflicts</a><ul>
 <li><a class="reference internal" href="#Facilitating-Easier-Merges-(Fewer-Conflicts)"><strong>Facilitating Easier Merges (Fewer Conflicts)</strong></a></li>
-<li><a class="reference internal" href="#Opening-Issues"><strong>Opening Issues</strong></a><ul>
+<li><a class="reference internal" href="#Opening-Issues"><strong>Opening Issues</strong></a></li>
 <li><a class="reference internal" href="#Forking-a-Repo"><strong>Forking a Repo</strong></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#Mini-exercise"><em>Mini exercise</em></a></li>
+<li><a class="reference internal" href="#Optional-Mini-Exercise:-Git-Fork"><em>Optional Mini Exercise: Git Fork</em></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#Collaborative-Git-Best-Practices">Collaborative Git Best Practices</a></li>
