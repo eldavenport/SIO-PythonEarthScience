@@ -315,7 +315,7 @@
 <li><p>Bourne Shell</p></li>
 </ul>
 <p>The CLI is powerful as you can customize the interface as well as run various programs either locally or on remote servers through <strong>S</strong>ecure <strong>SH</strong>ell (SSH). The below image is a typical example of a terminal</p>
-<p><img alt="efc0b47838a84b34b0c8054145ea838b" class="no-scaled-link" src="../../_images/shell_terminal.jpg" style="width: 500px;" /></p>
+<p><img alt="7bb2d046aea14a1aa90d8787f7fdc39a" class="no-scaled-link" src="../../_images/shell_terminal.jpg" style="width: 500px;" /></p>
 <p>In our examples we have created an account called <strong>sio</strong> on a computer named <strong>localhost</strong>. The $ is the prompt and users can begin entering commands after the prompt. The features of the terminal can be customized through your bash profile. As mentioned previously, we will be using the Bash shell for our examples. To determine which shell you are using you can run the following command.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sio@localhost $ echo $0
 </pre></div>
@@ -337,7 +337,7 @@
 <section id="2)-Navigating-through-Files-and-Directories">
 <h3>2) Navigating through Files and Directories<a class="headerlink" href="#2)-Navigating-through-Files-and-Directories" title="Link to this heading">¶</a></h3>
 <p>Every Unix based OS has a hierarchical structure to organize files and folders. This is known as the <strong>file system</strong>. The root directory is the Top-level folder and is represted by a foward slash, <code class="docutils literal notranslate"><span class="pre">/</span></code>. Every subfolder is known as the <strong>child</strong> or <strong>subdirectory</strong> of the <strong>parent</strong> folder.</p>
-<p><img alt="5e4dde9b46574943880608db2f219afb" class="no-scaled-link" src="../../_images/directory_structure.jpg" style="width: 1000px;" /></p>
+<p><img alt="fee1a0156a45456785f6ad3c78bc9d49" class="no-scaled-link" src="../../_images/directory_structure.jpg" style="width: 1000px;" /></p>
 <p>When starting the CLI your folder will be located in <code class="docutils literal notranslate"><span class="pre">/Users/username</span></code>. For the examples used in this tutorial it will be <code class="docutils literal notranslate"><span class="pre">/Users/sio</span></code>. This is referred to as the __home directory. You can see which directory you are currently in by type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (Print Working Direcotry).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -432,12 +432,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">Documents/shell-lesson-data</span></code></p>
 <p>Besides listing what objects there are in a directory the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command, in addition to providing options, can also list information on if the item is a file or folder, the size of the object as well as when the object was last modified</p>
 <p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lsG</span></code></p>
-<p><img alt="ed6d81405ebe45339b66e99f1592e483" class="no-scaled-link" src="../../_images/ls_meaning.jpg" style="width: 1000px;" /></p>
+<p><img alt="74940302210549369ab3202d48ce3a60" class="no-scaled-link" src="../../_images/ls_meaning.jpg" style="width: 1000px;" /></p>
 <p>There will be times, especially on a remote server, where you cannot copy or remove files in a specific directory. This is because of user or group permissions</p>
-<p><img alt="ed0c9d8089b043e78c299a66d6b19f39" class="no-scaled-link" src="../../_images/ls_meaning_2.jpg" style="width: 1000px;" /></p>
+<p><img alt="73f5617383d14400896204030d8916a8" class="no-scaled-link" src="../../_images/ls_meaning_2.jpg" style="width: 1000px;" /></p>
 <p>When using <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the <code class="docutils literal notranslate"><span class="pre">-l</span></code> option you will see the permission structure for the Owner, Group and Other. In the below screenshot we see the following permissions</p>
 <p><code class="docutils literal notranslate"><span class="pre">drwxr-xr-x</span> <span class="pre">7</span> <span class="pre">tgstone</span> <span class="pre">staff</span></code></p>
-<p><img alt="5ea8536ce7214842bdc2d156f3002b9c" class="no-scaled-link" src="../../_images/ls_permissions.jpg" style="width: 1000px;" /></p>
+<p><img alt="2c7fea4b216b4f6c92d0a138cc984c01" class="no-scaled-link" src="../../_images/ls_permissions.jpg" style="width: 1000px;" /></p>
 <p>There will always be ten characters in this first column. The first index determines if the object is a file, <code class="docutils literal notranslate"><span class="pre">-</span></code>, or a directory <code class="docutils literal notranslate"><span class="pre">d</span></code>. In the above example we see that the docs object is a directory.</p>
 <p>The next three characters are the permissions for the Owner.</p>
 <ul class="simple">
@@ -449,12 +449,12 @@
 <p>The next three characters determine the permissions for the group. The Group is <strong>staff</strong> and the permissions are <strong>r</strong>ead and e<strong>x</strong>ecute. The dash indicates that they do not have permissions for the <strong>w</strong>.</p>
 <p>Lastly, if the user is not the owner or in the group then they are placed in the <strong>Other</strong> category. The permissions for other are read and execute. The <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command can be used to change an objects permissions but this is outside the scope of this tutorial.</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the <code class="docutils literal notranslate"><span class="pre">-h</span></code> option lists all hidden files. Hidden files are files or folders that begin with a <code class="docutils literal notranslate"><span class="pre">.</span></code></p>
-<p><img alt="7154b42f614640a4b0184af9b64e9913" class="no-scaled-link" src="../../_images/ls_hidden.jpg" style="width: 1000px;" /></p>
+<p><img alt="de6b728086da450a96fefc1f746fdd20" class="no-scaled-link" src="../../_images/ls_hidden.jpg" style="width: 1000px;" /></p>
 <section id="b)-Syntax-and-Commands">
 <h4>b) Syntax and Commands<a class="headerlink" href="#b)-Syntax-and-Commands" title="Link to this heading">¶</a></h4>
 <p>We will now go over examples of command syntax</p>
 <p><code class="docutils literal notranslate"><span class="pre">sio&#64;localhost</span> <span class="pre">$</span> <span class="pre">ls</span> <span class="pre">-lGh</span> <span class="pre">.</span></code></p>
-<p><img alt="e25b51a6087a4e9da4bf05ba44b6e38a" class="no-scaled-link" src="../../_images/command_syntax.jpg" style="width: 1000px;" /></p>
+<p><img alt="254d63fb05944cd3bd693c1046b513ef" class="no-scaled-link" src="../../_images/command_syntax.jpg" style="width: 1000px;" /></p>
 <p>Generally with the CLI we will run the command, give additional options and then list the arguments. Some commands do not follow this form (such as <code class="docutils literal notranslate"><span class="pre">find</span></code>) however it is important to know how we can enter the commands. The <strong>option</strong> list additional information we want to include with our command and the <code class="docutils literal notranslate"><span class="pre">.</span></code> (this is a shortcut for current directory) determines which object we are working with. The <code class="docutils literal notranslate"><span class="pre">-lGh</span></code> options allow us to see the directory in <strong>l</strong>ong format )<code class="docutils literal notranslate"><span class="pre">-l</span></code>, color code
 files and directories (<code class="docutils literal notranslate"><span class="pre">-G</span></code>) and list all <strong>hidden</strong> files (<code class="docutils literal notranslate"><span class="pre">-h</span></code>).</p>
 <p>Often times you will see <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">..</span></code> used in a command</p>
@@ -467,11 +467,11 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 <h4>ii) Finding more information<a class="headerlink" href="#ii)-Finding-more-information" title="Link to this heading">¶</a></h4>
 <p>If we want to find what options are avaiable or how a command works we can use the <code class="docutils literal notranslate"><span class="pre">help</span></code> command or look at the <code class="docutils literal notranslate"><span class="pre">man</span></code> (<strong>man</strong>ual) pages.</p>
 <p><code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">pwd</span></code></p>
-<p><img alt="08b306de46f048a287e05b7ae73a5646" class="no-scaled-link" src="../../_images/help.jpg" style="width: 1000px;" /></p>
+<p><img alt="fe579c41ce7a4010b6a2afa653b12753" class="no-scaled-link" src="../../_images/help.jpg" style="width: 1000px;" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">pwd</span></code></p>
-<p><img alt="906a085fee7f47058e2d8215fedac80c" class="no-scaled-link" src="../../_images/man.jpg" style="width: 1000px;" /></p>
+<p><img alt="9895dcac74514b68b163234eff97961e" class="no-scaled-link" src="../../_images/man.jpg" style="width: 1000px;" /></p>
 <p>Lastly, thanks to the advances of AI, we could also just use an LLM to get additional information on a command or how to use a command</p>
-<p><img alt="552a01f22c1e4fd6ab9e8d3b9a0b7db3" class="no-scaled-link" src="../../_images/chatgpt.jpg" style="width: 1000px;" /></p>
+<p><img alt="1fbf00d782634bf5a40c90535793d1d9" class="no-scaled-link" src="../../_images/chatgpt.jpg" style="width: 1000px;" /></p>
 </section>
 </section>
 <section id="b)-Creating,-deleting,-copying-and-moving-files-and-folders">
@@ -570,7 +570,14 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 <ol class="arabic simple" start="2">
 <li><p>Use special that describe patterns to move the files</p></li>
 </ol>
-<p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">*.tex</span> <span class="pre">*.txt</span> <span class="pre">thesis</span></code></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">*.</span><span class="n">tex</span> <span class="o">*.</span><span class="n">txt</span> <span class="n">thesis</span>
+</pre></div>
+</div>
+</div>
 <p>The __*__ Character</p>
 <p>The __*__ characters is called the <strong>wildcard</strong> (also known as a <strong>glob</strong>). It is used to match 0 or more characters in a file or directory. Use the .tex file as an example, the wilcard is stating that any file that has a .tex at the end will be moved to thesis. Another example is if we only wanted to move files that started with an r and ended with a .tex we could write <code class="docutils literal notranslate"><span class="pre">m*.tex</span></code></p>
 </section>
@@ -618,6 +625,194 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </div>
 <p>I have included the <code class="docutils literal notranslate"><span class="pre">-i</span></code> option above. Often times we may accidentally delete files in a folder that we were not aware of. The <code class="docutils literal notranslate"><span class="pre">-i</span></code> option prompts for confirmation of deleting each file. Now that we have covered the basics of the Unix shell we can move onto the fun stuff</p>
 </section>
+</section>
+</section>
+<section id="Part-II---The-Fun-Stuff">
+<h2>Part II - The Fun Stuff<a class="headerlink" href="#Part-II---The-Fun-Stuff" title="Link to this heading">¶</a></h2>
+<section id="1)-Working-with-files-and-searches">
+<h3>1) Working with files and searches<a class="headerlink" href="#1)-Working-with-files-and-searches" title="Link to this heading">¶</a></h3>
+<p>Navigate to the <code class="docutils literal notranslate"><span class="pre">shell-lesson-data/exercise-data/writing</span></code> directory. Inside the writing directory is a file called <strong>abstract.txt</strong>. Using the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command we can list</p>
+<ol class="arabic simple">
+<li><p>The number of lines in the file</p></li>
+<li><p>The number of words</p></li>
+<li><p>How many bytes the file uses.</p></li>
+</ol>
+<p>For the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command the <code class="docutils literal notranslate"><span class="pre">-l</span></code> option only displays the number of lines and the <code class="docutils literal notranslate"><span class="pre">-c</span></code> option only displays the size of the file (in bytes).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">writing</span>
+<span class="n">wc</span> <span class="n">abstract</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="ca84e3868bfb4c4980d0d921da55e1a6" class="no-scaled-link" src="../../_images/abstract_wc.jpg" style="width: 1000px;" /></p>
+<p>If we wanted to know the number of lines, words and sizes of each file as well as the sum for the lines, words and sizes we could use the wildcard character</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">*.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="ea1aecdd3f6949c4b474cc1a9223120b" class="no-scaled-link" src="../../_images/abstract_wc_all.jpg" style="width: 1000px;" /></p>
+</section>
+<section id="2)-Redirecting-output">
+<h3>2) Redirecting output<a class="headerlink" href="#2)-Redirecting-output" title="Link to this heading">¶</a></h3>
+<p>In the above example there are only three files listed, if we had thousands of files that we were trying to determine the size we may want to use another method for outputting the data. In the CLI we can use the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> characters to move the information from std output (i.e. Unix shell) to a file</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">*.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">lengths</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<p>Notice that nothing is displayed in the CLI. This is because we have decided to write the information to the <strong>lengths.txt</strong> file.</p>
+<p>Redirect Option</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> willl create the file if it doesn’t exist or, if the file does exist, it will <strong>overwrite</strong> the file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> will create the file if it doesn’t exist or <strong>append</strong> the new information to the file</p></li>
+</ul>
+<p>We can confirm that the data was written to the <strong>lengths.txt</strong> file by using the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">lengths</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="3)-Using-the-Pipe-|">
+<h2>3) Using the Pipe |<a class="headerlink" href="#3)-Using-the-Pipe-|" title="Link to this heading">¶</a></h2>
+<p>The reason why the Unix shell is so powerful is that it has the ability to chain together multiple commands. This is done using the pipe <code class="docutils literal notranslate"><span class="pre">|</span></code>. If we wanted to sort the output of the data we could use the <code class="docutils literal notranslate"><span class="pre">sort</span></code> command</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">*.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">n</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-n</span></code> option sorts the numeric values. Given our example again, if we wanted to know which were the largest files in our directory we could use the <code class="docutils literal notranslate"><span class="pre">tail</span></code> command to view the bottom three entries</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">*.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">n</span> <span class="o">|</span> <span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<section id="4)-Finding-Things">
+<h3>4) Finding Things<a class="headerlink" href="#4)-Finding-Things" title="Link to this heading">¶</a></h3>
+<p>Often times it is difficult to remember the location of files or directories on servers or computers. This is especially true when dealing with multiple iterations of a program or script. There are two powerful tools that can be used to find items within directories and text documents.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grep</span></code> A utility that searches any given input file, selecting lines that match one or more patterns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find</span></code> A utility that recursively descends the directory tree for each path listed, evaluating the expression in terms of each file in the tree</p></li>
+</ul>
+<p>In the current <strong>writing</strong> directory there is a file called <strong>haiku.txt</strong>. If we wanted to search for any words that have the word “not” in the line we could use <code class="docutils literal notranslate"><span class="pre">grep</span></code></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="ow">not</span> <span class="n">haiku</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="9a279e67e11f4e909ccab7d6820effbd" class="no-scaled-link" src="../../_images/grep_not.jpg" style="width: 1000px;" /></p>
+<p>We see that grep has successfully returned all the lines that have the word <strong>not</strong> in it. Let’s try again with using <strong>The</strong> as a pattern to search for</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">The</span> <span class="n">haiku</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="671e2e89da42459f9871724bb40e9580" class="no-scaled-link" src="../../_images/grep_The.jpg" style="width: 500px;" /></p>
+<p>First, we see that grep also included words that have the sequence “The” in them. Additionally, we see from the below image by running <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">haiku.txt</span></code> that all lower case versions of the word <strong>the</strong> were missed.</p>
+<p><img alt="01d142a3eb9c49e3a0a739d84260f2ce" class="no-scaled-link" src="../../_images/haiku.jpg" style="width: 500px;" /></p>
+<p>To fix this we can include additional options to perform a better search</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">win</span> <span class="n">The</span> <span class="n">haiku</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="db7ea2f3564d4bfeb5ec95be29cab34c" class="no-scaled-link" src="../../_images/grep_win.jpg" style="width: 650px;" /></p>
+<p>From above image grep is now returning what we had initially intended. This shows that</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grep</span></code> by default is case-sensitive. Using the <code class="docutils literal notranslate"><span class="pre">-i</span></code> option allows <code class="docutils literal notranslate"><span class="pre">grep</span></code> to be case-insensitive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grep</span></code> will search for any sequence of a pattern. Using <code class="docutils literal notranslate"><span class="pre">-w</span></code> will search for the word</p></li>
+<li><p>We can also return line numbers with grep by using the <code class="docutils literal notranslate"><span class="pre">-n</span></code> option.</p></li>
+</ul>
+<p>If we wanted to search multiple text files in a directory as well as the subdirectories we could use the recursive option, <code class="docutils literal notranslate"><span class="pre">-r</span></code> with grep</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">iwnr</span> <span class="s2">&quot;Yesterday&quot;</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<p>From the above command we see that, in addition to the options and patter, we also now must include the directory we want to search. It is important to note that grep only works with ASCII (text) files and cannot search binary files.</p>
+</section>
+<section id="5)-grep-and-the-pipe">
+<h3>5) grep and the pipe<a class="headerlink" href="#5)-grep-and-the-pipe" title="Link to this heading">¶</a></h3>
+<p>Just as with any other program, we can also pipe things to grep so that it can search. As an example, when users want to find a command that had previously been executed in the terminal they can use the <code class="docutils literal notranslate"><span class="pre">history</span></code> command with <code class="docutils literal notranslate"><span class="pre">grep</span></code></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;cd&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>The above command will list the entire history and return only the lines that have “cd” in the string.</p>
+</section>
+<section id="6)-find:-a-tool-for-searching-for-directories-and-files">
+<h3>6) find: a tool for searching for directories and files<a class="headerlink" href="#6)-find:-a-tool-for-searching-for-directories-and-files" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">grep</span></code> is used to search for information within a file. The <code class="docutils literal notranslate"><span class="pre">find</span></code> searches the file system to match patterns associated with a file and a directory.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<p>The above command will recursively search for all files and directories in the current working directory and display them to the std output.</p>
+<p>To search only for directories use the <code class="docutils literal notranslate"><span class="pre">-type</span> <span class="pre">d</span></code> option</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-type</span> <span class="pre">d</span></code></p>
+<p>To search for files use <code class="docutils literal notranslate"><span class="pre">-type</span> <span class="pre">f</span></code> instead</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-type</span> <span class="pre">f</span></code></p>
+<p>To find text files you can use patterns associated with file names</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-type</span> <span class="pre">f</span> <span class="pre">-name</span> <span class="pre">&quot;*.txt&quot;</span></code></p>
+<p>Notice that find doesn’t match our typical syntax for Unix shell commands. Find can also be used to display the path to a file or directory and used with other commands. As an example, if we wanted to find all text files that match the pattern <strong>NE*.txt</strong> and determine how many lines the files have</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="err">$</span><span class="p">(</span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;NE*.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>In the above command the items contained within the parenthesis are executed first, then the <strong>$</strong> symbol treats the return value from <code class="docutils literal notranslate"><span class="pre">find</span></code> as a variable. This extends the capabilities of <code class="docutils literal notranslate"><span class="pre">wc</span></code> as we were only able to use the program with files in the curren working directory. We could also perform the same step by using the <code class="docutils literal notranslate"><span class="pre">-exec</span></code> option with <code class="docutils literal notranslate"><span class="pre">find</span></code></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;NE*.txt&quot;</span> <span class="o">-</span><span class="n">exec</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="p">{}</span> \<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>We have now given a basic overview of the Unix shell and a few of the powerful features. In further lessons we will go into scripting and working with the shell using remote sessions.</p>
 </section>
 </section>
 </section>
@@ -696,6 +891,17 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 <li><a class="reference internal" href="#f)-Removing-files-and-directories">f) Removing files and directories</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Part-II---The-Fun-Stuff">Part II - The Fun Stuff</a><ul>
+<li><a class="reference internal" href="#1)-Working-with-files-and-searches">1) Working with files and searches</a></li>
+<li><a class="reference internal" href="#2)-Redirecting-output">2) Redirecting output</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#3)-Using-the-Pipe-|">3) Using the Pipe |</a><ul>
+<li><a class="reference internal" href="#4)-Finding-Things">4) Finding Things</a></li>
+<li><a class="reference internal" href="#5)-grep-and-the-pipe">5) grep and the pipe</a></li>
+<li><a class="reference internal" href="#6)-find:-a-tool-for-searching-for-directories-and-files">6) find: a tool for searching for directories and files</a></li>
 </ul>
 </li>
 </ul>

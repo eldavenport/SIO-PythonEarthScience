@@ -516,9 +516,26 @@
         "```mv introduction.tex references.tex thesis```\n",
         "\n",
         "2) Use special that describe patterns to move the files\n",
-        "\n",
-        "```mv *.tex *.txt thesis```\n",
-        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "mv *.tex *.txt thesis"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
         "<u>The __*__ Character</u>\n",
         "\n",
         "The __*__ characters is called the **wildcard** (also known as a **glob**). It is used to match 0 or more characters in a file or directory. Use the .tex file as an example, the wilcard is stating that any file that has a .tex at the end will be moved to thesis. Another example is if we only wanted to move files that started with an r and ended with a .tex we could write ```m*.tex```"
@@ -621,6 +638,394 @@
       },
       "source": [
         "I have included the ```-i``` option above. Often times we may accidentally delete files in a folder that we were not aware of. The ```-i``` option prompts for confirmation of deleting each file. Now that we have covered the basics of the Unix shell we can move onto the fun stuff"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Part II - The Fun Stuff\n",
+        "\n",
+        "### 1) Working with files and searches\n",
+        "\n",
+        "Navigate to the ```shell-lesson-data/exercise-data/writing``` directory. Inside the writing directory is a file called **abstract.txt**. Using the ```wc``` command we can list \n",
+        "\n",
+        "1) The number of lines in the file\n",
+        "2) The number of words\n",
+        "3) How many bytes the file uses.\n",
+        "\n",
+        "For the ```wc``` command the ```-l``` option only displays the number of lines and the ```-c``` option only displays the size of the file (in bytes)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "cd writing \n",
+        "wc abstract.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<img src=\"_static/abstract_wc.jpg\" width=\"1000\">\n",
+        "\n",
+        "If we wanted to know the number of lines, words and sizes of each file as well as the sum for the lines, words and sizes we could use the wildcard character"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "wc *.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<img src=\"_static/abstract_wc_all.jpg\" width=\"1000\">"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 2) Redirecting output\n",
+        "\n",
+        "In the above example there are only three files listed, if we had thousands of files that we were trying to determine the size we may want to use another method for outputting the data. In the CLI we can use the ```>``` characters to move the information from std output (i.e. Unix shell) to a file"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "wc *.txt > lengths.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Notice that nothing is displayed in the CLI. This is because we have decided to write the information to the **lengths.txt** file.\n",
+        "\n",
+        "<u>Redirect Option </u>\n",
+        "* ```>``` willl create  the file if it doesn't exist or, if the file does exist, it will **overwrite** the file\n",
+        "* ```>>``` will create the file if it doesn't exist or **append** the new information to the file\n",
+        "\n",
+        "We can confirm that the data was written to the **lengths.txt** file by using the ```cat``` command"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "cat lengths.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 3) Using the Pipe | \n",
+        "\n",
+        "The reason why the Unix shell is so powerful is that it has the ability to chain together multiple commands. This is done using the pipe ```|```. If we wanted to sort the output of the data we could use the ```sort``` command"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "wc *.txt | sort -n "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The ```-n``` option sorts the numeric values. Given our example again, if we wanted to know which were the largest files in our directory we could use the ```tail``` command to view the bottom three entries"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "wc *.txt | sort -n | tail -n 3"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 4) Finding Things\n",
+        "\n",
+        "Often times it is difficult to remember the location of files or directories on servers or computers. This is especially true when dealing with multiple iterations of a program or script. There are two powerful tools that can be used to find items within directories and text documents. \n",
+        "\n",
+        "* ```grep``` A utility that searches any given input file, selecting lines that match one or more patterns\n",
+        "* ```find``` A utility that recursively descends the directory tree for each path listed, evaluating the expression in terms of each file in the tree"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "In the current **writing** directory there is a file called **haiku.txt**. If we wanted to search for any words that have the word \"not\" in the line we could use ```grep```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "grep not haiku.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "source": [
+        "<img src=\"_static/grep_not.jpg\" width=\"1000\">"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We see that grep has successfully returned all the lines that have the word __not__ in it. Let's try again with using __The__ as a pattern to search for "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "grep The haiku.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<img src=\"_static/grep_The.jpg\" width = \"500\">\n",
+        "\n",
+        "First, we see that grep also included words that have the sequence \"The\" in them. Additionally, we see from the below image by running ```cat haiku.txt``` that all lower case versions of the word __the__ were missed. \n",
+        "\n",
+        "<img src=\"_static/haiku.jpg\" width =\"500\">\n",
+        "\n",
+        "To fix this we can include additional options to perform a better search "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "grep -win The haiku.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<img src=\"_static/grep_win.jpg\" width = \"650\">\n",
+        "\n",
+        "From above image grep is now returning what we had initially intended. This shows that\n",
+        "\n",
+        "* ```grep``` by default is case-sensitive. Using the ```-i``` option allows ```grep``` to be case-insensitive\n",
+        "* ```grep``` will search for any sequence of a pattern. Using ```-w``` will search for the word\n",
+        "* We can also return line numbers with grep by using the ```-n``` option. \n",
+        "\n",
+        "\n",
+        "If we wanted to search multiple text files in a directory as well as the subdirectories we could use the recursive option, ```-r``` with grep"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "grep -iwnr \"Yesterday\" ."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "From the above command we see that, in addition to the options and patter, we also now must include the directory we want to search. It is important to note that grep only works with ASCII (text) files and cannot search binary files. \n",
+        "\n",
+        "### 5) grep and the pipe\n",
+        "\n",
+        "Just as with any other program, we can also pipe things to grep so that it can search. As an example, when users want to find a command that had previously been executed in the terminal they can use the ```history``` command with ```grep```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "history | grep -i \"cd\""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The above command will list the entire history and return only the lines that have \"cd\" in the string. \n",
+        "\n",
+        "### 6) find: a tool for searching for directories and files\n",
+        "\n",
+        "```grep``` is used to search for information within a file. The ```find``` searches the file system to match patterns associated with a file and a directory."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "find ."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<src img=\"_static/grep_not.jpg\" width=\"1000\">"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "source": [
+        "The above command will recursively search for all files and directories in the current working directory and display them to the std output. \n",
+        "\n",
+        "To search only for directories use the ```-type d``` option\n",
+        "\n",
+        "```find . -type d```\n",
+        "\n",
+        "To search for files use ```-type f``` instead\n",
+        "\n",
+        "```find . -type f```\n",
+        "\n",
+        "To find text files you can use patterns associated with file names\n",
+        "\n",
+        "```find . -type f -name \"*.txt\"```\n",
+        "\n",
+        "Notice that find doesn't match our typical syntax for Unix shell commands. Find can also be used to display the path to a file or directory and used with other commands. As an example, if we wanted to find all text files that match the pattern **NE\\*.txt** and determine how many lines the files have"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "wc -l $(find . -type f -name \"NE*.txt\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "In the above command the items contained within the parenthesis are executed first, then the **$** symbol treats the return value from ```find``` as a variable. This extends the capabilities of ```wc``` as we were only able to use the program with files in the curren working directory. We could also perform the same step by using the ```-exec``` option with ```find```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "find . -type f -name \"NE*.txt\" -exec wc -l {} \\;"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We have now given a basic overview of the Unix shell and a few of the powerful features. In further lessons we will go into scripting and working with the shell using remote sessions. "
       ]
     }
   ],
