@@ -32,8 +32,8 @@
       "source": [
         "## __Part I__\n",
         "\n",
-        "### a) Introduction to Unix Shell\n",
-        "#### i) Shell Basics\n",
+        "### 1) Introduction to Unix Shell\n",
+        "#### a) Shell Basics\n",
         "\n",
         "Unix is a powerful operating system (OS) that is used around the world. There are many OS based on Unix such as BSD, Mac OS and Linux among many others. These OSs use a Graphical User Interface (GUI) which can give instructions to the OS through visualization and using menu-driven interactions through a computer mouse.\n",
         "\n",
@@ -82,7 +82,7 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "### b)  Navigating through Files and Directories\n",
+        "### 2)  Navigating through Files and Directories\n",
         "\n",
         "Every Unix based OS has a hierarchical structure to organize files and folders. This is known as the __file system__. The root directory is the Top-level folder and is represted by a foward slash, ```/```. Every subfolder is known as the __child__ or __subdirectory__ of the __parent__ folder.\n",
         "\n",
@@ -303,7 +303,7 @@
         }
       },
       "source": [
-        "#### ii) Syntax and Commands\n",
+        "#### b) Syntax and Commands\n",
         "\n",
         "We will now go over examples of command syntax \n",
         "\n",
@@ -354,7 +354,7 @@
         "* ```rm``` - To remove files and directories (need additional options to remove a directory)\n",
         "* ```rmdir``` - To remove a directory \n",
         "\n",
-        "#### iii) Creating directories\n",
+        "#### c) Creating directories\n",
         "\n",
         "Currently you should be in the ```shell-lesson-data/exercise-data``` directory. Confirm this information with the ```pwd``` command. We can create a new folder called thesis"
       ]
@@ -397,6 +397,17 @@
       ]
     },
     {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### iv) Creating files\n",
+        "\n",
+        "There are multiple options when creating a file\n",
+        "\n",
+        "1) Create a new file with the ```touch``` command. The ```touch``` command is often use when you need a file for initialization. As an example, in previous versions of python the ```__init__.py``` file was required to make a module. No information was needed in the file, only that it existed"
+      ]
+    },
+    {
       "cell_type": "code",
       "execution_count": null,
       "metadata": {
@@ -405,7 +416,212 @@
         }
       },
       "outputs": [],
-      "source": []
+      "source": [
+        "touch thesis/draft.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2) Use an editor such as nano, vim or emacs to create a file"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "nano thesis/draft.txt "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### d) Moving files and directories\n",
+        "\n",
+        "To move a file or folder to another location or rename the object, we use the ```mv``` command. If we wanted to change the name of the draft.txt file we just created to quotes.txt\n",
+        "\n",
+        "__WARNING:__ If you rename a file and there is another file with the same name, it will be overwritten"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "mv thesis/draft.txt thesis/quotes.txt\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "If we wanted to move the quotes files to our current directory we could specify the file and write out the destination"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "mv thesis/quotes.txt ."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Let's say that we created a **references.tex**, **introduction.tex** and **methods.txt** file in the wrong directory. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "touch references.tex introduction.tex methods.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "To move these files to the **thesis** directory we have two options\n",
+        "\n",
+        "1) Manually move the files by listing each file\n",
+        "\n",
+        "```mv introduction.tex references.tex thesis```\n",
+        "\n",
+        "2) Use special that describe patterns to move the files\n",
+        "\n",
+        "```mv *.tex *.txt thesis```\n",
+        "\n",
+        "<u>The __*__ Character</u>\n",
+        "\n",
+        "The __*__ characters is called the **wildcard** (also known as a **glob**). It is used to match 0 or more characters in a file or directory. Use the .tex file as an example, the wilcard is stating that any file that has a .tex at the end will be moved to thesis. Another example is if we only wanted to move files that started with an r and ended with a .tex we could write ```m*.tex```"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### e) Copying files and directories\n",
+        "\n",
+        "Similar to moving files, we can also copy files and folders into new locations. This is done with the ```cp``` command\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "cp quotes.txt thesis/quotations.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Notice that, in addition to copying the file, we have also renamed the file to ```quotations.txt```. To copy multiple files and folders we need to include the recursive option, ```-r```. The below command will create a backup of the thesis folder and name it ```thesis_backup```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 22,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "cp -r thesis thesis_backup"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### f) Removing files and directories\n",
+        "\n",
+        "We can now delete the quotes.txt file since it was in the wrong directory"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "rm quotes.txt"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "**WARNING**: The remove command does not move the file to the trash bin. It 'unlinks' the file which will mark that the space as unused on the hard drive so it can be used for other items. This means that the file cannot be recovered. There are special programs that can perform this recovery but it is often very difficult to do.\n",
+        "\n",
+        "If we want to remove an empty directory we can use the ```rmdir``` command. If we need to remove a directory that contains items we use the ```rm``` command with the ```-r``` option (recursive)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "outputs": [],
+      "source": [
+        "rm -ir thesis"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "vscode": {
+          "languageId": "shellscript"
+        }
+      },
+      "source": [
+        "I have included the ```-i``` option above. Often times we may accidentally delete files in a folder that we were not aware of. The ```-i``` option prompts for confirmation of deleting each file. Now that we have covered the basics of the Unix shell we can move onto the fun stuff"
+      ]
     }
   ],
   "metadata": {

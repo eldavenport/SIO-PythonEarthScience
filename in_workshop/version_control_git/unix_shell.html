@@ -302,10 +302,10 @@
 <p>A lot of this course is based off of the material from the Software Carpentry website: <a class="reference external" href="https://swcarpentry.github.io/shell-novice/07-find.html">The Unix Shell</a>. This tutorial is meant for you to walkthorugh by typing the commands in your terminal. We will also be working with a dataset which is the <a class="reference external" href="https://drive.google.com/file/d/1r3uKC19rY-cxJ7_Ia7ZYx1_berJ-mZl-/view?usp=drive_link">shell-lesson-data</a>. Download the zip file from the link and unzip the file in the Documents directory.</p>
 <section id="Part-I">
 <h2><strong>Part I</strong><a class="headerlink" href="#Part-I" title="Link to this heading">¶</a></h2>
-<section id="a)-Introduction-to-Unix-Shell">
-<h3>a) Introduction to Unix Shell<a class="headerlink" href="#a)-Introduction-to-Unix-Shell" title="Link to this heading">¶</a></h3>
-<section id="i)-Shell-Basics">
-<h4>i) Shell Basics<a class="headerlink" href="#i)-Shell-Basics" title="Link to this heading">¶</a></h4>
+<section id="1)-Introduction-to-Unix-Shell">
+<h3>1) Introduction to Unix Shell<a class="headerlink" href="#1)-Introduction-to-Unix-Shell" title="Link to this heading">¶</a></h3>
+<section id="a)-Shell-Basics">
+<h4>a) Shell Basics<a class="headerlink" href="#a)-Shell-Basics" title="Link to this heading">¶</a></h4>
 <p>Unix is a powerful operating system (OS) that is used around the world. There are many OS based on Unix such as BSD, Mac OS and Linux among many others. These OSs use a Graphical User Interface (GUI) which can give instructions to the OS through visualization and using menu-driven interactions through a computer mouse.</p>
 <p>The GUI allows an intuitive method for using a computer and can help with many tasks. However, when required to perform multiple analytic based the GUI does not work as well as the <strong>Unix Shell</strong>. The Unix Shell is a <strong>Command-Line Interface</strong> and scripting language that can be accessed through a terminal. There are different types of CLIs</p>
 <ul class="simple">
@@ -315,7 +315,7 @@
 <li><p>Bourne Shell</p></li>
 </ul>
 <p>The CLI is powerful as you can customize the interface as well as run various programs either locally or on remote servers through <strong>S</strong>ecure <strong>SH</strong>ell (SSH). The below image is a typical example of a terminal</p>
-<p><img alt="939b82b4a919408da22e475b416855f5" class="no-scaled-link" src="../../_images/shell_terminal.jpg" style="width: 500px;" /></p>
+<p><img alt="efc0b47838a84b34b0c8054145ea838b" class="no-scaled-link" src="../../_images/shell_terminal.jpg" style="width: 500px;" /></p>
 <p>In our examples we have created an account called <strong>sio</strong> on a computer named <strong>localhost</strong>. The $ is the prompt and users can begin entering commands after the prompt. The features of the terminal can be customized through your bash profile. As mentioned previously, we will be using the Bash shell for our examples. To determine which shell you are using you can run the following command.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sio@localhost $ echo $0
 </pre></div>
@@ -334,10 +334,10 @@
 </div>
 </section>
 </section>
-<section id="b)-Navigating-through-Files-and-Directories">
-<h3>b) Navigating through Files and Directories<a class="headerlink" href="#b)-Navigating-through-Files-and-Directories" title="Link to this heading">¶</a></h3>
+<section id="2)-Navigating-through-Files-and-Directories">
+<h3>2) Navigating through Files and Directories<a class="headerlink" href="#2)-Navigating-through-Files-and-Directories" title="Link to this heading">¶</a></h3>
 <p>Every Unix based OS has a hierarchical structure to organize files and folders. This is known as the <strong>file system</strong>. The root directory is the Top-level folder and is represted by a foward slash, <code class="docutils literal notranslate"><span class="pre">/</span></code>. Every subfolder is known as the <strong>child</strong> or <strong>subdirectory</strong> of the <strong>parent</strong> folder.</p>
-<p><img alt="11782fdf41c048cd93b13b6ead406b9b" class="no-scaled-link" src="../../_images/directory_structure.jpg" style="width: 1000px;" /></p>
+<p><img alt="5e4dde9b46574943880608db2f219afb" class="no-scaled-link" src="../../_images/directory_structure.jpg" style="width: 1000px;" /></p>
 <p>When starting the CLI your folder will be located in <code class="docutils literal notranslate"><span class="pre">/Users/username</span></code>. For the examples used in this tutorial it will be <code class="docutils literal notranslate"><span class="pre">/Users/sio</span></code>. This is referred to as the __home directory. You can see which directory you are currently in by type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (Print Working Direcotry).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -432,12 +432,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">Documents/shell-lesson-data</span></code></p>
 <p>Besides listing what objects there are in a directory the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command, in addition to providing options, can also list information on if the item is a file or folder, the size of the object as well as when the object was last modified</p>
 <p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lsG</span></code></p>
-<p><img alt="3db29fe0d8d44fe5b85234011f7f70ab" class="no-scaled-link" src="../../_images/ls_meaning.jpg" style="width: 1000px;" /></p>
+<p><img alt="ed6d81405ebe45339b66e99f1592e483" class="no-scaled-link" src="../../_images/ls_meaning.jpg" style="width: 1000px;" /></p>
 <p>There will be times, especially on a remote server, where you cannot copy or remove files in a specific directory. This is because of user or group permissions</p>
-<p><img alt="8d9a3dde527c4d13802748e2c53caaab" class="no-scaled-link" src="../../_images/ls_meaning_2.jpg" style="width: 1000px;" /></p>
+<p><img alt="ed0c9d8089b043e78c299a66d6b19f39" class="no-scaled-link" src="../../_images/ls_meaning_2.jpg" style="width: 1000px;" /></p>
 <p>When using <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the <code class="docutils literal notranslate"><span class="pre">-l</span></code> option you will see the permission structure for the Owner, Group and Other. In the below screenshot we see the following permissions</p>
 <p><code class="docutils literal notranslate"><span class="pre">drwxr-xr-x</span> <span class="pre">7</span> <span class="pre">tgstone</span> <span class="pre">staff</span></code></p>
-<p><img alt="3fc8061070614e8eb9ca277f21480b8f" class="no-scaled-link" src="../../_images/ls_permissions.jpg" style="width: 1000px;" /></p>
+<p><img alt="5ea8536ce7214842bdc2d156f3002b9c" class="no-scaled-link" src="../../_images/ls_permissions.jpg" style="width: 1000px;" /></p>
 <p>There will always be ten characters in this first column. The first index determines if the object is a file, <code class="docutils literal notranslate"><span class="pre">-</span></code>, or a directory <code class="docutils literal notranslate"><span class="pre">d</span></code>. In the above example we see that the docs object is a directory.</p>
 <p>The next three characters are the permissions for the Owner.</p>
 <ul class="simple">
@@ -449,12 +449,12 @@
 <p>The next three characters determine the permissions for the group. The Group is <strong>staff</strong> and the permissions are <strong>r</strong>ead and e<strong>x</strong>ecute. The dash indicates that they do not have permissions for the <strong>w</strong>.</p>
 <p>Lastly, if the user is not the owner or in the group then they are placed in the <strong>Other</strong> category. The permissions for other are read and execute. The <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command can be used to change an objects permissions but this is outside the scope of this tutorial.</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the <code class="docutils literal notranslate"><span class="pre">-h</span></code> option lists all hidden files. Hidden files are files or folders that begin with a <code class="docutils literal notranslate"><span class="pre">.</span></code></p>
-<p><img alt="bd667abbedfb4d439d5a95a34a721896" class="no-scaled-link" src="../../_images/ls_hidden.jpg" style="width: 1000px;" /></p>
-<section id="ii)-Syntax-and-Commands">
-<h4>ii) Syntax and Commands<a class="headerlink" href="#ii)-Syntax-and-Commands" title="Link to this heading">¶</a></h4>
+<p><img alt="7154b42f614640a4b0184af9b64e9913" class="no-scaled-link" src="../../_images/ls_hidden.jpg" style="width: 1000px;" /></p>
+<section id="b)-Syntax-and-Commands">
+<h4>b) Syntax and Commands<a class="headerlink" href="#b)-Syntax-and-Commands" title="Link to this heading">¶</a></h4>
 <p>We will now go over examples of command syntax</p>
 <p><code class="docutils literal notranslate"><span class="pre">sio&#64;localhost</span> <span class="pre">$</span> <span class="pre">ls</span> <span class="pre">-lGh</span> <span class="pre">.</span></code></p>
-<p><img alt="f1a740fea00744a4bb0f91e53149998a" class="no-scaled-link" src="../../_images/command_syntax.jpg" style="width: 1000px;" /></p>
+<p><img alt="e25b51a6087a4e9da4bf05ba44b6e38a" class="no-scaled-link" src="../../_images/command_syntax.jpg" style="width: 1000px;" /></p>
 <p>Generally with the CLI we will run the command, give additional options and then list the arguments. Some commands do not follow this form (such as <code class="docutils literal notranslate"><span class="pre">find</span></code>) however it is important to know how we can enter the commands. The <strong>option</strong> list additional information we want to include with our command and the <code class="docutils literal notranslate"><span class="pre">.</span></code> (this is a shortcut for current directory) determines which object we are working with. The <code class="docutils literal notranslate"><span class="pre">-lGh</span></code> options allow us to see the directory in <strong>l</strong>ong format )<code class="docutils literal notranslate"><span class="pre">-l</span></code>, color code
 files and directories (<code class="docutils literal notranslate"><span class="pre">-G</span></code>) and list all <strong>hidden</strong> files (<code class="docutils literal notranslate"><span class="pre">-h</span></code>).</p>
 <p>Often times you will see <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">..</span></code> used in a command</p>
@@ -467,11 +467,11 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 <h4>ii) Finding more information<a class="headerlink" href="#ii)-Finding-more-information" title="Link to this heading">¶</a></h4>
 <p>If we want to find what options are avaiable or how a command works we can use the <code class="docutils literal notranslate"><span class="pre">help</span></code> command or look at the <code class="docutils literal notranslate"><span class="pre">man</span></code> (<strong>man</strong>ual) pages.</p>
 <p><code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">pwd</span></code></p>
-<p><img alt="9008203f4f9c4f548481e90472c1b39d" class="no-scaled-link" src="../../_images/help.jpg" style="width: 1000px;" /></p>
+<p><img alt="08b306de46f048a287e05b7ae73a5646" class="no-scaled-link" src="../../_images/help.jpg" style="width: 1000px;" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">pwd</span></code></p>
-<p><img alt="b1cf4c08ef3d40eeba66a64f13cec5d1" class="no-scaled-link" src="../../_images/man.jpg" style="width: 1000px;" /></p>
+<p><img alt="906a085fee7f47058e2d8215fedac80c" class="no-scaled-link" src="../../_images/man.jpg" style="width: 1000px;" /></p>
 <p>Lastly, thanks to the advances of AI, we could also just use an LLM to get additional information on a command or how to use a command</p>
-<p><img alt="4f26cfcc88214cf3be2c54603db18e74" class="no-scaled-link" src="../../_images/chatgpt.jpg" style="width: 1000px;" /></p>
+<p><img alt="552a01f22c1e4fd6ab9e8d3b9a0b7db3" class="no-scaled-link" src="../../_images/chatgpt.jpg" style="width: 1000px;" /></p>
 </section>
 </section>
 <section id="b)-Creating,-deleting,-copying-and-moving-files-and-folders">
@@ -485,8 +485,8 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 <li><p><code class="docutils literal notranslate"><span class="pre">rm</span></code> - To remove files and directories (need additional options to remove a directory)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rmdir</span></code> - To remove a directory</p></li>
 </ul>
-<section id="iii)-Creating-directories">
-<h4>iii) Creating directories<a class="headerlink" href="#iii)-Creating-directories" title="Link to this heading">¶</a></h4>
+<section id="c)-Creating-directories">
+<h4>c) Creating directories<a class="headerlink" href="#c)-Creating-directories" title="Link to this heading">¶</a></h4>
 <p>Currently you should be in the <code class="docutils literal notranslate"><span class="pre">shell-lesson-data/exercise-data</span></code> directory. Confirm this information with the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> command. We can create a new folder called thesis</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -505,14 +505,118 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
+</section>
+<section id="iv)-Creating-files">
+<h4>iv) Creating files<a class="headerlink" href="#iv)-Creating-files" title="Link to this heading">¶</a></h4>
+<p>There are multiple options when creating a file</p>
+<ol class="arabic simple">
+<li><p>Create a new file with the <code class="docutils literal notranslate"><span class="pre">touch</span></code> command. The <code class="docutils literal notranslate"><span class="pre">touch</span></code> command is often use when you need a file for initialization. As an example, in previous versions of python the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file was required to make a module. No information was needed in the file, only that it existed</p></li>
+</ol>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">thesis</span><span class="o">/</span><span class="n">draft</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 </div>
+<ol class="arabic simple" start="2">
+<li><p>Use an editor such as nano, vim or emacs to create a file</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">thesis</span><span class="o">/</span><span class="n">draft</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="d)-Moving-files-and-directories">
+<h4>d) Moving files and directories<a class="headerlink" href="#d)-Moving-files-and-directories" title="Link to this heading">¶</a></h4>
+<p>To move a file or folder to another location or rename the object, we use the <code class="docutils literal notranslate"><span class="pre">mv</span></code> command. If we wanted to change the name of the draft.txt file we just created to quotes.txt</p>
+<p><strong>WARNING:</strong> If you rename a file and there is another file with the same name, it will be overwritten</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="n">mv</span> <span class="n">thesis</span><span class="o">/</span><span class="n">draft</span><span class="o">.</span><span class="n">txt</span> <span class="n">thesis</span><span class="o">/</span><span class="n">quotes</span><span class="o">.</span><span class="n">txt</span>
+<br/></pre></div>
+</div>
+</div>
+<p>If we wanted to move the quotes files to our current directory we could specify the file and write out the destination</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">thesis</span><span class="o">/</span><span class="n">quotes</span><span class="o">.</span><span class="n">txt</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s say that we created a <strong>references.tex</strong>, <strong>introduction.tex</strong> and <strong>methods.txt</strong> file in the wrong directory.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">references</span><span class="o">.</span><span class="n">tex</span> <span class="n">introduction</span><span class="o">.</span><span class="n">tex</span> <span class="n">methods</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<p>To move these files to the <strong>thesis</strong> directory we have two options</p>
+<ol class="arabic simple">
+<li><p>Manually move the files by listing each file</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">introduction.tex</span> <span class="pre">references.tex</span> <span class="pre">thesis</span></code></p>
+<ol class="arabic simple" start="2">
+<li><p>Use special that describe patterns to move the files</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">*.tex</span> <span class="pre">*.txt</span> <span class="pre">thesis</span></code></p>
+<p>The __*__ Character</p>
+<p>The __*__ characters is called the <strong>wildcard</strong> (also known as a <strong>glob</strong>). It is used to match 0 or more characters in a file or directory. Use the .tex file as an example, the wilcard is stating that any file that has a .tex at the end will be moved to thesis. Another example is if we only wanted to move files that started with an r and ended with a .tex we could write <code class="docutils literal notranslate"><span class="pre">m*.tex</span></code></p>
+</section>
+<section id="e)-Copying-files-and-directories">
+<h4>e) Copying files and directories<a class="headerlink" href="#e)-Copying-files-and-directories" title="Link to this heading">¶</a></h4>
+<p>Similar to moving files, we can also copy files and folders into new locations. This is done with the <code class="docutils literal notranslate"><span class="pre">cp</span></code> command</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">quotes</span><span class="o">.</span><span class="n">txt</span> <span class="n">thesis</span><span class="o">/</span><span class="n">quotations</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<p>Notice that, in addition to copying the file, we have also renamed the file to <code class="docutils literal notranslate"><span class="pre">quotations.txt</span></code>. To copy multiple files and folders we need to include the recursive option, <code class="docutils literal notranslate"><span class="pre">-r</span></code>. The below command will create a backup of the thesis folder and name it <code class="docutils literal notranslate"><span class="pre">thesis_backup</span></code></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">thesis</span> <span class="n">thesis_backup</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="f)-Removing-files-and-directories">
+<h4>f) Removing files and directories<a class="headerlink" href="#f)-Removing-files-and-directories" title="Link to this heading">¶</a></h4>
+<p>We can now delete the quotes.txt file since it was in the wrong directory</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">quotes</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<p><strong>WARNING</strong>: The remove command does not move the file to the trash bin. It ‘unlinks’ the file which will mark that the space as unused on the hard drive so it can be used for other items. This means that the file cannot be recovered. There are special programs that can perform this recovery but it is often very difficult to do.</p>
+<p>If we want to remove an empty directory we can use the <code class="docutils literal notranslate"><span class="pre">rmdir</span></code> command. If we need to remove a directory that contains items we use the <code class="docutils literal notranslate"><span class="pre">rm</span></code> command with the <code class="docutils literal notranslate"><span class="pre">-r</span></code> option (recursive).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">ir</span> <span class="n">thesis</span>
+</pre></div>
+</div>
+</div>
+<p>I have included the <code class="docutils literal notranslate"><span class="pre">-i</span></code> option above. Often times we may accidentally delete files in a folder that we were not aware of. The <code class="docutils literal notranslate"><span class="pre">-i</span></code> option prompts for confirmation of deleting each file. Now that we have covered the basics of the Unix shell we can move onto the fun stuff</p>
 </section>
 </section>
 </section>
@@ -575,17 +679,21 @@ files and directories (<code class="docutils literal notranslate"><span class="p
             <ul>
 <li><a class="reference internal" href="#">The Unix Shell</a><ul>
 <li><a class="reference internal" href="#Part-I"><strong>Part I</strong></a><ul>
-<li><a class="reference internal" href="#a)-Introduction-to-Unix-Shell">a) Introduction to Unix Shell</a><ul>
-<li><a class="reference internal" href="#i)-Shell-Basics">i) Shell Basics</a></li>
+<li><a class="reference internal" href="#1)-Introduction-to-Unix-Shell">1) Introduction to Unix Shell</a><ul>
+<li><a class="reference internal" href="#a)-Shell-Basics">a) Shell Basics</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#b)-Navigating-through-Files-and-Directories">b) Navigating through Files and Directories</a><ul>
-<li><a class="reference internal" href="#ii)-Syntax-and-Commands">ii) Syntax and Commands</a></li>
+<li><a class="reference internal" href="#2)-Navigating-through-Files-and-Directories">2) Navigating through Files and Directories</a><ul>
+<li><a class="reference internal" href="#b)-Syntax-and-Commands">b) Syntax and Commands</a></li>
 <li><a class="reference internal" href="#ii)-Finding-more-information">ii) Finding more information</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#b)-Creating,-deleting,-copying-and-moving-files-and-folders">b) Creating, deleting, copying and moving files and folders</a><ul>
-<li><a class="reference internal" href="#iii)-Creating-directories">iii) Creating directories</a></li>
+<li><a class="reference internal" href="#c)-Creating-directories">c) Creating directories</a></li>
+<li><a class="reference internal" href="#iv)-Creating-files">iv) Creating files</a></li>
+<li><a class="reference internal" href="#d)-Moving-files-and-directories">d) Moving files and directories</a></li>
+<li><a class="reference internal" href="#e)-Copying-files-and-directories">e) Copying files and directories</a></li>
+<li><a class="reference internal" href="#f)-Removing-files-and-directories">f) Removing files and directories</a></li>
 </ul>
 </li>
 </ul>
