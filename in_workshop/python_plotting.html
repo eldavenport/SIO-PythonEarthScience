@@ -886,8 +886,11 @@ which Matplotlib supports.</p></td>
 <img alt="../_images/in_workshop_python_plotting_35_0.png" src="../_images/in_workshop_python_plotting_35_0.png" />
 </div>
 </div>
+</section>
+<section id="Plotting-2-dimensional-data">
+<h2><strong>Plotting 2-dimensional data</strong><a class="headerlink" href="#Plotting-2-dimensional-data" title="Link to this heading">¶</a></h2>
 <p>To begin, we need to open a new data set from the Spray gliders! Spray gliders are uncrewed underwater vehicles that dive down 1000 meters and collect measurements of the ocean like temperature and chlorophyll. These gliders are deployed off the coast of California and go back and forth along trasect lines shown in the figure below. The data we will be working with is from just a single transect.</p>
-<p><img alt="a6185532e930449994792536f1328d1d" class="no-scaled-link" src="../_images/Spray_Glider_lines.png" style="width: 500px;" /></p>
+<p><img alt="102073b2cb004043a8be5eaed0c99832" class="no-scaled-link" src="../_images/Spray_Glider_lines.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
@@ -935,7 +938,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_39_0.png" src="../_images/in_workshop_python_plotting_39_0.png" />
+<img alt="../_images/in_workshop_python_plotting_40_0.png" src="../_images/in_workshop_python_plotting_40_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">axes.pcolormesh(time,</span> <span class="pre">depth,</span> <span class="pre">temperature)</span></code></p>
@@ -975,7 +978,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_41_0.png" src="../_images/in_workshop_python_plotting_41_0.png" />
+<img alt="../_images/in_workshop_python_plotting_42_0.png" src="../_images/in_workshop_python_plotting_42_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">plt.colorbar(mesh,</span> <span class="pre">ax=axes,</span> <span class="pre">label='Temperature</span> <span class="pre">(deg</span> <span class="pre">C)')</span></code></p>
@@ -1046,7 +1049,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_43_0.png" src="../_images/in_workshop_python_plotting_43_0.png" />
+<img alt="../_images/in_workshop_python_plotting_44_0.png" src="../_images/in_workshop_python_plotting_44_0.png" />
 </div>
 </div>
 <p>A common alternative to the pcolormesh function is <code class="docutils literal notranslate"><span class="pre">axes.contourf</span></code> which draws a filled contour plot (similar to a topographic map). Let’s show how to use it with the temperature data.</p>
@@ -1078,7 +1081,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_45_0.png" src="../_images/in_workshop_python_plotting_45_0.png" />
+<img alt="../_images/in_workshop_python_plotting_46_0.png" src="../_images/in_workshop_python_plotting_46_0.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">axes.contourf</span></code> has many of the same argument, but the critical one you must add is the number of contour levels using the <code class="docutils literal notranslate"><span class="pre">levels</span></code> argument. Here, we set this to 40 contour levels.</p>
@@ -1136,7 +1139,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_47_0.png" src="../_images/in_workshop_python_plotting_47_0.png" />
+<img alt="../_images/in_workshop_python_plotting_48_0.png" src="../_images/in_workshop_python_plotting_48_0.png" />
 </div>
 </div>
 <p>Note, I used the <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> to automatically adjusts the spacing between your plot’s elements (like axes, titles, labels) so that nothing overlaps.</p>
@@ -1172,7 +1175,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_49_0.png" src="../_images/in_workshop_python_plotting_49_0.png" />
+<img alt="../_images/in_workshop_python_plotting_50_0.png" src="../_images/in_workshop_python_plotting_50_0.png" />
 </div>
 </div>
 <p>Finally, we can save this final figure using <code class="docutils literal notranslate"><span class="pre">plt.savefig('filename.png')</span></code> function where <code class="docutils literal notranslate"><span class="pre">'filename.png'</span></code> is the name of the file. The file will be saved in the current working directory.</p>
@@ -1263,6 +1266,7 @@ which Matplotlib supports.</p></td>
 <li><a class="reference internal" href="#Line-Plots-and-Customizing"><strong>Line Plots and Customizing</strong></a></li>
 <li><a class="reference internal" href="#Scatter-Plots"><strong>Scatter Plots</strong></a></li>
 <li><a class="reference internal" href="#Plotting-Uncertainty:-Fill-between-and-errorbars"><strong>Plotting Uncertainty: Fill between and errorbars</strong></a></li>
+<li><a class="reference internal" href="#Plotting-2-dimensional-data"><strong>Plotting 2-dimensional data</strong></a></li>
 <li><a class="reference internal" href="#Suggested-Exercises">Suggested Exercises</a><ul>
 <li><a class="reference internal" href="#1-:-Multi-variate-scatter-plots">1 : Multi-variate scatter plots</a></li>
 <li><a class="reference internal" href="#2-:-Error-bars">2 : Error bars</a></li>
