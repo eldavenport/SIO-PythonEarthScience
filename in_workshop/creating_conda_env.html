@@ -211,7 +211,7 @@
 <li class="toctree-l2"><a class="reference internal" href="preliminary_agenda.html">Preliminary Workshop Agenda</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Creating a Conda Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_programming.html">Programming with Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_plotting.html">Python Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_plotting.html">Plotting in Python</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="version_control_git/index.html">Version Control with Git</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Version Control with Git</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="version_control_git/unix_shell.html">The Unix Shell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="version_control_git/git_workflow_overview.html">Personal Git Workflows</a></li>
@@ -301,7 +301,7 @@
 <p>Once this is complete, we will activate our environment so that we can install some necessary packages. We will not need to install Python, that is automatically done in the creation of the environment.</p>
 <p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">sio_software</span></code></p>
 <p>Now we can install a list of packages for use in the Intro to Python Programming and Plotting session. If you installed conda with miniforge, then you do not need to include <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">conda-forge</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">numpy</span> <span class="pre">matplotlib</span> <span class="pre">jupyterlab</span> <span class="pre">netcdf4</span> <span class="pre">pandas</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">numpy</span> <span class="pre">matplotlib</span> <span class="pre">jupyterlab</span> <span class="pre">netcdf4</span> <span class="pre">pandas</span> <span class="pre">datetime</span></code></p>
 <p>This command will search for the requested packages and their compatible versions, it will then ask you if you want to proceed with the installation. Continue by entering <code class="docutils literal notranslate"><span class="pre">y</span></code>. After installation we can see the installed packages with:</p>
 <p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code></p>
 <p>To leave your sio_software environment enter:</p>
