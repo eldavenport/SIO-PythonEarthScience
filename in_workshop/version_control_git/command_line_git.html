@@ -294,23 +294,46 @@
 <h2><strong>Setting up Your SSH Keys</strong><a class="headerlink" href="#Setting-up-Your-SSH-Keys" title="Link to this heading">¶</a></h2>
 <p>SSH keys identify your computer, and allow for the secure exchange of files between your computer and Git. You will only be able to push code to GitHub if your computer has an SSH key that is registered to your GitHub account. The following code should be run in the terminal.</p>
 <p><strong>NOTE</strong> generating a set of SSH keys generates a private key (for you) and a public key (to be used on GitHub or on a server). <em>Do not EVER</em> share a private SSH key with someone. Only ever put the .pub key online.</p>
+<section id="Generating-an-SSH-Key-Pair">
+<h3>Generating an SSH Key Pair<a class="headerlink" href="#Generating-an-SSH-Key-Pair" title="Link to this heading">¶</a></h3>
+<p>Navigate to your home directory:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># go to your home directory</span>
 <span class="n">cd</span> <span class="o">~/</span>
-<span class="c1"># generate a new SSH key pair</span>
-<span class="c1"># By default this will create a key pair in ~/.ssh/id_rsa (id_rsa and id_rsa.pub)</span>
-<span class="c1"># IF YOU ALREADY HAVE A FILE CALLED id_rsa, you should specify a different name</span>
-<span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span>
-
-<span class="c1"># follow the prompts. pressing eneter will accept the defaults.</span>
-<span class="c1"># you will have the option to give your new key a new name. do not set a passphrase.</span>
 </pre></div>
 </div>
 </div>
-<p>Go to your GitHub settings. Settings -&gt; SSH and GPG Keys -&gt; New SSH Key. Give it a name you will recognize (ellen’s-laptop). Copy the contents of .ssh/id_rsa.pub (or your specified filename) into the new key info on GitHub. Click ‘Add SSH Key’.</p>
+<p>Check if you already have ssh keys:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check if you have a .ssh/id_rsa file</span>
+<span class="n">ls</span> <span class="o">.</span><span class="n">ssh</span>
+</pre></div>
+</div>
+</div>
+<p>If you don’t have the folder <code class="docutils literal notranslate"><span class="pre">.ssh</span></code> then this will give you an error and it means you don’t have any existing keys (the folder will get created automatically). If you see a list of existing keys, make note of their names so that you can give your new key a new name.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a new SSH key pair</span>
+<span class="c1"># By default this will create a key pair in ~/.ssh/id_rsa (id_rsa and id_rsa.pub)</span>
+<span class="c1"># If the SSH protocol on your computer is not rsa, then the name will be slightly different. this is fine.</span>
+<span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span>
+</pre></div>
+</div>
+</div>
+<p>Follow the prompts. Do not set a passphrase. Pressing eneter will accept the defaults. You will have the option to give your new key a new name if you already had SSH keys in .ssh/ (do not overwrite them).</p>
+</section>
+<section id="Add-the-SSH-key-to-GitHub">
+<h3>Add the SSH key to GitHub<a class="headerlink" href="#Add-the-SSH-key-to-GitHub" title="Link to this heading">¶</a></h3>
+<p>Go to your GitHub profile, click the profile icon, and go to settings. Settings -&gt; SSH and GPG Keys -&gt; New SSH Key. Give it a name you will recognize (ellen’s-laptop). Copy the contents of .ssh/id_rsa.pub (or your specified filename) into the new key info on GitHub. Click ‘Add SSH Key’.</p>
+</section>
 </section>
 <section id="Verify-your-Git-Installation">
 <h2><strong>Verify your Git Installation</strong><a class="headerlink" href="#Verify-your-Git-Installation" title="Link to this heading">¶</a></h2>
@@ -881,7 +904,11 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Version Control With Git</a><ul>
-<li><a class="reference internal" href="#Setting-up-Your-SSH-Keys"><strong>Setting up Your SSH Keys</strong></a></li>
+<li><a class="reference internal" href="#Setting-up-Your-SSH-Keys"><strong>Setting up Your SSH Keys</strong></a><ul>
+<li><a class="reference internal" href="#Generating-an-SSH-Key-Pair">Generating an SSH Key Pair</a></li>
+<li><a class="reference internal" href="#Add-the-SSH-key-to-GitHub">Add the SSH key to GitHub</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#Verify-your-Git-Installation"><strong>Verify your Git Installation</strong></a></li>
 <li><a class="reference internal" href="#Configuring-your-Git-Username-and-Email"><strong>Configuring your Git Username and Email</strong></a></li>
 <li><a class="reference internal" href="#Setting-up-a-Repository"><strong>Setting up a Repository</strong></a></li>
