@@ -289,8 +289,88 @@
         <article role="main" id="furo-main-content">
           <section id="Open-Science---Software-and-Data">
 <h1>Open Science - Software and Data<a class="headerlink" href="#Open-Science---Software-and-Data" title="Link to this heading">¶</a></h1>
-<section id="Starting-An-Open-Source-Software-Project">
-<h2>Starting An Open Source Software Project<a class="headerlink" href="#Starting-An-Open-Source-Software-Project" title="Link to this heading">¶</a></h2>
+<section id="Elements-of-an-Open-Source-Software-(OSS)-Project">
+<h2>Elements of an Open-Source Software (OSS) Project<a class="headerlink" href="#Elements-of-an-Open-Source-Software-(OSS)-Project" title="Link to this heading">¶</a></h2>
+<p>We will give a brief overview of best practices for open-source software. These ideas are relevant for posting your own code, or for participating in an existing project.</p>
+<section id="We-interact-with-OSS-all-the-time!">
+<h3><strong>We interact with OSS all the time!</strong><a class="headerlink" href="#We-interact-with-OSS-all-the-time!" title="Link to this heading">¶</a></h3>
+<p>Open-source software is everywhere! Many of the apps or programming languages you use are open-source software projects, meaning they are free to use and the code is available to the public. These projects are maintained by a community of developers who follow a specific workflow to update and upgrade the code for public use.</p>
+<p>Some examples of OSS projects that you may use are: Linux, Python, GIMP, VLC, WordPress, Firefox, Blender, Thunderbird, GNU, Inkscape, mySQL, Android, TensorFlow, OpenToonz, Filezilla, PHP, R</p>
+<p>Some open source libraries you might use are: C++ stdlib, deal.ii, LAPACK, XGBoost, BeautifulSoup, Jinja, numpy, Pandas, PyTorch, SciPy, Bootstrap, React, RubyonRails, BLAS, OpenMP, petsc</p>
+</section>
+<section id="Key-Elements-of-an-OSS-Project">
+<h3><strong>Key Elements of an OSS Project</strong><a class="headerlink" href="#Key-Elements-of-an-OSS-Project" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Documentation</p></li>
+<li><p>Tests</p></li>
+<li><p>Standardization (including formatting)</p></li>
+<li><p>Interaction (GitHub discussions and issues, Discourse)</p></li>
+</ul>
+</section>
+<section id="Documentation">
+<h3><strong>Documentation</strong><a class="headerlink" href="#Documentation" title="Link to this heading">¶</a></h3>
+<p>Documentation is the single most important part of a publi repository. There are many existing tools that can help you document your project in a familiar, easy-to-read way. Some documentation tools that serve different purposes are doxygen, Sphinx, and Jupyter-books.</p>
+<p>The purpose of documentation is to describe the:</p>
+<ul class="simple">
+<li><p>goal</p></li>
+<li><p>function</p></li>
+<li><p>mechanism</p></li>
+<li><p>pathway</p></li>
+</ul>
+<p><em>Good documentation encourages usage and participation in your project!</em></p>
+<p>There are several levels of documentation starting going from high -&gt; low:</p>
+<ol class="arabic simple">
+<li><p>Project documentation: README.md</p></li>
+<li><p>File documentation: File headers, doxygen</p></li>
+<li><p>Function documentation: Function description, Sphinx</p></li>
+<li><p>Code documentation: self-describing code, comments</p></li>
+<li><p>Usage documentation: example files, Sphinx or Jupyter-books</p></li>
+</ol>
+<p>Here are some great examples of how to document an open-source project directly on GitHub or with a documentation “engine”:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/tensorflow/tensorflow">TensorFlow</a></p></li>
+<li><p><a class="reference external" href="https://github.com/csrc-sdsu/mole">MOLE</a></p></li>
+<li><p><a class="reference external" href="https://gitlab.com/petsc/petsc">Petsc</a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/stable/tutorials/pyplot.html">matplotlib.pyplot</a></p></li>
+</ul>
+</section>
+<section id="Tests">
+<h3><strong>Tests</strong><a class="headerlink" href="#Tests" title="Link to this heading">¶</a></h3>
+<p>Tests show that your code works! Tests can be automated with Git Actions which will run them every time you push new code to the repository. In general tests should verify 2 things:</p>
+<ul class="simple">
+<li><p>correctness (check output types, values, and sizes)</p></li>
+<li><p>error handling (check what happens when the code is used improperly)</p></li>
+</ul>
+<p><em>Golden Rule: if there is a function, there is a test!</em> <em>Silver Rule: do your best</em></p>
+</section>
+<section id="Standardization">
+<h3><strong>Standardization</strong><a class="headerlink" href="#Standardization" title="Link to this heading">¶</a></h3>
+<p>Standardization will help to keep your code readable, useable, and maintainable. Because there are many types and styles of programming, standardization of your workflow and your formatting is absolutely necessary for collaboration.</p>
+<p>Pick a standard formatting style for code:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8 - the official style guide for Python</a></p></li>
+<li><p><a class="reference external" href="https://google.github.io/styleguide/">Google style guide for Python</a></p></li>
+<li><p><a class="reference external" href="https://www.cas.mcmaster.ca/~carette/SE3M04/2004/slides/CCodingStyle.html">Kernighan and Ritchie style for C</a></p></li>
+<li><p><a class="reference external" href="https://peps.python.org/pep-0257/">PEP 257 - Docstring conventions</a></p></li>
+</ul>
+<p><em>Linters</em> are tools that check whether your files meet a particular formatting style and adjusts the spaces/indents/returns if not. Similar to the way you can automatically run tests on GitHub, you can also automatically run a linter to clean up the code when it gets pushed. Linters will catch syntax errors, bad practices, and style violations. There are similar, less comprehensive tools that will at least check types or formatting. Popular fomatting tools are listed below, check out their
+documentation to see if they might be helpful for your project:</p>
+<ul class="simple">
+<li><p>pylint</p></li>
+<li><p>flake8</p></li>
+<li><p>mypy</p></li>
+<li><p>Black</p></li>
+<li><p>autopep8</p></li>
+<li><p>isort</p></li>
+<li><p>pydocstyle</p></li>
+<li><p>bandit</p></li>
+</ul>
+<p>Pick a standard for adding to the code (usually called a “developer” or “contributing” guide). Examples below:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/csrc-sdsu/mole/blob/main/CONTRIBUTING.md">MOLE/contributing.md</a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/devdocs/devel/contribute.html">matplotlib/contributing</a></p></li>
+</ul>
+</section>
 </section>
 <section id="Thinking-About-Data-Storage-for-Open-Science">
 <h2>Thinking About Data Storage for Open Science<a class="headerlink" href="#Thinking-About-Data-Storage-for-Open-Science" title="Link to this heading">¶</a></h2>
@@ -361,7 +441,14 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Open Science - Software and Data</a><ul>
-<li><a class="reference internal" href="#Starting-An-Open-Source-Software-Project">Starting An Open Source Software Project</a></li>
+<li><a class="reference internal" href="#Elements-of-an-Open-Source-Software-(OSS)-Project">Elements of an Open-Source Software (OSS) Project</a><ul>
+<li><a class="reference internal" href="#We-interact-with-OSS-all-the-time!"><strong>We interact with OSS all the time!</strong></a></li>
+<li><a class="reference internal" href="#Key-Elements-of-an-OSS-Project"><strong>Key Elements of an OSS Project</strong></a></li>
+<li><a class="reference internal" href="#Documentation"><strong>Documentation</strong></a></li>
+<li><a class="reference internal" href="#Tests"><strong>Tests</strong></a></li>
+<li><a class="reference internal" href="#Standardization"><strong>Standardization</strong></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#Thinking-About-Data-Storage-for-Open-Science">Thinking About Data Storage for Open Science</a></li>
 </ul>
 </li>
