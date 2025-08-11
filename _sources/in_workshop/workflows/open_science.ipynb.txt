@@ -110,21 +110,17 @@
         }
       },
       "source": [
-        "Cloud-optimized formats for Geospatial data include: Cloud-Optimized GeoTIFF (COG), GeoParquet, Zarr, FlatGeobuf, Cloud-Optimized Point Clouds (COPC), and more\n",
-        "\n",
-        "There are many possible ways to do data storage. If you are able to store your data so that data acquisition integrates with tools like Xarray and Dask, then\n",
+        "There are many possible ways to do data storage. If you are able to store your data such that data acquisition integrates with tools like Xarray and Dask, then\n",
         "your platform will be all the more powerful and accessible. There is no one way to do this, and it is important to consider where your users will be doing their analysis, \n",
         "how much data they will need at a time, and how they will query the main database to find what they want. \n",
         "\n",
-        "If possible, using a cloud-optimized format is ideal. It will make access to and use of the data more efficient, in some cases by orders of magnitude."
+        "If possible, using a cloud-optimized format is ideal. It will make access to and use of the data more efficient, in some cases by orders of magnitude. Cloud-optimized formats for Geospatial data include: Cloud-Optimized GeoTIFF (COG), GeoParquet, [Zarr](https://zarr.dev/), FlatGeobuf, Cloud-Optimized Point Clouds (COPC), and more"
       ]
     },
     {
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "[Zarr](https://zarr.dev/) \n",
-        "\n",
         "[What is Zarr?](https://earthmover.io/blog/what-is-zarr)\n",
         "\n",
         "[Zarr and Xarray](https://tutorial.xarray.dev/intermediate/intro-to-zarr.html) \n",
