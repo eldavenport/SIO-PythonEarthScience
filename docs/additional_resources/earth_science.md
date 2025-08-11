@@ -14,6 +14,7 @@
 [PO.DAAC Data Tutorials](https://podaac.github.io/tutorials/quarto_text/DatasetSpecificExamples.html)   
 [SWOT Community Python Resources](https://github.com/SWOT-community)   
 [IOOS (Integrated Ocean Observing System) Python Examples](https://ioos.github.io/ioos_code_lab/content/code_gallery/gallery.html)   
+[CoastWatch Tutorials](https://github.com/coastwatch-training/CoastWatch-Tutorials)
 
 ### Earth and Natural Science Python Lessons
 
