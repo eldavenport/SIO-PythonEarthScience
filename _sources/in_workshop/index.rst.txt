@@ -8,6 +8,7 @@ Resources to use **during** the workshop sessions.
 
    preliminary_agenda
    creating_conda_env
+   getting_data
    python_programming
    python_plotting
    version_control_git/index
