@@ -228,9 +228,16 @@
 <li class="toctree-l3"><a class="reference internal" href="../python_earth_science/cartopy.html">Cartopy Tutorial</a></li>
 </ul>
 </li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../workflows/index.html">Workflows For Earth and Natural Sciences</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Workflows For Earth and Natural Sciences</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../workflows/git_collaboration.html">Collaborating with Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../workflows/open_science.html">Open Science - Software and Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../workflows/remote_workflows.html">Migrating Your Workflow to a Remote Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../workflows/ai_tools.html">AI Agents and Tools for Coding</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../additional_resources/index.html">Additional Resources</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Additional Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../additional_resources/index.html">Additional Resources</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Additional Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../additional_resources/earth_science.html">Python Resources for Earth and Natural Sciences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../additional_resources/python_plotting.html">Python Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../additional_resources/unix_cheat_sheet.html">Unix Shell Cheat Sheet</a></li>
@@ -286,24 +293,24 @@
 <section id="Committing-your-work">
 <h2>Committing your work<a class="headerlink" href="#Committing-your-work" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> commands will allow you to track your changes by saving your work along the way. You can always return to any version of the files that was saved with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>.</p>
-<p><img alt="01f36d4e426c43e0a1345a69d77e47f6" class="no-scaled-link" src="../../_images/git_workflow_commits.png" style="width: 500px;" /></p>
+<p><img alt="6ccab1ccda964d72bfa38ddaccc26336" class="no-scaled-link" src="../../_images/git_workflow_commits.png" style="width: 500px;" /></p>
 <p>Every repository begins with an initial commit, and then you periodically add more commits as you update your work.</p>
-<p><img alt="ce9bf9615b234b4bb870d6c0ca4832df" class="no-scaled-link" src="../../_images/git_workflow_more_commits.png" style="width: 770px;" /></p>
+<p><img alt="5ee4b7abfd6f4d8bae2f0a5b761de503" class="no-scaled-link" src="../../_images/git_workflow_more_commits.png" style="width: 770px;" /></p>
 </section>
 <section id="Pushing-your-work">
 <h2>Pushing your work<a class="headerlink" href="#Pushing-your-work" title="Link to this heading">¶</a></h2>
 <p>You can push your work to GitHub with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>. This means that not only are your changes tracked (i.e., old versions are saved), they are also backed up to the cloud (e.g., GitHub). It is always a good idea to commit and push frequently so that your work is always backed up and so that it is easy to undo any changes that you don’t wish to keep.</p>
-<p><img alt="95a8f22354984be5a6108e7f7bde624f" class="no-scaled-link" src="../../_images/git_personal_workflow.png" style="width: 800px;" /></p>
+<p><img alt="2e56ae5aef2f4003afa0ec0305297b27" class="no-scaled-link" src="../../_images/git_personal_workflow.png" style="width: 800px;" /></p>
 </section>
 <section id="Branching">
 <h2>Branching<a class="headerlink" href="#Branching" title="Link to this heading">¶</a></h2>
 <p>Branches allow you to have multiple versions of the code at once. When working alone you may not necessarily need to use branches, however they can still have their benefits. It is common to treat your primary version of the code (typically called the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch) as something that should remain stable (i.e., no bugs or errors). In that case, you may want to create a branch in order to develop new work, without altering the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Once you are satisfied with the status of the work
 on the feature branch (<code class="docutils literal notranslate"><span class="pre">branch</span> <span class="pre">1</span></code>), you can merge it back into <code class="docutils literal notranslate"><span class="pre">main</span></code> with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code>.</p>
-<p><img alt="0ae653d917614bd9ab0f3cda8bc2e0e2" class="no-scaled-link" src="../../_images/git_workflow_simple_branch.png" style="width: 800px;" /></p>
+<p><img alt="729f7721bd2444ea89a071eea2bb242d" class="no-scaled-link" src="../../_images/git_workflow_simple_branch.png" style="width: 800px;" /></p>
 <p>Branches also allow for two versions of the code to be worked on simultaneously. In the diagram below, you can see that commit 4 was added to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch while <code class="docutils literal notranslate"><span class="pre">branch</span> <span class="pre">1</span></code> was under development. This is convenient if you have multiple independent features to work on. Separate branches and separate commits allow you to undo or inspect a particular change to the code without losing other work.</p>
-<p><img alt="36cc02b8a3a84a5ebc0a63baaf75d206" class="no-scaled-link" src="../../_images/git_workflow_branching.png" style="width: 800px;" /></p>
+<p><img alt="f6e16f483a624d2d897e97ad1b036347" class="no-scaled-link" src="../../_images/git_workflow_branching.png" style="width: 800px;" /></p>
 <p>If you have many different ideas or features, you may have as many branches at once as you like. The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> command allows you to continually update your branches with changes on <code class="docutils literal notranslate"><span class="pre">main</span></code> and vice versa. We will talk more about merging, creating new branches, and collaborative workflows in a later section of the workshop.</p>
-<p><img alt="2fd6c982ec554ed5b067c1cfea96848a" class="no-scaled-link" src="../../_images/git_workflow_multibranch.png" style="width: 900px;" /></p>
+<p><img alt="9bec7cf3dfab4024898bcf38faae965a" class="no-scaled-link" src="../../_images/git_workflow_multibranch.png" style="width: 900px;" /></p>
 </section>
 </section>
 
