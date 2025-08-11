@@ -1,4 +1,4 @@
-Workflows For Earth and Natural Sciences
+Workflows For Science
 =====================
 
 .. toctree::
