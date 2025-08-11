@@ -223,9 +223,10 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="index.html">Python For Earth and Natural Sciences</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python For Earth and Natural Sciences</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="scipy.html">SciPy (the Scientific Python Library)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dask.html">Parallelization with Dask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="xarray.html">Gridded Data with Xarray</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geopandas.html">Geometric Data with GeoPandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dask.html">Parallelization with Dask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas.html">Tabular Data with Pandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geopandas.html">Tabular Data with Pandas and GeoPandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cartopy.html">Cartopy Tutorial</a></li>
 </ul>
 </li>
@@ -327,7 +328,7 @@
 <section id="Parallelization-with-Dask">
 <h1>Parallelization with Dask<a class="headerlink" href="#Parallelization-with-Dask" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask</a></p>
-<p><img alt="15e0c3a6aeb5473f8a0527b7b6a18d37" class="no-scaled-link" src="../../_images/dask.png" style="width: 500px;" /></p>
+<p><img alt="59602094140d4ea48ce565b99da38307" class="no-scaled-link" src="../../_images/dask.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -359,7 +360,7 @@ analysis!</p>
 </ol>
 <p>In the graphic below, you can see that <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">precipitation</span></code> are both variables with coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. In this simple example temperature and precip each have 3 dimensions. Not only does the DataSet store all of this information, it also relates these two variables to each other by understanding that they share coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. We will use some test data to inspect this further. Any NetCDF can be read into an Xarray dataset. Many popular models
 facilitate reading raw output directly into Xarray.</p>
-<p><img alt="0216f47c965842d9a6c96fe112a7ae7a" class="no-scaled-link" src="../../_images/xarray.png" style="width: 500px;" /></p>
+<p><img alt="f79ab05af0834a46b6a50aca779e7f00" class="no-scaled-link" src="../../_images/xarray.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
