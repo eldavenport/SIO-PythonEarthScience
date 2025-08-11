@@ -21,3 +21,6 @@
 [Computational Tools in Climate Science](https://comptools.climatematch.io/tutorials/intro.html)    
 [Geospatial Temporal Data Analysis](https://dsu.pages.geomar.de/training/geo-spatio-temporal-data-analysis/)   
 [Python Climate Visuals](https://xiaoganghe.github.io/python-climate-visuals/intro.html)   
+
+### Applications to Streamline Science
+[Spyder](https://www.spyder-ide.org/)
