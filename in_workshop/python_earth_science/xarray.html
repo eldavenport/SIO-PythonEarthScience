@@ -291,7 +291,7 @@
         <article role="main" id="furo-main-content">
           <section id="Gridded-Data-with-Xarray">
 <h1>Gridded Data with Xarray<a class="headerlink" href="#Gridded-Data-with-Xarray" title="Link to this heading">¶</a></h1>
-<p><a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a> is a very powerful tool for exploring multi-dimensional (esp. geospatial) data in a way that is efficient and robust to making coding mistakes. Pandas provided us with a way to look at tabular data, Xarray takes this further and provides a framework for N-dimensional data. One of the coolest Xarray features, is the <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html">integration with Dask</a>. This will allow us to easily parallelize our Xarray
+<p><a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a> is a powerful tool for exploring multi-dimensional (esp. geospatial) data in a way that is efficient and robust to making coding mistakes. Pandas provided us with a way to look at tabular data, Xarray takes this further and provides a framework for N-dimensional data. One of the coolest Xarray features, is the <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html">integration with Dask</a>. This will allow us to easily parallelize our Xarray
 analysis!</p>
 <p>When using Xarray, our data will be stored in <code class="docutils literal notranslate"><span class="pre">DataArrays</span></code> which are collected together into a <code class="docutils literal notranslate"><span class="pre">DataSet</span></code>. A nice example of this is in the context of a climate model:</p>
 <ol class="arabic simple">
@@ -300,7 +300,7 @@ analysis!</p>
 </ol>
 <p>In the graphic below, you can see that <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">precipitation</span></code> are both variables with coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. In this simple example temperature and precip each have 3 dimensions. Not only does the DataSet store all of this information, it also relates these two variables to each other by understanding that they share coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. We will use some test data to inspect this further. Any NetCDF can be read into an Xarray dataset. Many popular models
 facilitate reading raw output directly into Xarray.</p>
-<p><img alt="bf6266ebc8a748128efe4827e9a7ca76" class="no-scaled-link" src="../../_images/xarray.png" style="width: 500px;" /></p>
+<p><img alt="563bec8e68ec4c41b52990b5f4b87c60" class="no-scaled-link" src="../../_images/xarray.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
