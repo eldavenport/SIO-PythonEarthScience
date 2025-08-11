@@ -295,24 +295,24 @@
 <section id="Committing-your-work">
 <h2>Committing your work<a class="headerlink" href="#Committing-your-work" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> commands will allow you to track your changes by saving your work along the way. You can always return to any version of the files that was saved with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>.</p>
-<p><img alt="3be09b4384a64b0a8c727c5085cfb9aa" class="no-scaled-link" src="../../_images/git_workflow_commits.png" style="width: 500px;" /></p>
+<p><img alt="3f80a697e36f4433b7c2499489282738" class="no-scaled-link" src="../../_images/git_workflow_commits.png" style="width: 500px;" /></p>
 <p>Every repository begins with an initial commit, and then you periodically add more commits as you update your work.</p>
-<p><img alt="e603252848b04cca9d5dd65a8abcafd2" class="no-scaled-link" src="../../_images/git_workflow_more_commits.png" style="width: 770px;" /></p>
+<p><img alt="4e36234d7a9d41e3bddaf6bc859c87fc" class="no-scaled-link" src="../../_images/git_workflow_more_commits.png" style="width: 770px;" /></p>
 </section>
 <section id="Pushing-your-work">
 <h2>Pushing your work<a class="headerlink" href="#Pushing-your-work" title="Link to this heading">¶</a></h2>
 <p>You can push your work to GitHub with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>. This means that not only are your changes tracked (i.e., old versions are saved), they are also backed up to the cloud (e.g., GitHub). It is always a good idea to commit and push frequently so that your work is always backed up and so that it is easy to undo any changes that you don’t wish to keep.</p>
-<p><img alt="1baf366ab9a34376b2d4e397c78b9933" class="no-scaled-link" src="../../_images/git_personal_workflow.png" style="width: 800px;" /></p>
+<p><img alt="6fad3a1bacd349e38346daaefb46c451" class="no-scaled-link" src="../../_images/git_personal_workflow.png" style="width: 800px;" /></p>
 </section>
 <section id="Branching">
 <h2>Branching<a class="headerlink" href="#Branching" title="Link to this heading">¶</a></h2>
 <p>Branches allow you to have multiple versions of the code at once. When working alone you may not necessarily need to use branches, however they can still have their benefits. It is common to treat your primary version of the code (typically called the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch) as something that should remain stable (i.e., no bugs or errors). In that case, you may want to create a branch in order to develop new work, without altering the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Once you are satisfied with the status of the work
 on the feature branch (<code class="docutils literal notranslate"><span class="pre">branch</span> <span class="pre">1</span></code>), you can merge it back into <code class="docutils literal notranslate"><span class="pre">main</span></code> with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code>.</p>
-<p><img alt="567cf86984a14ef09bc7a8d19439cb06" class="no-scaled-link" src="../../_images/git_workflow_simple_branch.png" style="width: 800px;" /></p>
+<p><img alt="20c31051f4774387afd2ea20f7990633" class="no-scaled-link" src="../../_images/git_workflow_simple_branch.png" style="width: 800px;" /></p>
 <p>Branches also allow for two versions of the code to be worked on simultaneously. In the diagram below, you can see that commit 4 was added to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch while <code class="docutils literal notranslate"><span class="pre">branch</span> <span class="pre">1</span></code> was under development. This is convenient if you have multiple independent features to work on. Separate branches and separate commits allow you to undo or inspect a particular change to the code without losing other work.</p>
-<p><img alt="81c4bfdd84c3463aa07403653ea6401c" class="no-scaled-link" src="../../_images/git_workflow_branching.png" style="width: 800px;" /></p>
+<p><img alt="c3b974d7befc4f31a99baa0eb6506680" class="no-scaled-link" src="../../_images/git_workflow_branching.png" style="width: 800px;" /></p>
 <p>If you have many different ideas or features, you may have as many branches at once as you like. The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> command allows you to continually update your branches with changes on <code class="docutils literal notranslate"><span class="pre">main</span></code> and vice versa. We will talk more about merging, creating new branches, and collaborative workflows in a later section of the workshop.</p>
-<p><img alt="cfabdcb1f575404dac5d4ec16093e695" class="no-scaled-link" src="../../_images/git_workflow_multibranch.png" style="width: 900px;" /></p>
+<p><img alt="4e16952babc24d5a867de6c824d2420f" class="no-scaled-link" src="../../_images/git_workflow_multibranch.png" style="width: 900px;" /></p>
 </section>
 </section>
 
