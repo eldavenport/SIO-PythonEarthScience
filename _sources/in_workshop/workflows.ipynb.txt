@@ -387,7 +387,7 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "## Open Source Software Best Practices"
+        "## Open Source Software"
       ]
     },
     {
@@ -652,13 +652,6 @@
       "metadata": {},
       "source": [
         "<img src=\"_static/chat_gpt_hallucination.png\" width=\"750\">"
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "In this case ChatGPT admitted after trying several times, that it actually cannot make a Keynote file. Wouldn't it make more sense to tell me this in the first place? No, I am just prompting a statistical model. It doesn't think about what 'makes sense'. When I asked for clarification, the tool did put together that it cannot make a Keynote file. However, it then proceeded to tell me that it is a real human..."
       ]
     },
     {
