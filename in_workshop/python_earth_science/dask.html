@@ -293,7 +293,7 @@
           <section id="Parallelization-with-Dask">
 <h1>Parallelization with Dask<a class="headerlink" href="#Parallelization-with-Dask" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask</a></p>
-<p><img alt="a23ec3f066ee4f6f8ed72f176938a1b6" class="no-scaled-link" src="../../_images/dask.png" style="width: 500px;" /></p>
+<p><img alt="d8c426ceafcd49e1bc4546da6ba178fe" class="no-scaled-link" src="../../_images/dask.png" style="width: 500px;" /></p>
 <section id="Exercise,-Xarray-and-XGCM-with-Dask">
 <h2>Exercise, Xarray and XGCM with Dask<a class="headerlink" href="#Exercise,-Xarray-and-XGCM-with-Dask" title="Link to this heading">¶</a></h2>
 <p>First let’s redo the divergence calculation from the Xarray tutorial, without any chunks.</p>
@@ -1432,7 +1432,7 @@ Y Axis (periodic, boundary=None):
 <span class="n">u_transport</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">UVEL</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">dyG</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">hFacW</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">drF</span>
 <span class="n">v_transport</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">VVEL</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">dxG</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">hFacS</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">drF</span>
 <span class="n">div_uv</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">u_transport</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">grid</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">v_transport</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">))</span> <span class="o">/</span> <span class="n">ds</span><span class="o">.</span><span class="n">rA</span>  <span class="c1"># calculate the divergence of the flow</span>
-<span class="c1"># plot divergence at the surface</span>
+
 <span class="n">div_uv</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2293,7 +2293,7 @@ Y Axis (periodic, boundary=None):
 <span class="n">u_transport</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">UVEL</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">dyG</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">hFacW</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">drF</span>
 <span class="n">v_transport</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">VVEL</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">dxG</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">hFacS</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">drF</span>
 <span class="n">div_uv</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">u_transport</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">grid</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">v_transport</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">))</span> <span class="o">/</span> <span class="n">ds</span><span class="o">.</span><span class="n">rA</span>  <span class="c1"># calculate the divergence of the flow</span>
-<span class="c1"># plot divergence at the surface</span>
+
 <span class="n">div_uv</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2957,7 +2957,7 @@ Coordinates:
       dtype=&#x27;float64&#x27;, name=&#x27;XC&#x27;, length=240))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cf1ee926-c5bd-4fda-b31a-f4815da41122' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-cf1ee926-c5bd-4fda-b31a-f4815da41122' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div>
 </div>
 <p>We can see that without Dask, this computation took a little over 1 second. With Dask it only took 450ms. That is more than a 2x speed up! When you take into account that this subset of the model output is less than 2% of the full model domain, that speed up starts to look pretty nice! If you are clever about when and how you chunk your data, you can get much more than a 2x speed up.</p>
-<p>Another reason we only see 2x speed up here is that these are very small chunks of data (17MB), much smaller than what we can hold in memory. There is some overhead to parallelization (your computer has to do some logistic in the background). Really small chunks are inefficient because the overhead and the computation itself may take similar amounts of time. Depending on your system, you may want to aim for ~100MB or even 1GB in a chunk.</p>
+<p><strong>NOTE</strong> Another reason we only see 2x speed up here is that these are very small chunks of data (17MB), much smaller than what we can hold in memory. There is some overhead to parallelization (your computer has to do some logistic in the background). Really small chunks are inefficient because the overhead and the computation itself may take similar amounts of time. Depending on your system, you may want to aim for ~100MB or even 1GB in a chunk.</p>
 <div class="line-block">
 <div class="line">More resources for Xarray and Dask: <a class="reference external" href="https://docs.xarray.dev/en/v2023.01.0/user-guide/dask.html">1</a>, <a class="reference external" href="https://examples.dask.org/xarray.html">2</a>, <a class="reference external" href="https://tutorial.xarray.dev/intermediate/xarray_and_dask.html">3</a></div>
 <div class="line">See <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html#best-practices">this page</a> for a more detailed discussion of best practices with Xarray and Dask.</div>
