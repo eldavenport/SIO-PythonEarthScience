@@ -414,7 +414,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "We can use `scipy.integrate.solve_ivp` to integrate this differential equation forward from an intial value. The default method is Runge-Kutta 4 (`RK45`). You can specify another method if you want."
+    "We can use `scipy.integrate.solve_ivp` to integrate this differential equation forward from an intial value. The default method is Runge-Kutta (`RK45`). You can specify another method if you want."
    ]
   },
   {
