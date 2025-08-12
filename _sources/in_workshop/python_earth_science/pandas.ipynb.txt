@@ -11,7 +11,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "[Pandas](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html) is the most popular Python tool for data analysis. It handles tabular data and has tons of nice features for manipulating text, grouping data by attributes, formatting dates, the list goes on... Even if you do not use tabular or csv data, you will likely end up using Pandas tools for some of their nice data-wrangling features. In general, if you have data that could be organized in an Excel spreadsheet or a table, you should use Pandas. Pandas can be used to open data in CSV, HTML, JSON, XLS, Parquet, SQL, GBQ formats and more. "
+    "[Pandas](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html) is the most popular Python tool for data analysis. It handles tabular data and has tons of nice features for manipulating text, grouping data by attributes, formatting dates, the list goes on... Even if you do not use tabular or csv data, you will likely end up using Pandas tools for some of their nice data-wrangling features. In general, if you have data that could be organized in an Excel spreadsheet or a table, you should use Pandas. This is particularly useful for data downloaded from places like NOAA and USGS where observations from individual meaurement stations are usually concatenated into a table of some kind. Pandas can be used to open data in CSV, HTML, JSON, XLS, Parquet, SQL, GBQ formats and more. "
    ]
   },
   {
