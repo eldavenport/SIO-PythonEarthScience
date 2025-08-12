@@ -18,9 +18,9 @@ August 20, 1-4pm: **Unix shell and version control with Git**
 
 August 21, 9am-12pm: **Python for Earth and Natural sciences**
 - SciPy for optimization, filtering, and advanced data analysis
-- Using Dask to parallelize your work
+- Analyzing tabular data with Pandas and GeoPandas
 - Analyzing gridded data with Xarray
-- Analyzing geometric data with GeoPandas
+- Using Dask to parallelize your work
 - Adding maps to plots with Cartopy
 
 August 21, 1pm-4pm: **Workflows for Earth and Natural sciences**
