@@ -293,7 +293,7 @@
           <section id="Parallelization-with-Dask">
 <h1>Parallelization with Dask<a class="headerlink" href="#Parallelization-with-Dask" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask</a></p>
-<p><img alt="471f520ec26645148f9aa6ac857e9a62" class="no-scaled-link" src="../../_images/dask.png" style="width: 500px;" /></p>
+<p><img alt="a23ec3f066ee4f6f8ed72f176938a1b6" class="no-scaled-link" src="../../_images/dask.png" style="width: 500px;" /></p>
 <section id="Exercise,-Xarray-and-XGCM-with-Dask">
 <h2>Exercise, Xarray and XGCM with Dask<a class="headerlink" href="#Exercise,-Xarray-and-XGCM-with-Dask" title="Link to this heading">¶</a></h2>
 <p>First let’s redo the divergence calculation from the Xarray tutorial, without any chunks.</p>
@@ -2958,7 +2958,10 @@ Coordinates:
 </div>
 <p>We can see that without Dask, this computation took a little over 1 second. With Dask it only took 450ms. That is more than a 2x speed up! When you take into account that this subset of the model output is less than 2% of the full model domain, that speed up starts to look pretty nice! If you are clever about when and how you chunk your data, you can get much more than a 2x speed up.</p>
 <p>Another reason we only see 2x speed up here is that these are very small chunks of data (17MB), much smaller than what we can hold in memory. There is some overhead to parallelization (your computer has to do some logistic in the background). Really small chunks are inefficient because the overhead and the computation itself may take similar amounts of time. Depending on your system, you may want to aim for ~100MB or even 1GB in a chunk.</p>
-<p>See <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html#best-practices">this page</a> for a more detailed discussion of best practices with Xarray and Dask.</p>
+<div class="line-block">
+<div class="line">More resources for Xarray and Dask: <a class="reference external" href="https://docs.xarray.dev/en/v2023.01.0/user-guide/dask.html">1</a>, <a class="reference external" href="https://examples.dask.org/xarray.html">2</a>, <a class="reference external" href="https://tutorial.xarray.dev/intermediate/xarray_and_dask.html">3</a></div>
+<div class="line">See <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html#best-practices">this page</a> for a more detailed discussion of best practices with Xarray and Dask.</div>
+</div>
 </section>
 </section>
 </section>
