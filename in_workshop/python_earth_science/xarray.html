@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Parallelization with Dask" href="dask.html" /><link rel="prev" title="SciPy (the Scientific Python Library)" href="scipy.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Parallelization with Dask" href="dask.html" /><link rel="prev" title="Tabular Data with Pandas" href="pandas.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
-        <title>Gridded Data with Xarray - SIO Python for Earth Science</title>
+        <title>Geospatial and Gridded Data with Xarray - SIO Python for Earth Science</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
@@ -224,9 +224,9 @@
 </li>
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Python For Earth and Natural Sciences</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python For Earth and Natural Sciences</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="scipy.html">SciPy (the Scientific Python Library)</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Gridded Data with Xarray</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dask.html">Parallelization with Dask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pandas.html">Tabular Data with Pandas</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Geospatial and Gridded Data with Xarray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dask.html">Parallelization with Dask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geopandas.html">Geographic Data with GeoPandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cartopy.html">Cartopy Tutorial</a></li>
 </ul>
@@ -290,8 +290,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="Gridded-Data-with-Xarray">
-<h1>Gridded Data with Xarray<a class="headerlink" href="#Gridded-Data-with-Xarray" title="Link to this heading">¶</a></h1>
+          <section id="Geospatial-and-Gridded-Data-with-Xarray">
+<h1>Geospatial and Gridded Data with Xarray<a class="headerlink" href="#Geospatial-and-Gridded-Data-with-Xarray" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a> is a powerful tool for exploring multi-dimensional (esp. geospatial) data in a way that is efficient and robust to making coding mistakes. Pandas provided us with a way to look at tabular data, Xarray takes this further and provides a framework for N-dimensional data. One of the coolest Xarray features, is the <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html">integration with Dask</a>. This will allow us to easily parallelize our Xarray
 analysis!</p>
 <p>When using Xarray, our data will be stored in <code class="docutils literal notranslate"><span class="pre">DataArrays</span></code> which are collected together into a <code class="docutils literal notranslate"><span class="pre">DataSet</span></code>. A nice example of this is in the context of a climate model:</p>
@@ -301,9 +301,9 @@ analysis!</p>
 </ol>
 <p>In the graphic below, you can see that <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">precipitation</span></code> are both variables with coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. In this simple example temperature and precip each have 3 dimensions. Not only does the DataSet store all of this information, it also relates these two variables to each other by understanding that they share coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. We will use some test data to inspect this further. Any NetCDF can be read into an Xarray dataset. Many popular models
 facilitate reading raw output directly into Xarray.</p>
-<p><img alt="ed87d250147748199644e2090a646caa" class="no-scaled-link" src="../../_images/xarray.png" style="width: 500px;" /></p>
+<p><img alt="4ed24eddfbcf44c99b192be0e9f9c582" class="no-scaled-link" src="../../_images/xarray.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -314,12 +314,12 @@ facilitate reading raw output directly into Xarray.</p>
 </pre></div>
 </div>
 </div>
-<p><strong>TIP</strong> If you realize you need to use Pandas for a particular problem, never fear! You can convert between Pandas and Xarray with a single line of code.</p>
+<p><strong>TIP</strong> If you realize you need to use Pandas for a particular problem, never fear! You can convert between Pandas and Xarray with a single line of code. Pandas has lots of built in tools that are great for manipulating dates and text, so you may want to use Pandas and Xarray together.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span> <span class="c1"># to dataframe from xarray</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>  <span class="c1"># convert xarray dataset to pandas dataframe</span>
 <span class="n">df</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span> <span class="c1"># to xarray from dataframe</span>
 </pre></div>
 </div>
@@ -7183,14 +7183,14 @@ Data variables:
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="scipy.html">
+          <a class="prev-page" href="pandas.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">SciPy (the Scientific Python Library)</div>
+                <div class="title">Tabular Data with Pandas</div>
                 
               </div>
             </a>
@@ -7224,7 +7224,7 @@ Data variables:
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Gridded Data with Xarray</a><ul>
+<li><a class="reference internal" href="#">Geospatial and Gridded Data with Xarray</a><ul>
 <li><a class="reference internal" href="#Inspecting-our-DataSet">Inspecting our DataSet</a></li>
 <li><a class="reference internal" href="#Selecting-(Slicing)-Sub-sets-of-Data-with-Labels">Selecting (Slicing) Sub-sets of Data with Labels</a></li>
 <li><a class="reference internal" href="#Interpolating-(or-Resampling)-Data">Interpolating (or Resampling) Data</a></li>

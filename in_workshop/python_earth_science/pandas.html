@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Geographic Data with GeoPandas" href="geopandas.html" /><link rel="prev" title="Parallelization with Dask" href="dask.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Geospatial and Gridded Data with Xarray" href="xarray.html" /><link rel="prev" title="SciPy (the Scientific Python Library)" href="scipy.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
         <title>Tabular Data with Pandas - SIO Python for Earth Science</title>
@@ -224,9 +224,9 @@
 </li>
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Python For Earth and Natural Sciences</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python For Earth and Natural Sciences</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="scipy.html">SciPy (the Scientific Python Library)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="xarray.html">Gridded Data with Xarray</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dask.html">Parallelization with Dask</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Tabular Data with Pandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xarray.html">Geospatial and Gridded Data with Xarray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dask.html">Parallelization with Dask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geopandas.html">Geographic Data with GeoPandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cartopy.html">Cartopy Tutorial</a></li>
 </ul>
@@ -293,10 +293,853 @@
           <section id="Tabular-Data-with-Pandas">
 <h1>Tabular Data with Pandas<a class="headerlink" href="#Tabular-Data-with-Pandas" title="Link to this heading">¶</a></h1>
 <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;global_30day_earthquakes.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>depth</th>
+      <th>mag</th>
+      <th>magType</th>
+      <th>nst</th>
+      <th>gap</th>
+      <th>dmin</th>
+      <th>rms</th>
+      <th>...</th>
+      <th>updated</th>
+      <th>place</th>
+      <th>type</th>
+      <th>horizontalError</th>
+      <th>depthError</th>
+      <th>magError</th>
+      <th>magNst</th>
+      <th>status</th>
+      <th>locationSource</th>
+      <th>magSource</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2025-08-12T00:30:58.784Z</td>
+      <td>62.008000</td>
+      <td>-145.533400</td>
+      <td>9.800</td>
+      <td>2.60</td>
+      <td>ml</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.8700</td>
+      <td>...</td>
+      <td>2025-08-12T00:37:39.629Z</td>
+      <td>7 km SW of Copperville, Alaska</td>
+      <td>earthquake</td>
+      <td>NaN</td>
+      <td>0.300</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>automatic</td>
+      <td>ak</td>
+      <td>ak</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2025-08-12T00:30:53.834Z</td>
+      <td>61.740900</td>
+      <td>-146.097200</td>
+      <td>42.400</td>
+      <td>2.60</td>
+      <td>ml</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.5700</td>
+      <td>...</td>
+      <td>2025-08-12T00:35:35.397Z</td>
+      <td>38 km S of Tolsona, Alaska</td>
+      <td>earthquake</td>
+      <td>NaN</td>
+      <td>3.200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>automatic</td>
+      <td>ak</td>
+      <td>ak</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2025-08-11T23:45:41.896Z</td>
+      <td>51.193700</td>
+      <td>160.859900</td>
+      <td>10.000</td>
+      <td>4.50</td>
+      <td>mb</td>
+      <td>25.0</td>
+      <td>135.00</td>
+      <td>2.2830</td>
+      <td>0.4400</td>
+      <td>...</td>
+      <td>2025-08-12T00:10:36.040Z</td>
+      <td>256 km SE of Vilyuchinsk, Russia</td>
+      <td>earthquake</td>
+      <td>7.30</td>
+      <td>1.883</td>
+      <td>0.069</td>
+      <td>61.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2025-08-11T21:24:31.503Z</td>
+      <td>41.242100</td>
+      <td>-116.714900</td>
+      <td>6.300</td>
+      <td>2.90</td>
+      <td>ml</td>
+      <td>14.0</td>
+      <td>144.57</td>
+      <td>0.3420</td>
+      <td>0.1627</td>
+      <td>...</td>
+      <td>2025-08-11T22:14:22.638Z</td>
+      <td>60 km NE of Valmy, Nevada</td>
+      <td>earthquake</td>
+      <td>NaN</td>
+      <td>3.300</td>
+      <td>0.260</td>
+      <td>12.0</td>
+      <td>reviewed</td>
+      <td>nn</td>
+      <td>nn</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2025-08-11T21:02:42.456Z</td>
+      <td>51.651500</td>
+      <td>159.778700</td>
+      <td>35.000</td>
+      <td>5.00</td>
+      <td>mb</td>
+      <td>61.0</td>
+      <td>106.00</td>
+      <td>1.5390</td>
+      <td>0.6000</td>
+      <td>...</td>
+      <td>2025-08-12T00:35:51.040Z</td>
+      <td>170 km SSE of Vilyuchinsk, Russia</td>
+      <td>earthquake</td>
+      <td>6.76</td>
+      <td>1.859</td>
+      <td>0.043</td>
+      <td>175.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2658</th>
+      <td>2025-07-13T03:02:17.889Z</td>
+      <td>-22.593300</td>
+      <td>-68.014400</td>
+      <td>153.524</td>
+      <td>4.40</td>
+      <td>mb</td>
+      <td>29.0</td>
+      <td>89.00</td>
+      <td>0.3880</td>
+      <td>0.8700</td>
+      <td>...</td>
+      <td>2025-08-02T22:30:27.040Z</td>
+      <td>40 km NNE of San Pedro de Atacama, Chile</td>
+      <td>earthquake</td>
+      <td>7.46</td>
+      <td>5.557</td>
+      <td>0.138</td>
+      <td>15.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+    <tr>
+      <th>2659</th>
+      <td>2025-07-13T02:32:49.570Z</td>
+      <td>32.791833</td>
+      <td>-115.829333</td>
+      <td>4.810</td>
+      <td>2.62</td>
+      <td>ml</td>
+      <td>67.0</td>
+      <td>28.00</td>
+      <td>0.1032</td>
+      <td>0.2600</td>
+      <td>...</td>
+      <td>2025-08-02T22:22:55.040Z</td>
+      <td>17 km ENE of Ocotillo, CA</td>
+      <td>earthquake</td>
+      <td>0.20</td>
+      <td>0.640</td>
+      <td>0.121</td>
+      <td>131.0</td>
+      <td>reviewed</td>
+      <td>ci</td>
+      <td>ci</td>
+    </tr>
+    <tr>
+      <th>2660</th>
+      <td>2025-07-13T00:49:42.340Z</td>
+      <td>-9.885400</td>
+      <td>116.631100</td>
+      <td>54.034</td>
+      <td>4.10</td>
+      <td>mb</td>
+      <td>17.0</td>
+      <td>104.00</td>
+      <td>1.5440</td>
+      <td>0.4500</td>
+      <td>...</td>
+      <td>2025-07-25T02:12:15.040Z</td>
+      <td>128 km S of Taliwang, Indonesia</td>
+      <td>earthquake</td>
+      <td>8.08</td>
+      <td>5.198</td>
+      <td>0.174</td>
+      <td>9.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+    <tr>
+      <th>2661</th>
+      <td>2025-07-13T00:30:59.994Z</td>
+      <td>50.336900</td>
+      <td>-175.400000</td>
+      <td>10.000</td>
+      <td>2.80</td>
+      <td>ml</td>
+      <td>19.0</td>
+      <td>235.00</td>
+      <td>1.6530</td>
+      <td>0.7300</td>
+      <td>...</td>
+      <td>2025-07-22T21:41:02.040Z</td>
+      <td>191 km SSE of Adak, Alaska</td>
+      <td>earthquake</td>
+      <td>3.57</td>
+      <td>2.019</td>
+      <td>0.105</td>
+      <td>12.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+    <tr>
+      <th>2662</th>
+      <td>2025-07-13T00:11:12.440Z</td>
+      <td>-49.427300</td>
+      <td>-8.066900</td>
+      <td>10.000</td>
+      <td>4.50</td>
+      <td>mb</td>
+      <td>14.0</td>
+      <td>106.00</td>
+      <td>22.4470</td>
+      <td>0.6600</td>
+      <td>...</td>
+      <td>2025-07-25T01:58:47.040Z</td>
+      <td>southern Mid-Atlantic Ridge</td>
+      <td>earthquake</td>
+      <td>8.85</td>
+      <td>1.934</td>
+      <td>0.145</td>
+      <td>14.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+  </tbody>
+</table>
+<p>2663 rows × 22 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2663 entries, 0 to 2662
+Data columns (total 22 columns):
+ #   Column           Non-Null Count  Dtype
+---  ------           --------------  -----
+ 0   time             2663 non-null   object
+ 1   latitude         2663 non-null   float64
+ 2   longitude        2663 non-null   float64
+ 3   depth            2663 non-null   float64
+ 4   mag              2663 non-null   float64
+ 5   magType          2663 non-null   object
+ 6   nst              2498 non-null   float64
+ 7   gap              2496 non-null   float64
+ 8   dmin             2496 non-null   float64
+ 9   rms              2662 non-null   float64
+ 10  net              2663 non-null   object
+ 11  id               2663 non-null   object
+ 12  updated          2663 non-null   object
+ 13  place            2663 non-null   object
+ 14  type             2663 non-null   object
+ 15  horizontalError  2481 non-null   float64
+ 16  depthError       2662 non-null   float64
+ 17  magError         2470 non-null   float64
+ 18  magNst           2478 non-null   float64
+ 19  status           2663 non-null   object
+ 20  locationSource   2663 non-null   object
+ 21  magSource        2663 non-null   object
+dtypes: float64(12), object(10)
+memory usage: 457.8+ KB
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;global_30day_earthquakes.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2663 entries, 0 to 2662
+Data columns (total 22 columns):
+ #   Column           Non-Null Count  Dtype
+---  ------           --------------  -----
+ 0   time             2663 non-null   datetime64[ns, UTC]
+ 1   latitude         2663 non-null   float64
+ 2   longitude        2663 non-null   float64
+ 3   depth            2663 non-null   float64
+ 4   mag              2663 non-null   float64
+ 5   magType          2663 non-null   object
+ 6   nst              2498 non-null   float64
+ 7   gap              2496 non-null   float64
+ 8   dmin             2496 non-null   float64
+ 9   rms              2662 non-null   float64
+ 10  net              2663 non-null   object
+ 11  id               2663 non-null   object
+ 12  updated          2663 non-null   object
+ 13  place            2663 non-null   object
+ 14  type             2663 non-null   object
+ 15  horizontalError  2481 non-null   float64
+ 16  depthError       2662 non-null   float64
+ 17  magError         2470 non-null   float64
+ 18  magNst           2478 non-null   float64
+ 19  status           2663 non-null   object
+ 20  locationSource   2663 non-null   object
+ 21  magSource        2663 non-null   object
+dtypes: datetime64[ns, UTC](1), float64(12), object(9)
+memory usage: 457.8+ KB
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>depth</th>
+      <th>mag</th>
+      <th>magType</th>
+      <th>nst</th>
+      <th>gap</th>
+      <th>dmin</th>
+      <th>rms</th>
+      <th>...</th>
+      <th>updated</th>
+      <th>place</th>
+      <th>type</th>
+      <th>horizontalError</th>
+      <th>depthError</th>
+      <th>magError</th>
+      <th>magNst</th>
+      <th>status</th>
+      <th>locationSource</th>
+      <th>magSource</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ak025aagkam9</th>
+      <td>2025-08-12 00:30:58.784000+00:00</td>
+      <td>62.0080</td>
+      <td>-145.5334</td>
+      <td>9.8</td>
+      <td>2.6</td>
+      <td>ml</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.8700</td>
+      <td>...</td>
+      <td>2025-08-12T00:37:39.629Z</td>
+      <td>7 km SW of Copperville, Alaska</td>
+      <td>earthquake</td>
+      <td>NaN</td>
+      <td>0.300</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>automatic</td>
+      <td>ak</td>
+      <td>ak</td>
+    </tr>
+    <tr>
+      <th>ak025aagka93</th>
+      <td>2025-08-12 00:30:53.834000+00:00</td>
+      <td>61.7409</td>
+      <td>-146.0972</td>
+      <td>42.4</td>
+      <td>2.6</td>
+      <td>ml</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.5700</td>
+      <td>...</td>
+      <td>2025-08-12T00:35:35.397Z</td>
+      <td>38 km S of Tolsona, Alaska</td>
+      <td>earthquake</td>
+      <td>NaN</td>
+      <td>3.200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>automatic</td>
+      <td>ak</td>
+      <td>ak</td>
+    </tr>
+    <tr>
+      <th>us6000qzzz</th>
+      <td>2025-08-11 23:45:41.896000+00:00</td>
+      <td>51.1937</td>
+      <td>160.8599</td>
+      <td>10.0</td>
+      <td>4.5</td>
+      <td>mb</td>
+      <td>25.0</td>
+      <td>135.00</td>
+      <td>2.283</td>
+      <td>0.4400</td>
+      <td>...</td>
+      <td>2025-08-12T00:10:36.040Z</td>
+      <td>256 km SE of Vilyuchinsk, Russia</td>
+      <td>earthquake</td>
+      <td>7.30</td>
+      <td>1.883</td>
+      <td>0.069</td>
+      <td>61.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+    <tr>
+      <th>nn00902440</th>
+      <td>2025-08-11 21:24:31.503000+00:00</td>
+      <td>41.2421</td>
+      <td>-116.7149</td>
+      <td>6.3</td>
+      <td>2.9</td>
+      <td>ml</td>
+      <td>14.0</td>
+      <td>144.57</td>
+      <td>0.342</td>
+      <td>0.1627</td>
+      <td>...</td>
+      <td>2025-08-11T22:14:22.638Z</td>
+      <td>60 km NE of Valmy, Nevada</td>
+      <td>earthquake</td>
+      <td>NaN</td>
+      <td>3.300</td>
+      <td>0.260</td>
+      <td>12.0</td>
+      <td>reviewed</td>
+      <td>nn</td>
+      <td>nn</td>
+    </tr>
+    <tr>
+      <th>us6000qzz1</th>
+      <td>2025-08-11 21:02:42.456000+00:00</td>
+      <td>51.6515</td>
+      <td>159.7787</td>
+      <td>35.0</td>
+      <td>5.0</td>
+      <td>mb</td>
+      <td>61.0</td>
+      <td>106.00</td>
+      <td>1.539</td>
+      <td>0.6000</td>
+      <td>...</td>
+      <td>2025-08-12T00:35:51.040Z</td>
+      <td>170 km SSE of Vilyuchinsk, Russia</td>
+      <td>earthquake</td>
+      <td>6.76</td>
+      <td>1.859</td>
+      <td>0.043</td>
+      <td>175.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>depth</th>
+      <th>mag</th>
+      <th>nst</th>
+      <th>gap</th>
+      <th>dmin</th>
+      <th>rms</th>
+      <th>horizontalError</th>
+      <th>depthError</th>
+      <th>magError</th>
+      <th>magNst</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>2663.000000</td>
+      <td>2663.000000</td>
+      <td>2663.000000</td>
+      <td>2663.000000</td>
+      <td>2498.000000</td>
+      <td>2496.000000</td>
+      <td>2496.000000</td>
+      <td>2662.000000</td>
+      <td>2481.000000</td>
+      <td>2662.000000</td>
+      <td>2470.000000</td>
+      <td>2478.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>35.686975</td>
+      <td>24.620066</td>
+      <td>44.237501</td>
+      <td>4.140421</td>
+      <td>51.969976</td>
+      <td>138.648778</td>
+      <td>1.958450</td>
+      <td>0.735855</td>
+      <td>7.573879</td>
+      <td>4.463947</td>
+      <td>0.093915</td>
+      <td>86.439871</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>28.067148</td>
+      <td>142.590874</td>
+      <td>83.846288</td>
+      <td>0.893920</td>
+      <td>39.714453</td>
+      <td>59.363062</td>
+      <td>2.873961</td>
+      <td>0.294644</td>
+      <td>3.474638</td>
+      <td>17.009364</td>
+      <td>0.050587</td>
+      <td>141.302986</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-63.245700</td>
+      <td>-179.983200</td>
+      <td>-2.360000</td>
+      <td>2.500000</td>
+      <td>0.000000</td>
+      <td>12.000000</td>
+      <td>0.000000</td>
+      <td>0.050000</td>
+      <td>0.080000</td>
+      <td>0.000000</td>
+      <td>0.001186</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>19.406700</td>
+      <td>-149.969300</td>
+      <td>10.000000</td>
+      <td>3.300000</td>
+      <td>24.000000</td>
+      <td>101.000000</td>
+      <td>0.527750</td>
+      <td>0.560000</td>
+      <td>5.440000</td>
+      <td>1.869000</td>
+      <td>0.056000</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>51.341200</td>
+      <td>120.729800</td>
+      <td>17.413000</td>
+      <td>4.400000</td>
+      <td>40.000000</td>
+      <td>131.000000</td>
+      <td>1.351000</td>
+      <td>0.730000</td>
+      <td>7.970000</td>
+      <td>1.961000</td>
+      <td>0.088000</td>
+      <td>30.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>52.897450</td>
+      <td>159.673300</td>
+      <td>35.000000</td>
+      <td>4.700000</td>
+      <td>68.000000</td>
+      <td>184.000000</td>
+      <td>2.246000</td>
+      <td>0.930000</td>
+      <td>9.850000</td>
+      <td>6.337750</td>
+      <td>0.121000</td>
+      <td>88.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>83.270300</td>
+      <td>179.909500</td>
+      <td>638.859000</td>
+      <td>8.800000</td>
+      <td>338.000000</td>
+      <td>352.000000</td>
+      <td>33.879000</td>
+      <td>2.340000</td>
+      <td>22.620000</td>
+      <td>850.600000</td>
+      <td>0.371000</td>
+      <td>1144.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mag</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+id
+us6000qw60    8.8
+us7000qdyl    7.4
+us7000qd1y    7.3
+us6000qvsf    7.0
+us6000qw6q    6.9
+us6000qxt4    6.8
+us7000qcik    6.7
+us6000qw1a    6.6
+us6000quy1    6.6
+us7000qdz2    6.6
+us7000qdyw    6.6
+us7000qdye    6.6
+us6000qvpp    6.5
+us6000qxsv    6.4
+us6000qwiq    6.4
+us6000qugg    6.3
+us6000qxzw    6.2
+us6000qwuh    6.2
+us6000qw6s    6.2
+us6000qvbw    6.2
+Name: mag, dtype: float64
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -307,23 +1150,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="geopandas.html">
+          <a class="next-page" href="xarray.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Geographic Data with GeoPandas</div>
+                <div class="title">Geospatial and Gridded Data with Xarray</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="dask.html">
+          <a class="prev-page" href="scipy.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Parallelization with Dask</div>
+                <div class="title">SciPy (the Scientific Python Library)</div>
                 
               </div>
             </a>
