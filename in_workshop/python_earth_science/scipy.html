@@ -314,7 +314,7 @@
 <h2>Data Analysis<a class="headerlink" href="#Data-Analysis" title="Link to this heading">¶</a></h2>
 <p>Let’s load the pier temperature data from our last workshop session.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> <span class="c1"># numpy is usually imported as np (but doesn&#39;t have to be)</span>
@@ -331,7 +331,7 @@
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
@@ -359,7 +359,7 @@
 <h3>Detrend and Filter with scipy.signal<a class="headerlink" href="#Detrend-and-Filter-with-scipy.signal" title="Link to this heading">¶</a></h3>
 <p>First, let’s turn our timeseries of temperature, into a timeseries of temperature anomaly.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">signal</span>
@@ -379,7 +379,7 @@
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -404,7 +404,7 @@
 </div>
 <p>That data is pretty noisy! We can filter it to remove signals that are shorter period than 1 day. Looking at the figure below, our data appears to be taken every 5 minutes.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
@@ -429,7 +429,7 @@
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_minutes</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># timestep in minutes</span>
@@ -450,7 +450,7 @@
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
@@ -479,7 +479,7 @@
 <h3>Fitting a Distribution with scipy.stats<a class="headerlink" href="#Fitting-a-Distribution-with-scipy.stats" title="Link to this heading">¶</a></h3>
 <p>Perhaps we want a way to summarize our temperature anomaly data. One way to do this is to fit a distribution to it. Naively we can start with a normal distribution.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
@@ -518,7 +518,7 @@
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how good is a normal distribution? lets use kurtosis and skew</span>
@@ -538,7 +538,7 @@ Kurtosis: -0.17225053286842096, Skew: 0.5672473389299741
 </div>
 <p>This distribution appears to be skewed toward positive temperature anomalies. Since the distribution looks roughly normal, but with a slight skew, we can try a skew-normal distribution.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit skew-normal: returns shape, loc, scale</span>
@@ -581,14 +581,20 @@ Scale      = 3.116
 </section>
 <section id="Solving-an-Initial-Value-Problem-with-scipy.integrate">
 <h3>Solving an Initial Value Problem with scipy.integrate<a class="headerlink" href="#Solving-an-Initial-Value-Problem-with-scipy.integrate" title="Link to this heading">¶</a></h3>
+<p>Consider the following scenario. We have a tank of water at 25 deg C that is exposed to the air which has a temperature of 19 degrees C. The following equation tells us the rate of change in water temperature, given the temperature difference and a cooling rate. We will give our cooling rate <span class="math notranslate nohighlight">\(k\)</span> a value of 0.1 C/hour. We are treating the air like an infinite heat sink and does not change temperature as the water cools.</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\frac{dT}{dt} = -k (T - T_{\text{air}})\]</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code> to integrate this differential equation forward from an intial value. The default method is Runge-Kutta 4 (<code class="docutils literal notranslate"><span class="pre">RK45</span></code>). You can specify another method if you want.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">integrate</span>
 
 <span class="c1"># Parameters</span>
-<span class="n">T_air</span> <span class="o">=</span> <span class="mf">15.0</span>      <span class="c1"># °C</span>
+<span class="n">T_air</span> <span class="o">=</span> <span class="mf">19.0</span>      <span class="c1"># °C</span>
 <span class="n">k</span> <span class="o">=</span> <span class="mf">0.1</span>           <span class="c1"># hr^-1 cooling rate</span>
 <span class="n">T0</span> <span class="o">=</span> <span class="mf">25.0</span>         <span class="c1"># initial ocean mixed layer temperature (°C)</span>
 <span class="n">t_span</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>  <span class="c1"># hours</span>
@@ -598,8 +604,8 @@ Scale      = 3.116
 <span class="k">def</span><span class="w"> </span><span class="nf">cooling</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">T_air</span><span class="p">)</span>
 
-<span class="c1"># Solve</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span><span class="n">cooling</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="p">[</span><span class="n">T0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+<span class="c1"># Integrate the ODE forward from initial condition T0 with RK45 (default method)</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span><span class="n">cooling</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="p">[</span><span class="n">T0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;RK45&#39;</span><span class="p">)</span>
 
 <span class="c1"># Plot</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -616,7 +622,37 @@ Scale      = 3.116
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_scipy_22_0.png" src="../../_images/in_workshop_python_earth_science_scipy_22_0.png" />
+<img alt="../../_images/in_workshop_python_earth_science_scipy_25_0.png" src="../../_images/in_workshop_python_earth_science_scipy_25_0.png" />
+</div>
+</div>
+<p>Our plot shows that after approximately 48 hours, the water temperature has plateaud near the air temperature. The analytical solution for the above problem is:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[T(t) = T_{\text{air}} + \left(T_0 - T_{\text{air}}\right) e^{-k t}\]</div>
+</div>
+<p>We can plot the analytical and numerically integrated solutions on top of each other.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_analytical</span> <span class="o">=</span> <span class="n">T_air</span> <span class="o">+</span> <span class="p">(</span><span class="n">T0</span> <span class="o">-</span> <span class="n">T_air</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">t_eval</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Water temp&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">T_air</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Air temp&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">T_analytical</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Analytical&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (hours)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_scipy_29_0.png" src="../../_images/in_workshop_python_earth_science_scipy_29_0.png" />
 </div>
 </div>
 </section>
