@@ -294,20 +294,23 @@
 <h1>Tabular Data with Pandas<a class="headerlink" href="#Tabular-Data-with-Pandas" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html">Pandas</a> is the most popular Python tool for data analysis. It handles tabular data and has tons of nice features for manipulating text, grouping data by attributes, formatting dates, the list goes on… Even if you do not use tabular or csv data, you will likely end up using Pandas tools for some of their nice data-wrangling features. In general, if you have data that could be organized in an Excel spreadsheet or a
 table, you should use Pandas. This is particularly useful for data downloaded from places like NOAA and USGS where observations from individual meaurement stations are usually concatenated into a table of some kind. Pandas can be used to open data in CSV, HTML, JSON, XLS, Parquet, SQL, GBQ formats and more.</p>
+<section id="Earthquake-Data-Tutorial">
+<h2>Earthquake Data Tutorial<a class="headerlink" href="#Earthquake-Data-Tutorial" title="Link to this heading">¶</a></h2>
+<p>For this tutorial we have grabbed the last 30 days of global earthquake activity from <a class="reference external" href="https://earthquake.usgs.gov/earthquakes/search/">USGS</a> (downloaded August 11th, 2025). The data only includes earthquakes of magnitude greater than or equal to 2.5.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> <span class="c1">#import the pandas library</span>
 
-<span class="c1"># open our csv file</span>
+<span class="c1"># open our csv file, this assumes it is in the top level of your VSCode workspace</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;global_30day_earthquakes.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>Pandas reads the data into an object called a ‘DataFrame’.</p>
+<p>When we open a dataset, Pandas reads the data into an object called a ‘DataFrame’ which looks like a table.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect our dataframe</span>
@@ -316,7 +319,7 @@ table, you should use Pandas. This is particularly useful for data downloaded fr
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -632,7 +635,7 @@ table, you should use Pandas. This is particularly useful for data downloaded fr
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># instead of looking at the whole table, lets see an overview of the information we have</span>
@@ -678,16 +681,16 @@ memory usage: 457.8+ KB
 </div>
 <p>We can see that the column ‘time’ has been recognized as a generic object, instead of a date. Let’s fix that by telling Pandas which column to interpret as a date type. The list above tells us that the date is the 0th column.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;global_30day_earthquakes.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-<p>When we run <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> again, we can see that time is now a datetime64 type. We can also see that the datetime units are nanoseconds, and that it is UTC time. One of the best features of Pandas is the ease with which you can switch between datetime formats.</p>
+<p>When we run <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> again, we can see that time is now a datetime64 type. We can also see that the datetime units are nanoseconds, and that it is UTC time. One of the best features of Pandas is the ease with which it can handle and interpret dates.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -732,7 +735,7 @@ memory usage: 457.8+ KB
 </div>
 <p>We can inspect the first few entries with <code class="docutils literal notranslate"><span class="pre">df.head()</span></code></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -740,7 +743,7 @@ memory usage: 457.8+ KB
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -911,9 +914,9 @@ memory usage: 457.8+ KB
 <p>5 rows × 22 columns</p>
 </div></div>
 </div>
-<p>We can see above that each entry gets a generic index 0, 1, 2,… That isn’t particularly useful for our analysis since the indices don’t mean anything physical. Let’s change that by telling Pandas which column to use as the index. In this case we will use the earthquake ID. These are unique alphanumeric strings assigned by USGS to each earthquake.</p>
+<p>We can see above that each entry gets a generic row index of 0, 1, 2,… That isn’t particularly useful for our analysis since the indices don’t mean anything physical. Let’s change that by telling Pandas which column to use as the index. In this case we will use the earthquake ID. These are unique alphanumeric strings assigned by USGS to each earthquake.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
@@ -922,7 +925,7 @@ memory usage: 457.8+ KB
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1115,6 +1118,114 @@ memory usage: 457.8+ KB
   </tbody>
 </table>
 <p>5 rows × 21 columns</p>
+</div></div>
+</div>
+<p>We can investigate specific columns of the first 10 entries with the following syntax:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;place&#39;</span><span class="p">,</span> <span class="s1">&#39;mag&#39;</span><span class="p">,</span><span class="s1">&#39;depth&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>place</th>
+      <th>mag</th>
+      <th>depth</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ak025aagkam9</th>
+      <td>7 km SW of Copperville, Alaska</td>
+      <td>2.6</td>
+      <td>9.800</td>
+    </tr>
+    <tr>
+      <th>ak025aagka93</th>
+      <td>38 km S of Tolsona, Alaska</td>
+      <td>2.6</td>
+      <td>42.400</td>
+    </tr>
+    <tr>
+      <th>us6000qzzz</th>
+      <td>256 km SE of Vilyuchinsk, Russia</td>
+      <td>4.5</td>
+      <td>10.000</td>
+    </tr>
+    <tr>
+      <th>nn00902440</th>
+      <td>60 km NE of Valmy, Nevada</td>
+      <td>2.9</td>
+      <td>6.300</td>
+    </tr>
+    <tr>
+      <th>us6000qzz1</th>
+      <td>170 km SSE of Vilyuchinsk, Russia</td>
+      <td>5.0</td>
+      <td>35.000</td>
+    </tr>
+    <tr>
+      <th>us6000qzyh</th>
+      <td>195 km SE of Vilyuchinsk, Russia</td>
+      <td>4.8</td>
+      <td>10.000</td>
+    </tr>
+    <tr>
+      <th>us6000qzvz</th>
+      <td>94 km NW of Copiapó, Chile</td>
+      <td>4.8</td>
+      <td>23.635</td>
+    </tr>
+    <tr>
+      <th>us6000qzv1</th>
+      <td>southeast of the Loyalty Islands</td>
+      <td>4.8</td>
+      <td>10.000</td>
+    </tr>
+    <tr>
+      <th>us6000qzux</th>
+      <td>115 km SE of Attu Station, Alaska</td>
+      <td>4.2</td>
+      <td>35.000</td>
+    </tr>
+    <tr>
+      <th>nn00902450</th>
+      <td>55 km NE of Valmy, Nevada</td>
+      <td>2.5</td>
+      <td>11.300</td>
+    </tr>
+  </tbody>
+</table>
 </div></div>
 </div>
 <p>We can grab summary statistics of our entire DataFrame using <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code>.</p>
@@ -1327,7 +1438,7 @@ us6000qvbw    6.2
 Name: mag, dtype: float64
 </pre></div></div>
 </div>
-<p>Where are these earthquakes happening?</p>
+<p>Now let’s look at some of the more interesting details, like where are these earthquakes happening? We can see there is a column called <code class="docutils literal notranslate"><span class="pre">place</span></code>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
@@ -1352,15 +1463,16 @@ Name: place, dtype: object
 </pre></div></div>
 </div>
 <p>It looks like the <code class="docutils literal notranslate"><span class="pre">place</span></code> descriptor has lots of extra text. We want something more concise so that we can categorize the earthquakes by larger areas (e.g., Alaska). Let’s create a new column, called <code class="docutils literal notranslate"><span class="pre">loc</span></code> where we take just the last phrase in the <code class="docutils literal notranslate"><span class="pre">place</span></code> descriptor.</p>
-<p>The next step is a little nuanced, because you have to use a regex (regular expression) pattern to find what we are looking for. Regex is a powerful tool for parsing text and matching strings of various formats. We won’t teach it here, because ChatGPT is very good at generating regex patterns to find exactly what you need. The pattern used here will isolate the text after the comma in the <code class="docutils literal notranslate"><span class="pre">place</span></code> descriptor. If there isn’t a comma, then we will take the whole string.</p>
+<p>The next step is a little nuanced, because you have to use a regex (regular expression) pattern to find what we are looking for. <a class="reference external" href="https://www.w3schools.com/python/python_regex.asp">Regex</a> is a powerful tool for parsing text and matching strings of various formats. We won’t teach it here, because ChatGPT is very good at generating regex patterns to find exactly what you need. The pattern used here will isolate the text after the comma in the <code class="docutils literal notranslate"><span class="pre">place</span></code> descriptor. If there isn’t a comma, then
+we will take the whole string.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll try to get the last comma-separated part, or the whole string if no comma</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll try to get the last comma-separated part of the `place`, or the whole string if there is no comma</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?:,\s*)([^,]+)$&#39;</span><span class="p">)</span>
 
-<span class="c1"># If there are rows without a comma (like &quot;Fiji region&quot;), fill them with the original value</span>
+<span class="c1"># If there are entires without a comma (like &quot;Fiji region&quot;), fill them with the original value</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">])</span>
 
 <span class="c1"># compare what we had in &#39;place&#39; with what we have in &#39;loc&#39;</span>
@@ -1449,7 +1561,7 @@ array([&#39;Alaska&#39;, &#39;Russia&#39;, &#39;Nevada&#39;, &#39;Chile&#39;,
 </div>
 <p>Now we can start plotting. Pandas and matplotlib work well together to naturally generate plots that have nicely labeled axes. You will have to define the details of the plots, but Pandas makes it very easy to subset/select data by different columns, date ranges, etc.</p>
 <section id="Plot-Top-5-Most-Earthquakes-by-Location">
-<h2><strong>Plot Top 5 Most Earthquakes by Location</strong><a class="headerlink" href="#Plot-Top-5-Most-Earthquakes-by-Location" title="Link to this heading">¶</a></h2>
+<h3><strong>Plot Top 5 Most Earthquakes by Location</strong><a class="headerlink" href="#Plot-Top-5-Most-Earthquakes-by-Location" title="Link to this heading">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
@@ -1477,12 +1589,12 @@ array([&#39;Alaska&#39;, &#39;Russia&#39;, &#39;Nevada&#39;, &#39;Chile&#39;,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_pandas_28_0.png" src="../../_images/in_workshop_python_earth_science_pandas_28_0.png" />
+<img alt="../../_images/in_workshop_python_earth_science_pandas_31_0.png" src="../../_images/in_workshop_python_earth_science_pandas_31_0.png" />
 </div>
 </div>
 </section>
 <section id="Plot-a-Histogram-of-Earthquake-Magnitudes">
-<h2><strong>Plot a Histogram of Earthquake Magnitudes</strong><a class="headerlink" href="#Plot-a-Histogram-of-Earthquake-Magnitudes" title="Link to this heading">¶</a></h2>
+<h3><strong>Plot a Histogram of Earthquake Magnitudes</strong><a class="headerlink" href="#Plot-a-Histogram-of-Earthquake-Magnitudes" title="Link to this heading">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
@@ -1501,12 +1613,12 @@ array([&#39;Alaska&#39;, &#39;Russia&#39;, &#39;Nevada&#39;, &#39;Chile&#39;,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_pandas_30_0.png" src="../../_images/in_workshop_python_earth_science_pandas_30_0.png" />
+<img alt="../../_images/in_workshop_python_earth_science_pandas_33_0.png" src="../../_images/in_workshop_python_earth_science_pandas_33_0.png" />
 </div>
 </div>
 </section>
 <section id="Plot-a-Histogram-From-Both-Datasets-with-Log-Axis">
-<h2><strong>Plot a Histogram From Both Datasets with Log Axis</strong><a class="headerlink" href="#Plot-a-Histogram-From-Both-Datasets-with-Log-Axis" title="Link to this heading">¶</a></h2>
+<h3><strong>Plot a Histogram From Both Datasets with Log Axis</strong><a class="headerlink" href="#Plot-a-Histogram-From-Both-Datasets-with-Log-Axis" title="Link to this heading">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
@@ -1536,12 +1648,12 @@ array([&#39;Alaska&#39;, &#39;Russia&#39;, &#39;Nevada&#39;, &#39;Chile&#39;,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_pandas_32_0.png" src="../../_images/in_workshop_python_earth_science_pandas_32_0.png" />
+<img alt="../../_images/in_workshop_python_earth_science_pandas_35_0.png" src="../../_images/in_workshop_python_earth_science_pandas_35_0.png" />
 </div>
 </div>
 </section>
 <section id="Scatter-Plot-of-Earthquake-Locations">
-<h2><strong>Scatter Plot of Earthquake Locations</strong><a class="headerlink" href="#Scatter-Plot-of-Earthquake-Locations" title="Link to this heading">¶</a></h2>
+<h3><strong>Scatter Plot of Earthquake Locations</strong><a class="headerlink" href="#Scatter-Plot-of-Earthquake-Locations" title="Link to this heading">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
@@ -1561,12 +1673,12 @@ array([&#39;Alaska&#39;, &#39;Russia&#39;, &#39;Nevada&#39;, &#39;Chile&#39;,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_pandas_34_0.png" src="../../_images/in_workshop_python_earth_science_pandas_34_0.png" />
+<img alt="../../_images/in_workshop_python_earth_science_pandas_37_0.png" src="../../_images/in_workshop_python_earth_science_pandas_37_0.png" />
 </div>
 </div>
 </section>
 <section id="Add-a-Map-to-Scatter-with-Cartopy">
-<h2><strong>Add a Map to Scatter with Cartopy</strong><a class="headerlink" href="#Add-a-Map-to-Scatter-with-Cartopy" title="Link to this heading">¶</a></h2>
+<h3><strong>Add a Map to Scatter with Cartopy</strong><a class="headerlink" href="#Add-a-Map-to-Scatter-with-Cartopy" title="Link to this heading">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
@@ -1602,10 +1714,19 @@ array([&#39;Alaska&#39;, &#39;Russia&#39;, &#39;Nevada&#39;, &#39;Chile&#39;,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_pandas_36_0.png" src="../../_images/in_workshop_python_earth_science_pandas_36_0.png" />
-</div>
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[19]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">cartopy</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">crs</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">ccrs</span>
+<span class="ansi-green-fg">      2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">cartopy</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">feature</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">cfeature</span>
+<span class="ansi-green-fg">      4</span> <span style="color: rgb(95,135,135)"># Create a GeoAxes with PlateCarree projection (standard lat/lon)</span>
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;cartopy&#39;
+</pre></div></div>
 </div>
 <p>Content for this tutorial was inspired by following an assignment from the Earth and Environmental Science Databook. The assignment can be found <a class="reference external" href="https://earth-env-data-science.github.io/assignments/basic_pandas.html">here</a>.</p>
+</section>
 </section>
 </section>
 
@@ -1665,11 +1786,14 @@ array([&#39;Alaska&#39;, &#39;Russia&#39;, &#39;Nevada&#39;, &#39;Chile&#39;,
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Tabular Data with Pandas</a><ul>
+<li><a class="reference internal" href="#Earthquake-Data-Tutorial">Earthquake Data Tutorial</a><ul>
 <li><a class="reference internal" href="#Plot-Top-5-Most-Earthquakes-by-Location"><strong>Plot Top 5 Most Earthquakes by Location</strong></a></li>
 <li><a class="reference internal" href="#Plot-a-Histogram-of-Earthquake-Magnitudes"><strong>Plot a Histogram of Earthquake Magnitudes</strong></a></li>
 <li><a class="reference internal" href="#Plot-a-Histogram-From-Both-Datasets-with-Log-Axis"><strong>Plot a Histogram From Both Datasets with Log Axis</strong></a></li>
 <li><a class="reference internal" href="#Scatter-Plot-of-Earthquake-Locations"><strong>Scatter Plot of Earthquake Locations</strong></a></li>
 <li><a class="reference internal" href="#Add-a-Map-to-Scatter-with-Cartopy"><strong>Add a Map to Scatter with Cartopy</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
