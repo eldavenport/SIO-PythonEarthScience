@@ -293,10 +293,10 @@
           <section id="Parallelization-with-Dask">
 <h1>Parallelization with Dask<a class="headerlink" href="#Parallelization-with-Dask" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask</a></p>
-<p><img alt="d8c426ceafcd49e1bc4546da6ba178fe" class="no-scaled-link" src="../../_images/dask.png" style="width: 500px;" /></p>
+<p><img alt="04e58941a6894edb8905678a46f7c5a9" class="no-scaled-link" src="../../_images/dask.png" style="width: 500px;" /></p>
 <section id="Exercise,-Xarray-and-XGCM-with-Dask">
 <h2>Exercise, Xarray and XGCM with Dask<a class="headerlink" href="#Exercise,-Xarray-and-XGCM-with-Dask" title="Link to this heading">¶</a></h2>
-<p>First let’s redo the divergence calculation from the Xarray tutorial, without any chunks.</p>
+<p>Let’s load a larger dataset (~2.5GB). Here is where Xarray really shines! The data can be easily <code class="docutils literal notranslate"><span class="pre">chunked</span></code> into Dask arrays. First we will redo the divergence calculation from the Xarray tutorial, without any Dask chunks.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -2105,7 +2105,7 @@ Coordinates:
 </div>
 <section id="Xarray-automatically-sped-up-with-Dask">
 <h3>Xarray automatically sped up with Dask<a class="headerlink" href="#Xarray-automatically-sped-up-with-Dask" title="Link to this heading">¶</a></h3>
-<p>Let’s load a larger dataset (~2.5GB). Here is where Xarray really shines! The data can be easily <code class="docutils literal notranslate"><span class="pre">chunked</span></code> into Dask arrays. If we spin up a Dask client with the 3 lines of code we learned earlier, our Xarray data analysis will be parallelized over the chunks. We can see the size of the chunks through inspection of the DataSet.</p>
+<p>If we <code class="docutils literal notranslate"><span class="pre">chunk()</span></code> our data, then Xarray and Dask will change the underlying array to a Dask array. We can then do parallel computing on our data. We can see the size of the chunks through inspection of the DataSet.</p>
 <p>To start we will try chunking the data by sets of 10 timesteps.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
