@@ -5,8 +5,8 @@ Python For Earth and Natural Sciences
    :maxdepth: 1
    
    scipy
+   pandas
    xarray
    dask
-   pandas
    geopandas
    cartopy
