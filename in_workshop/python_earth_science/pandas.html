@@ -179,7 +179,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -284,7 +284,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -292,26 +292,31 @@
         <article role="main" id="furo-main-content">
           <section id="Tabular-Data-with-Pandas">
 <h1>Tabular Data with Pandas<a class="headerlink" href="#Tabular-Data-with-Pandas" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html">Pandas</a> is the most popular Python tool for data analysis. It handles tabular data and has tons of nice features for manipulating text, grouping data by attributes, formatting dates, the list goes on… Even if you do not use tabular or csv data, you will likely end up using Pandas tools for some of their nice data-wrangling features. In general, if you have data that could be organized in an Excel spreadsheet or a
+table, you should use Pandas. Pandas can be used to open data in CSV, HTML, JSON, XLS, Parquet, SQL, GBQ formats and more.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> <span class="c1">#import the pandas library</span>
 
+<span class="c1"># open our csv file</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;global_30day_earthquakes.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<p>Pandas reads the data into an object called a ‘DataFrame’.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect our dataframe</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -627,10 +632,11 @@
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># instead of looking at the whole table, lets see an overview of the information we have</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -670,16 +676,18 @@ dtypes: float64(12), object(10)
 memory usage: 457.8+ KB
 </pre></div></div>
 </div>
+<p>We can see that the column ‘time’ has been recognized as a generic object, instead of a date. Let’s fix that by telling Pandas which column to interpret as a date type. The list above tells us that the date is the 0th column.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;global_30day_earthquakes.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+<p>When we run <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> again, we can see that time is now a datetime64 type. We can also see that the datetime units are nanoseconds, and that it is UTC time. One of the best features of Pandas is the ease with which you can switch between datetime formats.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -722,8 +730,190 @@ dtypes: datetime64[ns, UTC](1), float64(12), object(9)
 memory usage: 457.8+ KB
 </pre></div></div>
 </div>
+<p>We can inspect the first few entries with <code class="docutils literal notranslate"><span class="pre">df.head()</span></code></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>depth</th>
+      <th>mag</th>
+      <th>magType</th>
+      <th>nst</th>
+      <th>gap</th>
+      <th>dmin</th>
+      <th>rms</th>
+      <th>...</th>
+      <th>updated</th>
+      <th>place</th>
+      <th>type</th>
+      <th>horizontalError</th>
+      <th>depthError</th>
+      <th>magError</th>
+      <th>magNst</th>
+      <th>status</th>
+      <th>locationSource</th>
+      <th>magSource</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2025-08-12 00:30:58.784000+00:00</td>
+      <td>62.0080</td>
+      <td>-145.5334</td>
+      <td>9.8</td>
+      <td>2.6</td>
+      <td>ml</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.8700</td>
+      <td>...</td>
+      <td>2025-08-12T00:37:39.629Z</td>
+      <td>7 km SW of Copperville, Alaska</td>
+      <td>earthquake</td>
+      <td>NaN</td>
+      <td>0.300</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>automatic</td>
+      <td>ak</td>
+      <td>ak</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2025-08-12 00:30:53.834000+00:00</td>
+      <td>61.7409</td>
+      <td>-146.0972</td>
+      <td>42.4</td>
+      <td>2.6</td>
+      <td>ml</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.5700</td>
+      <td>...</td>
+      <td>2025-08-12T00:35:35.397Z</td>
+      <td>38 km S of Tolsona, Alaska</td>
+      <td>earthquake</td>
+      <td>NaN</td>
+      <td>3.200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>automatic</td>
+      <td>ak</td>
+      <td>ak</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2025-08-11 23:45:41.896000+00:00</td>
+      <td>51.1937</td>
+      <td>160.8599</td>
+      <td>10.0</td>
+      <td>4.5</td>
+      <td>mb</td>
+      <td>25.0</td>
+      <td>135.00</td>
+      <td>2.283</td>
+      <td>0.4400</td>
+      <td>...</td>
+      <td>2025-08-12T00:10:36.040Z</td>
+      <td>256 km SE of Vilyuchinsk, Russia</td>
+      <td>earthquake</td>
+      <td>7.30</td>
+      <td>1.883</td>
+      <td>0.069</td>
+      <td>61.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2025-08-11 21:24:31.503000+00:00</td>
+      <td>41.2421</td>
+      <td>-116.7149</td>
+      <td>6.3</td>
+      <td>2.9</td>
+      <td>ml</td>
+      <td>14.0</td>
+      <td>144.57</td>
+      <td>0.342</td>
+      <td>0.1627</td>
+      <td>...</td>
+      <td>2025-08-11T22:14:22.638Z</td>
+      <td>60 km NE of Valmy, Nevada</td>
+      <td>earthquake</td>
+      <td>NaN</td>
+      <td>3.300</td>
+      <td>0.260</td>
+      <td>12.0</td>
+      <td>reviewed</td>
+      <td>nn</td>
+      <td>nn</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2025-08-11 21:02:42.456000+00:00</td>
+      <td>51.6515</td>
+      <td>159.7787</td>
+      <td>35.0</td>
+      <td>5.0</td>
+      <td>mb</td>
+      <td>61.0</td>
+      <td>106.00</td>
+      <td>1.539</td>
+      <td>0.6000</td>
+      <td>...</td>
+      <td>2025-08-12T00:35:51.040Z</td>
+      <td>170 km SSE of Vilyuchinsk, Russia</td>
+      <td>earthquake</td>
+      <td>6.76</td>
+      <td>1.859</td>
+      <td>0.043</td>
+      <td>175.0</td>
+      <td>reviewed</td>
+      <td>us</td>
+      <td>us</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div></div>
+</div>
+<p>We can see above that each entry gets a generic index 0, 1, 2,… That isn’t particularly useful for our analysis since the indices don’t mean anything physical. Let’s change that by telling Pandas which column to use as the index. In this case we will use the earthquake ID. These are unique alphanumeric strings assigned by USGS to each earthquake.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
@@ -732,7 +922,7 @@ memory usage: 457.8+ KB
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -927,8 +1117,9 @@ memory usage: 457.8+ KB
 <p>5 rows × 21 columns</p>
 </div></div>
 </div>
+<p>We can grab summary statistics of our entire DataFrame using <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -936,7 +1127,7 @@ memory usage: 457.8+ KB
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1097,8 +1288,9 @@ memory usage: 457.8+ KB
 </table>
 </div></div>
 </div>
+<p>Looks like the largeset earthquake in the last 30 days was an 8.8 (see column <code class="docutils literal notranslate"><span class="pre">mag</span></code>, row <code class="docutils literal notranslate"><span class="pre">max</span></code>), and the average earthquake size was 4.1 with a standard deviation of 0.89. We can use features like <code class="docutils literal notranslate"><span class="pre">nlargest</span></code> to quickly sort through our data. If we use <code class="docutils literal notranslate"><span class="pre">nlargest</span></code> on <code class="docutils literal notranslate"><span class="pre">mag</span></code> we can find the n largest earthquakes. Let’s do 20.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mag</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
@@ -1106,7 +1298,7 @@ memory usage: 457.8+ KB
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1135,14 +1327,286 @@ us6000qvbw    6.2
 Name: mag, dtype: float64
 </pre></div></div>
 </div>
+<p>Where are these earthquakes happening?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+id
+ak025aagkam9       7 km SW of Copperville, Alaska
+ak025aagka93           38 km S of Tolsona, Alaska
+us6000qzzz       256 km SE of Vilyuchinsk, Russia
+nn00902440              60 km NE of Valmy, Nevada
+us6000qzz1      170 km SSE of Vilyuchinsk, Russia
+Name: place, dtype: object
+</pre></div></div>
+</div>
+<p>It looks like the <code class="docutils literal notranslate"><span class="pre">place</span></code> descriptor has lots of extra text. We want something more concise so that we can categorize the earthquakes by larger areas (e.g., Alaska). Let’s create a new column, called <code class="docutils literal notranslate"><span class="pre">loc</span></code> where we take just the last phrase in the <code class="docutils literal notranslate"><span class="pre">place</span></code> descriptor.</p>
+<p>The next step is a little nuanced, because you have to use a regex (regular expression) pattern to find what we are looking for. Regex is a powerful tool for parsing text and matching strings of various formats. We won’t teach it here, because ChatGPT is very good at generating regex patterns to find exactly what you need. The pattern used here will isolate the text after the comma in the <code class="docutils literal notranslate"><span class="pre">place</span></code> descriptor. If there isn’t a comma, then we will take the whole string.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll try to get the last comma-separated part, or the whole string if no comma</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?:,\s*)([^,]+)$&#39;</span><span class="p">)</span>
+
+<span class="c1"># If there are rows without a comma (like &quot;Fiji region&quot;), fill them with the original value</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">])</span>
+
+<span class="c1"># compare what we had in &#39;place&#39; with what we have in &#39;loc&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;place&#39;</span><span class="p">,</span> <span class="s1">&#39;loc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                                          place     loc
+id
+ak025aagkam9     7 km SW of Copperville, Alaska  Alaska
+ak025aagka93         38 km S of Tolsona, Alaska  Alaska
+us6000qzzz     256 km SE of Vilyuchinsk, Russia  Russia
+nn00902440            60 km NE of Valmy, Nevada  Nevada
+us6000qzz1    170 km SSE of Vilyuchinsk, Russia  Russia
+</pre></div></div>
+</div>
+<p>There could be many earthquakes in the same country, and none in another. Let’s look at a list of the unique values in the <code class="docutils literal notranslate"><span class="pre">loc</span></code> column.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;Alaska&#39;, &#39;Russia&#39;, &#39;Nevada&#39;, &#39;Chile&#39;,
+       &#39;southeast of the Loyalty Islands&#39;, &#39;Mexico&#39;, &#39;Turkey&#39;,
+       &#39;New Zealand&#39;, &#39;Vanuatu&#39;, &#39;Peru&#39;, &#39;CA&#39;, &#39;Tonga&#39;,
+       &#39;south of the Kermadec Islands&#39;, &#39;Philippines&#39;, &#39;Indonesia&#39;,
+       &#39;Timor Leste&#39;, &#39;Colombia&#39;, &#39;Sea of Okhotsk&#39;, &#39;Guam&#39;, &#39;Guatemala&#39;,
+       &#39;Washington&#39;, &#39;south of the Fiji Islands&#39;, &#39;Wyoming&#39;,
+       &#39;Dominican Republic&#39;, &#39;Taiwan&#39;, &#39;Canada&#39;, &#39;Puerto Rico&#39;,
+       &#39;western Indian-Antarctic Ridge&#39;, &#39;central Mid-Atlantic Ridge&#39;,
+       &#39;Burma (Myanmar)&#39;, &#39;Arizona&#39;, &#39;Macquarie Island region&#39;,
+       &#39;Azerbaijan&#39;, &#39;Indiana&#39;, &#39;Ethiopia&#39;, &#39;Chagos Archipelago region&#39;,
+       &#39;Argentina&#39;, &#39;Japan&#39;, &#39;Papua New Guinea&#39;, &#39;Tanzania&#39;,
+       &#39;Japan region&#39;, &#39;Uzbekistan&#39;, &#39;Oregon&#39;, &#39;Hawaii&#39;, &#39;Afghanistan&#39;,
+       &#39;Fiji&#39;, &#39;Tajikistan&#39;, &#39;California&#39;, &#39;U.S. Virgin Islands&#39;, &#39;Texas&#39;,
+       &#39;Greece&#39;, &#39;Solomon Islands&#39;, &#39;Reykjanes Ridge&#39;, &#39;West Chile Rise&#39;,
+       &#39;southern Mid-Atlantic Ridge&#39;, &#39;New Mexico&#39;, &#39;Banda Sea&#39;,
+       &#39;New Jersey&#39;, &#39;Kansas&#39;, &#39;Kyrgyzstan&#39;, &#39;Saint Eustatius and Saba &#39;,
+       &#39;east of the Kuril Islands&#39;, &#39;Iran&#39;, &#39;Bouvet Island region&#39;, &#39;MX&#39;,
+       &#39;Haiti&#39;, &#39;Fiji region&#39;, &#39;Nicaragua&#39;, &#39;El Salvador&#39;, &#39;Brazil&#39;,
+       &#39;Pacific-Antarctic Ridge&#39;, &#39;China&#39;, &#39;Pakistan&#39;, &#39;Portugal&#39;,
+       &#39;Venezuela&#39;, &#39;Costa Rica&#39;, &#39;Arkansas&#39;, &#39;Gulf of Alaska&#39;,
+       &#39;northern Mid-Atlantic Ridge&#39;, &#39;South Sandwich Islands region&#39;,
+       &#39;Montana&#39;, &#39;Saudi Arabia&#39;, &#39;Russia Earthquake&#39;, &#39;India&#39;,
+       &#39;Mariana Islands region&#39;, &#39;Mauritius - Reunion region&#39;, &#39;Idaho&#39;,
+       &#39;Burundi&#39;, &#39;Ecuador&#39;, &#39;Djibouti&#39;, &#39;Iceland&#39;, &#39;India region&#39;,
+       &#39;Northern Mariana Islands&#39;, &#39;east of the South Sandwich Islands&#39;,
+       &#39;Kermadec Islands region&#39;, &#39;Bolivia&#39;, &#39;west of Macquarie Island&#39;,
+       &#39;Antigua and Barbuda&#39;, &#39;New Caledonia&#39;,
+       &#39;Azores-Cape St. Vincent Ridge&#39;, &#39;Wallis and Futuna&#39;, &#39;Oklahoma&#39;,
+       &#39;Scotia Sea&#39;, &#39;Kazakhstan&#39;, &#39;Yemen&#39;, &#39;Madagascar&#39;,
+       &#39;Easter Island region&#39;, &#39;Falkland Islands region&#39;,
+       &#39;Balleny Islands region&#39;, &#39;southeast of Easter Island&#39;,
+       &#39;North Pacific Ocean&#39;, &#39;north of Ascension Island&#39;,
+       &#39;Iceland region&#39;, &#39;Anguilla&#39;, &#39;Malaysia&#39;, &#39;New Zealand region&#39;,
+       &#39;northern East Pacific Rise&#39;, &#39;off the coast of Oregon&#39;,
+       &#39;Owen Fracture Zone region&#39;, &#39;Carlsberg Ridge&#39;,
+       &#39;east of the North Island of New Zealand&#39;, &#39;south of Tonga&#39;,
+       &#39;Alaska Earthquake&#39;, &#39;Kuril Islands&#39;,
+       &#39;near the north coast of Greenland&#39;, &#39;Mauritius&#39;, &#39;Panama&#39;,
+       &#39;central East Pacific Rise&#39;, &#39;Spain&#39;], dtype=object)
+</pre></div></div>
+</div>
+<p>Maybe we are only interested in larger earthquakes that are more likely to be felt. We can create a new DataFrame that only contains earthquakes larger than 4.0.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mag4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mag&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">4.0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+<p>Now we can start plotting. Pandas and matplotlib work well together to naturally generate plots that have nicely labeled axes. You will have to define the details of the plots, but Pandas makes it very easy to subset/select data by different columns, date ranges, etc.</p>
+<section id="Plot-Top-5-Most-Earthquakes-by-Location">
+<h2><strong>Plot Top 5 Most Earthquakes by Location</strong><a class="headerlink" href="#Plot-Top-5-Most-Earthquakes-by-Location" title="Link to this heading">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="c1"># Step 3 — Count earthquakes by location</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">df_mag4</span><span class="p">[</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="c1"># Step 4 — Select top 5</span>
+<span class="n">top5</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Step 5 — Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">top5</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 5 Locations with Most Earthquakes (Mag ≥ 4)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Location&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Earthquakes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_pandas_28_0.png" src="../../_images/in_workshop_python_earth_science_pandas_28_0.png" />
+</div>
+</div>
+</section>
+<section id="Plot-a-Histogram-of-Earthquake-Magnitudes">
+<h2><strong>Plot a Histogram of Earthquake Magnitudes</strong><a class="headerlink" href="#Plot-a-Histogram-of-Earthquake-Magnitudes" title="Link to this heading">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_mag4</span><span class="p">[</span><span class="s1">&#39;mag&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Earthquake Magnitudes (Mag ≥ 4)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_pandas_30_0.png" src="../../_images/in_workshop_python_earth_science_pandas_30_0.png" />
+</div>
+</div>
+</section>
+<section id="Plot-a-Histogram-From-Both-Datasets-with-Log-Axis">
+<h2><strong>Plot a Histogram From Both Datasets with Log Axis</strong><a class="headerlink" href="#Plot-a-Histogram-From-Both-Datasets-with-Log-Axis" title="Link to this heading">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Histogram for all earthquakes</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mag&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;All Earthquakes&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Logarithmic y-axis</span>
+
+<span class="c1"># Histogram for earthquakes with mag &gt;= 4</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_mag4</span><span class="p">[</span><span class="s1">&#39;mag&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Earthquakes (Mag ≥ 4)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Logarithmic y-axis</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_pandas_32_0.png" src="../../_images/in_workshop_python_earth_science_pandas_32_0.png" />
+</div>
+</div>
+</section>
+<section id="Scatter-Plot-of-Earthquake-Locations">
+<h2><strong>Scatter Plot of Earthquake Locations</strong><a class="headerlink" href="#Scatter-Plot-of-Earthquake-Locations" title="Link to this heading">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Earthquake Locations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_pandas_34_0.png" src="../../_images/in_workshop_python_earth_science_pandas_34_0.png" />
+</div>
+</div>
+</section>
+<section id="Add-a-Map-to-Scatter-with-Cartopy">
+<h2><strong>Add a Map to Scatter with Cartopy</strong><a class="headerlink" href="#Add-a-Map-to-Scatter-with-Cartopy" title="Link to this heading">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+
+<span class="c1"># Create a GeoAxes with PlateCarree projection (standard lat/lon)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Add coastlines and land features</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;110m&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">OCEAN</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Scatter earthquake points</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+           <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Add gridlines with labels</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">right_labels</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Earthquake Locations with Coastlines&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_pandas_36_0.png" src="../../_images/in_workshop_python_earth_science_pandas_36_0.png" />
+</div>
+</div>
+<p>Content for this tutorial was inspired by following an assignment from the Earth and Environmental Science Databook. The assignment can be found <a class="reference external" href="https://earth-env-data-science.github.io/assignments/basic_pandas.html">here</a>.</p>
+</section>
 </section>
 
         </article>
@@ -1188,8 +1652,31 @@ Name: mag, dtype: float64
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Tabular Data with Pandas</a><ul>
+<li><a class="reference internal" href="#Plot-Top-5-Most-Earthquakes-by-Location"><strong>Plot Top 5 Most Earthquakes by Location</strong></a></li>
+<li><a class="reference internal" href="#Plot-a-Histogram-of-Earthquake-Magnitudes"><strong>Plot a Histogram of Earthquake Magnitudes</strong></a></li>
+<li><a class="reference internal" href="#Plot-a-Histogram-From-Both-Datasets-with-Log-Axis"><strong>Plot a Histogram From Both Datasets with Log Axis</strong></a></li>
+<li><a class="reference internal" href="#Scatter-Plot-of-Earthquake-Locations"><strong>Scatter Plot of Earthquake Locations</strong></a></li>
+<li><a class="reference internal" href="#Add-a-Map-to-Scatter-with-Cartopy"><strong>Add a Map to Scatter with Cartopy</strong></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
