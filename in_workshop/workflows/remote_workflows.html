@@ -314,26 +314,27 @@
 <h2><strong>Jupyter Notebooks with SSH Tunneling</strong><a class="headerlink" href="#Jupyter-Notebooks-with-SSH-Tunneling" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Log into your server (ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;your-server-address">username<span>&#64;</span>your-server-address</a>)</p></li>
-<li><p>activate a conda environment that has Jupyter lab installed.</p>
+<li><p>Activate a conda environment on the server that has Jupyter lab installed.</p>
 <ol class="loweralpha simple">
 <li><p>When you first get access to the server you will want to download and install conda with miniforge and create your environment.</p></li>
 </ol>
 </li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span> <span class="pre">--no-browser</span></code> in the folder you want to work from</p></li>
-<li><p>jupyter lab will start, and the output in the terminal will include a line that looks like <code class="docutils literal notranslate"><span class="pre">Or</span> <span class="pre">copy</span> <span class="pre">and</span> <span class="pre">paste</span> <span class="pre">one</span> <span class="pre">of</span> <span class="pre">these</span> <span class="pre">URLs:</span> <span class="pre">http://localhost:8888/lab?token=some-long-token</span></code></p>
+<li><p>Jupyter lab will start, and the output in the terminal will include a line that looks like <code class="docutils literal notranslate"><span class="pre">Or</span> <span class="pre">copy</span> <span class="pre">and</span> <span class="pre">paste</span> <span class="pre">one</span> <span class="pre">of</span> <span class="pre">these</span> <span class="pre">URLs:</span> <span class="pre">http://localhost:8888/lab?token=some-long-token</span></code></p>
 <ol class="loweralpha simple">
 <li><p>The port number (in this case 8888) is the port on the server that the jupyter lab information is piped to</p></li>
-<li><p>We need to link a port on the laptop to the port on the server and then we can open the webpage like we are used to</p></li>
+<li><p>We need to link a port on our local computer to the port on the server and then we can open the webpage like we are used to</p></li>
 </ol>
 </li>
-<li><p>open a new terminal and run <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">8888:localhost:8888</span> <span class="pre">username&#64;your-server-address</span></code></p>
+<li><p>Open a new terminal on your local computer and run <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">8888:localhost:8888</span> <span class="pre">username&#64;your-server-address</span></code></p>
 <ol class="loweralpha simple">
-<li><p>This links port localhost port 8888 on our laptop to localhost port 8888 on the server. These numbers don’t have to be the same.</p></li>
-<li><p>If port 8888 on our laptop is taken, we can try another number. <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">8890:localhost:8888</span> <span class="pre">username&#64;your-server-address</span></code>. The server port needs to match the number in the jupyter lab output.</p></li>
-<li><p>Enter your password</p></li>
+<li><p>This links the local port 8888 (the first number) to port 8888 on the server (the second number).</p></li>
+<li><p>These numbers don’t have to be the same, but the second one has to match what Jupyter lab told us on the server.</p></li>
+<li><p>If port 8888 on our laptop is taken, we can try another number. <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">8890:localhost:8888</span> <span class="pre">username&#64;your-server-address</span></code>.</p></li>
+<li><p>Enter your password to complete the SSH command. Now the tunnel is configured! Leave this terminal open as long as you want to keep tunneling Jupyter lab from the server to your local computer.</p></li>
 </ol>
 </li>
-<li><p>Copy and paste the URL from the jupyter lab output into your web browser (<code class="docutils literal notranslate"><span class="pre">http://localhost:8888/lab?token=some-long-token</span></code>)</p></li>
+<li><p>Copy and paste that URL from the Jupyter lab output on the server into your local web browser (<code class="docutils literal notranslate"><span class="pre">http://localhost:8888/lab?token=some-long-token</span></code>)</p></li>
 </ol>
 </section>
 <section id="Running-Python-Scripts-in-a-Detached-Terminal">
