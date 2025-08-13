@@ -1,5 +1,10 @@
 # VSCode Installation
 
+Instructions to for VSCode installation are below. Once you have the app installed, please install the following extensions: 
+- Python 
+- Jupyter 
+- Remote - SSH.
+
 ### For MacOS, Linux, and Windows _without_ WSL
 
 Download the appropriate version for your laptop from [here](https://code.visualstudio.com/download).

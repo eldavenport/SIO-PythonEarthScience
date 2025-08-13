@@ -8,8 +8,10 @@ Resources to use **during** the workshop sessions.
 
    preliminary_agenda
    creating_conda_env
+   open_jupyter_notebook
+   getting_data
    python_programming
    python_plotting
    version_control_git/index
    python_earth_science/index
-   workflows
+   workflows/index
