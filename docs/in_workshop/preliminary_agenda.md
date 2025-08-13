@@ -4,8 +4,8 @@ All workshop sessions will be held in the **Munk Conference Room at IGPP (Munk 3
 ---
 
 August 19, 1-4pm: **Intro to Python Programming and Plotting**
-- Elements of a software program
-- Setting up and running Python scripts
+- Setting up Conda and Jupyter Notebooks
+- Importing Python packages
 - Statistics in Python
 - Reading data files (csv, netcdf, bin)
 - Plotting (lines, images, histograms, contours, etc)
@@ -18,13 +18,13 @@ August 20, 1-4pm: **Unix shell and version control with Git**
 
 August 21, 9am-12pm: **Python for Earth and Natural sciences**
 - SciPy for optimization, filtering, and advanced data analysis
-- Using Dask to parallelize your work
+- Analyzing tabular data with Pandas and GeoPandas
 - Analyzing gridded data with Xarray
-- Analyzing geometric data with GeoPandas
+- Using Dask to parallelize your work
 - Adding maps to plots with Cartopy
 
 August 21, 1pm-4pm: **Workflows for Earth and Natural sciences**
 - Collaborating with Git/GitHub (workflows and best practices)
 - Open Source Software best practices
 - Using your Python workflow on a remote server
-- Popular AI Agents for software and their use cases 
+- Popular AI agents and tools for software and their use cases 
