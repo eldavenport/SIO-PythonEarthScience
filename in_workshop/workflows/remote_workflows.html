@@ -314,6 +314,11 @@
 <h2><strong>Jupyter Notebooks with SSH Tunneling</strong><a class="headerlink" href="#Jupyter-Notebooks-with-SSH-Tunneling" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Log into your server (ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;your-server-address">username<span>&#64;</span>your-server-address</a>)</p></li>
+<li><p>activate a conda environment that has Jupyter lab installed.</p>
+<ol class="loweralpha simple">
+<li><p>When you first get access to the server you will want to download and install conda with miniforge and create your environment.</p></li>
+</ol>
+</li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span> <span class="pre">--no-browser</span></code> in the folder you want to work from</p></li>
 <li><p>jupyter lab will start, and the output in the terminal will include a line that looks like <code class="docutils literal notranslate"><span class="pre">Or</span> <span class="pre">copy</span> <span class="pre">and</span> <span class="pre">paste</span> <span class="pre">one</span> <span class="pre">of</span> <span class="pre">these</span> <span class="pre">URLs:</span> <span class="pre">http://localhost:8888/lab?token=some-long-token</span></code></p>
 <ol class="loweralpha simple">
@@ -333,17 +338,21 @@
 </section>
 <section id="Running-Python-Scripts-in-a-Detached-Terminal">
 <h2><strong>Running Python Scripts in a Detached Terminal</strong><a class="headerlink" href="#Running-Python-Scripts-in-a-Detached-Terminal" title="Link to this heading">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">tmux</span></code> command allows you to open terminals in which you can start a program that won’t die even when the terminal is closed. This is useful for running on a server because a normal terminal will kill whatever process is running if you close the window, close your computer, or lose your internet connection. That is not a practical way to work if we need to run programs that take a long time.</p>
-<p><code class="docutils literal notranslate"><span class="pre">screen</span></code> is an alternative to <code class="docutils literal notranslate"><span class="pre">tmux</span></code>, although it is somewhat outdated.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tmux</span></code> command allows you to open terminals in which you can start a program that won’t stop even when the terminal window is closed. This is useful for running on a server because a normal terminal will kill whatever process is running if you close the window, close your computer, or lose your internet connection. That is not a practical way to work if we need to run programs that take a long time!</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">screen</span></code> command is an alternative to <code class="docutils literal notranslate"><span class="pre">tmux</span></code>. You can use <code class="docutils literal notranslate"><span class="pre">help</span></code>, <code class="docutils literal notranslate"><span class="pre">man</span></code>, or ChatGPT to figure out how exactly to use <code class="docutils literal notranslate"><span class="pre">screen</span></code> or <code class="docutils literal notranslate"><span class="pre">tmux</span></code> for your project.</p>
 <p>This workflow would look something like:</p>
 <ol class="arabic simple">
 <li><p>Develop your Python script on a small set of data. This could be done in a Jupyter notebook or python script on the server or on your laptop.</p></li>
 <li><p>Organize the analysis you need to do into a script or set of scripts.</p></li>
-<li><p>Open a terminal with the appropriate <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code> command (see instructions below).</p></li>
-<li><p>Activate your conda environment.</p></li>
-<li><p>Run your Python program. Alternatively you could have a bash script that runs a whole list of Python programs.</p></li>
+<li><p>When logged into the server, open a terminal and type the appropriate <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code> command. This will open a “detached” terminal, the details of which will be based the command you entered.</p></li>
+<li><p>Activate your conda environment in the detached terminal.</p></li>
+<li><p>Run your Python script from the command line. When you exit the terminal, it will kill your SSH session but <em>it will not kill the program</em>.</p>
+<ol class="loweralpha simple">
+<li><p>Alternatively you could have a bash script that runs a whole list of Python programs.</p></li>
 </ol>
-<p>At this point you can close the terminal and your programs will continue to run on the server.</p>
+</li>
+</ol>
+<p>Once you have executed your Python or bash script, you can close the terminal and your programs will continue to run on the server.</p>
 </section>
 <section id="Using-Git-to-Move-and-Track-your-Work">
 <h2><strong>Using Git to Move and Track your Work</strong><a class="headerlink" href="#Using-Git-to-Move-and-Track-your-Work" title="Link to this heading">¶</a></h2>
