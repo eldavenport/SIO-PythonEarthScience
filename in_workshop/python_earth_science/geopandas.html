@@ -179,7 +179,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -284,7 +284,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -292,14 +292,301 @@
         <article role="main" id="furo-main-content">
           <section id="Geographic-Data-with-GeoPandas">
 <h1>Geographic Data with GeoPandas<a class="headerlink" href="#Geographic-Data-with-GeoPandas" title="Link to this heading">¶</a></h1>
+<p>This tutorial extends the basic GeoPandas introduction to oceanographic datasets.</p>
+<p>We’ll use <strong>Exclusive Economic Zones (EEZ)</strong> data from the <a class="reference external" href="https://www.marineregions.org/eez.php">Marine Regions</a> project. The EEZ defines the sea zone over which a state has special rights regarding exploration and use of marine resources.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+<br/></pre></div>
+</div>
+</div>
+<section id="1.-Loading-EEZ-Data">
+<h2>1. Loading EEZ Data<a class="headerlink" href="#1.-Loading-EEZ-Data" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">Download the EEZ shapefile from <a class="reference external" href="https://www.marineregions.org/downloads.php#ihoeez">Marine Regions EEZ and IHO areas v5</a>.</div>
+<div class="line">Make sure you unzip it, and replace the file path below with the location of the <code class="docutils literal notranslate"><span class="pre">.shp</span></code> file.</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="c1"># Load EEZ shapefile (update path to your local copy)</span>
+<span class="n">eez_path</span> <span class="o">=</span> <span class="s2">&quot;/Users/tgstone/data/SIO_software_carpentries/Intersect_EEZ_IHO_v5_20241010/Intersect_EEZ_IHO_v5_20241010.shp&quot;</span>  <span class="c1"># Example path</span>
+<span class="n">eez</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">eez_path</span><span class="p">)</span>
+
+<span class="c1"># Display data file</span>
+<span class="n">eez</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MRGID</th>
+      <th>MarRegion</th>
+      <th>MRGID_SOV1</th>
+      <th>SOVEREIGN1</th>
+      <th>UN_SOV1</th>
+      <th>ISO_SOV1</th>
+      <th>MRGID_SOV2</th>
+      <th>SOVEREIGN2</th>
+      <th>UN_SOV2</th>
+      <th>ISO_SOV2</th>
+      <th>...</th>
+      <th>ISO_TER3</th>
+      <th>EEZ_MRGID</th>
+      <th>EEZ</th>
+      <th>IHO_MRGID</th>
+      <th>IHO_Sea</th>
+      <th>AREA_KM2</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>MRGID_comb</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25614</td>
+      <td>Albanian part of the Adriatic Sea</td>
+      <td>2153</td>
+      <td>Albania</td>
+      <td>8</td>
+      <td>ALB</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>5670</td>
+      <td>Albanian Exclusive Economic Zone</td>
+      <td>3314</td>
+      <td>Adriatic Sea</td>
+      <td>12127.0</td>
+      <td>40.93096</td>
+      <td>19.11030</td>
+      <td>3314_5670</td>
+      <td>POLYGON ((19.9858 39.74337, 19.95858 39.7432, ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25622</td>
+      <td>Albanian part of the Ionian Sea</td>
+      <td>2153</td>
+      <td>Albania</td>
+      <td>8</td>
+      <td>ALB</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>5670</td>
+      <td>Albanian Exclusive Economic Zone</td>
+      <td>3351</td>
+      <td>Ionian Sea</td>
+      <td>39.0</td>
+      <td>39.69394</td>
+      <td>19.97118</td>
+      <td>3351_5670</td>
+      <td>POLYGON ((20.00835 39.69182, 20.0081 39.69187,...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25603</td>
+      <td>Algerian part of the Alboran Sea</td>
+      <td>2152</td>
+      <td>Algeria</td>
+      <td>12</td>
+      <td>DZA</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>8378</td>
+      <td>Algerian Exclusive Economic Zone</td>
+      <td>3324</td>
+      <td>Alboran Sea</td>
+      <td>7045.0</td>
+      <td>35.58150</td>
+      <td>-1.74716</td>
+      <td>3324_8378</td>
+      <td>POLYGON ((-1.18826 35.57788, -1.18973 35.5758,...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25180</td>
+      <td>Algerian part of the Mediterranean Sea - Weste...</td>
+      <td>2152</td>
+      <td>Algeria</td>
+      <td>12</td>
+      <td>DZA</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>8378</td>
+      <td>Algerian Exclusive Economic Zone</td>
+      <td>4279</td>
+      <td>Mediterranean Sea - Western Basin</td>
+      <td>124141.0</td>
+      <td>37.29350</td>
+      <td>3.83338</td>
+      <td>4279_8378</td>
+      <td>POLYGON ((7.81205 38.00998, 7.81355 38.00945, ...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>25525</td>
+      <td>Angolan part of the South Atlantic Ocean</td>
+      <td>2150</td>
+      <td>Angola</td>
+      <td>24</td>
+      <td>AGO</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>8478</td>
+      <td>Angolan Exclusive Economic Zone</td>
+      <td>1914</td>
+      <td>South Atlantic Ocean</td>
+      <td>495860.0</td>
+      <td>-11.70110</td>
+      <td>11.03537</td>
+      <td>1914_8478</td>
+      <td>MULTIPOLYGON (((13.42086 -5.8734, 13.39728 -5....</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 35 columns</p>
+</div></div>
+</div>
+</section>
+<section id="2.-Plotting-EEZ-Boundaries">
+<h2>2. Plotting EEZ Boundaries<a class="headerlink" href="#2.-Plotting-EEZ-Boundaries" title="Link to this heading">¶</a></h2>
+<p>We can visualize all EEZ boundaries in the world.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="c1"># Basic plot of EEZ polygons</span>
+<span class="n">eez</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Exclusive Economic Zones (EEZs) - Global&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_geopandas_5_0.png" src="../../_images/in_workshop_python_earth_science_geopandas_5_0.png" />
+</div>
+</div>
+</section>
+<section id="3.-Overlay-EEZ-with-Land-Boundaries">
+<h2>3. Overlay EEZ with Land Boundaries<a class="headerlink" href="#3.-Overlay-EEZ-with-Land-Boundaries" title="Link to this heading">¶</a></h2>
+<p>Let’s overlay EEZ boundaries with a world basemap from GeoPandas’ built-in dataset.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()})</span>
+
+<span class="c1"># Add land feature for world basemap</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="c1"># Plot EEZ boundaries using GeoPandas with Cartopy axes</span>
+<span class="n">eez</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;World Map with EEZ Boundaries (Cartopy)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_geopandas_7_0.png" src="../../_images/in_workshop_python_earth_science_geopandas_7_0.png" />
+</div>
+</div>
+</section>
+<section id="4.-Filtering-EEZ-for-a-Specific-Country">
+<h2>4. Filtering EEZ for a Specific Country<a class="headerlink" href="#4.-Filtering-EEZ-for-a-Specific-Country" title="Link to this heading">¶</a></h2>
+<p>We can filter the EEZ dataset by the <code class="docutils literal notranslate"><span class="pre">SOVEREIGN1</span></code> field to show only one country’s EEZ.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">usa_eez</span> <span class="o">=</span> <span class="n">eez</span><span class="p">[</span><span class="n">eez</span><span class="p">[</span><span class="s2">&quot;SOVEREIGN1&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;United States&quot;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">180</span><span class="p">)})</span>
+
+<span class="c1"># Add land feature for world basemap</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="c1"># Add longitude and latitude gridlines</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dms</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">x_inline</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_inline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">right_labels</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Center the map on 180W (central_longitude=180) and set a reasonable extent</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="mi">120</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Plot United States EEZ polygons using GeoPandas with Cartopy axes</span>
+<span class="n">usa_eez</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;United States Exclusive Economic Zone (Centered on 180W)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_geopandas_9_0.png" src="../../_images/in_workshop_python_earth_science_geopandas_9_0.png" />
+</div>
+</div>
+</section>
 </section>
 
         </article>
@@ -345,8 +632,30 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Geographic Data with GeoPandas</a><ul>
+<li><a class="reference internal" href="#1.-Loading-EEZ-Data">1. Loading EEZ Data</a></li>
+<li><a class="reference internal" href="#2.-Plotting-EEZ-Boundaries">2. Plotting EEZ Boundaries</a></li>
+<li><a class="reference internal" href="#3.-Overlay-EEZ-with-Land-Boundaries">3. Overlay EEZ with Land Boundaries</a></li>
+<li><a class="reference internal" href="#4.-Filtering-EEZ-for-a-Specific-Country">4. Filtering EEZ for a Specific Country</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
