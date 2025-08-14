@@ -303,28 +303,28 @@
 <p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is the most widely used scientific plotting library in python and the library we will be using for the rest of the lesson. When we move to learning more advanced Python tools on Thursday, many of them will use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> as a back-end and will handle the details of plotting for us. Today we will learn the fundamentals for ourselves in case we want to make quick plots of modify any plot details in the future.</p>
 <p>We want to import the sub-library called <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> with the alias <code class="docutils literal notranslate"><span class="pre">plt</span></code>:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
 <p>Next, we will tell Python to render our plots in directly below our code cells instead of having them pop up in a separate window.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
 <p>If you haven’t already, let’s open the SIO pier temperature and salinity data.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">num2date</span>
 
@@ -373,10 +373,10 @@ which Matplotlib supports.</p></td>
 <p><code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">axes</span> <span class="pre">=</span> <span class="pre">plt.subplots(N,</span> <span class="pre">M)</span></code></p>
 <p>This creates a figure (a container for plots) and adds a grid of axes (the individual plots) inside the figure. Here, we tell Python to make <em>N rows and M columns</em> of axes. For example, make a figure with 2 rows and 2 columns:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Display figure</span>
@@ -393,10 +393,10 @@ which Matplotlib supports.</p></td>
 </div>
 <p>Alternatively, we can given no arguments to the subplot function and Python reverts to its default setting which is a single axis (1x1):</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="c1"># Display figure</span>
@@ -414,7 +414,7 @@ which Matplotlib supports.</p></td>
 <p>This is the beauty of this function – it works the same whether you want to create a single axis or a grid of subplots. <code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code> function also outputs two variables:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fig</span></code>: The figure object.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">axes</span></code>: A 2D NumPy array of axes objects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axes</span></code>: A NumPy array of axes objects.</p></li>
 </ul>
 <p>Both objects allow us to modify and plot data on the figure.</p>
 </section>
@@ -429,10 +429,10 @@ which Matplotlib supports.</p></td>
 <li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> is your vertical axis data (e.g., temperature).</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="c1"># Plot temperature</span>
@@ -452,10 +452,10 @@ which Matplotlib supports.</p></td>
 </div>
 <p>Note that the x-axis gives the year and month at each time tick mark. Every figure needs x and y labels on their axes, so let’s create the figure again but with axis labels now.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Plot temperature</span>
@@ -542,10 +542,10 @@ which Matplotlib supports.</p></td>
 </div>
 <p>Many more options can be found <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html">here</a>. Putting this all together.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Plot temperature</span>
@@ -569,12 +569,63 @@ which Matplotlib supports.</p></td>
 <img alt="../_images/in_workshop_python_plotting_19_0.png" src="../_images/in_workshop_python_plotting_19_0.png" />
 </div>
 </div>
-<p>Let’s now look at only the first 4 days temperature time series. In order to apply limits to the time axis, we need to import another handy package called <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> which is the way Python represents time durations. Here, we will add a 4 day time step to our intial time which we will define as <code class="docutils literal notranslate"><span class="pre">t0</span></code>.</p>
+<section id="🌊-Activity-🌊">
+<h3>🌊 <strong>Activity</strong> 🌊<a class="headerlink" href="#🌊-Activity-🌊" title="Link to this heading">¶</a></h3>
+<p><em>Part 1</em></p>
+<p>Plot the temperature data with the following line plot customizations:</p>
+<ul class="simple">
+<li><p>Line Style: dashed-dotted</p></li>
+<li><p>Line Width: 1</p></li>
+<li><p>Line Color: yellow</p></li>
+</ul>
+<p>Add grid lines with the following customizations:</p>
+<ul class="simple">
+<li><p>Style: dashed</p></li>
+<li><p>Width: 1</p></li>
+<li><p>Color: black</p></li>
+<li><p>Transparency: 0.75 (Hint: Use the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> argument).</p></li>
+</ul>
+<p>Hint: The grid lines take the same arguments as the <code class="docutils literal notranslate"><span class="pre">axes.plot</span></code> function.</p>
+<p><em>Part 2</em></p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">axes.set_yticks()</span></code> to change the tickmarks on the y axis so the temperature increments by one.</p>
+<p><em>Part 3</em></p>
+<p>Change the y label so it renders with latex. To give you a hint, if I wanted to render the temperature in degrees Fahrenheit, I would write:</p>
+<p><code class="docutils literal notranslate"><span class="pre">axes.set_ylabel(r'Temperature</span> <span class="pre">($^\circ$F)')</span></code></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Plot temperature</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make some adjustments</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Pier Temperature vs. Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Temperature ($^\circ$C)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">24</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Display figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/in_workshop_python_plotting_21_0.png" src="../_images/in_workshop_python_plotting_21_0.png" />
+</div>
+</div>
+<p>Let’s now look at only the first 4 days temperature time series. In order to apply limits to the time axis, we need to import another handy package called <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> which is the way Python represents time durations. Here, we will add a 4 day time step to our intial time which we will define as <code class="docutils literal notranslate"><span class="pre">t0</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
 
 <span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -602,7 +653,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_21_0.png" src="../_images/in_workshop_python_plotting_21_0.png" />
+<img alt="../_images/in_workshop_python_plotting_23_0.png" src="../_images/in_workshop_python_plotting_23_0.png" />
 </div>
 </div>
 <p>There is a problem now though. The x-axis is all squished and its hard to interpret the axis labels. An easy way to fix this is to increase the size of the figure using the <code class="docutils literal notranslate"><span class="pre">figsize</span></code> argument within the <code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code> function:</p>
@@ -612,10 +663,10 @@ which Matplotlib supports.</p></td>
 <li><p><code class="docutils literal notranslate"><span class="pre">height</span></code>: height of the figure in inches</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature</span>
@@ -641,16 +692,16 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_23_0.png" src="../_images/in_workshop_python_plotting_23_0.png" />
+<img alt="../_images/in_workshop_python_plotting_25_0.png" src="../_images/in_workshop_python_plotting_25_0.png" />
 </div>
 </div>
 <p><strong>What if we want to add another line to the plot?</strong></p>
 <p>We can do this by adding another line of code below the original plot. For example, to plot the mean temperature as a horizontal line, we first compute the mean and then use <code class="docutils literal notranslate"><span class="pre">axes.axhline</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute mean temperature</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute mean temperature</span>
 <span class="n">mean_temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
 <span class="c1"># Create Figure</span>
@@ -677,7 +728,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_25_0.png" src="../_images/in_workshop_python_plotting_25_0.png" />
+<img alt="../_images/in_workshop_python_plotting_27_0.png" src="../_images/in_workshop_python_plotting_27_0.png" />
 </div>
 </div>
 <p>Now we need a legend to label these two lines. This requires two steps:</p>
@@ -686,10 +737,10 @@ which Matplotlib supports.</p></td>
 <li><p>Telling Python to create the legend.</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature</span>
@@ -716,9 +767,48 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_27_0.png" src="../_images/in_workshop_python_plotting_27_0.png" />
+<img alt="../_images/in_workshop_python_plotting_29_0.png" src="../_images/in_workshop_python_plotting_29_0.png" />
 </div>
 </div>
+</section>
+<section id="id1">
+<h3>🌊 <strong>Activity</strong> 🌊<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p>Change the location of the legend to <code class="docutils literal notranslate"><span class="pre">'upper</span> <span class="pre">left'</span></code> using the loc argument and the number of columns using the ncol argument.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot temperature</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add horizontal line for the mean temperature</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">mean_temp</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Mean Temp&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make some adjustments</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Pier Temperature vs. Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (deg C)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Add legend</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Display figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/in_workshop_python_plotting_31_0.png" src="../_images/in_workshop_python_plotting_31_0.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="Scatter-Plots">
 <h2><strong>Scatter Plots</strong><a class="headerlink" href="#Scatter-Plots" title="Link to this heading">¶</a></h2>
@@ -731,10 +821,10 @@ which Matplotlib supports.</p></td>
 <li><p>y is your vertical data (e.g., salinity).</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature</span>
@@ -756,7 +846,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_29_0.png" src="../_images/in_workshop_python_plotting_29_0.png" />
+<img alt="../_images/in_workshop_python_plotting_33_0.png" src="../_images/in_workshop_python_plotting_33_0.png" />
 </div>
 </div>
 <p>We can change the shape, point size, color, and transparency of the markers.</p>
@@ -794,10 +884,10 @@ which Matplotlib supports.</p></td>
 </table>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature</span>
@@ -819,7 +909,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_31_0.png" src="../_images/in_workshop_python_plotting_31_0.png" />
+<img alt="../_images/in_workshop_python_plotting_35_0.png" src="../_images/in_workshop_python_plotting_35_0.png" />
 </div>
 </div>
 </section>
@@ -844,10 +934,10 @@ which Matplotlib supports.</p></td>
 </ul>
 <p>To illustrate this, let’s grab the monthly mean temperatures along with the standard error of the mean from the netcdf file</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the filename and path to data</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the filename and path to data</span>
 <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;scripps_pier-2023.nc&quot;</span>
 
 <span class="c1"># Open a NetCDF file in read mode</span>
@@ -865,10 +955,10 @@ which Matplotlib supports.</p></td>
 </div>
 <p>And now let’s implement the <code class="docutils literal notranslate"><span class="pre">axes.fill_between</span></code> function!</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature</span>
@@ -898,19 +988,61 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_35_0.png" src="../_images/in_workshop_python_plotting_35_0.png" />
+<img alt="../_images/in_workshop_python_plotting_39_0.png" src="../_images/in_workshop_python_plotting_39_0.png" />
 </div>
 </div>
+<section id="id2">
+<h3>🌊 <strong>Activity</strong> 🌊<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p><em>Part 1</em></p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">axes.errorbar(x,</span> <span class="pre">y,</span> <span class="pre">yerr=errors)</span></code> function, plot the uncertainty of our data and make the color of the errorbars black.</p>
+<p>Hint: If you use the <code class="docutils literal notranslate"><span class="pre">axes.errorbar</span></code> function, then you do not need to plot the mean temperature separately using the <code class="docutils literal notranslate"><span class="pre">axes.plot</span> <span class="pre">function</span></code>.</p>
+<p><em>Part 2</em></p>
+<p>Add caps to the errorbars using the <code class="docutils literal notranslate"><span class="pre">capsize</span></code> argument so that it is easier to see them.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot temperature</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># Plot the standard error of the mean</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">time_m</span><span class="p">,</span> <span class="n">temp_m</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">temp_stdm</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Mean Temperature&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make some adjustments</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Pier Temperature vs. Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (deg C)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Add legend</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Display figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/in_workshop_python_plotting_41_0.png" src="../_images/in_workshop_python_plotting_41_0.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="Plotting-2-dimensional-data">
 <h2><strong>Plotting 2-dimensional data</strong><a class="headerlink" href="#Plotting-2-dimensional-data" title="Link to this heading">¶</a></h2>
 <p>To begin, we need to open a new data set from the Spray gliders! Spray gliders are uncrewed underwater vehicles that dive down 1000 meters and collect measurements of the ocean like temperature and chlorophyll. These gliders are deployed off the coast of California and go back and forth along trasect lines shown in the figure below. The data we will be working with is from just a single transect.</p>
-<p><img alt="6c25fe6f78b54f01b66379587f62eadb" class="no-scaled-link" src="../_images/Spray_Glider_lines.png" style="width: 500px;" /></p>
+<p><img alt="752ef1b103be48c38bd6e30e6eb6088f" class="no-scaled-link" src="../_images/Spray_Glider_lines.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the filename and path to data</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the filename and path to data</span>
 <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;spray_glider_ctd.nc&quot;</span>
 
 <span class="c1"># Open a NetCDF file in read mode</span>
@@ -929,10 +1061,10 @@ which Matplotlib supports.</p></td>
 </div>
 <p>The first way we will visualize this data is with the <code class="docutils literal notranslate"><span class="pre">axes.pcolormesh</span></code> function. Pcolormesh makes 2D colored plot where each cell (or patch) in a grid is colored according to the value of a variable. Let’s do an example to see how this works:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature</span>
@@ -953,7 +1085,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_40_0.png" src="../_images/in_workshop_python_plotting_40_0.png" />
+<img alt="../_images/in_workshop_python_plotting_46_0.png" src="../_images/in_workshop_python_plotting_46_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">axes.pcolormesh(time,</span> <span class="pre">depth,</span> <span class="pre">temperature)</span></code></p>
@@ -966,10 +1098,10 @@ which Matplotlib supports.</p></td>
 <p>Note the white area on the left hand side of the plot. This area corresponds to a place in our 2D array where there is not temperature data! For this dataset, this happens to be where the water depth gets shallow due to continential shelf.</p>
 <p>However there is a problem here – we don’t know what temperatures these colors correspond to. So, we need a colorbar.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature and save the mesh object</span>
@@ -993,7 +1125,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_42_0.png" src="../_images/in_workshop_python_plotting_42_0.png" />
+<img alt="../_images/in_workshop_python_plotting_48_0.png" src="../_images/in_workshop_python_plotting_48_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">plt.colorbar(mesh,</span> <span class="pre">ax=axes,</span> <span class="pre">label='Temperature</span> <span class="pre">(deg</span> <span class="pre">C)')</span></code></p>
@@ -1037,10 +1169,10 @@ which Matplotlib supports.</p></td>
 </div>
 <p>You can find more options <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">here</a>. To implement the colormap, we use the <code class="docutils literal notranslate"><span class="pre">cmap</span></code> argument in the pcolormesh function:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature with a custom colormap</span>
@@ -1064,15 +1196,15 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_44_0.png" src="../_images/in_workshop_python_plotting_44_0.png" />
+<img alt="../_images/in_workshop_python_plotting_50_0.png" src="../_images/in_workshop_python_plotting_50_0.png" />
 </div>
 </div>
 <p>A common alternative to the pcolormesh function is <code class="docutils literal notranslate"><span class="pre">axes.contourf</span></code> which draws a filled contour plot (similar to a topographic map). Let’s show how to use it with the temperature data.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature with a custom colormap</span>
@@ -1096,7 +1228,7 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_46_0.png" src="../_images/in_workshop_python_plotting_46_0.png" />
+<img alt="../_images/in_workshop_python_plotting_52_0.png" src="../_images/in_workshop_python_plotting_52_0.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">axes.contourf</span></code> has many of the same argument, but the critical one you must add is the number of contour levels using the <code class="docutils literal notranslate"><span class="pre">levels</span></code> argument. Here, we set this to 40 contour levels.</p>
@@ -1107,10 +1239,10 @@ which Matplotlib supports.</p></td>
 </ul>
 <p>After this, we will rinse and repeat the same code we used for a plotting the pcolormesh but use ax1 and ax2.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Define axes</span>
@@ -1154,16 +1286,16 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_48_0.png" src="../_images/in_workshop_python_plotting_48_0.png" />
+<img alt="../_images/in_workshop_python_plotting_54_0.png" src="../_images/in_workshop_python_plotting_54_0.png" />
 </div>
 </div>
 <p>Note, I used the <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> to automatically adjusts the spacing between your plot’s elements (like axes, titles, labels) so that nothing overlaps.</p>
 <p>Next, we can combine these two subplots using the combination of the <code class="docutils literal notranslate"><span class="pre">axes.contourf</span></code> and <code class="docutils literal notranslate"><span class="pre">axes.contour</span></code> functions. <code class="docutils literal notranslate"><span class="pre">axes.contour</span></code> is the same function as the contourf function except for that levels are not filled with a color. It is just the contour lines that are plotted.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Plot temperature</span>
@@ -1190,18 +1322,87 @@ which Matplotlib supports.</p></td>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/in_workshop_python_plotting_50_0.png" src="../_images/in_workshop_python_plotting_50_0.png" />
+<img alt="../_images/in_workshop_python_plotting_56_0.png" src="../_images/in_workshop_python_plotting_56_0.png" />
 </div>
 </div>
 <p>Finally, we can save this final figure using <code class="docutils literal notranslate"><span class="pre">plt.savefig('filename.png')</span></code> function where <code class="docutils literal notranslate"><span class="pre">'filename.png'</span></code> is the name of the file. The file will be saved in the current working directory.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;temp_chl_profiles.png&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;temp_chl_profiles.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<section id="🌊-Final-Activity-🌊">
+<h3>🌊 <strong>Final Activity</strong> 🌊<a class="headerlink" href="#🌊-Final-Activity-🌊" title="Link to this heading">¶</a></h3>
+<p><em>Part 1</em>: Plotting 1-dimensional data</p>
+<ul class="simple">
+<li><p><strong>A Mean Profile</strong>: Using the spray glider’s temperature data, compute the time averaged mean at each depth and plot the mean profile using <code class="docutils literal notranslate"><span class="pre">axes.plot()</span></code>. Make sure to label axes properly!</p></li>
+<li><p><strong>More Profiles</strong>: Repeat the process for salinity, density, and chlorophyll and make create a 2x2 subplot for each mean profiles and use a different color and marker for each. Hint: you can specify a marker for the data points using the marker argument in the <code class="docutils literal notranslate"><span class="pre">axes.plot()</span></code> function.</p></li>
+</ul>
+<p><em>Part 2</em>: Plotting 2-dimensional data</p>
+<ul class="simple">
+<li><p><strong>More Subplots</strong>: Using the spray glider’s temperature, salinity, density, and chlorophyll data, create a 2x2 subplot figure with this data. Hint: steps would include:</p>
+<ul>
+<li><p>Opening salinity and density data with the Dataset library</p></li>
+<li><p>Adjusting <code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code> arguments (N,M,figsize).</p></li>
+<li><p>Write code for salinity and density subplots.</p></li>
+</ul>
+</li>
+<li><p><strong>Orientations for colorbars</strong>: Using the spray glider’s temperature and density data, make a 1x2 subplot and orient the colorbars to be horizontal using the orientation argument in the <code class="docutils literal notranslate"><span class="pre">plt.colorbar</span></code> function. Hint: you will probably need to remove the titles.</p></li>
+<li><p><strong>Water depth</strong>: Using the spray glider’s water depth data, plot water depth as a function of time as line plot on top of a pcolormesh plot of temperature. Hint: the absolute value command <code class="docutils literal notranslate"><span class="pre">abs()</span></code> may come in handy!</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open a NetCDF file in read mode</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+<span class="c1"># Read in water depth</span>
+<span class="n">water_depth</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;water_depth&#39;</span><span class="p">][:]</span>
+
+<span class="c1"># Create Figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot temperature</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot water depth on top</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">water_depth</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add colorbar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make some adjustments</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Spray Glider Temperature Profiles&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+<span class="c1"># Display figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/in_workshop_python_plotting_60_0.png" src="../_images/in_workshop_python_plotting_60_0.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="Suggested-Exercises">
 <h2>Suggested Exercises<a class="headerlink" href="#Suggested-Exercises" title="Link to this heading">¶</a></h2>
@@ -1278,10 +1479,20 @@ which Matplotlib supports.</p></td>
 <li><a class="reference internal" href="#">Plotting in Python</a><ul>
 <li><a class="reference internal" href="#Importing-Libraries-and-Reading-in-Data">Importing Libraries and Reading in Data</a></li>
 <li><a class="reference internal" href="#Defining-Figures-and-Axes"><strong>Defining Figures and Axes</strong></a></li>
-<li><a class="reference internal" href="#Line-Plots-and-Customizing"><strong>Line Plots and Customizing</strong></a></li>
+<li><a class="reference internal" href="#Line-Plots-and-Customizing"><strong>Line Plots and Customizing</strong></a><ul>
+<li><a class="reference internal" href="#🌊-Activity-🌊">🌊 <strong>Activity</strong> 🌊</a></li>
+<li><a class="reference internal" href="#id1">🌊 <strong>Activity</strong> 🌊</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#Scatter-Plots"><strong>Scatter Plots</strong></a></li>
-<li><a class="reference internal" href="#Plotting-Uncertainty:-Fill-between-and-errorbars"><strong>Plotting Uncertainty: Fill between and errorbars</strong></a></li>
-<li><a class="reference internal" href="#Plotting-2-dimensional-data"><strong>Plotting 2-dimensional data</strong></a></li>
+<li><a class="reference internal" href="#Plotting-Uncertainty:-Fill-between-and-errorbars"><strong>Plotting Uncertainty: Fill between and errorbars</strong></a><ul>
+<li><a class="reference internal" href="#id2">🌊 <strong>Activity</strong> 🌊</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Plotting-2-dimensional-data"><strong>Plotting 2-dimensional data</strong></a><ul>
+<li><a class="reference internal" href="#🌊-Final-Activity-🌊">🌊 <strong>Final Activity</strong> 🌊</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#Suggested-Exercises">Suggested Exercises</a><ul>
 <li><a class="reference internal" href="#1-:-Multi-variate-scatter-plots">1 : Multi-variate scatter plots</a></li>
 <li><a class="reference internal" href="#2-:-Error-bars">2 : Error bars</a></li>
