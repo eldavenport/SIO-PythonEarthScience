@@ -219,7 +219,7 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">In-Workshop Resources</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of In-Workshop Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../preliminary_agenda.html">Preliminary Workshop Agenda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_programming.html">🐍 Programming with Python 🐍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming.html">Programming with Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_plotting.html">Plotting in Python</a></li>
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Version Control with Git</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Version Control with Git</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">The Unix Shell</a></li>
@@ -330,7 +330,7 @@
 <li><p>Bourne Shell</p></li>
 </ul>
 <p>The CLI is powerful as you can customize the interface as well as run various programs either locally or on remote servers through <strong>S</strong>ecure <strong>SH</strong>ell (SSH). The below image is a typical example of a terminal</p>
-<p><img alt="6cf2c5749a6a481eb908bef330f3a306" class="no-scaled-link" src="../../_images/shell_terminal.jpg" style="width: 500px;" /></p>
+<p><img alt="a10f44abfcc14c128bafb8687272468b" class="no-scaled-link" src="../../_images/shell_terminal.jpg" style="width: 500px;" /></p>
 <p>In our examples we have created an account called <strong>sio</strong> on a computer named <strong>localhost</strong>. The $ is the prompt and users can begin entering commands after the prompt. The features of the terminal can be customized through your bash profile. As mentioned previously, we will be using the Bash shell for our examples. To determine which shell you are using you can run the following command.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sio@localhost $ echo $0
 </pre></div>
@@ -352,7 +352,7 @@
 <section id="2)-Navigating-through-Files-and-Directories">
 <h3>2) Navigating through Files and Directories<a class="headerlink" href="#2)-Navigating-through-Files-and-Directories" title="Link to this heading">¶</a></h3>
 <p>Every Unix based OS has a hierarchical structure to organize files and folders. This is known as the <strong>file system</strong>. The root directory is the Top-level folder and is represted by a foward slash, <code class="docutils literal notranslate"><span class="pre">/</span></code>. Every subfolder is known as the <strong>child</strong> or <strong>subdirectory</strong> of the <strong>parent</strong> folder.</p>
-<p><img alt="7c41efb9af44487e9b4d0900eaf1ce75" class="no-scaled-link" src="../../_images/directory_structure.jpg" style="width: 1000px;" /></p>
+<p><img alt="f309e70532c745008f3a1d2ef782e1f6" class="no-scaled-link" src="../../_images/directory_structure.jpg" style="width: 1000px;" /></p>
 <p>When starting the CLI your folder will be located in <code class="docutils literal notranslate"><span class="pre">/Users/username</span></code>. For the examples used in this tutorial it will be <code class="docutils literal notranslate"><span class="pre">/Users/sio</span></code>. This is referred to as the __home directory. You can see which directory you are currently in by type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (Print Working Direcotry).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -447,12 +447,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">Documents/shell-lesson-data</span></code></p>
 <p>Besides listing what objects there are in a directory the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command, in addition to providing options, can also list information on if the item is a file or folder, the size of the object as well as when the object was last modified</p>
 <p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lsG</span></code></p>
-<p><img alt="1fa03983a5ca4dbf8bfe99fac05796b6" class="no-scaled-link" src="../../_images/ls_meaning.jpg" style="width: 1000px;" /></p>
+<p><img alt="cfb67edc926d4a819f8b585f36203a7d" class="no-scaled-link" src="../../_images/ls_meaning.jpg" style="width: 1000px;" /></p>
 <p>There will be times, especially on a remote server, where you cannot copy or remove files in a specific directory. This is because of user or group permissions</p>
-<p><img alt="635a12d35316407986f6173fbffe9a5e" class="no-scaled-link" src="../../_images/ls_meaning_2.jpg" style="width: 1000px;" /></p>
+<p><img alt="9a6351c4f2af497e8b06e895a8c1826f" class="no-scaled-link" src="../../_images/ls_meaning_2.jpg" style="width: 1000px;" /></p>
 <p>When using <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the <code class="docutils literal notranslate"><span class="pre">-l</span></code> option you will see the permission structure for the Owner, Group and Other. In the below screenshot we see the following permissions</p>
 <p><code class="docutils literal notranslate"><span class="pre">drwxr-xr-x</span> <span class="pre">7</span> <span class="pre">tgstone</span> <span class="pre">staff</span></code></p>
-<p><img alt="9ed70063a86346d1a31a77f33678cd3f" class="no-scaled-link" src="../../_images/ls_permissions.jpg" style="width: 1000px;" /></p>
+<p><img alt="ac37ecda96d949b894b2aef62e8edb77" class="no-scaled-link" src="../../_images/ls_permissions.jpg" style="width: 1000px;" /></p>
 <p>There will always be ten characters in this first column. The first index determines if the object is a file, <code class="docutils literal notranslate"><span class="pre">-</span></code>, or a directory <code class="docutils literal notranslate"><span class="pre">d</span></code>. In the above example we see that the docs object is a directory.</p>
 <p>The next three characters are the permissions for the Owner.</p>
 <ul class="simple">
@@ -464,12 +464,12 @@
 <p>The next three characters determine the permissions for the group. The Group is <strong>staff</strong> and the permissions are <strong>r</strong>ead and e<strong>x</strong>ecute. The dash indicates that they do not have permissions for the <strong>w</strong>.</p>
 <p>Lastly, if the user is not the owner or in the group then they are placed in the <strong>Other</strong> category. The permissions for other are read and execute. The <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command can be used to change an objects permissions but this is outside the scope of this tutorial.</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the <code class="docutils literal notranslate"><span class="pre">-h</span></code> option lists all hidden files. Hidden files are files or folders that begin with a <code class="docutils literal notranslate"><span class="pre">.</span></code></p>
-<p><img alt="9d37a886b14a44248c64e7f27332b3f8" class="no-scaled-link" src="../../_images/ls_hidden.jpg" style="width: 1000px;" /></p>
+<p><img alt="9e71a710c2634b64baacba67dd8aa524" class="no-scaled-link" src="../../_images/ls_hidden.jpg" style="width: 1000px;" /></p>
 <section id="b)-Syntax-and-Commands">
 <h4>b) Syntax and Commands<a class="headerlink" href="#b)-Syntax-and-Commands" title="Link to this heading">¶</a></h4>
 <p>We will now go over examples of command syntax</p>
 <p><code class="docutils literal notranslate"><span class="pre">sio&#64;localhost</span> <span class="pre">$</span> <span class="pre">ls</span> <span class="pre">-lGh</span> <span class="pre">.</span></code></p>
-<p><img alt="4397f3aedda040f8a25ddb14f39b2464" class="no-scaled-link" src="../../_images/command_syntax.jpg" style="width: 1000px;" /></p>
+<p><img alt="89496056a0fc4d77aafa11a7b3c6f39e" class="no-scaled-link" src="../../_images/command_syntax.jpg" style="width: 1000px;" /></p>
 <p>Generally with the CLI we will run the command, give additional options and then list the arguments. Some commands do not follow this form (such as <code class="docutils literal notranslate"><span class="pre">find</span></code>) however it is important to know how we can enter the commands. The <strong>option</strong> list additional information we want to include with our command and the <code class="docutils literal notranslate"><span class="pre">.</span></code> (this is a shortcut for current directory) determines which object we are working with. The <code class="docutils literal notranslate"><span class="pre">-lGh</span></code> options allow us to see the directory in <strong>l</strong>ong format )<code class="docutils literal notranslate"><span class="pre">-l</span></code>, color code
 files and directories (<code class="docutils literal notranslate"><span class="pre">-G</span></code>) and list all <strong>hidden</strong> files (<code class="docutils literal notranslate"><span class="pre">-h</span></code>).</p>
 <p>Often times you will see <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">..</span></code> used in a command</p>
@@ -482,11 +482,11 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 <h4>ii) Finding more information<a class="headerlink" href="#ii)-Finding-more-information" title="Link to this heading">¶</a></h4>
 <p>If we want to find what options are avaiable or how a command works we can use the <code class="docutils literal notranslate"><span class="pre">help</span></code> command or look at the <code class="docutils literal notranslate"><span class="pre">man</span></code> (<strong>man</strong>ual) pages.</p>
 <p><code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">pwd</span></code></p>
-<p><img alt="cb208b52d92a4dc08a3505115fcac630" class="no-scaled-link" src="../../_images/help.jpg" style="width: 1000px;" /></p>
+<p><img alt="e94330f9e2904bac83974d2ef5cadbc8" class="no-scaled-link" src="../../_images/help.jpg" style="width: 1000px;" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">pwd</span></code></p>
-<p><img alt="6520cccccc1546458d2070d50e379299" class="no-scaled-link" src="../../_images/man.jpg" style="width: 1000px;" /></p>
+<p><img alt="7a57812533394e03bc38843c5d539615" class="no-scaled-link" src="../../_images/man.jpg" style="width: 1000px;" /></p>
 <p>Lastly, thanks to the advances of AI, we could also just use an LLM to get additional information on a command or how to use a command</p>
-<p><img alt="aa97036fad774966b9af13b0b2503722" class="no-scaled-link" src="../../_images/chatgpt.jpg" style="width: 1000px;" /></p>
+<p><img alt="007eadbfc40d4d3497aee27877eb7033" class="no-scaled-link" src="../../_images/chatgpt.jpg" style="width: 1000px;" /></p>
 </section>
 </section>
 <section id="b)-Creating,-deleting,-copying-and-moving-files-and-folders">
@@ -662,7 +662,7 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="53e33db836ec41a3898315352fa6b0b1" class="no-scaled-link" src="../../_images/abstract_wc.jpg" style="width: 1000px;" /></p>
+<p><img alt="7b2a963525da48ee8876ce676e62dafc" class="no-scaled-link" src="../../_images/abstract_wc.jpg" style="width: 1000px;" /></p>
 <p>If we wanted to know the number of lines, words and sizes of each file as well as the sum for the lines, words and sizes we could use the wildcard character</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -672,7 +672,7 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="f79f1a2b1ba741e79053c4c44f27ea52" class="no-scaled-link" src="../../_images/abstract_wc_all.jpg" style="width: 1000px;" /></p>
+<p><img alt="a3298d007d8f48f9abbb810e747a196b" class="no-scaled-link" src="../../_images/abstract_wc_all.jpg" style="width: 1000px;" /></p>
 </section>
 <section id="2)-Redirecting-output">
 <h3>2) Redirecting output<a class="headerlink" href="#2)-Redirecting-output" title="Link to this heading">¶</a></h3>
@@ -738,7 +738,7 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="d6603df59c7b48f191b32df0225f4082" class="no-scaled-link" src="../../_images/grep_not.jpg" style="width: 1000px;" /></p>
+<p><img alt="975c1fd527bc41908cc607a4527dc4e9" class="no-scaled-link" src="../../_images/grep_not.jpg" style="width: 1000px;" /></p>
 <p>We see that grep has successfully returned all the lines that have the word <strong>not</strong> in it. Let’s try again with using <strong>The</strong> as a pattern to search for</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -748,9 +748,9 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="afc4cac0c8894a96ba430cef80f048f2" class="no-scaled-link" src="../../_images/grep_The.jpg" style="width: 500px;" /></p>
+<p><img alt="0efbd4e9148a4123b50bc60b11ac85d4" class="no-scaled-link" src="../../_images/grep_The.jpg" style="width: 500px;" /></p>
 <p>First, we see that grep also included words that have the sequence “The” in them. Additionally, we see from the below image by running <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">haiku.txt</span></code> that all lower case versions of the word <strong>the</strong> were missed.</p>
-<p><img alt="29a80de697724a3e989bb9771fe5410f" class="no-scaled-link" src="../../_images/haiku.jpg" style="width: 500px;" /></p>
+<p><img alt="cb7c5464f6b14fe39db4fcc231283853" class="no-scaled-link" src="../../_images/haiku.jpg" style="width: 500px;" /></p>
 <p>To fix this we can include additional options to perform a better search</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -760,7 +760,7 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="6322c820ed13409b8a887f12ef401525" class="no-scaled-link" src="../../_images/grep_win.jpg" style="width: 650px;" /></p>
+<p><img alt="15df179d62094501b8a1a21313d10414" class="no-scaled-link" src="../../_images/grep_win.jpg" style="width: 650px;" /></p>
 <p>From above image grep is now returning what we had initially intended. This shows that</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">grep</span></code> by default is case-sensitive. Using the <code class="docutils literal notranslate"><span class="pre">-i</span></code> option allows <code class="docutils literal notranslate"><span class="pre">grep</span></code> to be case-insensitive</p></li>
