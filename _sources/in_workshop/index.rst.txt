@@ -7,9 +7,6 @@ Resources to use **during** the workshop sessions.
    :maxdepth: 2
 
    preliminary_agenda
-   creating_conda_env
-   open_jupyter_notebook
-   getting_data
    python_programming
    python_plotting
    version_control_git/index
