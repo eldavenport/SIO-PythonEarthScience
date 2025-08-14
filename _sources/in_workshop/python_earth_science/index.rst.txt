@@ -8,5 +8,5 @@ Python For Earth and Natural Sciences
    pandas
    xarray
    dask
-   geopandas
    cartopy
+   geopandas
