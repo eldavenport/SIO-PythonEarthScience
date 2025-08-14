@@ -428,6 +428,16 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <li><p>Add something to your feature branch (maybe a code file or a new text file). The new file shouldn’t be empty.</p></li>
 <li><p>Push your feature branch to the remote (follow the steps above).</p></li>
 </ol>
+<p>The following figure describes the overall workflow that we are currently implementing. Although the diagram may seem a bit complicated, note the following features:</p>
+<ol class="arabic simple">
+<li><p>Commits on main (purple) are <em>only</em> made through pull requests (PRs) after a feature or bugfix was developed on a branch.</p></li>
+<li><p>If commits are made to main before work on a branch is complete, that branch will need to update on the latest version of main before making a PR.</p></li>
+<li><p>There is no limit to how many branches you can have at a time.</p></li>
+<li><p>A new branch always starts from the latest version of main.</p></li>
+</ol>
+<p><img alt="56f8d88c056c4a09824d6445aa881086" class="no-scaled-link" src="../../_images/centralized_workflow_1.png" style="width: 750px;" /></p>
+<p>You can imagine that another branch would continue from the latest version of main… and so on.</p>
+<p><img alt="e7341594083a4f94b53415fa7acf1206" class="no-scaled-link" src="../../_images/centralized_workflow_2.png" style="width: 850px;" /></p>
 </section>
 </section>
 <section id="Opening-Pull-Requests">
