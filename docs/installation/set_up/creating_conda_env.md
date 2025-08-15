@@ -23,7 +23,7 @@ Once this is complete, we will activate our environment so that we can install s
 
 Now we can install a list of packages for use in the Intro to Python Programming and Plotting session. If you installed conda with miniforge, then you do not need to include `-c conda-forge`.
 
-```conda install -c conda-forge numpy matplotlib jupyterlab netcdf4 pandas datetime``` 
+```conda install -c conda-forge numpy matplotlib jupyterlab netcdf4``` 
 
 This command will search for the requested packages and their compatible versions, it will then ask you if you want to proceed with the installation. Continue by entering `y`. After installation we can see the installed packages with:
 
@@ -63,6 +63,6 @@ There are other formats for sharing, not just YAML. That being said, YAML is cro
 
 We will add the following packages to those installed above:
 
-```scipy xarray pooch xgcm xeofs geopandas cartopy cmocean```
+```scipy pandas xarray pooch xgcm xeofs geopandas cartopy cmocean```
 
 You can do this manually with `conda install` or you can use the environment.yml file distributed at the workshop.
