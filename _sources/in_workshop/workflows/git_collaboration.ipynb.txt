@@ -239,6 +239,8 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
+        "#### **Visualizing the Workflow**\n",
+        "\n",
         "The following figure describes the overall workflow that we are currently implementing. Although the diagram may seem a bit complicated, note the following features:\n",
         "\n",
         "1) Commits on main (purple) are _only_ made through pull requests (PRs) after a feature or bugfix was developed on a branch. \n",
@@ -268,14 +270,23 @@
         "\n",
         "#### **Opening Pull Requests**\n",
         "\n",
-        "The appropriate way to get code from your feature branch into main is through a Pull Request. This gives a clear visualization of the changes and provides an opportunity for someone else on the team to give feedback. The easiest way to open a Pull Request is on GitHub. "
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Insert steps to open PR here"
+        "The appropriate way to get code from your feature branch into main is through a Pull Request. This gives a clear visualization of the changes and provides an opportunity for someone else on the team to give feedback. The easiest way to open a Pull Request is on GitHub. \n",
+        "\n",
+        "1) On GitHub, navigate to the `Pull Requests` tab for your repository, and click \"New pull request\".\n",
+        "\n",
+        "<img src=\"_static/open_PR.png\" width=\"950\">\n",
+        "\n",
+        "2) From the \"compare\" drop down menu, select your branch.\n",
+        "\n",
+        "<img src=\"_static/select_branch.png\" width=\"950\">\n",
+        "\n",
+        "3) Click \"Create pull request\". \n",
+        "\n",
+        "<img src=\"_static/create_PR.png\" width=\"950\">\n",
+        "\n",
+        "4) Give the PR a meaningful title and describe the content. Link it to an open issue if there is one (using # will then allow you to search for issues by name). Assign a reviewer and a label if appropriate. Click \"Create pull request\" again to complete the process.\n",
+        "\n",
+        "<img src=\"_static/PR_details.png\" width=\"950\">"
       ]
     },
     {

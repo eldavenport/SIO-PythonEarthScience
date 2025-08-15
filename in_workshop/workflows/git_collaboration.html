@@ -428,6 +428,10 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <li><p>Add something to your feature branch (maybe a code file or a new text file). The new file shouldn’t be empty.</p></li>
 <li><p>Push your feature branch to the remote (follow the steps above).</p></li>
 </ol>
+</section>
+</section>
+<section id="Visualizing-the-Workflow">
+<h2><strong>Visualizing the Workflow</strong><a class="headerlink" href="#Visualizing-the-Workflow" title="Link to this heading">¶</a></h2>
 <p>The following figure describes the overall workflow that we are currently implementing. Although the diagram may seem a bit complicated, note the following features:</p>
 <ol class="arabic simple">
 <li><p>Commits on main (purple) are <em>only</em> made through pull requests (PRs) after a feature or bugfix was developed on a branch.</p></li>
@@ -435,15 +439,29 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <li><p>There is no limit to how many branches you can have at a time.</p></li>
 <li><p>A new branch always starts from the latest version of main.</p></li>
 </ol>
-<p><img alt="bff002ae29614c31b3ca4783f28ec3ca" class="no-scaled-link" src="../../_images/centralized_workflow_1.png" style="width: 750px;" /></p>
+<p><img alt="89e35319f2fe42579f92787e5527dca8" class="no-scaled-link" src="../../_images/centralized_workflow_1.png" style="width: 750px;" /></p>
 <p>You can imagine that another branch would continue from the latest version of main… and so on.</p>
-<p><img alt="4b5741456ccc47c1a6766b3fb2dd77a0" class="no-scaled-link" src="../../_images/centralized_workflow_2.png" style="width: 850px;" /></p>
-</section>
+<p><img alt="7a71a9d9c790467e958b135532f73fa5" class="no-scaled-link" src="../../_images/centralized_workflow_2.png" style="width: 850px;" /></p>
 </section>
 <section id="Opening-Pull-Requests">
 <h2><strong>Opening Pull Requests</strong><a class="headerlink" href="#Opening-Pull-Requests" title="Link to this heading">¶</a></h2>
 <p>The appropriate way to get code from your feature branch into main is through a Pull Request. This gives a clear visualization of the changes and provides an opportunity for someone else on the team to give feedback. The easiest way to open a Pull Request is on GitHub.</p>
-<p>Insert steps to open PR here</p>
+<ol class="arabic simple">
+<li><p>On GitHub, navigate to the <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">Requests</span></code> tab for your repository, and click “New pull request”.</p></li>
+</ol>
+<p><img alt="5a0011c055dc48a988b61a3ad3494b6a" class="no-scaled-link" src="../../_images/open_PR.png" style="width: 950px;" /></p>
+<ol class="arabic simple" start="2">
+<li><p>From the “compare” drop down menu, select your branch.</p></li>
+</ol>
+<p><img alt="ed9c0cfbe36b4b479efd00020ea8829c" class="no-scaled-link" src="../../_images/select_branch.png" style="width: 950px;" /></p>
+<ol class="arabic simple" start="3">
+<li><p>Click “Create pull request”.</p></li>
+</ol>
+<p><img alt="d7857bcdc2214a399cf04ae8f7001092" class="no-scaled-link" src="../../_images/create_PR.png" style="width: 950px;" /></p>
+<ol class="arabic simple" start="4">
+<li><p>Give the PR a meaningful title and describe the content. Link it to an open issue if there is one (using # will then allow you to search for issues by name). Assign a reviewer and a label if appropriate. Click “Create pull request” again to complete the process.</p></li>
+</ol>
+<p><img alt="e3b0ff90f35c49019d17fd0f5a754d89" class="no-scaled-link" src="../../_images/PR_details.png" style="width: 950px;" /></p>
 <section id="Git-Exercise-2:-Opening-Pull-Requests-and-Assigning-Reviewers">
 <h3>Git Exercise 2: Opening Pull Requests and Assigning Reviewers<a class="headerlink" href="#Git-Exercise-2:-Opening-Pull-Requests-and-Assigning-Reviewers" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
@@ -579,6 +597,7 @@ fig, axes = plt.subplots(figsize(15, 8), nrows=2)
 <li><a class="reference internal" href="#Git-Exercise-1:-Adding-collaborators-to-a-repository-and-creating-feature-branches">Git Exercise 1: Adding collaborators to a repository and creating feature branches</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#Visualizing-the-Workflow"><strong>Visualizing the Workflow</strong></a></li>
 <li><a class="reference internal" href="#Opening-Pull-Requests"><strong>Opening Pull Requests</strong></a><ul>
 <li><a class="reference internal" href="#Git-Exercise-2:-Opening-Pull-Requests-and-Assigning-Reviewers">Git Exercise 2: Opening Pull Requests and Assigning Reviewers</a></li>
 </ul>
