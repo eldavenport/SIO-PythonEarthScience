@@ -407,7 +407,7 @@ git version 2.50.1
 </pre></div>
 </div>
 </div>
-<p>You should see output like the following:</p>
+<p>You should see output like the following, although for older versions of git there may not be an output and that is OK:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hint: Using &#39;master&#39; as the name for the initial branch. This default branch name
 hint: is subject to change. To configure the initial branch name to use in all
 hint: of your new repositories, which will suppress this warning, call:
@@ -423,27 +423,15 @@ hint: Disable this message with &quot;git config set advice.defaultBranchName fa
 Initialized empty Git repository in &lt;path-to-your-repo&gt;/new-repo/.git/
 </pre></div>
 </div>
-<p><strong>TIP</strong> Git output <strong>always</strong> tells you how to do the next thing. Always read the output of your git commands to know how to proceed. For example, we are going to do what was suggested in the hints and rename our default branch from <code class="docutils literal notranslate"><span class="pre">master</span></code> to <code class="docutils literal notranslate"><span class="pre">main</span></code> using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-m</span> <span class="pre">&lt;name&gt;</span></code>.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the default branch name to main, if this succeeds there will be no output.</span>
-<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">m</span> <span class="n">main</span>
-
-<span class="c1"># check that we are on main</span>
-<span class="n">git</span> <span class="n">status</span>
-</pre></div>
-</div>
-</div>
-<p>You should see the following (note that, again, git told us what to do next!):</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+<p>You should see the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch master
 
 No commits yet
 
 nothing to commit (create/copy files and use &quot;git add&quot; to track)
 </pre></div>
 </div>
+<p><strong>TIP</strong> Git output often tells you how to do the next thing. Always read the output of your git commands to know how to proceed. For example, Git told us that we don’t have anything to commit and that if we want to commit something we should create a new file and use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>. That’s what we will do!</p>
 <p>Every Git repository should have a README.md (markdown file). At the least this file just says the name of the repository. Over time it can include details such as links to supporting references, DOIs, links to papers or zenodo, installation instructions.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -551,7 +539,21 @@ Date:   Thu Jul 31 11:23:35 2025 -0700
     initial commit
 </pre></div>
 </div>
-<p>We can see the date and time of the commit, who authored the commit, and the commit message. We can also see a unique identifier for the commit called the commit <em>hash</em>. In this case the hash starts with 3aa75. Commit hashes will be useful in more advanced git actions.</p>
+<p>We can see the date and time of the commit, who authored the commit, and the commit message. We can also see a unique identifier for the commit called the commit <em>hash</em>. In this case the hash starts with 3aa75. Commit hashes will be useful in more advanced git operations.</p>
+<p>The last thing we will do, is we will follow the initial suggestion and rename our master branch to <code class="docutils literal notranslate"><span class="pre">main</span></code>. That’s because master is an outdated term and <code class="docutils literal notranslate"><span class="pre">main</span></code>, <code class="docutils literal notranslate"><span class="pre">trunk</span></code>, or <code class="docutils literal notranslate"><span class="pre">dev</span></code> are considered to be standard. You could have done this right away when you received that message. Older versions of Git, however, require that you have one commit prior to renaming the branch.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the default branch name to main, if this succeeds there will be no output.</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">m</span> <span class="n">main</span>
+
+<span class="c1"># check that we are on main</span>
+<span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Break to get caught up</strong></p>
 </section>
 <section id="Pushing-our-changes-up-to-GitHub">
 <h2><strong>Pushing our changes up to GitHub</strong><a class="headerlink" href="#Pushing-our-changes-up-to-GitHub" title="Link to this heading">¶</a></h2>
@@ -612,6 +614,7 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.
 <section id="Refresh-your-GitHub-page-and-you-should-see-the-new-repo!">
 <h3><strong>Refresh your GitHub page and you should see the new repo!</strong><a class="headerlink" href="#Refresh-your-GitHub-page-and-you-should-see-the-new-repo!" title="Link to this heading">¶</a></h3>
 <p>Note how the online interface contains tons of info, including: Who authored the last changes, when were the last changes made, what files do we have, what is our change history, is the repo public, etc.</p>
+<p><strong>Break to get caught up</strong> (15 min)</p>
 </section>
 <section id="Adding-a-.gitignore">
 <h3><strong>Adding a .gitignore</strong><a class="headerlink" href="#Adding-a-.gitignore" title="Link to this heading">¶</a></h3>
@@ -677,8 +680,8 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <p>At this point you can move data files into your repo and git will not try to track them.</p>
 </section>
 </section>
-<section id="Exercises-(20-min)">
-<h2><strong>Exercises</strong> (20 min)<a class="headerlink" href="#Exercises-(20-min)" title="Link to this heading">¶</a></h2>
+<section id="Exercises-(15-20-min)">
+<h2><strong>Exercises</strong> (15-20 min)<a class="headerlink" href="#Exercises-(15-20-min)" title="Link to this heading">¶</a></h2>
 <section id="1">
 <h3>1<a class="headerlink" href="#1" title="Link to this heading">¶</a></h3>
 <p>A trust building experiment …</p>
@@ -844,9 +847,6 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 </div>
 </div>
 </section>
-<section id="Creating-and-Checking-Out-Tags">
-<h2><strong>Creating and Checking Out Tags</strong><a class="headerlink" href="#Creating-and-Checking-Out-Tags" title="Link to this heading">¶</a></h2>
-</section>
 <section id="GitHub-Issues">
 <h2><strong>GitHub Issues</strong><a class="headerlink" href="#GitHub-Issues" title="Link to this heading">¶</a></h2>
 <ol class="loweralpha simple">
@@ -928,7 +928,7 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <li><a class="reference internal" href="#Adding-a-.gitignore"><strong>Adding a .gitignore</strong></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#Exercises-(20-min)"><strong>Exercises</strong> (20 min)</a><ul>
+<li><a class="reference internal" href="#Exercises-(15-20-min)"><strong>Exercises</strong> (15-20 min)</a><ul>
 <li><a class="reference internal" href="#1">1</a></li>
 <li><a class="reference internal" href="#2">2</a></li>
 <li><a class="reference internal" href="#3">3</a></li>
@@ -942,7 +942,6 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 </ul>
 </li>
 <li><a class="reference internal" href="#Merging-a-Branch-Back-into-Main"><strong>Merging a Branch Back into Main</strong></a></li>
-<li><a class="reference internal" href="#Creating-and-Checking-Out-Tags"><strong>Creating and Checking Out Tags</strong></a></li>
 <li><a class="reference internal" href="#GitHub-Issues"><strong>GitHub Issues</strong></a></li>
 </ul>
 </li>
