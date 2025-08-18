@@ -341,6 +341,7 @@
 <section id="Add-the-SSH-key-to-GitHub">
 <h3>Add the SSH key to GitHub<a class="headerlink" href="#Add-the-SSH-key-to-GitHub" title="Link to this heading">¶</a></h3>
 <p>Go to your GitHub profile, click the profile icon, and go to settings. Settings -&gt; SSH and GPG Keys -&gt; New SSH Key. Give it a name you will recognize (ellen’s-laptop). Copy the contents of .ssh/id_rsa.pub (or your specified filename) into the new key info on GitHub. Click ‘Add SSH Key’.</p>
+<p><strong>NOTE</strong> The first time you exchange info through a new SSH-key pair you will receive a prompt that checks whether you meant to do this (it usually says something about a new fingerprint and asking you to confirm that you want to add it to your list of known hosts). This would be the first time you do a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> with a new SSH key, or the first time you log into a server. You should say <code class="docutils literal notranslate"><span class="pre">yes</span></code>.</p>
 </section>
 </section>
 <section id="Verify-your-Git-Installation">
