@@ -8,11 +8,15 @@ Download the appropriate version of Miniforge (the conda installer) from [this w
 
     1) Download the miniforge version for Apple (either Apple Silicon or Intel depending on which kind of Mac you have)
 
-    2) Open your unix-shell, type `cd ~/Downloads`, and Enter
+    2) Open your terminal, type `cd ~/Downloads`, and Enter
 
-    3) Type `./Miniforge3-`, hit Tab (this will autocomplete the name of the downloaded file), and Enter
-
+    3) Type `./Miniforge3-`, hit Tab (this should autocomplete the name of the downloaded file. If it doesn't, copy and paste the file name): 
+    
         a) For example, my downloaded filename is: Miniforge3-MacOSX-arm64.sh
+
+        b) Hit `Enter` to run the script 
+
+        c) If this command fails with a "permission denied" error, type `chmod +x Miniforge3-<filename>`, hit Enter, and try the above command again.
 
     4) Follow the text prompts in the terminal:
         
