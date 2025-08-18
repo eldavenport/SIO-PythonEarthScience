@@ -1,6 +1,6 @@
-# Preliminary Workshop Agenda
+# Workshop Agenda
 
-All workshop sessions will be held in the **Munk Conference Room at IGPP (Munk 303)**
+All workshop sessions will be held in the Munk Conference Room at IGPP (Munk 303)
 ---
 
 August 19, 1-4pm: **Intro to Python Programming and Plotting**
@@ -8,7 +8,7 @@ August 19, 1-4pm: **Intro to Python Programming and Plotting**
 - Importing Python packages
 - Statistics in Python
 - Reading data files (csv, netcdf, bin)
-- Plotting (lines, images, histograms, contours, etc)
+- Plotting (lines, scatter, images, contours, etc)
 
 August 20, 1-4pm: **Unix shell and version control with Git**
 - Navigating the terminal with bash commands
