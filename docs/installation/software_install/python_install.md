@@ -26,7 +26,7 @@ Download the appropriate version of Miniforge (the conda installer) from [this w
         
         c) Hit Enter to approve the default location for installation 
 
-        d) Type `yes` and Enter to add Miniforge to your `PATH`
+        d) It will ask you whether you want conda to be automatically configured in the terminal. Type `yes` and Enter to add Miniforge to your `PATH`
 
 ### WSL and Linux
 
