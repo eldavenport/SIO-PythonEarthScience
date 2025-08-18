@@ -16,7 +16,7 @@ Download the appropriate version of Miniforge (the conda installer) from [this w
 
         b) Hit `Enter` to run the script 
 
-        c) If this command fails with a "permission denied" error, type `chmod +x Miniforge3-<filename>`, hit Enter, and try the above command again.
+        c) If this command fails with a "permission denied" error, type `chmod +x Miniforge3-<filename>`, hit Enter, and try to run the script again.
 
     4) Follow the text prompts in the terminal:
         
