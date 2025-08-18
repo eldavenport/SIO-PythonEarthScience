@@ -28,8 +28,6 @@ Linux is the industry standard operating system for most servers including super
 
         a) apt is a command that will manage updating/installing things in Linux. Any time you use sudo you will need to enter your password.
 
-    9) Type `sudo apt install autotools python3` and Enter 
-
 ### To access Windows system files from Linux
 
 Navigate to `/mnt/c` in the WSL terminal by typing `cd /mnt/c`. Now when you type `ls` and Enter, you should see all of the files and folders that already exist on your Windows computer.
