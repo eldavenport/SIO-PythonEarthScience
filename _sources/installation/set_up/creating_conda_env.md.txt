@@ -39,7 +39,7 @@ You may only ever need one conda environment, but you may find over time that yo
 
 If you have an environment.yml file, you can use it to create a conda environment with the following command:
 
-```conda env create -f environment.yml``` 
+```conda env create -f environment.yaml``` 
 
 The first line of the .yml file defines the name of the environment. 
 
@@ -61,8 +61,8 @@ There are other formats for sharing, not just YAML. That being said, YAML is cro
 
 ### For the Python for Earth Sciences Class 
 
-We will add the following packages to those installed above:
+We will add the several packages to those installed above, making the entire list of necessary packages:
 
-```scipy pandas xarray pooch xgcm xeofs geopandas cartopy cmocean```
+```numpy matplotlib jupyterlab netcdf4 scipy pandas xarray pooch xgcm xeofs geopandas cartopy cmocean```
 
-You can do this manually with `conda install` or you can use the environment.yml file distributed at the workshop.
+You can do this manually with `conda install` or you can use the sio_environment.yml file distributed before the workshop.
