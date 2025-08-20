@@ -364,8 +364,8 @@
 <img alt="../../_images/in_workshop_python_earth_science_scipy_6_0.png" src="../../_images/in_workshop_python_earth_science_scipy_6_0.png" />
 </div>
 </div>
-<section id="Detrend-and-Filter-with-scipy.signal">
-<h3>Detrend and Filter with scipy.signal<a class="headerlink" href="#Detrend-and-Filter-with-scipy.signal" title="Link to this heading">¶</a></h3>
+<section id="Detrend-scipy.signal">
+<h3>Detrend scipy.signal<a class="headerlink" href="#Detrend-scipy.signal" title="Link to this heading">¶</a></h3>
 <p>First, let’s turn our timeseries of temperature, into a timeseries of temperature anomaly.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -411,53 +411,6 @@
 <img alt="../../_images/in_workshop_python_earth_science_scipy_10_0.png" src="../../_images/in_workshop_python_earth_science_scipy_10_0.png" />
 </div>
 </div>
-<p>That data is pretty noisy! We can filter it to remove signals that are shorter period than 1 day. As we determined during our Tuesday workshop, these data points are 4 minutes apart.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_minutes</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># timestep in minutes</span>
-<span class="n">fs</span> <span class="o">=</span> <span class="mi">1440</span> <span class="o">/</span> <span class="n">dt_minutes</span>  <span class="c1"># sampling frequency, minutes/day / minutes/sample = samples/day</span>
-<span class="n">nyquist</span> <span class="o">=</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">2</span>
-
-<span class="c1"># Cutoff</span>
-<span class="n">cutoff_cpd</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># cycles per day</span>
-<span class="n">Wn</span> <span class="o">=</span> <span class="n">cutoff_cpd</span> <span class="o">/</span> <span class="n">nyquist</span>
-
-<span class="c1"># Design filter</span>
-<span class="n">order</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">sos</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">Wn</span><span class="p">,</span> <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;sos&#39;</span><span class="p">)</span>
-
-<span class="c1"># Apply filtering</span>
-<span class="n">filtered</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">sosfiltfilt</span><span class="p">(</span><span class="n">sos</span><span class="p">,</span> <span class="n">temp_anomaly</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-
-<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">filtered</span><span class="p">)</span>
-<span class="n">axes</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">filtered</span><span class="p">),</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (deg C)&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Display figure</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_scipy_13_0.png" src="../../_images/in_workshop_python_earth_science_scipy_13_0.png" />
-</div>
-</div>
 </section>
 <section id="Fitting-a-Distribution-with-scipy.stats">
 <h3>Fitting a Distribution with scipy.stats<a class="headerlink" href="#Fitting-a-Distribution-with-scipy.stats" title="Link to this heading">¶</a></h3>
@@ -499,7 +452,7 @@
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_scipy_16_1.png" src="../../_images/in_workshop_python_earth_science_scipy_16_1.png" />
+<img alt="../../_images/in_workshop_python_earth_science_scipy_13_1.png" src="../../_images/in_workshop_python_earth_science_scipy_13_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -560,7 +513,57 @@ Scale      = 3.349
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_scipy_19_1.png" src="../../_images/in_workshop_python_earth_science_scipy_19_1.png" />
+<img alt="../../_images/in_workshop_python_earth_science_scipy_16_1.png" src="../../_images/in_workshop_python_earth_science_scipy_16_1.png" />
+</div>
+</div>
+</section>
+<section id="Filter-with-scipy.signal">
+<h3>Filter with scipy.signal<a class="headerlink" href="#Filter-with-scipy.signal" title="Link to this heading">¶</a></h3>
+<p>That original timeseries is pretty noisy when we look at the whole year! We can filter it to remove signals that are shorter period than 1 day. As we determined during our Tuesday workshop, these data points are 4 minutes apart.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_minutes</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># timestep in minutes</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">1440</span> <span class="o">/</span> <span class="n">dt_minutes</span>  <span class="c1"># sampling frequency, minutes/day / minutes/sample = samples/day</span>
+<span class="n">nyquist</span> <span class="o">=</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Cutoff</span>
+<span class="n">cutoff_cpd</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># cycles per day</span>
+<span class="n">Wn</span> <span class="o">=</span> <span class="n">cutoff_cpd</span> <span class="o">/</span> <span class="n">nyquist</span>
+
+<span class="c1"># Design filter</span>
+<span class="n">order</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">sos</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">Wn</span><span class="p">,</span> <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;sos&#39;</span><span class="p">)</span>
+
+<span class="c1"># Apply filtering</span>
+<span class="n">filtered</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">sosfiltfilt</span><span class="p">(</span><span class="n">sos</span><span class="p">,</span> <span class="n">temp_anomaly</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">filtered</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">filtered</span><span class="p">),</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (deg C)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Display figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/in_workshop_python_earth_science_scipy_20_0.png" src="../../_images/in_workshop_python_earth_science_scipy_20_0.png" />
 </div>
 </div>
 </section>
@@ -607,7 +610,7 @@ Scale      = 3.349
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_scipy_24_0.png" src="../../_images/in_workshop_python_earth_science_scipy_24_0.png" />
+<img alt="../../_images/in_workshop_python_earth_science_scipy_25_0.png" src="../../_images/in_workshop_python_earth_science_scipy_25_0.png" />
 </div>
 </div>
 <p>Our plot shows that after approximately 48 hours, the water temperature has plateaued near the air temperature. The analytical solution for the above problem is:</p>
@@ -637,7 +640,7 @@ Scale      = 3.349
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/in_workshop_python_earth_science_scipy_28_0.png" src="../../_images/in_workshop_python_earth_science_scipy_28_0.png" />
+<img alt="../../_images/in_workshop_python_earth_science_scipy_29_0.png" src="../../_images/in_workshop_python_earth_science_scipy_29_0.png" />
 </div>
 </div>
 </section>
@@ -706,8 +709,9 @@ Scale      = 3.349
             <ul>
 <li><a class="reference internal" href="#">SciPy (the Scientific Python Library)</a><ul>
 <li><a class="reference internal" href="#Data-Analysis">Data Analysis</a><ul>
-<li><a class="reference internal" href="#Detrend-and-Filter-with-scipy.signal">Detrend and Filter with scipy.signal</a></li>
+<li><a class="reference internal" href="#Detrend-scipy.signal">Detrend scipy.signal</a></li>
 <li><a class="reference internal" href="#Fitting-a-Distribution-with-scipy.stats">Fitting a Distribution with scipy.stats</a></li>
+<li><a class="reference internal" href="#Filter-with-scipy.signal">Filter with scipy.signal</a></li>
 <li><a class="reference internal" href="#Solving-an-Initial-Value-Problem-with-scipy.integrate">Solving an Initial Value Problem with scipy.integrate</a></li>
 <li><a class="reference internal" href="#A-Brief-Note-of-Plotting-Statistics">A Brief Note of Plotting Statistics</a></li>
 </ul>
