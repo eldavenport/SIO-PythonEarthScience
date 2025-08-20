@@ -39,7 +39,7 @@ You may only ever need one conda environment, but you may find over time that yo
 
 If you have an environment.yml file, you can use it to create a conda environment with the following command:
 
-```conda env create -f environment.yml``` 
+```conda env create -f environment.yaml``` 
 
 The first line of the .yml file defines the name of the environment. 
 
