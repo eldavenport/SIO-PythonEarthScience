@@ -310,7 +310,7 @@ analysis!</p>
 </ol>
 <p>In the graphic below, you can see that <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">precipitation</span></code> are both variables with coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. In this simple example temperature and precip each have 3 dimensions. Not only does the DataSet store all of this information, it also relates these two variables to each other by understanding that they share coordinates <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code>. We will use some test data to inspect this further. Any NetCDF can be read into an Xarray dataset. Many popular models
 facilitate reading raw output directly into Xarray.</p>
-<p><img alt="3d10c34938484a0d83d72a8050059591" class="no-scaled-link" src="../../_images/xarray.png" style="width: 500px;" /></p>
+<p><img alt="937b798a1f9746ecb2389c61ea41d81a" class="no-scaled-link" src="../../_images/xarray.png" style="width: 500px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -8620,7 +8620,7 @@ Attributes:
 (&#39;time&#39;, &#39;Z&#39;, &#39;YC&#39;, &#39;XC&#39;)
 </pre></div></div>
 </div>
-<p>Even better, however, the Grid object will automatically handle the interpolation for us when we go to combine the variables in the equation for vorticity. This further reduces the complexity of the code and the opportunities for making mistakes.</p>
+<p>Even better, however, the Grid object will automatically handle the interpolation for us when we go to combine the variables in the equation for divergence. The interp step above is useful for demonstration, but actually isn’t necessary at all. This further reduces the complexity of the code and the opportunities for making mistakes.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
