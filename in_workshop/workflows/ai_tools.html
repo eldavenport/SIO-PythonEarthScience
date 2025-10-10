@@ -1,14 +1,14 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="../../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Additional Resources" href="../../additional_resources/index.html" /><link rel="prev" title="Migrating Your Workflow to a Remote Server" href="remote_workflows.html" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="Additional Resources" href="../../additional_resources/index.html"><link rel="prev" title="Migrating Your Workflow to a Remote Server" href="remote_workflows.html">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>AI Agents and Tools for Coding - SIO Python for Earth Science</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
@@ -22,14 +22,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -144,14 +144,10 @@
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 <a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
@@ -161,8 +157,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
       </label>
     </div>
     <div class="header-center">
@@ -170,8 +165,7 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
           <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
           <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -179,8 +173,7 @@
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
   </header>
@@ -199,8 +192,8 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../installation/index.html">Set Up</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Set Up</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/software_install/index.html">Software Installation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Software Installation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../installation/index.html">Set Up</a><input aria-label="Toggle navigation of Set Up" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/software_install/index.html">Software Installation</a><input aria-label="Toggle navigation of Software Installation" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/software_install/installation_overview.html">SIO Software Workshop Installation Guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/software_install/wsl_installation.html">Windows Instructions for Unix Shell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/software_install/bash_git_install.html">Installing Git in a Unix Shell</a></li>
@@ -208,7 +201,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../installation/software_install/vscode_install.html">VSCode Installation</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/set_up/index.html">Set Up Your Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Set Up Your Workflow</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/set_up/index.html">Set Up Your Workflow</a><input aria-label="Toggle navigation of Set Up Your Workflow" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/set_up/creating_conda_env.html">Creating a Conda Environment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/set_up/open_jupyter_notebook.html">Jupyter Notebook and Conda in VSCode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/set_up/getting_data.html">Data For the Workshop</a></li>
@@ -216,21 +209,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">In-Workshop Resources</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of In-Workshop Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">In-Workshop Resources</a><input aria-label="Toggle navigation of In-Workshop Resources" checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../preliminary_agenda.html">Workshop Agenda</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../intro_python/index.html">Intro to Python Programming and Plotting</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Intro to Python Programming and Plotting</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../intro_python/index.html">Intro to Python Programming and Plotting</a><input aria-label="Toggle navigation of Intro to Python Programming and Plotting" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../intro_python/python_programming.html">Programming with Python</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intro_python/python_plotting.html">Plotting in Python</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../version_control_git/index.html">Version Control with Git</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Version Control with Git</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../version_control_git/index.html">Version Control with Git</a><input aria-label="Toggle navigation of Version Control with Git" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../version_control_git/unix_shell.html">The Unix Shell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../version_control_git/git_workflow_overview.html">Personal Git Workflows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../version_control_git/command_line_git.html">Version Control With Git</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../version_control_git/online_with_github.html">Navigating GitHub</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../python_earth_science/index.html">Python For Earth and Natural Sciences</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Python For Earth and Natural Sciences</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../python_earth_science/index.html">Python For Earth and Natural Sciences</a><input aria-label="Toggle navigation of Python For Earth and Natural Sciences" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../python_earth_science/scipy.html">SciPy (the Scientific Python Library)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../python_earth_science/pandas.html">Tabular Data with Pandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../python_earth_science/xarray.html">Geospatial and Gridded Data with Xarray</a></li>
@@ -239,7 +232,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../python_earth_science/geopandas.html">Geographic Data with GeoPandas</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Workflows For Science</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Workflows For Science</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Workflows For Science</a><input aria-label="Toggle navigation of Workflows For Science" checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="git_collaboration.html">Collaborating with Git</a></li>
 <li class="toctree-l3"><a class="reference internal" href="open_science.html">Open Science - Software and Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="remote_workflows.html">Migrating Your Workflow to a Remote Server</a></li>
@@ -248,7 +241,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../additional_resources/index.html">Additional Resources</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Additional Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../additional_resources/index.html">Additional Resources</a><input aria-label="Toggle navigation of Additional Resources" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../additional_resources/earth_science.html">Python Resources for Earth and Natural Sciences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../additional_resources/python_plotting.html">Python Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../additional_resources/unix_cheat_sheet.html">Unix Shell Cheat Sheet</a></li>
@@ -284,8 +277,7 @@
   </a>
 </div>
 <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -293,8 +285,7 @@
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
@@ -342,21 +333,21 @@ the limit of the tools context window it will either forget old information, or 
 </section>
 <section id="Chat-GPT">
 <h2><strong>Chat GPT</strong><a class="headerlink" href="#Chat-GPT" title="Link to this heading">¶</a></h2>
-<p><img alt="eb5fd017f6fc447fa52835f3bdd5a28e" class="no-scaled-link" src="../../_images/chat_gpt.png" style="width: 750px;" /></p>
+<p><img alt="d5f648d65f6840aaa7ab235741298584" class="no-scaled-link" src="../../_images/chat_gpt.png" style="width: 750px;" /></p>
 </section>
 <section id="GitHub-Co-Pilot">
 <h2><strong>GitHub Co-Pilot</strong><a class="headerlink" href="#GitHub-Co-Pilot" title="Link to this heading">¶</a></h2>
-<p><img alt="8d245976d63b41998706a0e248263d89" class="no-scaled-link" src="../../_images/copilot_chat.png" style="width: 750px;" /></p>
-<p><img alt="387448bd8d2a4db580c0b676c57a327f" class="no-scaled-link" src="../../_images/copilot.png" style="width: 750px;" /></p>
+<p><img alt="405508ed47cc48f19a49ce69ed281e3e" class="no-scaled-link" src="../../_images/copilot_chat.png" style="width: 750px;" /></p>
+<p><img alt="96fd3cd4b4684f53b6dd2858c5519f4f" class="no-scaled-link" src="../../_images/copilot.png" style="width: 750px;" /></p>
 </section>
 <section id="Cursor">
 <h2><strong>Cursor</strong><a class="headerlink" href="#Cursor" title="Link to this heading">¶</a></h2>
-<p><img alt="eea637597d6f49fcabcc200d8dc424a8" class="no-scaled-link" src="../../_images/cursor.png" style="width: 750px;" /></p>
+<p><img alt="12328326b2d14f709446c686759758c2" class="no-scaled-link" src="../../_images/cursor.png" style="width: 750px;" /></p>
 </section>
 <section id="Claude">
 <h2><strong>Claude</strong><a class="headerlink" href="#Claude" title="Link to this heading">¶</a></h2>
-<p><img alt="5a53a3548b5046aab9c4ece463a25fa2" class="no-scaled-link" src="../../_images/claude_init.png" style="width: 750px;" /></p>
-<p><img alt="4ef5a72f458c4003a5389354e8a1805c" class="no-scaled-link" src="../../_images/claude_example.png" style="width: 750px;" /></p>
+<p><img alt="bf874f585c1c45d4875e91f0a4779dc9" class="no-scaled-link" src="../../_images/claude_init.png" style="width: 750px;" /></p>
+<p><img alt="636f1882cad04690b950273cc2e26260" class="no-scaled-link" src="../../_images/claude_example.png" style="width: 750px;" /></p>
 </section>
 <section id="Tips">
 <h2><strong>Tips</strong><a class="headerlink" href="#Tips" title="Link to this heading">¶</a></h2>
@@ -373,17 +364,7 @@ the limit of the tools context window it will either forget old information, or 
 <li><p>Identify tasks for which AI will actually be better than you. Do not ask it to do something that is niche, that you already know how to do. It will make mistakes and bad assumptions.</p></li>
 <li><p>The best tasks for AI are the ones where you know what needs to be done <em>and you know how to check for correctness</em> but you haven’t had the time to figure out the exact implementation. At the point where the tool is deciding what is <em>correct</em> and what is <em>done</em> you will end up with some useless code on your hands.</p></li>
 </ul>
-<p>If you are too vague with your questions or ask these tools to do too much at once, they will go off in some pretty wild/unproductive directions. You may end up spending more time double checking what it did than you would have if you had done the work yourself.</p>
-</section>
-<section id="Are-these-tools-making-our-research-better?">
-<h2><strong>Are these tools making our research better?</strong><a class="headerlink" href="#Are-these-tools-making-our-research-better?" title="Link to this heading">¶</a></h2>
-<p>The links below are intended to provoke discussion, and provide a bit of caution. They do not reflect the opinions of anyone in the software workshop. It is worth thinking about when and where to use AI in your workflow, such that you make your work better not worse.</p>
-<p><a class="reference external" href="https://venturebeat.com/ai/ai-can-fix-bugs-but-cant-find-them-openais-study-highlights-limits-of-llms-in-software-engineering/">Does AI Understand Bugs?</a></p>
-<p><a class="reference external" href="https://arxiv.org/abs/2507.09089">Are developers getting less efficient?</a></p>
-<p><a class="reference external" href="https://doctorow.medium.com/https-pluralistic-net-2025-08-04-bad-vibe-coding-maximally-codelike-bugs-8372979b3933">Are AI bugs worse than normal bugs?</a></p>
-<p>These models are just statistical tools. They cannot genuinely reason, and they hallucinate all of the time (i.e., they generate false information without indicating that their response is not reliable). In some cases the tool will even double down on its hallucination unless prompted in the right way.</p>
-<p>For example, a few weeks ago I asked ChatGPT to generate an Apple Keynote file for me, not thinking about the fact that Keynote is a proprietary format (therefore it cannot do this). It generated several garbage files before I asked whether it was actually capable of completing the task. It responded by telling me that it definitely could and would do it by “handling it outside of ChatGPT”. The rest of our conversation is below:</p>
-<p><img alt="5719eb03e84946eb918d65443c37254c" class="no-scaled-link" src="../../_images/chat_gpt_hallucination.png" style="width: 750px;" /></p>
+<p>If you are too vague with your questions or ask these tools to do too much at once, they will go off in some pretty wild/unproductive directions. You may end up spending more time double checking what it did than you would have if you had done the work yourself. It is worth thinking about when and where to use AI in your workflow, such that you make your work better not worse.</p>
 </section>
 </section>
 
@@ -450,7 +431,6 @@ the limit of the tools context window it will either forget old information, or 
 <li><a class="reference internal" href="#Cursor"><strong>Cursor</strong></a></li>
 <li><a class="reference internal" href="#Claude"><strong>Claude</strong></a></li>
 <li><a class="reference internal" href="#Tips"><strong>Tips</strong></a></li>
-<li><a class="reference internal" href="#Are-these-tools-making-our-research-better?"><strong>Are these tools making our research better?</strong></a></li>
 </ul>
 </li>
 </ul>

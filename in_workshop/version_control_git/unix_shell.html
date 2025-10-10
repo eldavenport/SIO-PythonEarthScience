@@ -1,14 +1,14 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="../../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Personal Git Workflows" href="git_workflow_overview.html" /><link rel="prev" title="Version Control with Git" href="index.html" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="Personal Git Workflows" href="git_workflow_overview.html"><link rel="prev" title="Version Control with Git" href="index.html">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>The Unix Shell - SIO Python for Earth Science</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     
@@ -23,14 +23,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -145,14 +145,10 @@
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 <a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
@@ -162,8 +158,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
       </label>
     </div>
     <div class="header-center">
@@ -171,8 +166,7 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
           <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
           <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -180,8 +174,7 @@
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
   </header>
@@ -200,8 +193,8 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../installation/index.html">Set Up</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Set Up</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/software_install/index.html">Software Installation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Software Installation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../installation/index.html">Set Up</a><input aria-label="Toggle navigation of Set Up" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/software_install/index.html">Software Installation</a><input aria-label="Toggle navigation of Software Installation" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/software_install/installation_overview.html">SIO Software Workshop Installation Guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/software_install/wsl_installation.html">Windows Instructions for Unix Shell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/software_install/bash_git_install.html">Installing Git in a Unix Shell</a></li>
@@ -209,7 +202,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../installation/software_install/vscode_install.html">VSCode Installation</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/set_up/index.html">Set Up Your Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Set Up Your Workflow</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/set_up/index.html">Set Up Your Workflow</a><input aria-label="Toggle navigation of Set Up Your Workflow" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/set_up/creating_conda_env.html">Creating a Conda Environment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/set_up/open_jupyter_notebook.html">Jupyter Notebook and Conda in VSCode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../installation/set_up/getting_data.html">Data For the Workshop</a></li>
@@ -217,21 +210,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">In-Workshop Resources</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of In-Workshop Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">In-Workshop Resources</a><input aria-label="Toggle navigation of In-Workshop Resources" checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../preliminary_agenda.html">Workshop Agenda</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../intro_python/index.html">Intro to Python Programming and Plotting</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Intro to Python Programming and Plotting</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../intro_python/index.html">Intro to Python Programming and Plotting</a><input aria-label="Toggle navigation of Intro to Python Programming and Plotting" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../intro_python/python_programming.html">Programming with Python</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intro_python/python_plotting.html">Plotting in Python</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Version Control with Git</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Version Control with Git</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Version Control with Git</a><input aria-label="Toggle navigation of Version Control with Git" checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">The Unix Shell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="git_workflow_overview.html">Personal Git Workflows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="command_line_git.html">Version Control With Git</a></li>
 <li class="toctree-l3"><a class="reference internal" href="online_with_github.html">Navigating GitHub</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../python_earth_science/index.html">Python For Earth and Natural Sciences</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Python For Earth and Natural Sciences</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../python_earth_science/index.html">Python For Earth and Natural Sciences</a><input aria-label="Toggle navigation of Python For Earth and Natural Sciences" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../python_earth_science/scipy.html">SciPy (the Scientific Python Library)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../python_earth_science/pandas.html">Tabular Data with Pandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../python_earth_science/xarray.html">Geospatial and Gridded Data with Xarray</a></li>
@@ -240,7 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../python_earth_science/geopandas.html">Geographic Data with GeoPandas</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../workflows/index.html">Workflows For Science</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Workflows For Science</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../workflows/index.html">Workflows For Science</a><input aria-label="Toggle navigation of Workflows For Science" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../workflows/git_collaboration.html">Collaborating with Git</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../workflows/open_science.html">Open Science - Software and Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../workflows/remote_workflows.html">Migrating Your Workflow to a Remote Server</a></li>
@@ -249,7 +242,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../additional_resources/index.html">Additional Resources</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Additional Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../additional_resources/index.html">Additional Resources</a><input aria-label="Toggle navigation of Additional Resources" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../additional_resources/earth_science.html">Python Resources for Earth and Natural Sciences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../additional_resources/python_plotting.html">Python Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../additional_resources/unix_cheat_sheet.html">Unix Shell Cheat Sheet</a></li>
@@ -285,8 +278,7 @@
   </a>
 </div>
 <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -294,8 +286,7 @@
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
@@ -333,7 +324,7 @@
 <li><p>Bourne Shell</p></li>
 </ul>
 <p>The CLI is powerful as you can customize the interface as well as run various programs either locally or on remote servers through <strong>S</strong>ecure <strong>SH</strong>ell (SSH). The below image is a typical example of a terminal</p>
-<p><img alt="75f5e5b60a134300ad34b559a1a2e629" class="no-scaled-link" src="../../_images/shell_terminal.jpg" style="width: 500px;" /></p>
+<p><img alt="3e60d6635d6a4c648cd1ae0757de77af" class="no-scaled-link" src="../../_images/shell_terminal.jpg" style="width: 500px;" /></p>
 <p>In our examples we have created an account called <strong>sio</strong> on a computer named <strong>localhost</strong>. The $ is the prompt and users can begin entering commands after the prompt. The features of the terminal can be customized through your bash profile. As mentioned previously, we will be using the Bash shell for our examples. To determine which shell you are using you can run the following command.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sio@localhost $ echo $0
 </pre></div>
@@ -355,7 +346,7 @@
 <section id="2)-Navigating-through-Files-and-Directories">
 <h3>2) Navigating through Files and Directories<a class="headerlink" href="#2)-Navigating-through-Files-and-Directories" title="Link to this heading">¶</a></h3>
 <p>Every Unix based OS has a hierarchical structure to organize files and folders. This is known as the <strong>file system</strong>. The root directory is the Top-level folder and is represted by a foward slash, <code class="docutils literal notranslate"><span class="pre">/</span></code>. Every subfolder is known as the <strong>child</strong> or <strong>subdirectory</strong> of the <strong>parent</strong> folder.</p>
-<p><img alt="36aadb81ed744880b2444d361c1bb5f7" class="no-scaled-link" src="../../_images/directory_structure.jpg" style="width: 1000px;" /></p>
+<p><img alt="5b36284731f94b539f508afd1b343a64" class="no-scaled-link" src="../../_images/directory_structure.jpg" style="width: 1000px;" /></p>
 <p>When starting the CLI your folder will be located in <code class="docutils literal notranslate"><span class="pre">/Users/username</span></code>. For the examples used in this tutorial it will be <code class="docutils literal notranslate"><span class="pre">/Users/sio</span></code>. This is referred to as the __home directory. You can see which directory you are currently in by type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (Print Working Direcotry).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -450,12 +441,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">Documents/shell-lesson-data</span></code></p>
 <p>Besides listing what objects there are in a directory the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command, in addition to providing options, can also list information on if the item is a file or folder, the size of the object as well as when the object was last modified</p>
 <p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lsG</span></code></p>
-<p><img alt="6cdc3d74d8d2457f82447340f77d3af1" class="no-scaled-link" src="../../_images/ls_meaning.jpg" style="width: 1000px;" /></p>
+<p><img alt="f482600723f04acfa5fa084891882c2b" class="no-scaled-link" src="../../_images/ls_meaning.jpg" style="width: 1000px;" /></p>
 <p>There will be times, especially on a remote server, where you cannot copy or remove files in a specific directory. This is because of user or group permissions</p>
-<p><img alt="76ea86c00b3c4166ba5612530c1f903d" class="no-scaled-link" src="../../_images/ls_meaning_2.jpg" style="width: 1000px;" /></p>
+<p><img alt="168ef8aaf51448118d72655833ee7385" class="no-scaled-link" src="../../_images/ls_meaning_2.jpg" style="width: 1000px;" /></p>
 <p>When using <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the <code class="docutils literal notranslate"><span class="pre">-l</span></code> option you will see the permission structure for the Owner, Group and Other. In the below screenshot we see the following permissions</p>
 <p><code class="docutils literal notranslate"><span class="pre">drwxr-xr-x</span> <span class="pre">7</span> <span class="pre">tgstone</span> <span class="pre">staff</span></code></p>
-<p><img alt="c50f889e3f5245318780169824138a91" class="no-scaled-link" src="../../_images/ls_permissions.jpg" style="width: 1000px;" /></p>
+<p><img alt="e4bd8a3b1a5544eca33445fe947ac0c2" class="no-scaled-link" src="../../_images/ls_permissions.jpg" style="width: 1000px;" /></p>
 <p>There will always be ten characters in this first column. The first index determines if the object is a file, <code class="docutils literal notranslate"><span class="pre">-</span></code>, or a directory <code class="docutils literal notranslate"><span class="pre">d</span></code>. In the above example we see that the docs object is a directory.</p>
 <p>The next three characters are the permissions for the Owner.</p>
 <ul class="simple">
@@ -467,12 +458,12 @@
 <p>The next three characters determine the permissions for the group. The Group is <strong>staff</strong> and the permissions are <strong>r</strong>ead and e<strong>x</strong>ecute. The dash indicates that they do not have permissions for the <strong>w</strong>.</p>
 <p>Lastly, if the user is not the owner or in the group then they are placed in the <strong>Other</strong> category. The permissions for other are read and execute. The <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command can be used to change an objects permissions but this is outside the scope of this tutorial.</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the <code class="docutils literal notranslate"><span class="pre">-h</span></code> option lists all hidden files. Hidden files are files or folders that begin with a <code class="docutils literal notranslate"><span class="pre">.</span></code></p>
-<p><img alt="41cbfe189ed74482a278ea31f8057ca4" class="no-scaled-link" src="../../_images/ls_hidden.jpg" style="width: 1000px;" /></p>
+<p><img alt="bd7a14b0cdd44311a26176fc30e16ff3" class="no-scaled-link" src="../../_images/ls_hidden.jpg" style="width: 1000px;" /></p>
 <section id="a)-Syntax-and-Commands">
 <h4>a) Syntax and Commands<a class="headerlink" href="#a)-Syntax-and-Commands" title="Link to this heading">¶</a></h4>
 <p>We will now go over examples of command syntax</p>
 <p><code class="docutils literal notranslate"><span class="pre">sio&#64;localhost</span> <span class="pre">$</span> <span class="pre">ls</span> <span class="pre">-lGh</span> <span class="pre">.</span></code></p>
-<p><img alt="93476bbe574849c99d7b80fab21c403b" class="no-scaled-link" src="../../_images/command_syntax.jpg" style="width: 1000px;" /></p>
+<p><img alt="560f2d6e409c4f63b972a3f2d485bb30" class="no-scaled-link" src="../../_images/command_syntax.jpg" style="width: 1000px;" /></p>
 <p>Generally with the CLI we will run the command, give additional options and then list the arguments. Some commands do not follow this form (such as <code class="docutils literal notranslate"><span class="pre">find</span></code>) however it is important to know how we can enter the commands. The <strong>option</strong> list additional information we want to include with our command and the <code class="docutils literal notranslate"><span class="pre">.</span></code> (this is a shortcut for current directory) determines which object we are working with. The <code class="docutils literal notranslate"><span class="pre">-lGh</span></code> options allow us to see the directory in <strong>l</strong>ong format )<code class="docutils literal notranslate"><span class="pre">-l</span></code>, color code
 files and directories (<code class="docutils literal notranslate"><span class="pre">-G</span></code>) and list all <strong>hidden</strong> files (<code class="docutils literal notranslate"><span class="pre">-h</span></code>).</p>
 <p>Often times you will see <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">..</span></code> used in a command</p>
@@ -485,11 +476,11 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 <h4>b) Finding more information<a class="headerlink" href="#b)-Finding-more-information" title="Link to this heading">¶</a></h4>
 <p>If we want to find what options are avaiable or how a command works we can use the <code class="docutils literal notranslate"><span class="pre">help</span></code> command or look at the <code class="docutils literal notranslate"><span class="pre">man</span></code> (<strong>man</strong>ual) pages.</p>
 <p><code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">pwd</span></code></p>
-<p><img alt="df18ee3f3a124a8797352210e65ba958" class="no-scaled-link" src="../../_images/help.jpg" style="width: 1000px;" /></p>
+<p><img alt="82f839c0f374431394dc2682e7cb772c" class="no-scaled-link" src="../../_images/help.jpg" style="width: 1000px;" /></p>
 <p><code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">pwd</span></code></p>
-<p><img alt="84551088cf224b2dadb400107c0ae4fe" class="no-scaled-link" src="../../_images/man.jpg" style="width: 1000px;" /></p>
+<p><img alt="356fbb16531a46f7a33873768f7ee8ee" class="no-scaled-link" src="../../_images/man.jpg" style="width: 1000px;" /></p>
 <p>Lastly, thanks to the advances of AI, we could also just use an LLM to get additional information on a command or how to use a command</p>
-<p><img alt="be7e6ad64f8143c4935a80386ef9fb10" class="no-scaled-link" src="../../_images/chatgpt.jpg" style="width: 1000px;" /></p>
+<p><img alt="a4826a89015141d894b15ccda343b97e" class="no-scaled-link" src="../../_images/chatgpt.jpg" style="width: 1000px;" /></p>
 </section>
 </section>
 <section id="3)-Creating,-deleting,-copying-and-moving-files-and-folders">
@@ -665,7 +656,7 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="8ea7cf4ae15b42e3916568840dc2bb00" class="no-scaled-link" src="../../_images/abstract_wc.jpg" style="width: 1000px;" /></p>
+<p><img alt="1b146f2952de4c9cb21b3d916d5d5a64" class="no-scaled-link" src="../../_images/abstract_wc.jpg" style="width: 1000px;" /></p>
 <p>If we wanted to know the number of lines, words and sizes of each file as well as the sum for the lines, words and sizes we could use the wildcard character</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -675,7 +666,7 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="3d6e2a751d5e47efb0f2c0bbbd7c6b90" class="no-scaled-link" src="../../_images/abstract_wc_all.jpg" style="width: 1000px;" /></p>
+<p><img alt="ab7777ad44794663aab59cbc0d6704c5" class="no-scaled-link" src="../../_images/abstract_wc_all.jpg" style="width: 1000px;" /></p>
 </section>
 <section id="2)-Redirecting-output">
 <h3>2) Redirecting output<a class="headerlink" href="#2)-Redirecting-output" title="Link to this heading">¶</a></h3>
@@ -741,7 +732,7 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="96a203ced3a743bb835605d8d30f819f" class="no-scaled-link" src="../../_images/grep_not.jpg" style="width: 1000px;" /></p>
+<p><img alt="5dcc9351bdc34f138fa96e5f4b5d7440" class="no-scaled-link" src="../../_images/grep_not.jpg" style="width: 1000px;" /></p>
 <p>We see that grep has successfully returned all the lines that have the word <strong>not</strong> in it. Let’s try again with using <strong>The</strong> as a pattern to search for</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -751,9 +742,9 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="d0feb1c2084c41ab8a143322bfe6a82d" class="no-scaled-link" src="../../_images/grep_The.jpg" style="width: 500px;" /></p>
+<p><img alt="72317b92b6234a619d4554edd9a04f61" class="no-scaled-link" src="../../_images/grep_The.jpg" style="width: 500px;" /></p>
 <p>First, we see that grep also included words that have the sequence “The” in them. Additionally, we see from the below image by running <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">haiku.txt</span></code> that all lower case versions of the word <strong>the</strong> were missed.</p>
-<p><img alt="53e7c81dcbcb46d4993b995f1a017d5b" class="no-scaled-link" src="../../_images/haiku.jpg" style="width: 500px;" /></p>
+<p><img alt="1bdb020a6b404375a44d05709779adc7" class="no-scaled-link" src="../../_images/haiku.jpg" style="width: 500px;" /></p>
 <p>To fix this we can include additional options to perform a better search</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -763,7 +754,7 @@ files and directories (<code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
-<p><img alt="2ac7973d28714a6e98c5970d9fc0bc21" class="no-scaled-link" src="../../_images/grep_win.jpg" style="width: 650px;" /></p>
+<p><img alt="0bdd09e00db5431988c729238b2ac2e1" class="no-scaled-link" src="../../_images/grep_win.jpg" style="width: 650px;" /></p>
 <p>From above image grep is now returning what we had initially intended. This shows that</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">grep</span></code> by default is case-sensitive. Using the <code class="docutils literal notranslate"><span class="pre">-i</span></code> option allows <code class="docutils literal notranslate"><span class="pre">grep</span></code> to be case-insensitive</p></li>
